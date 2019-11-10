@@ -95,5 +95,5 @@ const spellProgressionSchema = new Schema({
     }],
 })
 
-const spellProgression = mongoose.model("spellProgression", spellProgressionSchema );
-module.exports = spellProgression;
+const SpellProgression = mongoose.model("spellProgression", spellProgressionSchema );
+module.exports = SpellProgression;

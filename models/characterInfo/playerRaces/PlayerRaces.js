@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const playerRaceSchema = new Schema({
+const PlayerRaceSchema = new Schema({
     name: {
         type: String,
         trim: true,
@@ -43,10 +43,10 @@ const playerRaceSchema = new Schema({
     subRaces: [
         {
           type: Schema.Types.ObjectId,
-          ref: "subRaces"
+          ref: "SubRaces"
         }
     ],
 });
 
-const playerRaces = mongoose.model("playerRaces", playerRaceSchema );
-module.exports = playerRaces;
+const PlayerRaces = mongoose.model("playerRaces", PlayerRaceSchema );
+module.exports = PlayerRaces;
