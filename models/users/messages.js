@@ -12,6 +12,10 @@ const messageSchema = new Schema({
         trim: true,
         required: `need message body`
     },
+    dateSent: {
+        type: Date,
+        default: Date.now()
+    },
     recipients: [{
         type: String,
         trim: true,
