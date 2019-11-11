@@ -14,12 +14,16 @@ const spellSchema = new Schema({
         trim: true,
         required: `need description for user view`,
     },
-    higher_level: {
+    higherLevel: {
         type: String,
         trim: true,
     },
+    range: {
+        type: Number,
+        default: 0
+    },
     components: {
-        type: String,
+        type: Array,
         trim: true
     },
     ritual: {
@@ -49,19 +53,18 @@ const spellSchema = new Schema({
         trim: true,
         required: `need spell school`
     },
-    classes: [{
-        type: String,
+    playerClasses: {
+        type: Array,
         trim: true
-    }],
-    subClasses: [{
-        type: String,
+    },
+    subClasses: {
+        type: Array,
+        default: [`none`]
+    },
+    playerRaces: {
+        type: Array,
         trim: true
-
-    }],
-    races: [{
-        type: String,
-        trim: true
-    }]
+    }
 });
 
 const Spells = mongoose.model("spells", spellSchema );

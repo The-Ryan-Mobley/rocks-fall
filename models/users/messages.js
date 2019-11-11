@@ -20,7 +20,11 @@ const messageSchema = new Schema({
         type: String,
         trim: true,
         required: `need atleast 1 valid id even if it is for chatbox`
-    }]
+    }],
+    dateCreated: {
+        type: Date,
+        default: Date.now()
+    }
 
 })
 

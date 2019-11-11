@@ -99,7 +99,11 @@ const playerCharacterSchema = new Schema({
             itemType: `none`,
             magical: false,
         }]
-    }]
+    }],
+    dateCreated: {
+        type: Date,
+        default: Date.now()
+    }
 
     
 })

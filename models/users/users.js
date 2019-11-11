@@ -24,7 +24,11 @@ const userSchema = new Schema({
     campaigns: [{
         type: Schema.Types.ObjectId,
         ref: `campaigns`
-    }]
+    }],
+    dateCreated: {
+        type: Date,
+        default: Date.now()
+    }
 })
 
 const Users = mongoose.model("users", userSchema );

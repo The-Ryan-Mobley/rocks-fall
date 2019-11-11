@@ -72,4 +72,5 @@ const casterSeed = [
         level19: [3,4,3,3,1],
         level20: [3,4,3,3,1],
     }
+    
 ]
