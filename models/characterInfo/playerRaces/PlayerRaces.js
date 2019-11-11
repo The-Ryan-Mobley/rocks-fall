@@ -40,6 +40,10 @@ const PlayerRaceSchema = new Schema({
         type: Object,
         required: `need traits`
     },
+    languages: {
+        type: Array,
+        required: `need languages`
+    },
     subRaces: [
         {
           type: Schema.Types.ObjectId,

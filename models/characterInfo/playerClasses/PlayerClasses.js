@@ -12,6 +12,11 @@ const playerClassSchema = new Schema({
         trim: true,
         required: `need description`
     },
+    primaryStats: {
+        type: Array,
+        required: `all classes have atleast 2 main stats`
+
+    },
     startingHealth: {
         type: Number,
         required: `need starting health`
