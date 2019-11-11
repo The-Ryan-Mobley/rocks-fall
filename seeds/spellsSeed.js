@@ -1,3 +1,12 @@
+const mongoose = require("mongoose");
+const db = require("../models/rules");
+
+
+
+mongoose.connect(
+  process.env.MONGODB_URI ||
+  "mongodb://localhost/rocksFall"
+);
 const spellSeed = [
     {
         name: `Acid Arrow`,
@@ -576,6 +585,326 @@ const spellSeed = [
         playerRaces: [`none`]
     },
     {
+        name: `Chain Lightning`,
+        description: `You create a bolt of lightning that arcs toward a target of your choice that you can see within range. Three bolts then leap from that target to as many as three other targets, each of which must be within 30 feet of the first target. A target can be a creature or an object and can be targeted by only one of the bolts. A target must make a dexterity saving throw. The target takes 10d8 lightning damage on a failed save, or half as much damage on a successful one.`,
+        higherLevel: `When you cast this spell using a spell slot of 7th level or higher, one additional bolt leaps from the first target to another target for each slot level above 6th.`,
+        range: 150,
+        components: [`V`,`S`,`A bit of fur; a piece of amber, glass, or a crystal rod; and three silver pins.`],
+        ritual: false,
+        duration: `instant`,
+        concentration: false,
+        castingTime: `1 action`,
+        spellLevel: 6,
+        school: `Evocation`,
+        playerClass: [`Sorcerer`,`Wizard`],
+        subClass: [`none`],
+        playerRaces: [`none`]
+    },
+    {
+        name: `Charm Person`,
+        description: `You attempt to charm a humanoid you can see within range. It must make a wisdom saving throw, and does so with advantage if you or your companions are fighting it. If it fails the saving throw, it is charmed by you until the spell ends or until you or your companions do anything harmful to it. The charmed creature regards you as a friendly acquaintance. When the spell ends, the creature knows it was charmed by you.`,
+        higherLevel: `When you cast this spell using a spell slot of 2nd level or higher, you can target one additional creature for each slot level above 1st. The creatures must be within 30 feet of each other when you target them.`,
+        range: 30,
+        components: [`V`,`S`],
+        ritual: false,
+        duration: `1 hour`,
+        concentration: false,
+        castingTime: `1 action`,
+        spellLevel: 1,
+        school: `Enchantment`,
+        playerClass: [`Bard`,`Cleric`,`Druid`,`Sorcerer`,`Warlock`,`Wizard`],
+        subClass: [`Trickery`],
+        playerRaces: [`none`]
+    },
+    {
+        name: `Chill Touch`,
+        description: `You create a ghostly, skeletal hand in the space of a creature within range. Make a ranged spell attack against the creature to assail it with the chill of the grave. On a hit, the target takes 1d8 necrotic damage, and it can't regain hit points until the start of your next turn. Until then, the hand clings to the target. If you hit an undead target, it also has disadvantage on attack rolls against you until the end of your next turn. This spell's damage increases by 1d8 when you reach 5th level (2d8), 11th level (3d8), and 17th level (4d8).`,
+        higherLevel: ``,
+        range: 120,
+        components: [`V`,`S`],
+        ritual: false,
+        duration: `1 round`,
+        concentration: false,
+        castingTime: `1 action`,
+        spellLevel: 0,
+        school: `Necormancy`,
+        playerClass: [`Sorcerer`,`Warlock`,`Wizard`],
+        subClass: [`none`],
+        playerRaces: [`High Elf`]
+    },
+    {
+        name: `Circle of Death`,
+        description: `A sphere of negative energy ripples out in a 60-foot-radius sphere from a point within range. Each creature in that area must make a constitution saving throw. A target takes 8d6 necrotic damage on a failed save, or half as much damage on a successful one.`,
+        higherLevel: `When you cast this spell using a spell slot of 7th level or higher, the damage increases by 2d6 for each slot level above 6th.`,
+        range: 150,
+        components: [`V`,`S`,`The powder of a crushed black pearl worth at least 500 gp.`],
+        ritual: false,
+        duration: `instant`,
+        concentration: false,
+        castingTime: `1 action`,
+        spellLevel: 6,
+        school: `Necromancy`,
+        playerClass: [`Sorcerer`,`Warlock`,`Wizard`],
+        subClass: [`none`],
+        playerRaces: [`none`]
+    },
+    {
+        name: `Clairvoyance`,
+        description: `You create an invisible sensor within range in a location familiar to you (a place you have visited or seen before) or in an obvious location that is unfamiliar to you (such as behind a door, around a corner, or in a grove of trees). The sensor remains in place for the duration, and it can't be attacked or otherwise interacted with. When you cast the spell, you choose seeing or hearing. You can use the chosen sense through the sensor as if you were in its space. As your action, you can switch between seeing and hearing. A creature that can see the sensor (such as a creature benefiting from see invisibility or truesight) sees a luminous, intangible orb about the size of your fist.`,
+        higherLevel: ``,
+        range: 5280,
+        components: [`V`,`S`,`A focus worth at least 100gp, either a jeweled horn for hearing or a glass eye for seeing.`],
+        ritual: false,
+        duration: `Up to 10 minutes`,
+        concentration: true,
+        castingTime: `10 minutes`,
+        spellLevel: 3,
+        school: `Divination`,
+        playerClass: [`Bard`,`Cleric`,`Sorcerer`,`Warlock`,`Wizard`],
+        subClass: [`Great Old One`],
+        playerRaces: [`none`]
+    },
+    {
+        name: `Clone`,
+        description: `This spell grows an inert duplicate of a living creature as a safeguard against death. This clone forms inside a sealed vessel and grows to full size and maturity after 120 days; you can also choose to have the clone be a younger version of the same creature. It remains inert and endures indefinitely, as long as its vessel remains undisturbed. At any time after the clone matures, if the original creature dies, its soul transfers to the clone, provided that the soul is free and willing to return. The clone is physically identical to the original and has the same personality, memories, and abilities, but none of the original's equipment. The original creature's physical remains, if they still exist, become inert and can't thereafter be restored to life, since the creature's soul is elsewhere.`,
+        higherLevel: ``,
+        range: 0,
+        components: [`V`,`S`,`A diamond worth at least 1,000 gp and at least 1 cubic inch of flesh of the creature that is to be cloned, which the spell consumes, and a vessel worth at least 2,000 gp that has a sealable lid and is large enough to hold a Medium creature, such as a huge urn, coffin, mud-filled cyst in the ground, or crystal container filled with salt water.`],
+        ritual: false,
+        duration: `instant`,
+        concentration: false,
+        castingTime: `1 hour`,
+        spellLevel: 0,
+        school: ``,
+        playerClass: [`Wizard`],
+        subClass: [`none`],
+        playerRaces: [`none`]
+    },
+    {
+        name: `Cloudkill`,
+        description: `You create a 20-foot-radius sphere of poisonous, yellow-green fog centered on a point you choose within range. The fog spreads around corners. It lasts for the duration or until strong wind disperses the fog, ending the spell. Its area is heavily obscured. When a creature enters the spell's area for the first time on a turn or starts its turn there, that creature must make a constitution saving throw. The creature takes 5d8 poison damage on a failed save, or half as much damage on a successful one. Creatures are affected even if they hold their breath or don't need to breathe. The fog moves 10 feet away from you at the start of each of your turns, rolling along the surface of the ground. The vapors, being heavier than air, sink to the lowest level of the land, even pouring down openings.`,
+        higherLevel: `When you cast this spell using a spell slot of 6th level or higher, the damage increases by 1d8 for each slot level above 5th.`,
+        range: 120,
+        components: [`V`,`S`],
+        ritual: false,
+        duration: `Up to 10 minutes`,
+        concentration: true,
+        castingTime: `1 action`,
+        spellLevel: 5,
+        school: `Conjuration`,
+        playerClass: [`Druid`,`Sorcerer`,`Wizard`],
+        subClass: [`Underdark`],
+        playerRaces: [`none`]
+    },
+    {
+        name: `Color Spray`,
+        description: `A dazzling array of flashing, colored light springs from your hand. Roll 6d10; the total is how many hit points of creatures this spell can effect. Creatures in a 15-foot cone originating from you are affected in ascending order of their current hit points (ignoring unconscious creatures and creatures that can't see). Starting with the creature that has the lowest current hit points, each creature affected by this spell is blinded until the spell ends. Subtract each creature's hit points from the total before moving on to the creature with the next lowest hit points. A creature's hit points must be equal to or less than the remaining total for that creature to be affected.`,
+        higherLevel: `When you cast this spell using a spell slot of 2nd level or higher, roll an additional 2d10 for each slot level above 1st.`,
+        range: 0,
+        components: [`V`,`S`,`A pinch of powder or sand that is colored red, yellow, and blue.`],
+        ritual: false,
+        duration: `1 round`,
+        concentration: false,
+        castingTime: `1 action`,
+        spellLevel: 1,
+        school: `Illusion`,
+        playerClass: [`Sorcerer`,`Wizard`],
+        subClass: [`none`],
+        playerRaces: [`none`]
+    },
+    {
+        name: `Command`,
+        description: `You speak a one-word command to a creature you can see within range. The target must succeed on a wisdom saving throw or follow the command on its next turn. The spell has no effect if the target is undead, if it doesn't understand your language, or if your command is directly harmful to it. Some typical commands and their effects follow. You might issue a command other than one described here. If you do so, the DM determines how the target behaves. If the target can't follow your command, the spell ends\n\n **Approach.** The target moves toward you by the shortest and most direct route, ending its turn if it moves within 5 feet of you.\n\n**Drop** The target drops whatever it is holding and then ends its turn.\n\n**Flee.** The target spends its turn moving away from you by the fastest available means.\n\n**Grovel.** The target falls prone and then ends its turn.\n\n**Halt.** The target doesn't move and takes no actions. A flying creature stays aloft, provided that it is able to do so. If it must move to stay aloft, it flies the minimum distance needed to remain in the air.`,
+        higherLevel: `When you cast this spell using a spell slot of 2nd level or higher, you can affect one additional creature for each slot level above 1st. The creatures must be within 30 feet of each other when you target them.`,
+        range: 60,
+        components: [`V`],
+        ritual: false,
+        duration: `1 round`,
+        concentration: false,
+        castingTime: `1 action`,
+        spellLevel: 1,
+        school: `Enchantment`,
+        playerClass: [`Cleric`,`Paladin`,`Warlock`],
+        subClass: [`Fiend`],
+        playerRaces: [`none`]
+    },
+    {
+        name: `Commune`,
+        description: `You contact your deity or a divine proxy and ask up to three questions that can be answered with a yes or no. You must ask your questions before the spell ends. You receive a correct answer for each question. Divine beings aren't necessarily omniscient, so you might receive \"unclear\" as an answer if a question pertains to information that lies beyond the deity's knowledge. In a case where a one-word answer could be misleading or contrary to the deity's interests, the DM might offer a short phrase as an answer instead. If you cast the spell two or more times before finishing your next long rest, there is a cumulative 25 percent chance for each casting after the first that you get no answer. The DM makes this roll in secret.`,
+        higherLevel: ``,
+        range: 0,
+        components: [`V`,`S`,`Incense and a vial of holy or unholy water.`],
+        ritual: true,
+        duration: `1 minute`,
+        concentration: false,
+        castingTime: `1 minute`,
+        spellLevel: 5,
+        school: `Divination`,
+        playerClass: [`Cleric`,`Paladin`,`Ritual Caster`],
+        subClass: [`Devotion`],
+        playerRaces: [`none`]
+    },
+    {
+        name: `Commune with Nature`,
+        description: `You briefly become one with nature and gain knowledge of the surrounding territory. In the outdoors, the spell gives you knowledge of the land within 3 miles of you. In caves and other natural underground settings, the radius is limited to 300 feet. The spell doesn't function where nature has been replaced by construction, such as in dungeons and towns. You instantly gain knowledge of up to three facts of your choice about any of the following subjects as they relate to the area: \n- terrain and bodies of water \n- prevalent plants, minerals, animals, or peoples \n- powerful celestials, fey, fiends, elementals, or undead \n- influence from other planes of existence \n- buildings For example, you could determine the location of powerful undead in the area, the location of major sources of safe drinking water, and the location of any nearby towns.`,
+        higherLevel: ``,
+        range: 0,
+        components: [`V`,`S`],
+        ritual: true,
+        duration: `instant`,
+        concentration: false,
+        castingTime: `1 minute`,
+        spellLevel: 5,
+        school: `Divination`,
+        playerClass: [`Druid`,`Paladin`,`Ranger`,`Ritual Caster`],
+        subClass: [`Ancients`,`Arctic`,`Forest`],
+        playerRaces: [`none`]
+    },
+    {
+        name: `Comprehend Languages`,
+        description: `For the duration, you understand the literal meaning of any spoken language that you hear. You also understand any written language that you see, but you must be touching the surface on which the words are written. It takes about 1 minute to read one page of text. This spell doesn't decode secret messages in a text or a glyph, such as an arcane sigil, that isn't part of a written language.`,
+        higherLevel: ``,
+        range: 0,
+        components: [`V`,`S`,`A pinch of soot and salt`],
+        ritual: true,
+        duration: `1 hour`,
+        concentration: false,
+        castingTime: `1 action`,
+        spellLevel: 1,
+        school: `Divination`,
+        playerClass: [`Bard`,`Ritual Caster`,`Sorcerer`,`Warlock`,`Wizard`],
+        subClass: [`none`],
+        playerRaces: [`none`]
+    },
+    {
+        name: `Compulsion`,
+        description: `Creatures of your choice that you can see within range and that can hear you must make a Wisdom saving throw. A target automatically succeeds on this saving throw if it can't be charmed. On a failed save, a target is affected by this spell. Until the spell ends, you can use a bonus action on each of your turns to designate a direction that is horizontal to you. Each affected target must use as much of its movement as possible to move in that direction on its next turn. It can take its action before it moves. After moving in this way, it can make another Wisdom saving throw to try to end the effect. A target isn't compelled to move into an obviously deadly hazard, such as a fire or pit, but it will provoke opportunity attacks to move in the designated direction.`,
+        higherLevel: ``,
+        range: 30,
+        components: [`V`,`S`],
+        ritual: false,
+        duration: `Up to 1 minute`,
+        concentration: true,
+        castingTime: `1 action`,
+        spellLevel: 4,
+        school: `Enchantment`,
+        playerClass: [`Bard`],
+        subClass: [`none`],
+        playerRaces: [`none`]
+    },
+    {
+        name: `Cone of Cold`,
+        description: `A blast of cold air erupts from your hands. Each creature in a 60-foot cone must make a constitution saving throw. A creature takes 8d8 cold damage on a failed save, or half as much damage on a successful one. A creature killed by this spell becomes a frozen statue until it thaws.`,
+        higherLevel: `When you cast this spell using a spell slot of 6th level or higher, the damage increases by 1d8 for each slot level above 5th.`,
+        range: 0,
+        components: [`V`,`S`,`A small crystal or glass cone.`],
+        ritual: false,
+        duration: `instant`,
+        concentration: false,
+        castingTime: `1 action`,
+        spellLevel: 5,
+        school: `Evocation`,
+        playerClass: [`Druid`,`Sorcerer`,`Wizard`],
+        subClass: [`Arctic`],
+        playerRaces: [`none`]
+    },
+    {
+        name: `Confusion`,
+        description: `This spell assaults and twists creatures' minds, spawning delusions and provoking uncontrolled action. Each creature in a 10-­--foot-­--radius sphere centered on a point you choose within range must succeed on a Wisdom saving throw when you cast this spell or be affected by it. An affected target can't take reactions and must roll a d10 at the start of each of its turns to determine its behavior for that turn. At the end of each of its turns, an affected target can make a Wisdom saving throw. If it succeeds, this effect ends for that target.`,
+        higherLevel: `When you cast this spell using a spell slot of 5th level or higher, the radius of the sphere increases by 5 feet for each slot level above 4th.`,
+        range: 90,
+        components: [`V`,`S`,`Three walnut shells`],
+        ritual: false,
+        duration: `Up to 1 minute`,
+        concentration: false,
+        castingTime: `1 action`,
+        spellLevel: 4,
+        school: `Enchantment`,
+        playerClass: [`Bard`,`Cleric`,`Druic`,`Sorcerer`,`Wizard`],
+        subClass: [`Knowledge`],
+        playerRaces: [`none`]
+    },
+    {
+        name: ``,
+        description: ``,
+        higherLevel: ``,
+        range: 0,
+        components: [`V`,`S`,`M`],
+        ritual: false,
+        duration: `instant`,
+        concentration: false,
+        castingTime: `1 action`,
+        spellLevel: 0,
+        school: ``,
+        playerClass: [`Wizard`],
+        subClass: [`none`],
+        playerRaces: [`none`]
+    },
+    {
+        name: ``,
+        description: ``,
+        higherLevel: ``,
+        range: 0,
+        components: [`V`,`S`,`M`],
+        ritual: false,
+        duration: `instant`,
+        concentration: false,
+        castingTime: `1 action`,
+        spellLevel: 0,
+        school: ``,
+        playerClass: [`Wizard`],
+        subClass: [`none`],
+        playerRaces: [`none`]
+    },
+    {
+        name: ``,
+        description: ``,
+        higherLevel: ``,
+        range: 0,
+        components: [`V`,`S`,`M`],
+        ritual: false,
+        duration: `instant`,
+        concentration: false,
+        castingTime: `1 action`,
+        spellLevel: 0,
+        school: ``,
+        playerClass: [`Wizard`],
+        subClass: [`none`],
+        playerRaces: [`none`]
+    },
+    {
+        name: ``,
+        description: ``,
+        higherLevel: ``,
+        range: 0,
+        components: [`V`,`S`,`M`],
+        ritual: false,
+        duration: `instant`,
+        concentration: false,
+        castingTime: `1 action`,
+        spellLevel: 0,
+        school: ``,
+        playerClass: [`Wizard`],
+        subClass: [`none`],
+        playerRaces: [`none`]
+    },
+    {
+        name: ``,
+        description: ``,
+        higherLevel: ``,
+        range: 0,
+        components: [`V`,`S`,`M`],
+        ritual: false,
+        duration: `instant`,
+        concentration: false,
+        castingTime: `1 action`,
+        spellLevel: 0,
+        school: ``,
+        playerClass: [`Wizard`],
+        subClass: [`none`],
+        playerRaces: [`none`]
+    },
+    {
         name: ``,
         description: ``,
         higherLevel: ``,
@@ -643,3 +972,15 @@ const spellSeed = [
 
 
 ]
+
+db.Spells
+.remove({})
+.then(() => db.Spells.collection.insertMany(apellSeed))
+.then(data => {
+  console.log(data.result.n + " records inserted!");
+  process.exit(0);
+})
+.catch(err => {
+  console.error(err);
+  process.exit(1);
+});
