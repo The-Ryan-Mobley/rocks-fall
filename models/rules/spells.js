@@ -19,15 +19,19 @@ const spellSchema = new Schema({
         trim: true,
     },
     range: {
-        type: Number,
+        type: String,
         default: 0
     },
     components: {
-        type: Array,
+        type: [String],
+        trim: true
+    },
+    material: {
+        type: String,
         trim: true
     },
     ritual: {
-        type: Boolean,
+        type: String,
         required: `spells need ritual flag`
     },
     duration: {
@@ -36,7 +40,7 @@ const spellSchema = new Schema({
         required: `need spell duration`
     },
     concentration: {
-        type: Boolean,
+        type: String,
         required: `need concentration flag`
     },
     castingTime: {
@@ -54,17 +58,16 @@ const spellSchema = new Schema({
         required: `need spell school`
     },
     playerClasses: {
-        type: Array,
+        type: [String],
         trim: true
     },
     subClasses: {
-        type: Array,
+        type: [String],
         default: [`none`]
     },
-    playerRaces: {
-        type: Array,
-        trim: true
-    }
+    druidCircle: {
+        type: String
+    },
 });
 
 const Spells = mongoose.model("spells", spellSchema );
