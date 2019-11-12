@@ -23,14 +23,14 @@ const subClassSchema = new Schema({
         required: `some subclasses give user's spells`
     },
     spellsAdded: {
-        type: Array,
+        type: [String],
         trim: true,
-        default: []
+        default: [`none`]
     },
-    levelingTable: [{
-        type: Object,
+    levelingTable: {
+        type: [Object],
         required: `need object list for leveling features`
-    }]
+    }
 
 });
 

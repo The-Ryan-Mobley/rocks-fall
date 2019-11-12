@@ -52,5 +52,5 @@ const PlayerRaceSchema = new Schema({
     ],
 });
 
-const PlayerRaces = mongoose.model("playerRaces", PlayerRaceSchema );
+const PlayerRaces = mongoose.model("PlayerRaces", PlayerRaceSchema );
 module.exports = PlayerRaces;

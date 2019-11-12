@@ -23,5 +23,5 @@ const subRaceSchema = new Schema({
     }
 })
 
-const SubRaces = mongoose.model("subRaces", subRaceSchema );
+const SubRaces = mongoose.model("SubRaces", subRaceSchema );
 module.exports = SubRaces;

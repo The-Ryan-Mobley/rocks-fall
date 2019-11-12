@@ -85,5 +85,5 @@ const playerClassSchema = new Schema({
     }],
 })
 
-const playerClasses = mongoose.model(`playerClasses`, playerClassSchema );
+const playerClasses = mongoose.model(`PlayerClasses`, playerClassSchema );
 module.exports = playerClasses;

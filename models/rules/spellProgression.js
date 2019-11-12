@@ -9,91 +9,91 @@ const spellProgressionSchema = new Schema({
         trim: true,
         required: `either half, third, full, pact, or multiclass`
     },
-    level0: [{
-        type: Number,
+    level0: {
+        type: [Number],
         required: `need spell slots for level`
-    }],
-    level1: [{
-        type: Number,
+    },
+    level1: {
+        type: [Number],
         required: `need array of spell slots for level`
-    }],
-    level2: [{
-        type: Number,
+    },
+    level2: {
+        type: [Number],
         required: `need array spell slots for level`
-    }],
-    level3: [{
-        type: Number,
+    },
+    level3: {
+        type: [Number],
         required: `need spell slots for level`
-    }],
-    level4: [{
-        type: Number,
+    },
+    level4: {
+        type: [Number],
         required: `need spell slots for level`
-    }],
-    level5: [{
-        type: Number,
+    },
+    level5: {
+        type: [Number],
         required: `need spell slots for level`
-    }],
-    level6: [{
-        type: Number,
+    },
+    level6: {
+        type: [Number],
         required: `need spell slots for level`
-    }],
-    level7: [{
-        type: Number,
+    },
+    level7: {
+        type: [Number],
         required: `need spell slots for level`
-    }],
-    level8: [{
-        type: Number,
+    },
+    level8: {
+        type: [Number],
         required: `need spell slots for level`
-    }],
-    level9: [{
-        type: Number,
+    },
+    level9: {
+        type: [Number],
         required: `need spell slots for level`
-    }],
-    level10: [{
-        type: Number,
+    },
+    level10: {
+        type: [Number],
         required: `need spell slots for level`
-    }],
-    level11: [{
-        type: Number,
+    },
+    level11: {
+        type: [Number],
         required: `need spell slots for level`
-    }],
-    level12: [{
-        type: Number,
+    },
+    level12: {
+        type: [Number],
         required: `need spell slots for level`
-    }],
-    level13: [{
-        type: Number,
+    },
+    level13: {
+        type: [Number],
         required: `need spell slots for level`
-    }],
-    level14: [{
-        type: Number,
+    },
+    level14: {
+        type: [Number],
         required: `need spell slots for level`
-    }],
-    level15: [{
-        type: Number,
+    },
+    level15: {
+        type: [Number],
         required: `need spell slots for level`
-    }],
-    level16: [{
-        type: Number,
+    },
+    level16: {
+        type: [Number],
         required: `need spell slots for level`
-    }],
-    level17: [{
-        type: Number,
+    },
+    level17: {
+        type: [Number],
         required: `need spell slots for level`
-    }],
-    level18: [{
-        type: Number,
+    },
+    level18: {
+        type: [Number],
         required: `need spell slots for level`
-    }],
-    level19: [{
-        type: Number,
+    },
+    level19: {
+        type: [Number],
         required: `need spell slots for level`
-    }],
-    level20: [{
-        type: Number,
+    },
+    level20: {
+        type: [Number],
         required: `need spell slots for level`
-    }],
+    },
 })
 
-const SpellProgression = mongoose.model("spellProgression", spellProgressionSchema );
+const SpellProgression = mongoose.model("SpellProgression", spellProgressionSchema );
 module.exports = SpellProgression;

@@ -40,5 +40,5 @@ const armorSchema = new Schema({
     }
 });
 
-const Armor = mongoose.model("armor", armorSchema );
+const Armor = mongoose.model("Armor", armorSchema );
 module.exports = Armor;

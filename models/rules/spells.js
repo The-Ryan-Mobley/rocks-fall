@@ -70,5 +70,5 @@ const spellSchema = new Schema({
     },
 });
 
-const Spells = mongoose.model("spells", spellSchema );
+const Spells = mongoose.model("Spells", spellSchema );
 module.exports = Spells;

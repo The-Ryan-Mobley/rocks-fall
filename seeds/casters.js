@@ -71,6 +71,7 @@ const casterSeed = [
         level18: [3,4,3,3,1],
         level19: [3,4,3,3,1],
         level20: [3,4,3,3,1],
-    }
+    },
     
 ]
+module.exports = casterSeed

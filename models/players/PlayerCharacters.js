@@ -17,7 +17,7 @@ const playerCharacterSchema = new Schema({
         default: 0
     },
     stats: {
-        type: Array,
+        type: [Number],
         default: [8,8,8,8,8,8]
     },
     playerClass: {
@@ -40,7 +40,7 @@ const playerCharacterSchema = new Schema({
         default: [0,0,0,0,0]
     },
     attunementSlots: {
-        type: Array,
+        type: String,
         default: [`open`,`open`,`open`]
     },
     proficiencyBonus: {
@@ -48,8 +48,8 @@ const playerCharacterSchema = new Schema({
         default: 2
     },
     skillProficiencies: {
-        type: Array,
-        type: `skill profs not found`
+        type: [Number],
+        required: `skill profs not found`
     },
     martialWeaponProficiency: {
         type: Boolean,
@@ -61,15 +61,15 @@ const playerCharacterSchema = new Schema({
         default: `none`
     },
     savingThrowProficiency: {
-        type: Array,
+        type: [String],
         required: `need saving throw bonus`
     },
     languages: {
-        type: Array,
+        type: [String],
         default: [`common`]
     },
     armorProficiency: {
-        type: Array,
+        type: [String],
         default: [`unarmored`]
     },
     spellCasting: {
@@ -77,11 +77,11 @@ const playerCharacterSchema = new Schema({
         default: false
     },
     spellSlots: {
-        type: Array,
+        type: [Number],
         default: [0,0,0,0,0,0,0,0,0]
     },
     spellCastingStat: {
-        type: Array,
+        type: [String],
         default: [`none`]
     },
     spellsKnown: {
@@ -108,5 +108,5 @@ const playerCharacterSchema = new Schema({
     
 })
 
-const PlayerCharacters = mongoose.model("playerCharacters", playerCharacterSchema );
+const PlayerCharacters = mongoose.model("PlayerCharacters", playerCharacterSchema );
 module.exports = PlayerCharacters;

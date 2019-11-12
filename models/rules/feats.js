@@ -25,5 +25,5 @@ const featsSchema = new Schema({
     }
 });
 
-const Feats = mongoose.model("feats", featsSchema );
+const Feats = mongoose.model("Feats", featsSchema );
 module.exports = Feats;
