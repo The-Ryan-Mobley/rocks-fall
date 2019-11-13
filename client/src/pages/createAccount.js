@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Wrapper from '../components/wrapper';
-import ButtonBase from '@material-ui/core/ButtonBase';
+import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
 import Box from '@material-ui/core/Box';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 
-export default class createAccount extends Component{
+export default class CreateAccount extends Component{
     render(){
         return(
             <Wrapper>
@@ -18,7 +18,6 @@ export default class createAccount extends Component{
                     direction="column"
                     alignItems="center"
                     justify="center"
-                    style={{ minHeight: '100vh' }}
                 >
                     <Input
                         id="username"
@@ -38,12 +37,9 @@ export default class createAccount extends Component{
                         variant="filled"
                         color="secondary" 
                     />
-                    <ButtonBase 
-                        type="submit" 
-                        label="login" 
-                        className="button-submit" 
-                        primary={true}
-                    />
+                    <Button variant="contained" >
+                        Create
+                    </Button>
                 </Grid>
             </Wrapper>
         );
