@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import ButtonBase from '@material-ui/core/ButtonBase';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
 import './style.css';
 
 export function Input(props) {
@@ -6,12 +8,5 @@ export function Input(props) {
         <div className="row">
             <input className="inputField" {...props} />
         </div> 
-    );
-}
-export function SubmitBtn(props) {
-    return(
-        <button {...props} className="button SubmitBtn">
-            {props.children}
-        </button>
     );
 }

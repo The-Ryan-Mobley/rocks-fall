@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import { Redirect } from 'react-router-dom';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
+import Box from '@material-ui/core/Box';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
 import './style.css';
 
 export default class Wrapper extends Component {
@@ -19,27 +20,29 @@ export default class Wrapper extends Component {
     
     render(){
         return(
-            <Container>
+            <Box>
                 <div className="wrapper">
-                    <Row>
+                    <Grid container direction="row">
                         <header>
-                            <h1></h1>
+                            <h1>Top Text</h1>
                         </header>
-                    </Row>
-                    <Row>
-                        <Col md={12}>
-                            {this.props.children}
-                        </Col>
-                    </Row>
-                    <Row>
+                    </Grid>
+                        <Container>
+                            <Grid container spacing={1}>
+                                <Grid container item xs={12} spacing={3}>
+                                    {this.props.children}
+                                </Grid>
+                            </Grid>
+                        </Container>
+                    <Grid container direction="row">
                         <footer>
                             <div className="header-footer bottom-content">
                                 <p className="title">bottomText</p>
                             </div>
                         </footer>
-                    </Row>
+                    </Grid>
                 </div>
-            </Container>
+            </Box>
         );
     }
 }
