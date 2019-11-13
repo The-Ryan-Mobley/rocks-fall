@@ -20,15 +20,35 @@ const playerCharacterSchema = new Schema({
         type: [Number],
         default: [8,8,8,8,8,8]
     },
+    primaryStats: {
+        type: [String]
+
+    },
     playerClass: {
         type: String,
         trim: true,
         required: `need a player class`
     },
+    subClass: {
+        type: String,
+        trim: true,
+        default: ""
+
+    },
+    playerRace: {
+        type: String,
+        trim: true,
+        required: "need a player race"
+    },
     background: {
         type: String,
         trim: true,
         default: `none`
+    },
+    bio: {
+        type: String,
+        trim: true,
+        default: `no backstory`
     },
     alignment: {
         type: String,
@@ -48,29 +68,17 @@ const playerCharacterSchema = new Schema({
         default: 2
     },
     skillProficiencies: {
-        type: [Number],
+        type: [String],
         required: `skill profs not found`
-    },
-    martialWeaponProficiency: {
-        type: Boolean,
-        default: false
     },
     toolProficiency: {
         type: String,
         trim: true,
         default: `none`
     },
-    savingThrowProficiency: {
-        type: [String],
-        required: `need saving throw bonus`
-    },
     languages: {
         type: [String],
         default: [`common`]
-    },
-    armorProficiency: {
-        type: [String],
-        default: [`unarmored`]
     },
     spellCasting: {
         type: Boolean,
@@ -91,15 +99,16 @@ const playerCharacterSchema = new Schema({
             level1: [`none`]
         }
     },
-    inventory: [{
-        type: Object,
+    inventory: {
+        type: [Object],
         default: [{
-            itemName: 'none',
-            itemId: `none`,
-            itemType: `none`,
-            magical: false,
+            name: 'none',
+            description: `none`,
         }]
-    }],
+    },
+    featsAndTraits: {
+        type: [Object],
+    },
     dateCreated: {
         type: Date,
         default: Date.now()
