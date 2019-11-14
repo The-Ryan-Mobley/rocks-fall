@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Wrapper from '../components/wrapper';
+import CharacterSheet from "../components/characterSheet"
 import Grid from '@material-ui/core/Grid';
 
 export default class HomePage extends Component{
@@ -10,7 +11,8 @@ export default class HomePage extends Component{
                     <p>left</p>
 
                 </Grid>
-                <Grid container item xs={8}>
+                <Grid container xs={8}>
+                    <CharacterSheet/>
                     <p>center</p>
                 </Grid>
                 <Grid container item xs={2}>

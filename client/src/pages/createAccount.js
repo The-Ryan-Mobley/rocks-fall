@@ -9,6 +9,12 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 
 export default class CreateAccount extends Component{
+    handleInputChange = event =>{
+        const { name, value } = event.target;
+        this.setState({
+            [name]: value
+        });
+    }
     render(){
         return(
             <Wrapper>

@@ -29,9 +29,7 @@ export default class Wrapper extends Component {
                     </Grid>
                         <Container>
                             <Grid container spacing={1}>
-                                <Grid container item xs={12} spacing={3}>
-                                    {this.props.children}
-                                </Grid>
+                                {this.props.children}
                             </Grid>
                         </Container>
                     <Grid container direction="row">

@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Input from '@material-ui/core/Input';
+import { sizing } from '@material-ui/system';
+import Box from '@material-ui/core/Box';
+import {StatBlock, SavingProfs} from "../characterForms";
+import "./style.css"
+
 export default class CharacterSheet extends Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            playerCharacter: undefined,
-            statMods: []
-        }
-        
-    }
-    componentDidMount(){
-        let playerCharacter = {
+    state = {
+        playerCharacter:{
             name: "lorem",
             level: 3,
+            health: 25,
+            hitDie: 10,
             experience: 0,
             stats: [12,16,14,10,9,10],
             primaryStats: ["strength","dexterity"],
@@ -26,14 +25,20 @@ export default class CharacterSheet extends Component{
             currency: [15,30,0,6,0],
             attunementSlots: ["Open","Open","Boots of Flying"],
             proficiencyBonus: 2,
+            armorClass: 15,
+            initiative: 3,
+            speed: 30,
             skillProficiency: ["Athletics","Acrobatics","Stealth"],
             toolProficiency: "Playing Cards",
             languages: ["Common","Halfling"],
             inventory: [{name: "backpack", description: "holds stuff"}],
             featsAndTraits: [{name: "Action Surge", description: "take an extra action this turn refreshes on short rests"}]
             
-        }
-        let statMods = playerCharacter.stats.map(stat =>{
+        },
+        statMods: []
+    }
+    componentDidMount(){
+        let statMods = this.state.playerCharacter.stats.map(stat =>{
             if(stat === 10){
                 return 0;
             } else if(stat > 10) {
@@ -45,63 +50,85 @@ export default class CharacterSheet extends Component{
             }
         })
         this.setState({
-            playerCharacter,
-            statMods
+            statMods: statMods
         });
         //set playercharacter data
     }
     render(){
         return(
-            <Grid container item xs={12} spacing={3} direction="column">
-                <div className="sheetModal">
-                    <Grid xs={1}
-                    spacing={0}
-                    direction="column"
-                    alignItems="center"
-                    justify="center">
-                        <div className="statBlock">
-                            {this.state.playerCharacter.stats.map(stat => (   
-                                <div className="singleBlock">
-                                    <Input
-                                        id={this.playerCharacter.stats.indexOf(stat)}
-                                        placeholder={stat}
-                                        variant="filled"
-                                        color="secondary" 
-                                    />
-                                    <p>{this.state.statMods[this.playerCharacter.stats.indexOf(stat)]}</p>
-                                </div>
-                             ))}
-                        </div>
+            <Grid container spacing={1}>
+                    <Grid item xs={1}>
+                        <StatBlock
+                            stats = {this.state.playerCharacter.stats}
+                            statMods = {this.state.statMods}
+                        />
                     </Grid>
-                    <Grid xs={2}
-                    spacing={0}
-                    direction="column"
-                    alignItems="center"
-                    justify="center">
-                        <div className="Saving Throws">
-                            <p>Proficiency Bonus</p>
-                            <p>{this.playerCharacter.proficiencyBonus}</p>
-                            <p><strong>Saving Throws</strong></p>
-                            {this.state.playerCharacter.primaryStats.map(stat => (
-                                <Input
-                                id={this.playerCharacter.primaryStats.indexOf(stat)}
-                                placeholder={stat}
-                                variant="filled"
-                                color="secondary" 
-                                />
-                            ))}
+                        <Grid xs={2} item>
+                            <SavingProfs
+                                proficiencyBonus={this.state.playerCharacter.proficiencyBonus} 
+                                primaryStats={this.state.playerCharacter.primaryStats}
+                                skillProficiency={this.state.playerCharacter.skillProficiency}
+                            />
+                            
+                        </Grid>
+                   <div className="gear box">
+                   <Grid
+                    item
+                    xs={4}
+                    >
+                        <Grid spacing={3} direction="row">
+                            <p><strong>AC: </strong></p>
                             <Input
-                                id="add saving throw"
-                                label="Add"
+                                id="armor"
+                                placeholder={this.state.playerCharacter.armorClass}
                                 variant="filled"
                                 color="secondary" 
                             />
-                        </div>
-                        <div className="Skills">
-                            
-                        </div>
+                            <p><strong>INITIATIVE: </strong></p>
+                            <Input
+                                id="armor"
+                                placeholder={this.state.playerCharacter.initiative}
+                                variant="filled"
+                                color="secondary" 
+                            />
+                            <p><strong>SPEED: </strong></p>
+                            <Input
+                                id="armor"
+                                placeholder={this.state.playerCharacter.speed}
+                                variant="filled"
+                                color="secondary" 
+                            />
+                        </Grid>
+                        <Grid 
+                            spacing={1}
+                            item
+                        >
+                            <Input
+                                id="health"
+                                placeholder={this.state.playerCharacter.health}
+                                variant="filled"
+                                color="secondary" 
+                            />
+                            <Input
+                                id="hit die"
+                                placeholder={`${this.state.playerCharacter.level} d ${this.state.playerCharacter.hitDie}`}
+                                variant="filled"
+                                color="secondary" 
+                            />
+                        </Grid>
+
                     </Grid>
-                </div>
+                   </div>
+                   <div className="characterSummary box">
+                        <Grid 
+                            item 
+                            xs={5}
+                            spacing={3}
+                        >
+                            <p>placeholder</p>
+                        </Grid>
+                   </div>
+                
                 
             </Grid>
         )

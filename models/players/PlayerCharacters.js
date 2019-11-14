@@ -12,6 +12,14 @@ const playerCharacterSchema = new Schema({
         type: Number,
         default: 1
     },
+    health: {
+        type: Number,
+        default: 0
+    },
+    hitDie: {
+        type: Number,
+        default: 8
+    },
     experience: {
         type: Number,
         default: 0
@@ -79,6 +87,18 @@ const playerCharacterSchema = new Schema({
     languages: {
         type: [String],
         default: [`common`]
+    },
+    armorClass: {
+        type: Number,
+        default: 10
+    },
+    initiative: {
+        type: Number,
+        default: 0
+    },
+    speed: {
+        type: Number,
+        default: 30
     },
     spellCasting: {
         type: Boolean,
