@@ -69,9 +69,57 @@ class SavingProfs extends Component{
     }
 }
 class GearBlock extends Component {
-    
+    render(){
+        return(
+            <div className="gearBlock">
+                <Grid spacing={3} direction="row">
+                            <p><strong>AC: </strong></p>
+                            <Input
+                                id="armor"
+                                placeholder={this.props.armorClass}
+                                variant="filled"
+                                color="secondary" 
+                            />
+                            <p><strong>INITIATIVE: </strong></p>
+                            <Input
+                                id="armor"
+                                placeholder={this.props.initiative}
+                                variant="filled"
+                                color="secondary" 
+                            />
+                            <p><strong>SPEED: </strong></p>
+                            <Input
+                                id="armor"
+                                placeholder={this.props.speed}
+                                variant="filled"
+                                color="secondary" 
+                            />
+                        </Grid>
+                        <Grid 
+                            spacing={1}
+                            item
+                        >
+                            <Input
+                                id="health"
+                                placeholder={this.props.health}
+                                variant="filled"
+                                color="secondary" 
+                            />
+                            <Input
+                                id="hit die"
+                                placeholder={`${this.props.level} d ${this.props.hitDie}`}
+                                variant="filled"
+                                color="secondary" 
+                            />
+                        </Grid>
+
+            </div>
+        )
+    }
+
 }
 export {
     StatBlock,
-    SavingProfs
+    SavingProfs,
+    GearBlock
 }

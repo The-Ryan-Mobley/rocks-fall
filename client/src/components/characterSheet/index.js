@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import Input from '@material-ui/core/Input';
 import { sizing } from '@material-ui/system';
 import Box from '@material-ui/core/Box';
-import {StatBlock, SavingProfs} from "../characterForms";
+import {StatBlock, SavingProfs, GearBlock} from "../characterForms";
 import "./style.css"
 
 export default class CharacterSheet extends Component{
@@ -71,54 +71,17 @@ export default class CharacterSheet extends Component{
                             />
                             
                         </Grid>
-                   <div className="gear box">
-                   <Grid
-                    item
-                    xs={4}
-                    >
-                        <Grid spacing={3} direction="row">
-                            <p><strong>AC: </strong></p>
-                            <Input
-                                id="armor"
-                                placeholder={this.state.playerCharacter.armorClass}
-                                variant="filled"
-                                color="secondary" 
-                            />
-                            <p><strong>INITIATIVE: </strong></p>
-                            <Input
-                                id="armor"
-                                placeholder={this.state.playerCharacter.initiative}
-                                variant="filled"
-                                color="secondary" 
-                            />
-                            <p><strong>SPEED: </strong></p>
-                            <Input
-                                id="armor"
-                                placeholder={this.state.playerCharacter.speed}
-                                variant="filled"
-                                color="secondary" 
-                            />
-                        </Grid>
-                        <Grid 
-                            spacing={1}
-                            item
-                        >
-                            <Input
-                                id="health"
-                                placeholder={this.state.playerCharacter.health}
-                                variant="filled"
-                                color="secondary" 
-                            />
-                            <Input
-                                id="hit die"
-                                placeholder={`${this.state.playerCharacter.level} d ${this.state.playerCharacter.hitDie}`}
-                                variant="filled"
-                                color="secondary" 
-                            />
-                        </Grid>
+                   <Grid item xs={4}>
+                        <GearBlock 
+                            armorClass ={this.state.playerCharacter.armorClass}
+                            initiative= {this.state.playerCharacter.initiative}
+                            speed = {this.state.playerCharacter.speed}
+                            health = {this.state.playerCharacter.health}
+                            hitDie= {this.state.playerCharacter.hitDie}
+                            level = {this.state.playerCharacter.level}
+                        />
 
                     </Grid>
-                   </div>
                    <div className="characterSummary box">
                         <Grid 
                             item 
