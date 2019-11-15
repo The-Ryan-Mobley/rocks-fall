@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import Input from '@material-ui/core/Input';
 import { sizing } from '@material-ui/system';
 import Box from '@material-ui/core/Box';
-import {StatBlock, SavingProfs, GearBlock} from "../characterForms";
+import {StatBlock, SavingProfs, GearBlock, ItemElement, BioTraits, CharacterHeader} from "../characterForms";
 import "./style.css"
 
 export default class CharacterSheet extends Component{
@@ -20,7 +20,7 @@ export default class CharacterSheet extends Component{
             subClass: "Champion",
             playerRace: "Halfling",
             background: "Urchin",
-            bio: "Just a fighter",
+            bio: "Just a fighter fights things and gets loot",
             alignment: "good",
             currency: [15,30,0,6,0],
             attunementSlots: ["Open","Open","Boots of Flying"],
@@ -31,8 +31,9 @@ export default class CharacterSheet extends Component{
             skillProficiency: ["Athletics","Acrobatics","Stealth"],
             toolProficiency: "Playing Cards",
             languages: ["Common","Halfling"],
-            inventory: [{name: "backpack", description: "holds stuff"}],
-            featsAndTraits: [{name: "Action Surge", description: "take an extra action this turn refreshes on short rests"}]
+            inventory: [{name: "backpack", description: "holds stuff"},{name: "healing potion", description: "heal for 1d6 + 1"}],
+            featsAndTraits: [{name: "Action Surge", description: "take an extra action this turn refreshes on short rests"},
+            {name: "Two Weapon Master", description: "While wielding a two handed weapon if you roll a 1 for the damage roll you may reroll"}]
             
         },
         statMods: []
@@ -56,8 +57,20 @@ export default class CharacterSheet extends Component{
     }
     render(){
         return(
-            <Grid container spacing={1}>
-                    <Grid item xs={1}>
+            <div className="characterSheet">
+                <Grid container spacing={1}>
+                    <Grid item xs={12}>
+                        <CharacterHeader
+                            name= {this.state.playerCharacter.name}
+                            level = {this.state.playerCharacter.level}
+                            playerClass = {this.state.playerCharacter.playerClass}
+                            background = {this.state.playerCharacter.background}
+                            race = {this.state.playerCharacter.playerRace}
+                            alignment = {this.state.playerCharacter.alignment}
+                            experience = {this.state.playerCharacter.experience}
+                        />
+                    </Grid>
+                    <Grid item xs={2}>
                         <StatBlock
                             stats = {this.state.playerCharacter.stats}
                             statMods = {this.state.statMods}
@@ -79,21 +92,18 @@ export default class CharacterSheet extends Component{
                             health = {this.state.playerCharacter.health}
                             hitDie= {this.state.playerCharacter.hitDie}
                             level = {this.state.playerCharacter.level}
+                            inventory = {this.state.playerCharacter.inventory}
                         />
 
                     </Grid>
-                   <div className="characterSummary box">
-                        <Grid 
-                            item 
-                            xs={5}
-                            spacing={3}
-                        >
-                            <p>placeholder</p>
-                        </Grid>
-                   </div>
-                
-                
+                    <Grid item xs={4} spacing={3}>
+                        <BioTraits 
+                            bio = {this.state.playerCharacter.bio}
+                            featsAndTraits = {this.state.playerCharacter.featsAndTraits}
+                        />
+                    </Grid>
             </Grid>
+            </div>
         )
     }
 }

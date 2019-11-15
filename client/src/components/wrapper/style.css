@@ -1,0 +1,16 @@
+header, footer{
+    width: 100%;
+    padding: 1%;
+    color: #0d5e2f;
+}
+header{
+    font-family: 'Eagle Lake', cursive;
+    background: #000000;
+    background: linear-gradient(180deg, #000000 83%, #bea176 100%);
+}
+footer{
+    background: #000000;
+    background: linear-gradient(0deg, #000000 83%, #bea176 100%);
+    margin-top: 25%;
+
+}

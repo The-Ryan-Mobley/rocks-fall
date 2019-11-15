@@ -1,5 +1,9 @@
-.box{
-    border-color: red;
+
+.characterSheet{
+    background-color: #ebd5b3;
     border-style: solid;
+    border-color: #000000;
     border-width: 1%;
+    overflow: hidden;
+    
 }

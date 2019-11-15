@@ -1,5 +1,9 @@
+
 .box{
-    border-color: red;
-    border-style: solid;
-    border-width: 1%;
+    margin: 1%;
+    background-color: #f8f0e49d;;
+    font-family: 'Eagle Lake', cursive;
+}
+.itemName{
+    text-align: center;
 }

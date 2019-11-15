@@ -132,6 +132,10 @@ const playerCharacterSchema = new Schema({
     dateCreated: {
         type: Date,
         default: Date.now()
+    },
+    authorId: {
+        type: String,
+        required: "need user id for reference"
     }
 
     
