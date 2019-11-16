@@ -8,4 +8,5 @@ router
 router
     .route("/spells/:level")
     .get(spellController.spellsByLevel);
+
     

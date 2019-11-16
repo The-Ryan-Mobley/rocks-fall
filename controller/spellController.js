@@ -1,5 +1,6 @@
 const db = require("../models");
-const axios = require("axios")
+
+
 module.exports = {
     spellsByClass: (req,res) =>{
         let PCname = req.params.PCname;

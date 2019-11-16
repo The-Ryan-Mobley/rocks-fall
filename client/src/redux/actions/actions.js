@@ -1,6 +1,6 @@
-export const INPUT_CHANGE = `INPUT_CHANGE`;
+export const USER_INPUT_CHANGE = `INPUT_CHANGE`;
 
-export const handleInputChange = (text) =>{
+export const userInputChange = (event) =>{
     debugger;
-    return { type: INPUT_CHANGE, text: text };
+    return { type: USER_INPUT_CHANGE, name:event.target.name, value: event.target.value, key: Date.now()};
 },
