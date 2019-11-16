@@ -1,11 +1,9 @@
 
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-
 
 import Login from './pages/login';
-import CreateAccount from './pages/createAccount';
+import CreateAccount from './pages/createAccount/index';
 import HomePage from './pages/homePage';
 import './App.css';
 
@@ -18,13 +16,11 @@ class App extends Component {
   render(){
     return (
       <Router>
-        <div>
-          <Switch>
-            <Route exact path="/" component={HomePage}/>
-            <Route exact path="/login" component={Login}/>
-            <Route exact path="/createAccount" component={CreateAccount}/>
-          </Switch>
-        </div>
+        <Switch>
+          <Route exact path="/" component={HomePage}/>
+          <Route exact path="/login" component={Login}/>
+          <Route exact path="/createAccount" component={CreateAccount}/>
+        </Switch>
       </Router>
       
     );

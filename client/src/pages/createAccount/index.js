@@ -6,7 +6,10 @@ import {userInputChange} from "../../redux/actions/actions";
 import CreateAccount from "./createAccount";
 
 const mapStateToProps = state => {
-    return { currentItem: state.form.currentItem };
+    return { 
+      userData: state.formManipulation.userData,
+      test: state.formManipulation.ryanStuff,
+     };
   };
 
 const mapDispatchToProps = dispatch =>

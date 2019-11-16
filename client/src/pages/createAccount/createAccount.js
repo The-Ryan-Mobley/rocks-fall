@@ -14,10 +14,15 @@ import Grid from '@material-ui/core/Grid';
 
  class CreateAccount extends Component{
     onTextChange =  event => {
-        props.userInputChange(event);
+        this.props.userInputChange(event.target.name, event.target.value);
       };
+    formSubmit = event =>{
+        event.preventDefault();
+        console.log(this.props);
+
+    };
     render(){
-        const inputElement = React.createRef();
+        console.log(this.props);
         return(
             <Wrapper>
                 <Grid container xs={12} className="spacer"></Grid>
@@ -26,6 +31,8 @@ import Grid from '@material-ui/core/Grid';
                     className ="createBody">
                         <Input
                             name="userName"
+                            value={this.props.userData.userName}
+
                             id="filled-required"
                             fullWidth="true"
                             placeholder="username*"
@@ -36,6 +43,8 @@ import Grid from '@material-ui/core/Grid';
                         />
                         <Input
                             name="password"
+                            value={this.props.userData.password}
+
                             id="filled-required"
                             fullWidth="true"
                             placeholder="password*"
@@ -46,6 +55,8 @@ import Grid from '@material-ui/core/Grid';
                         />
                         <Input
                             name="confirmPassword"
+                            value={this.props.userData.confirmPassword}
+
                             id="filled-required"
                             fullWidth="true"
                             placeholder="password*"
@@ -54,7 +65,7 @@ import Grid from '@material-ui/core/Grid';
                             className="createInput lastInput"
                             onChange={this.onTextChange}
                         />
-                        <Button variant="contained" className="createButton">
+                        <Button variant="contained" className="createButton" onClick={()=> this.formSubmit}>
                             Create
                         </Button>
                 </Grid>
@@ -64,11 +75,5 @@ import Grid from '@material-ui/core/Grid';
     }
 
 }
-CreateAccount.defaultProps = {
-    userData: {
-        username: "",
-        password: "",
-        confirmPassword: "",
-    }
-  };
+
 export default CreateAccount;

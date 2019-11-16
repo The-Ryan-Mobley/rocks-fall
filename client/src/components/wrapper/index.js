@@ -25,7 +25,7 @@ export default class Wrapper extends Component {
                     <Grid container direction="row">
                         <header>
                             <h1>Rocks Fall</h1>
-                            <p>simple, lightweight, complete freedom</p>
+                            <p>subheader text</p>
                         </header>
                     </Grid>
                         <Container>
