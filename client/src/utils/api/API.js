@@ -2,7 +2,6 @@ import axios from "axios";
 
 export default {
     newUser: (userData) =>{
-        console.log("ayyyyyyyyyyyyyyyyyyyyyyy lamo")
         return axios.post("/api/auth/new", userData);
     },
     spellsByClass: (playerClass)=>{

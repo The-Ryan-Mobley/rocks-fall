@@ -21,6 +21,7 @@ import API from "../../utils/api/API"
         this.props.userInputChange(event.target.name, event.target.value);
       };
     formSubmit = event =>{
+        console.log(this.props.userData)
         event.preventDefault();
         API.newUser(this.props.userData).then(re =>{
             this.props.userCreateAccount();
@@ -30,7 +31,6 @@ import API from "../../utils/api/API"
 
     };
     render(){
-        console.log(this.props);
         return(
             <Wrapper>
                 <Grid container xs={12} className="spacer"></Grid>
@@ -73,7 +73,8 @@ import API from "../../utils/api/API"
                             className="createInput lastInput"
                             onChange={this.onTextChange}
                         />
-                        <Button variant="contained" className="createButton" onClick={()=> this.formSubmit}>
+                        <Button variant="contained" className="createButton" 
+                        onClick={this.formSubmit} disabled={!(this.props.userData.userName && this.props.userData.password)}>
                             Create
                         </Button>
                 </Grid>

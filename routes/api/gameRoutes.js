@@ -9,4 +9,5 @@ router
     .route("/spells/:level")
     .get(spellController.spellsByLevel);
 
+module.exports = router;
     

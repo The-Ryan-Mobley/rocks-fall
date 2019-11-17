@@ -22,13 +22,15 @@ module.exports = {
         };
     },
     addUser: async(req,res) =>{
+        console.table(req.body);
         let Salt = module.exports.genRandomString(16); /** Gives us salt of length 16 */
         let hashCode = module.exports.sha512(req.body.password, Salt);
         let newUser = {
-            userName: req.body.userData.userName,
+            userName: req.body.userName,
             password: hashCode.passwordHash,
             salt: hashCode.salt
         };
+        console.table(newUser);
 
         let result = await db.Users.create(newUser);
         result ? res.json(result) : res.sendStatus("404"); 
