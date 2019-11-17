@@ -8,17 +8,25 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
+import API from "../../utils/api/API"
 
 //use redux functions bound by index
 
 
  class CreateAccount extends Component{
+     state = {
+         sendHome: false
+     }
     onTextChange =  event => {
         this.props.userInputChange(event.target.name, event.target.value);
       };
     formSubmit = event =>{
         event.preventDefault();
-        console.log(this.props);
+        API.newUser(this.props.userData).then(re =>{
+            this.props.userCreateAccount();
+            this.setState({sendHome: true});
+
+        })
 
     };
     render(){

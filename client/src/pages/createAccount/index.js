@@ -1,6 +1,6 @@
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import {userInputChange} from "../../redux/actions/actions";
+import {userInputChange, userCreateAccount} from "../../redux/actions/actions";
 
 //page
 import CreateAccount from "./createAccount";
@@ -15,7 +15,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      userInputChange
+      userInputChange,
+      userCreateAccount
     },
     dispatch
   );

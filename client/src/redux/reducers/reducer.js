@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
-import {USER_INPUT_CHANGE} from "../actions/actions";
+import {USER_INPUT_CHANGE, USER_CREATE_ACCOUNT} from "../actions/actions";
+
 
 const initialState = {
     userData: {
@@ -13,7 +14,6 @@ const initialState = {
 const formManipulation = (state = initialState, action) => {
     switch(action.type){
         case USER_INPUT_CHANGE : {
-            console.log(action)
             return {
                 ...state,
                 userData: {
@@ -23,6 +23,20 @@ const formManipulation = (state = initialState, action) => {
             };
 
         }
+        case USER_CREATE_ACCOUNT : {
+                return {
+                    ...state,
+                    userData: {
+                        ...state.userData,
+                        userName: "",
+                        password: "",
+                        confirmPassword: "",
+                        userId: "",
+                    }
+                }
+        }
+        default:
+            return state;
     }
     return state;
 };
