@@ -38,10 +38,7 @@ class Wrapper extends Component {
     }
     
     componentDidMount = () =>{
-        const sessionData = localStorage.getItem( "userData" ) || false;
-        if(sessionData.userId) {
-            this.props.saveSession(sessionData); 
-        }
+        
     }
     
     render(){
