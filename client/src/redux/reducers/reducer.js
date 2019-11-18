@@ -9,7 +9,18 @@ const initialState = {
         confirmPassword: "",
         userId: "",
     },
-    ryanStuff: []
+    ryanStuff: [],
+    lobbyData: {
+        host: {
+            hostId: "",
+            hostName: ""
+        },
+        activeUsers: [],
+        chat: {
+            messages: [],
+            newMessage: ""
+        }
+    }
   };
 const formManipulation = (state = initialState, action) => {
     switch(action.type){
@@ -40,8 +51,9 @@ const formManipulation = (state = initialState, action) => {
                 ...state,
                 userData: {
                     ...state.userData,
-                    userName: action.userInfo.userName,
-                    userId: action.userInfo.userId
+                    userName: action.userName,
+                    password: "",
+                    userId: action.userId
                 }
             }
         }

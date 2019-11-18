@@ -38,7 +38,7 @@ module.exports = {
     loginUser: (req,res) =>{
         console.log("hit");
         try{
-            console.table(req.params);
+            console.table(req.query);
             db.Users.findOne({userName: req.query.userName}, (er, foundUser) => {
                 if(er){console.log(er)}
                 if(foundUser){
@@ -48,6 +48,7 @@ module.exports = {
                             userName: foundUser.userName,
                             id: foundUser.id
                         }
+                        console.table(userData);
                         res.json({userData});
                     }else {
                         res.sendStatus("401");

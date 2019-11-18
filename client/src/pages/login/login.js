@@ -28,8 +28,14 @@ export default class Login extends Component{
         console.table(this.props.userData);
         API.loginUser(this.props.userData).then(result => {
             let authInfo = result.data.userData;
+            console.table(authInfo);
             this.props.userLogin(authInfo.userName, authInfo.userId);
+
             localStorage.setItem( "userData", this.props.userData);
+            console.table(this.props.userData);
+            const sessionData = localStorage.getItem( "userData" );
+            console.table(sessionData);
+            debugger;
             this.setState({returnHome: true});
         });
     }

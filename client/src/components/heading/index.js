@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button';
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import {userInputChange,  userLogin, saveSession} from "../../redux/actions/actions";
+import "./style.css";
 
 const mapStateToProps = state => {
     return { 
@@ -41,8 +42,24 @@ class Heading extends Component {
         }
 
     }
+    componentDidMount = () =>{
+        
+
+    }
     buttonClick = event =>{
-        const { name} = event.target;
+
+        const { name } = event.currentTarget;
+        console.log(event.target);
+        this.setState({
+            [name]: true
+        });
+        console.table(this.state);
+    }
+    logoutClick = event => {
+        console.log(this.props.userData);
+        const { name } = event.target;
+        this.props.userCreateAccount();
+        localStorage.setItem( "userData", this.props.userData);
         this.setState({
             [name]: true
         });
@@ -51,22 +68,40 @@ class Heading extends Component {
         return(
             <header>
                 <Grid item xs={8}>
-                <a onClick={this.buttonClick} name="sendHome" className="title headLink">Rocks Fall </a>
-                    <p>subheader text</p>
+                <div className="titleBlock">
+                        <a onClick={this.buttonClick} name="sendHome" className="title">Rocks Fall </a>
+                        <p>subheader text</p>
+                    </div>
+                {this.state.sendHome ? (<Redirect to="/" />) : (<p></p>)}
                 </Grid>
                 <Grid item xs={4}>
-                    {this.props.userData.userID ? (<p>logout</p>): (
+                    {this.props.userData.userId ? (
+                        <div className="loggedUser">
+                            <p>Logged in as: {this.props.userData.userName}</p>
+                            {this.state.logoutUser ? (<Redirect to="/"/>) : (
+                            <Button variant="contained" className="createButton" 
+                            onClick={this.logoutClick} 
+                                name="logoutUser" >
+                                Logout
+                            </Button>
+                            )}
+                        </div>
+                    ): (
                     <div className="noUser">
-                        <Button variant="contained" className="createButton" 
-                        onClick={this.buttonClick} 
-                        name="createUser" >
-                            Create
-                        </Button>
-                        <Button variant="contained" className="createButton" 
-                        onClick={this.buttonClick} 
-                        name="loginUser" >
-                            Login
-                        </Button>
+                        {this.state.createUser ? (<Redirect to="/createAccount"/>) : (
+                            <Button variant="contained" className="createButton" 
+                            onClick={this.buttonClick} 
+                                name="createUser" >
+                                Create
+                            </Button>
+                        )}
+                        {this.state.loginUser ? (<Redirect to="/login"/>) : (
+                            <Button variant="contained" className="createButton" 
+                            onClick={this.buttonClick} 
+                            name="loginUser" >
+                                Login
+                            </Button>
+                        )}
 
                     </div>
                     )}

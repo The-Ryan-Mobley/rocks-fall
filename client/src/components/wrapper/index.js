@@ -10,6 +10,8 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import {userInputChange,  userLogin, saveSession} from "../../redux/actions/actions";
 
+import Heading from "../heading";
+
 import './style.css';
 
 const mapStateToProps = state => {
@@ -33,15 +35,11 @@ const mapDispatchToProps = dispatch =>
 class Wrapper extends Component {
     constructor(){
         super();
-        this.state = {
-
-            
-        }
     }
     
     componentDidMount = () =>{
         const sessionData = localStorage.getItem( "userData" ) || false;
-        if(sessionData) {
+        if(sessionData.userId) {
             this.props.saveSession(sessionData); 
         }
     }
@@ -51,16 +49,7 @@ class Wrapper extends Component {
             <Box>
                 <div className="wrapper">
                     <Grid container direction="row">
-                        <header>
-                            <Grid item xs={8}>
-                                <h1>Rocks Fall</h1>
-                                <p>subheader text</p>
-                            </Grid>
-                            <Grid item xs={4}>
-                                
-                            </Grid>
-
-                        </header>
+                        <Heading/>
                     </Grid>
                         <Container>
                             <Grid container spacing={1}>
