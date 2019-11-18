@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import API from "../../utils/api/API"
-import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
 
 export default class Login extends Component{
     constructor () {
@@ -23,20 +23,23 @@ export default class Login extends Component{
     onTextChange = event =>{
         this.props.userInputChange(event.target.name, event.target.value);
     }
-    formSubmit = () => {
+    formSubmit = event => {
         event.preventDefault();
+        console.table(this.props.userData);
         API.loginUser(this.props.userData).then(result => {
-            this.props.userLogin();
+            let authInfo = result.data.userData;
+            this.props.userLogin(authInfo.userName, authInfo.userId);
+            localStorage.setItem( "userData", this.props.userData);
             this.setState({returnHome: true});
         });
-        
     }
-    
-
     render(){
         return(
             <Wrapper>
-                <div><h1>Hello World</h1></div>
+                <Grid container xs={12} className="spacer"></Grid>
+                <Grid container xs={3}></Grid>
+                <Grid container  xs={6} spacing={1} direction="column" alignItems="center" justify="center"
+                    className ="createBody">
                 <Input
                     name="userName"
                     value={this.props.userData.userName}
@@ -61,10 +64,16 @@ export default class Login extends Component{
                     className="createInput" 
                     onChange={this.onTextChange}
                 />
-                <Button variant="contained" className="createButton" 
-                        onClick={this.formSubmit} disabled={!(this.props.userData.userName && this.props.userData.password)}>
+                {this.state.returnHome ? (<Redirect to="/"/>) : 
+                (
+                    <Button variant="contained" className="createButton" 
+                        onClick={this.formSubmit} 
+                        disabled={!(this.props.userData.userName && this.props.userData.password)}>
                             Create
-                </Button>
+                    </Button>
+                )}
+                </Grid>
+                <Grid container xs={3}></Grid>
             </Wrapper>
         );
     }

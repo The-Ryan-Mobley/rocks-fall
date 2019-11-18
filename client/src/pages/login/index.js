@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import {userInputChange,  userLogin} from "../../redux/actions/actions";
 
 //page
-import CreateAccount from "./createAccount";
+import Login from "./login";
 
 const mapStateToProps = state => {
     return { 
@@ -25,5 +25,5 @@ const mapDispatchToProps = dispatch =>
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-  )(CreateAccount);
+  )(Login);
   

@@ -5,19 +5,45 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Button from '@material-ui/core/Button';
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import {userInputChange,  userLogin, saveSession} from "../../redux/actions/actions";
 
 import './style.css';
 
-export default class Wrapper extends Component {
+const mapStateToProps = state => {
+    return { 
+      userData: state.formManipulation.userData,
+      test: state.formManipulation.ryanStuff,
+     };
+  };
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      saveSession,
+      userInputChange,
+      userLogin
+    },
+    dispatch
+  );
+
+
+class Wrapper extends Component {
     constructor(){
         super();
         this.state = {
+
             
         }
     }
     
     componentDidMount = () =>{
+        const sessionData = localStorage.getItem( "userData" ) || false;
+        if(sessionData) {
+            this.props.saveSession(sessionData); 
+        }
     }
     
     render(){
@@ -26,8 +52,14 @@ export default class Wrapper extends Component {
                 <div className="wrapper">
                     <Grid container direction="row">
                         <header>
-                            <h1>Rocks Fall</h1>
-                            <p>subheader text</p>
+                            <Grid item xs={8}>
+                                <h1>Rocks Fall</h1>
+                                <p>subheader text</p>
+                            </Grid>
+                            <Grid item xs={4}>
+                                
+                            </Grid>
+
                         </header>
                     </Grid>
                         <Container>
@@ -47,3 +79,9 @@ export default class Wrapper extends Component {
         );
     }
 }
+
+//higher order component that maps redux functions to component
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Wrapper);

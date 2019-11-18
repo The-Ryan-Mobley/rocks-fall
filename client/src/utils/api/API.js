@@ -5,7 +5,7 @@ export default {
         return axios.post("/api/auth/new", userData);
     },
     loginUser: (userData) =>{
-        return axios.get("/api/user/login", {params: userData});
+        return axios.get("/api/auth/login", {params: userData});
     },
     spellsByClass: (playerClass)=>{
         return axios.get("/api/game/spells/"+playerClass);

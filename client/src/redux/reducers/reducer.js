@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import {USER_INPUT_CHANGE, USER_CREATE_ACCOUNT, USER_LOGIN} from "../actions/actions";
+import {USER_INPUT_CHANGE, USER_CREATE_ACCOUNT, USER_LOGIN, SAVE_SESSION_DATA} from "../actions/actions";
 
 
 const initialState = {
@@ -41,8 +41,14 @@ const formManipulation = (state = initialState, action) => {
                 userData: {
                     ...state.userData,
                     userName: action.userInfo.userName,
-                    userId: action.userInfo.password
+                    userId: action.userInfo.userId
                 }
+            }
+        }
+        case SAVE_SESSION_DATA : {
+            return {
+                ...state,
+                userData: action.localData
             }
         }
 

@@ -36,7 +36,9 @@ module.exports = {
         result ? res.json(result) : res.sendStatus("404"); 
     },
     loginUser: (req,res) =>{
+        console.log("hit");
         try{
+            console.table(req.params);
             db.Users.findOne({userName: req.query.userName}, (er, foundUser) => {
                 if(er){console.log(er)}
                 if(foundUser){

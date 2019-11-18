@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 //materialUi imports
 import Wrapper from '../../components/wrapper';
 import Input from '@material-ui/core/Input';
+import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
@@ -14,20 +16,17 @@ import API from "../../utils/api/API"
 
  class CreateAccount extends Component{
      state = {
-         sendHome: false
+         returnHome: false
      }
     onTextChange =  event => {
         this.props.userInputChange(event.target.name, event.target.value);
       };
     formSubmit = event =>{
-        console.log(this.props.userData)
         event.preventDefault();
         API.newUser(this.props.userData).then(re =>{
             this.props.userCreateAccount();
-            this.setState({sendHome: true});
-
+            this.setState({returnHome: true});
         });
-
     };
     render(){
         return(
