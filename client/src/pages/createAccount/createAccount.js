@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 //materialUi imports
 import Wrapper from '../../components/wrapper';
-import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
 import Box from '@material-ui/core/Box';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -27,7 +26,7 @@ import API from "../../utils/api/API"
             this.props.userCreateAccount();
             this.setState({sendHome: true});
 
-        })
+        });
 
     };
     render(){
@@ -73,10 +72,14 @@ import API from "../../utils/api/API"
                             className="createInput lastInput"
                             onChange={this.onTextChange}
                         />
-                        <Button variant="contained" className="createButton" 
-                        onClick={this.formSubmit} disabled={!(this.props.userData.userName && this.props.userData.password)}>
-                            Create
-                        </Button>
+                        {this.state.returnHome ? (<Redirect to="/"/>) : (
+                            <Button variant="contained" className="createButton" 
+                                onClick={this.formSubmit} 
+                                disabled={!(this.props.userData.userName && this.props.userData.password)}>
+                                Create
+                            </Button>
+                        )}
+                        
                 </Grid>
                 <Grid container xs={3}></Grid>
             </Wrapper>

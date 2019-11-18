@@ -5,6 +5,8 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
 import './style.css';
 
 export default class Wrapper extends Component {
