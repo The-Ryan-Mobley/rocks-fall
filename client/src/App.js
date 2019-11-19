@@ -8,7 +8,7 @@ import {userInputChange,  userLogin, saveSession} from "./redux/actions/actions"
 
 import Login from './pages/login/index';
 import CreateAccount from './pages/createAccount/index';
-import HomePage from './pages/homePage';
+import HomePage from './pages/homePage/index';
 import Profile from "./pages/profile/index";
 import './App.css';
 
