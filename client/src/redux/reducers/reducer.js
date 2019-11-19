@@ -12,6 +12,9 @@ const initialState = {
     },
     ryanStuff: [],
     lobbyData: {
+        lobbyId: "",
+        lobbyName: "",
+        lobbyPassword: "",
         host: {
             hostId: "",
             hostName: ""
