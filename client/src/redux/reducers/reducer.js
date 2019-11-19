@@ -7,6 +7,7 @@ const initialState = {
         userName: "",
         password: "",
         confirmPassword: "",
+        userThumbnail: "",
         userId: "",
     },
     ryanStuff: [],
@@ -53,6 +54,7 @@ const formManipulation = (state = initialState, action) => {
                     ...state.userData,
                     userName: action.userName,
                     password: "",
+                    userThumbnail: action.userThumbnail,
                     userId: action.userId
                 }
             }

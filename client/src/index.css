@@ -28,3 +28,12 @@ code {
 .lastInput{
   margin-bottom: 2%;
 }
+.profileThumbnail{
+  max-width: 5rem;
+  max-height: auto;
+}
+.lobbybox{
+  border-style: solid;
+  border-width: 1%;
+  border-color: red;
+}

@@ -8,7 +8,7 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import {userInputChange,  userLogin, saveSession} from "../../redux/actions/actions";
+import {userInputChange,  userLogin, userCreateAccount, saveSession} from "../../redux/actions/actions";
 import "./style.css";
 
 const mapStateToProps = state => {
@@ -23,7 +23,8 @@ const mapDispatchToProps = dispatch =>
     {
       saveSession,
       userInputChange,
-      userLogin
+      userLogin,
+      userCreateAccount
     },
     dispatch
   );
@@ -77,6 +78,10 @@ class Heading extends Component {
                 <Grid item xs={4}>
                     {this.props.userData.userId ? (
                         <div className="loggedUser">
+                            <Grid item xs={1}>
+                                <img src={this.props.userData.userThumbnail} alt="profile" className="profileThumbnail"></img>
+                            </Grid>
+                            <Grid item xs={3}>
                             <p>Logged in as: {this.props.userData.userName}</p>
                             {this.state.logoutUser ? (<Redirect to="/"/>) : (
                             <Button variant="contained" className="createButton" 
@@ -85,6 +90,7 @@ class Heading extends Component {
                                 Logout
                             </Button>
                             )}
+                            </Grid>
                         </div>
                     ): (
                     <div className="noUser">

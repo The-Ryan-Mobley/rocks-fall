@@ -9,8 +9,8 @@ export const userInputChange = (name, value) =>{
 export const userCreateAccount = () =>{
     return {type: USER_CREATE_ACCOUNT, key: Date.now()};
 }
-export const userLogin = (userName, userId) =>{
-    return {type: USER_LOGIN, userName, userId, key: Date.now()};
+export const userLogin = (userName, userThumbnail, userId) =>{
+    return {type: USER_LOGIN, userName, userThumbnail, userId, key: Date.now()};
 }
 export const saveSession = (localData) => {
     return {type: SAVE_SESSION_DATA, localData, key: Date.now()};

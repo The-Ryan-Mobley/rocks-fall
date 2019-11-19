@@ -9,6 +9,7 @@ import {userInputChange,  userLogin, saveSession} from "./redux/actions/actions"
 import Login from './pages/login/index';
 import CreateAccount from './pages/createAccount/index';
 import HomePage from './pages/homePage';
+import Profile from "./pages/profile/index";
 import './App.css';
 
 //const App = () => {
@@ -32,14 +33,10 @@ class App extends Component {
   constructor(){
     super();
   }
-  componentDidMount = () => {
-    // console.log("grabbing local data");
+  componentDidMount = () => { //sets session data from local storage
     const sessionData = localStorage.getItem( "userData" ) || false;
-    console.log(sessionData);
         if(sessionData) {
             let localData = JSON.parse(sessionData)
-            console.table(localData);
-            debugger
             this.props.saveSession(localData); 
         }
 
@@ -52,6 +49,7 @@ class App extends Component {
           <Route exact path="/" component={HomePage}/>
           <Route exact path="/login" component={Login}/>
           <Route exact path="/createAccount" component={CreateAccount}/>
+          <Route exact path="/profile" component={Profile}/>
         </Switch>
       </Router>
       

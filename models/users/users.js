@@ -17,6 +17,11 @@ const userSchema = new Schema({
         trim: true,
         required: `need salt`
     },
+    thumbnail: {
+        type: String,
+        trim: true,
+        default: "/profile-placeholder.png"
+    },
     characters: [{
         type: Schema.Types.ObjectId,
         ref: `playerCharacters`

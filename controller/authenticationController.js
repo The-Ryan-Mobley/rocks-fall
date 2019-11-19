@@ -46,6 +46,7 @@ module.exports = {
                     if(passwordConfirm.passwordHash === foundUser.password){
                         let userData = {
                             userName: foundUser.userName,
+                            thumbnail: foundUser.thumbnail,
                             id: foundUser.id
                         }
                         console.table(userData);

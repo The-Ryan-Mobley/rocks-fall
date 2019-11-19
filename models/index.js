@@ -11,4 +11,5 @@ module.exports = {
     PlayerCharacter: require(`./players/PlayerCharacters`),
     Users: require(`./users/Users`),
     Messages: require(`./users/Messages`),
+    Lobbies: require(`./players/Lobbies`)
 }

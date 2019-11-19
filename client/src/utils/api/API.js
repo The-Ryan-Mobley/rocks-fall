@@ -4,7 +4,7 @@ export default {
     newUser: (userData) =>{
         return axios.post("/api/auth/new", userData);
     },
-    loginUser: (userData) =>{
+    queryUser: (userData) =>{
         return axios.get("/api/auth/login", {params: userData});
     },
     spellsByClass: (playerClass)=>{
