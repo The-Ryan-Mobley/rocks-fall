@@ -11,6 +11,7 @@ import Wrapper from '../../components/wrapper';
 import Grid from '@material-ui/core/Grid';
 
 import MakeLobby from "../../components/makeLobby";
+import JoinLobby from "../../components/joinLobby";
 
 export default class HomePage extends Component{
     render(){
@@ -22,6 +23,7 @@ export default class HomePage extends Component{
                 </Grid>
                 <Grid container xs={8}>
                     <MakeLobby />
+                    <JoinLobby />
                 </Grid>
                 <Grid container item xs={2}>
                     <p>right</p>

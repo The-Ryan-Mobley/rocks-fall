@@ -16,12 +16,10 @@ export default {
     findLobby: (lobbyId) => {
         return axios.get("/api/lobby/find/"+lobbyId);
     },
-    joinLobby: (lobbyId, userData) => {
-        return axios.put("/api/lobby/join/"+lobbyId, userData);
+    joinLobby: (lobbyData) => {
+        return axios.get("/api/lobby/join", {params: lobbyData});
     },
-    deleteLobby: (lobbyId) => {
-
-    },
+    
     spellsByClass: (playerClass)=>{
         return axios.get("/api/game/spells/"+playerClass);
     },

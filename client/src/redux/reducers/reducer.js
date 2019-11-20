@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import {USER_INPUT_CHANGE, USER_CREATE_ACCOUNT, USER_LOGIN, SAVE_SESSION_DATA} from "../actions/actions";
-import {LOBBY_INPUT_CHANGE, LOBBY_HOST_DATA, LOBBY_USER_JOIN} from "../actions/actions";
+import {LOBBY_INPUT_CHANGE, LOBBY_HOST_DATA, LOBBY_USER_JOIN, LOBBY_USER_SET} from "../actions/actions";
 
 const initialState = {
     userData: {
@@ -66,6 +66,7 @@ const formManipulation = (state = initialState, action) => {
                 userData: action.localData
             }
         }
+        
 
         default:
             return state;
@@ -98,7 +99,20 @@ const lobbyManipulation = (state = initialState, action) => {
                 ...state,
                 lobbyData: {
                     ...state.lobbyData,
-                    activeUsers: userArray
+                    activeUsers: action.userArray
+                }
+            }
+        }
+        case LOBBY_USER_SET : {
+            return {
+                ...state,
+                lobbyData: {
+                    ...state.lobbyData,
+                    lobbyId: action.foundLobby._id,
+                    lobbyName: action.foundLobby.lobbyName,
+                    hostName: action.foundLobby.hostName,
+                    hostId: action.foundLobby.hostId,
+                    activeUsers: action.foundLobby.activeUsers
                 }
             }
         }

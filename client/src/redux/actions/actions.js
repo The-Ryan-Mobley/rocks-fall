@@ -31,6 +31,6 @@ export const lobbyHostData = (name, id) => {
 export const lobbyUserJoin = (userArray) => {
     return {type: LOBBY_USER_JOIN, userArray, key: Date.now()};
 }
-export const lobbyUserSet = (lobbyData) => {
-    return {type: LOBBY_USER_SET, lobbyData, key: Date.now()}
+export const lobbyUserSet = (foundLobby) => {
+    return {type: LOBBY_USER_SET, foundLobby, key: Date.now()}
 }

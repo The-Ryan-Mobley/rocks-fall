@@ -30,7 +30,7 @@ class Lobby extends Component {
                 socket.lobbyHost(re.data);
             }
             else {
-                socket.
+                socket.joinLobby(re.data, this.props.userData);
             }
 
         }) 
