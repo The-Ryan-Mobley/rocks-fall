@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import Wrapper from '../../components/wrapper';
-import CharacterSheet from "../../components/characterSheet";
-import ButtonBase from '@material-ui/core/ButtonBase';
-import Box from '@material-ui/core/Box';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
-import Modal from '@material-ui/core/Modal';
-import Button from '@material-ui/core/Button';
+// import CharacterSheet from "../../components/characterSheet";
+// import ButtonBase from '@material-ui/core/ButtonBase';
+// import Box from '@material-ui/core/Box';
+// import CssBaseline from '@material-ui/core/CssBaseline';
+// import Typography from '@material-ui/core/Typography';
+// import Container from '@material-ui/core/Container';
+// import Modal from '@material-ui/core/Modal';
+// import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
 import MakeLobby from "../../components/makeLobby";

@@ -5,6 +5,6 @@ const lobbyRoutes = require("./lobbyRoutes");
 
 router.use("/auth", authRoutes);
 router.use("/game", gameRoutes);
-router.use("/lobby",lobbyRoutes);
+router.use("/lobby", lobbyRoutes);
 
 module.exports = router;

@@ -21,6 +21,11 @@ const lobbySchema = new Schema({
         trim: true,
         required: "need a host id"
     },
+    hostName: {
+        type: String,
+        trim: true,
+        required: "need hostName"
+    },
     lobbyName: {
         type: String,
         trim: true,

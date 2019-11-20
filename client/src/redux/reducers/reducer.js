@@ -84,7 +84,6 @@ const lobbyManipulation = (state = initialState, action) => {
             }
         }
         case LOBBY_HOST_DATA : {
-            console.table(action);
             return {
                 ...state,
                 lobbyData: {
@@ -98,7 +97,6 @@ const lobbyManipulation = (state = initialState, action) => {
         default: 
             return state;
     }
-    return state;
 
 }
 //form reducer

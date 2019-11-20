@@ -23,7 +23,5 @@ export const lobbyInputChange = (name, value) => {
     return {type: LOBBY_INPUT_CHANGE, name, value, key: Date.now()};
 }
 export const lobbyHostData = (name, id) => {
-    console.log(name);
-    console.log(id);
     return {type: LOBBY_HOST_DATA, name, id, key: Date.now()};
 }
