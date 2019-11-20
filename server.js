@@ -5,12 +5,9 @@ const mongoose = require("mongoose");
 const routes = require("./routes");
 const PORT = process.env.PORT || 1337;
 const app = express();
-const http = require("http");
-//socket depends
-var ioProm  = require('express-socket.io');
-var server  = ioProm.init(app);
 
-//const fs = require('fs');  
+
+
 
 app.use(express.static(path.join(__dirname, 'client/public')));
 app.use(express.urlencoded({ extended: true }));
@@ -29,22 +26,40 @@ app.use(routes);
   
   
   mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/rocksFall");
-  //socket implimented
-  // const socketIO = require('socket.io');
-  // const server = http.createServer(app);
-  // const io = socketIO(server);
 
-  // io.on("connection", socket => {
-  //   console.log("New client connected")
-    
-  //   socket.on("disconnect", () => console.log("Client disconnected"));
-  // });
-  // socket.on('create', function (room) {
-  //   socket.join(room);
-  // });
+  //socket depends
+  const server = require('http').Server(app);
+  const io = require('socket.io')(server);
 
+  io.on('connection', function(socket){
+    let temp = socket;
+    console.log("user logged");
+    socket.emit("welcome", "the socket works!!!");
+
+    socket.on("joinRoom", room => {
+      console.log(room);
+      socket.join(room);
+      socket.emit("status", "connected to "+room);
+
+    });
+
+    socket.on("disconnect", () => {
+      console.log("Client disconnected");
+      const {user} = socket;
+      if(user){
+        socket.broadcast.emit("server_message", {
+          name: "server",
+          message: user.userName + " has left"
+        });
+      }
+  
+    });
+  });
+
+
+  
   // Start the API server
-  app.listen(PORT, function() {
+  server.listen(PORT, function() {
     console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
     //fs.writeFile(__dirname + '/start.log', 'started'); 
   });

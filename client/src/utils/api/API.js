@@ -8,11 +8,16 @@ export default {
         return axios.get("/api/auth/login", {params: userData});
     },
     newLobby: (lobbyData) =>{
-        console.log("HIT");
         return axios.post("/api/lobby/new", lobbyData);
     },
-    findLobby: (hostId) => {
+    hostLobby: (hostId) => {
         return axios.get("/api/lobby/host/"+hostId,)
+    },
+    findLobby: (lobbyId) => {
+        return axios.get("/api/lobby/find/"+lobbyId);
+    },
+    joinLobby: (lobbyData) => {
+        //going to take lobby name and lobby passwords then sends and validates room join in socket
     },
     deleteLobby: (lobbyId) => {
 

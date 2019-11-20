@@ -7,10 +7,11 @@ import { Redirect } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
-//import API from "../../utils/api/API";
+
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import {lobbyInputChange, lobbyHostData} from "../../redux/actions/actions";
+
 import API from "../../utils/api/API";
 
 class MakeLobby extends Component{
@@ -26,7 +27,7 @@ class MakeLobby extends Component{
         if(prevProps.lobbyData.hostId !== this.props.lobbyData.hostId) {
             API.newLobby(this.props.lobbyData).then(result => {
                 if(result !== "404") {
-                    API.findLobby(this.props.lobbyData.hostId).then(re => {
+                    API.hostLobby(this.props.lobbyData.hostId).then(re => {
                         console.log(re);
                         this.setState({
                             sendLobby: true,
@@ -53,8 +54,9 @@ class MakeLobby extends Component{
         return(
 
                 <Grid container spacing={1}>
+                    {this.state.sendLobby ? (<Redirect to={"/lobby/"+this.state.lobbyId}/>) : (<h1>Create a Lobby</h1>)}
 
-                    <h1>Create a Lobby</h1>
+                    
                     <Grid item xs={6} direction="column" alignItems="center" justify="center">
                     <Input
                         name="lobbyName"

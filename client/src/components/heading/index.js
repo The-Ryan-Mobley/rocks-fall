@@ -50,14 +50,11 @@ class Heading extends Component {
     buttonClick = event =>{
 
         const { name } = event.currentTarget;
-        console.log(event.target);
         this.setState({
             [name]: true
         });
-        console.table(this.state);
     }
     logoutClick = event => {
-        console.log(this.props.userData);
         const { name } = event.target;
         this.props.userCreateAccount();
         localStorage.setItem( "userData", this.props.userData);

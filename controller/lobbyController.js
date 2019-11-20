@@ -16,12 +16,21 @@ module.exports = {
         }
     },
     findLobby: async ( req , res ) => {
-        let result = await db.Lobbies.findOne({hostId: req.params.hostId});
+        let result = await db.Lobbies.findOne({ hostId : req.params.hostId});
         if(result) {
             res.json(result);
         } else {
             res.sendStatus("404");
         }
+    },
+    findById: async ( req , res ) => {
+        let result = await db.Lobbies.findOne({ _id : req.params.lobbyId});
+        if(result) {
+            res.json(result);
+        } else {
+            res.sendStatus("404");
+        }
+
     }
 
 }
