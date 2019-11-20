@@ -25,12 +25,19 @@ class Lobby extends Component {
     componentDidMount = () => {
         console.log(this.props.match.params.lobbyId);
         API.findLobby(this.props.match.params.lobbyId).then(re => {
-            console.log(re.data);
-            socket.lobbyHost(re.data);
-        })
-    
+            if(this.props.userData.userId === re.data.hostId){
+                console.log(re.data);
+                socket.lobbyHost(re.data);
+            }
+            else {
+                socket.
+            }
+
+        }) 
         
-        
+    }
+    componentWillUnmount = () => {
+
     }
 
     render(){

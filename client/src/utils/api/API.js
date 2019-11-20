@@ -16,8 +16,8 @@ export default {
     findLobby: (lobbyId) => {
         return axios.get("/api/lobby/find/"+lobbyId);
     },
-    joinLobby: (lobbyData) => {
-        //going to take lobby name and lobby passwords then sends and validates room join in socket
+    joinLobby: (lobbyId, userData) => {
+        return axios.put("/api/lobby/join/"+lobbyId, userData);
     },
     deleteLobby: (lobbyId) => {
 

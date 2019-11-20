@@ -42,6 +42,10 @@ app.use(routes);
       socket.emit("status", "connected to "+room);
 
     });
+    socket.on("playerJoined", info => {
+      console.log(info);
+      socket.emit("newPlayer", info);
+    })
 
     socket.on("disconnect", () => {
       console.log("Client disconnected");

@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import {USER_INPUT_CHANGE, USER_CREATE_ACCOUNT, USER_LOGIN, SAVE_SESSION_DATA} from "../actions/actions";
-import {LOBBY_INPUT_CHANGE, LOBBY_HOST_DATA} from "../actions/actions";
+import {LOBBY_INPUT_CHANGE, LOBBY_HOST_DATA, LOBBY_USER_JOIN} from "../actions/actions";
 
 const initialState = {
     userData: {
@@ -90,6 +90,15 @@ const lobbyManipulation = (state = initialState, action) => {
                     ...state.lobbyData,
                     hostId: action.id,
                     hostName: action.name
+                }
+            }
+        }
+        case LOBBY_USER_JOIN : {
+            return {
+                ...state,
+                lobbyData: {
+                    ...state.lobbyData,
+                    activeUsers: userArray
                 }
             }
         }

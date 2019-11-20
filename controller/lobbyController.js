@@ -31,6 +31,9 @@ module.exports = {
             res.sendStatus("404");
         }
 
+    },
+    joinLobby: async ( req , res ) => {
+        
     }
 
 }

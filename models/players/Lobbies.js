@@ -37,9 +37,9 @@ const lobbySchema = new Schema({
         required: "need a lobby password"
 
     },
-    activeUsers: {
-        type: [String]
-    },
+    // activeUsers: {
+    //     type: [Object]
+    // },
     createdOn: {
         type: Date,
         default: Date.now()

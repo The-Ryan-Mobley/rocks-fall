@@ -17,6 +17,15 @@ export default {
         })
         
 
+    },
+    joinLobby: (lobbyData, userData) => {
+        let room = lobbyData.lobbyName;
+        socket.emit('joinRoom', room);
+        socket.to(room).emit("playerJoined", userData);
+        socket.on("status", (msg) => {
+            console.log("joined and ready");
+        });
+
     }
 
 }
