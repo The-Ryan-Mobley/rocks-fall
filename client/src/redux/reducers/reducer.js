@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import {USER_INPUT_CHANGE, USER_CREATE_ACCOUNT, USER_LOGIN, SAVE_SESSION_DATA} from "../actions/actions";
-
+import {LOBBY_INPUT_CHANGE, LOBBY_HOST_DATA} from "../actions/actions";
 
 const initialState = {
     userData: {
@@ -15,10 +15,8 @@ const initialState = {
         lobbyId: "",
         lobbyName: "",
         lobbyPassword: "",
-        host: {
-            hostId: "",
-            hostName: ""
-        },
+        hostId: "",
+        hostName: "",
         activeUsers: [],
         chat: {
             messages: [],
@@ -74,10 +72,40 @@ const formManipulation = (state = initialState, action) => {
     }
     return state;
 };
+const lobbyManipulation = (state = initialState, action) => {
+    switch(action.type){
+        case LOBBY_INPUT_CHANGE : {
+            return {
+                ...state,
+                lobbyData: {
+                    ...state.lobbyData,
+                    [action.name]: action.value
+                }
+            }
+        }
+        case LOBBY_HOST_DATA : {
+            console.table(action);
+            return {
+                ...state,
+                lobbyData: {
+                    ...state.lobbyData,
+                    hostId: action.id,
+                    hostName: action.name
+                }
+            }
+        }
+
+        default: 
+            return state;
+    }
+    return state;
+
+}
 //form reducer
 //lobby reducer
 const appFunctions = combineReducers({
-    formManipulation
+    formManipulation,
+    lobbyManipulation
 
 });
 
