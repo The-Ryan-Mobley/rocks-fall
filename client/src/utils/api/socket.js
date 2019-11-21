@@ -1,6 +1,6 @@
-import openSocket from "socket.io-client";
+import * as io from "socket.io-client";
 
-const socket = openSocket('http://localhost:1337/');
+const socket = io.connect('http://localhost:1337/');
 
 export default {
     socketEmmissions: () => {
@@ -9,9 +9,13 @@ export default {
           });
     
     },
-    lobbyHost: (lobbyData) => {
+    lobbyHost: (lobbyData, userData) => {
         let room = lobbyData.lobbyName;
-        socket.emit('joinRoom', room);
+        let passing = {
+            room,
+            userData
+        }
+        socket.emit('joinRoom', passing);
         socket.on("status", (msg) => {
             console.log("msg");
         })
@@ -20,8 +24,12 @@ export default {
     },
     joinLobby: (lobbyData, userData) => {
         let room = lobbyData.lobbyName;
-        socket.emit('joinRoom', room);
-        socket.to(room).emit("playerJoined", userData);
+        let passing = {
+            room,
+            userData
+        }
+        socket.emit('joinRoom', passing);
+        io.to(room).emit("playerJoined", userData);
         socket.on("status", (msg) => {
             console.log("joined and ready");
         });

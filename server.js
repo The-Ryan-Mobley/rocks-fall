@@ -36,10 +36,10 @@ app.use(routes);
     console.log("user logged");
     socket.emit("welcome", "the socket works!!!");
 
-    socket.on("joinRoom", room => {
-      console.log(room);
-      socket.join(room);
-      socket.emit("status", "connected to "+room);
+    socket.on("joinRoom", data => {
+      console.log(data);
+      socket.join(data.room);
+      socket.emit("status", "connected to "+data.room);
 
     });
     socket.on("playerJoined", info => {

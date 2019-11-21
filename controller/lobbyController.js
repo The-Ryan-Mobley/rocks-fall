@@ -33,10 +33,8 @@ module.exports = {
 
     },
     joinLobby: async ( req , res ) => {
-        console.table(req.query)
         let result = await db.Lobbies.findOne({lobbyName: req.query.lobbyName});
         if(result) {
-            console.log(result);
            if(req.query.lobbyPassword === result.lobbyPassword) {
                res.json(result);
            } else {
