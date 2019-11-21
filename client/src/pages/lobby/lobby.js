@@ -40,6 +40,7 @@ class Lobby extends Component {
     }
     componentDidUpdate = () => {
         console.log(this.props.lobbyData);
+        this.joinListener();
         
 
     }
@@ -55,23 +56,39 @@ class Lobby extends Component {
                 userThumbnail: callback.userData.userThumbnail
             }
             let activeUsers = this.props.lobbyData.activeUsers;
-            activeUsers.push(user);
-            console.log("push");
+            let idArr = activeUsers.map(user => {
+                return user.userId;
+            });
+            if(idArr.indexOf(user.userId) === -1){
+                console.log("you souldnt see me 3 times wut");
+                activeUsers.push(user);
+            }
+            // if(activeUsers.indexOf(user) === -1) {
+            //     activeUsers.push(user);
+            // } else {
+            //     console.log("exists");
+            // }
+            console.log(idArr);
             this.props.lobbyUserJoin(activeUsers);
-            API.updateLobby(this.props.lobbyData.lobbyId, user);
         });
             
     }
 
     render(){
-        this.joinListener();
+        
         return(
             <Wrapper>
                 <div className="lobbyRoom">
                     <Grid container spacing={1}>
-                        <h1>The Lobby </h1>
+                        <h1>{this.props.lobbyData.lobbyName}</h1>
                         <Grid item xs={3}>
                             <div className="playerZone lobbybox">
+                                {this.props.lobbyData.activeUsers.map(user => (
+                                    <div className="player">
+                                        <img src={user.userThumbnail} alt="profile" className="profileThumbnail"></img>
+                                        <p><strong>{user.userName}</strong></p>
+                                    </div>
+                                ))}
                         
                             </div>
                         </Grid>
