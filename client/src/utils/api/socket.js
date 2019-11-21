@@ -8,8 +8,7 @@ export default {
             console.log(soc);
           });
         socket.on("joined", (msg) => {
-            console.log("****************************************");
-            console.log(msg);
+            
         });
     
     },
@@ -22,9 +21,7 @@ export default {
             userData
         }
         socket.emit('joinRoom', passing);
-        socket.on("joined", (msg) => {
-            console.log(msg);
-        })
+        
         
 
     },
@@ -39,9 +36,11 @@ export default {
         
 
     },
-    listenJoin: () => {
-        
-
+    listenJoin: (callback) => {
+        socket.on("joined", (msg) => {
+            console.log("BELOW IS THE SOCKET UPDATE");
+            callback(msg);
+        });
 
     }
 

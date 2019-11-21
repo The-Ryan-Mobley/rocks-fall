@@ -13,7 +13,7 @@ import Grid from '@material-ui/core/Grid';
 
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import {lobbyInputChange, lobbyHostData} from "../../redux/actions/actions";
+import {lobbyInputChange, lobbyHostData, lobbyUserJoin} from "../../redux/actions/actions";
 
 import API from "../../utils/api/API";
 import socket from "../../utils/api/socket";
@@ -36,12 +36,31 @@ class Lobby extends Component {
         }) 
         
     }
+    componentDidUpdate = () => {
+        console.log(this.props.lobbyData);
+        if(this.props.userData.userId === this.props.lobbyData.hostId) { 
+            //need update for host and user host UPDATEs then user READS
+            socket.listenJoin(callback => {
+
+               const user = {
+                   userId: callback.userData.userId,
+                   userName: callback.userData.userName,
+                   userThumbnail: callback.userData.userThumbnail
+               }
+               let activeUsers = this.props.lobbyData.activeUsers;
+               activeUsers.push(user);
+               this.props.lobbyUserJoin(activeUsers);
+            });
+           
+        }
+
+    }
     componentWillUnmount = () => {
 
     }
 
     render(){
-        socket.listenJoin();
+        
         return(
             <Wrapper>
                 <div className="lobbyRoom">
@@ -69,7 +88,8 @@ const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       lobbyInputChange,
-      lobbyHostData
+      lobbyHostData,
+      lobbyUserJoin
     },
     dispatch
   );
