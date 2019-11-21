@@ -7,17 +7,23 @@ export default {
         socket.on('welcome', function(soc){
             console.log(soc);
           });
+        socket.on("joined", (msg) => {
+            console.log("****************************************");
+            console.log(msg);
+        });
     
     },
     lobbyHost: (lobbyData, userData) => {
+        console.table(lobbyData);
         let room = lobbyData.lobbyName;
+        console.log("^^^^^^^^^^^^^^^^^^^^^"+room);
         let passing = {
             room,
             userData
         }
         socket.emit('joinRoom', passing);
-        socket.on("status", (msg) => {
-            console.log("msg");
+        socket.on("joined", (msg) => {
+            console.log(msg);
         })
         
 
@@ -30,9 +36,12 @@ export default {
         }
         socket.emit('joinRoom', passing);
         io.to(room).emit("playerJoined", userData);
-        socket.on("status", (msg) => {
-            console.log("joined and ready");
-        });
+        
+
+    },
+    listenJoin: () => {
+        
+
 
     }
 

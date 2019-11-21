@@ -16,8 +16,9 @@ module.exports = {
         }
     },
     findLobby: async ( req , res ) => {
-        let result = await db.Lobbies.findOne({ hostId : req.params.hostId});
+        let result = await db.Lobbies.findOne({hostId : req.params.hostId}).sort({createdOn: -1});
         if(result) {
+            console.log(result);
             res.json(result);
         } else {
             res.sendStatus("404");
@@ -35,6 +36,7 @@ module.exports = {
     joinLobby: async ( req , res ) => {
         let result = await db.Lobbies.findOne({lobbyName: req.query.lobbyName});
         if(result) {
+            console.table(result);
            if(req.query.lobbyPassword === result.lobbyPassword) {
                res.json(result);
            } else {

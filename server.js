@@ -39,7 +39,7 @@ app.use(routes);
     socket.on("joinRoom", data => {
       console.log(data);
       socket.join(data.room);
-      socket.emit("status", "connected to "+data.room);
+      socket.to(data.room).emit("joined", data);
 
     });
     socket.on("playerJoined", info => {

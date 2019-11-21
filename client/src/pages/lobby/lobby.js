@@ -41,6 +41,7 @@ class Lobby extends Component {
     }
 
     render(){
+        socket.listenJoin();
         return(
             <Wrapper>
                 <div className="lobbyRoom">
