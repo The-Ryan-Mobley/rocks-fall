@@ -38,7 +38,6 @@ export default {
     },
     listenJoin: (callback) => {
         socket.on("joined", (msg) => {
-            console.log("BELOW IS THE SOCKET UPDATE");
             callback(msg);
         });
 

@@ -18,7 +18,6 @@ module.exports = {
     findLobby: async ( req , res ) => {
         let result = await db.Lobbies.findOne({hostId : req.params.hostId}).sort({createdOn: -1});
         if(result) {
-            console.log(result);
             res.json(result);
         } else {
             res.sendStatus("404");
@@ -36,7 +35,6 @@ module.exports = {
     joinLobby: async ( req , res ) => {
         let result = await db.Lobbies.findOne({lobbyName: req.query.lobbyName});
         if(result) {
-            console.table(result);
            if(req.query.lobbyPassword === result.lobbyPassword) {
                res.json(result);
            } else {
@@ -45,6 +43,25 @@ module.exports = {
         } else {
             res.sendStatus("404");
         }
+    },
+    updateActiveUsers: async ( req , res ) => {
+        console.log("AYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY LAMO")
+        console.table(req.body);
+        let result = await db.Lobbies.findOneAndUpdate(
+            { _id: req.params.lobbyId}, 
+            { $push : {
+                activeUsers : req.body
+            }
+        });
+        if(result) {
+            console.log("HEYYYYYYYYYYYYYYYYYYYYYYYYYYYAAAAAAAAAAAAAAAAA");
+            res.json(result);
+
+        }
+        else {
+            res.sendStatus("404");
+        }
+
     }
 
 }

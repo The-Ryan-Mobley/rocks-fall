@@ -13,7 +13,7 @@ import Grid from '@material-ui/core/Grid';
 
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import {lobbyInputChange, lobbyHostData, lobbyUserJoin} from "../../redux/actions/actions";
+import {lobbyInputChange, lobbyHostData, lobbyUserJoin, lobbyUserSet} from "../../redux/actions/actions";
 
 import API from "../../utils/api/API";
 import socket from "../../utils/api/socket";
@@ -28,39 +28,43 @@ class Lobby extends Component {
             if(this.props.userData.userId === re.data.hostId){
                 console.log(re.data);
                 socket.lobbyHost(re.data);
+                this.props.lobbyHostData(re.data);
             }
             else {
                 socket.joinLobby(re.data, this.props.userData);
             }
+            this.props.lobbyUserSet(re.data);
 
         }) 
         
     }
     componentDidUpdate = () => {
         console.log(this.props.lobbyData);
-        if(this.props.userData.userId === this.props.lobbyData.hostId) { 
-            //need update for host and user host UPDATEs then user READS
-            socket.listenJoin(callback => {
-
-               const user = {
-                   userId: callback.userData.userId,
-                   userName: callback.userData.userName,
-                   userThumbnail: callback.userData.userThumbnail
-               }
-               let activeUsers = this.props.lobbyData.activeUsers;
-               activeUsers.push(user);
-               this.props.lobbyUserJoin(activeUsers);
-            });
-           
-        }
+        
 
     }
     componentWillUnmount = () => {
 
     }
+    joinListener = () => {
+            socket.listenJoin(callback => {
+                console.log(callback);
+            const user = {
+                userId: callback.userData.userId,
+                userName: callback.userData.userName,
+                userThumbnail: callback.userData.userThumbnail
+            }
+            let activeUsers = this.props.lobbyData.activeUsers;
+            activeUsers.push(user);
+            console.log("push");
+            this.props.lobbyUserJoin(activeUsers);
+            API.updateLobby(this.props.lobbyData.lobbyId, user);
+        });
+            
+    }
 
     render(){
-        
+        this.joinListener();
         return(
             <Wrapper>
                 <div className="lobbyRoom">
@@ -89,7 +93,8 @@ const mapDispatchToProps = dispatch =>
     {
       lobbyInputChange,
       lobbyHostData,
-      lobbyUserJoin
+      lobbyUserJoin,
+      lobbyUserSet
     },
     dispatch
   );

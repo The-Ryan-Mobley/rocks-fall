@@ -1,12 +1,14 @@
 import axios from "axios";
 
 export default {
+    //userAuth Routes
     newUser: (userData) =>{
         return axios.post("/api/auth/new", userData);
     },
     queryUser: (userData) =>{
         return axios.get("/api/auth/login", {params: userData});
     },
+    //lobbyRoutes
     newLobby: (lobbyData) =>{
         return axios.post("/api/lobby/new", lobbyData);
     },
@@ -19,7 +21,12 @@ export default {
     joinLobby: (lobbyData) => {
         return axios.get("/api/lobby/join", {params: lobbyData});
     },
-    
+    updateLobby: (lobbyId, userData) => {
+        console.log(lobbyId);
+        return axios.post("/api/lobby/push/"+lobbyId, userData);
+    },
+    //character Routes
+    //spell Routes
     spellsByClass: (playerClass)=>{
         return axios.get("/api/game/spells/"+playerClass);
     },

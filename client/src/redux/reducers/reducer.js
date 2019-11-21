@@ -112,7 +112,6 @@ const lobbyManipulation = (state = initialState, action) => {
                     lobbyName: action.foundLobby.lobbyName,
                     hostName: action.foundLobby.hostName,
                     hostId: action.foundLobby.hostId,
-                    activeUsers: action.foundLobby.activeUsers
                 }
             }
         }
