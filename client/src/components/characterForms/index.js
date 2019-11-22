@@ -188,21 +188,58 @@ class CharacterHeader extends Component{
                 <Grid container direction="row" spacing={2}>
                     <Grid item xs={3}>
                         <div classname="charName box">
-                            <h1>{this.props.name}</h1>
+                            <Input 
+                                id="nameInput"
+                                defaultValue={this.props.name ? (this.props.name) : ("Character Name")}
+                                variant="filled"
+                                color="secondary" 
+                            />
                         </div>
                     </Grid>
                     <Grid item xs={9} direction="row">
                         <div className="headerInfoTop box">
                             <Grid container item xs={12} direction="row" spacing={1}>
-                                <p>{this.props.playerClass} level: {this.props.level}</p>
-                                <p>{this.props.background}</p>
+                                <Input 
+                                    id="playerClass"
+                                    defaultValue= {this.props.playerClass ? (this.props.playerClass) : ("class")}
+                                    variant="filled"
+                                    color="secondary"
+                                />
+                                <p>level: </p>
+                                <Input
+                                    id="level"
+                                    defaultValue= {this.props.level ? (this.props.level) : ("?")}
+                                    variant="filled"
+                                    color="secondary"
+
+                                />
+                                <Input
+                                    id="background"
+                                    defaultValue= {this.props.background ? (this.props.background) : ("background")}
+                                    variant="filled"
+                                    color="secondary"
+                                />
                             </Grid>
                         </div>
                         <div className="headerInfoBottom box">
-                            <Grid container item xs={12} direction="row" spacing={1}>                            
-                                <p>{this.props.race}</p>
-                                <p>{this.props.alignment}</p>
-                                <p>{this.props.experience}</p>
+                            <Grid container item xs={12} direction="row" spacing={1}>
+                                <Input
+                                    id="playerRace"
+                                    defaultValue= {this.props.race ? (this.props.race) : ("Player Race")}
+                                    variant="filled"
+                                    color="secondary"
+                                />
+                                <Input
+                                    id="alignment"
+                                    defaultValue= {this.props.alignment ? (this.props.alignment) : ("alignment")}
+                                    variant="filled"
+                                    color="secondary"
+                                />                            
+                                <Input
+                                    defaultValue= {this.props.experience ? (this.props.experience) : ("experience")}
+                                    variant="filled"
+                                    color="secondary"
+                                />
                             </Grid>
                         </div>
                         
