@@ -63,6 +63,14 @@ module.exports = {
             res.sendStatus("404");
         }
 
+    },
+    deleteLobby: async ( req , res ) => {
+        let result = await db.Lobbies.findByIdAndRemove(req.params.lobbyId);
+        if (result) {
+            res.json(result);
+        } else {
+            res.sendStatus("404");
+        }
     }
 
 }

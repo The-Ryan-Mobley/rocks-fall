@@ -38,21 +38,24 @@ app.use(routes);
     socket.emit("welcome", "the socket works!!!");
 
     socket.on("joinRoom", data => {
-      console.log(data);
       socket.join(data.room);
       socket.to(data.room).emit("joined", data);
+      
 
     });
     socket.on("message", data => {
-      console.log("*******************************");
-      console.table(data);
       socket.to(data.room).emit("chat", data.message);
 
     });
-    socket.on("playerJoined", info => {
-      console.log(info);
-      socket.emit("newPlayer", info);
+    socket.on("playerJoined", data => {
+      socket.to(data.room).emit("chat", data.userData.userName+" has joined the game");
+      socket.emit("newPlayer", data);
     })
+    socket.on("leaveRoom", data => {
+      socket.to(data.room).emit("playerLeft", data.userData);
+      socket.leave(data.room);
+      socket.to(data.room).emit("chat", data.userData.userName+" has left the game");
+    });
 
     socket.on("disconnect", () => {
       console.log("Client disconnected");

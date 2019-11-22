@@ -28,6 +28,7 @@ class Lobby extends Component {
     }
     componentDidMount = () => {
         this.messageListener();
+        this.leaveListener();
         API.findLobby(this.props.match.params.lobbyId).then(re => {
             if(this.props.userData.userId === re.data.hostId){
                 socket.lobbyHost(re.data);
@@ -35,6 +36,7 @@ class Lobby extends Component {
                 this.props.lobbyUserSet(re.data);
             }
             else {
+                console.table(this.props.userData);
                 socket.joinLobby(re.data, this.props.userData);
                 this.props.lobbyUserSet(re.data);
                 const user = {
@@ -49,11 +51,29 @@ class Lobby extends Component {
     componentDidUpdate = () => {
         
         
+        
     }
     componentWillUnmount = () => {
+        if(this.props.userData.userId === this.props.lobbyData.hostId){
+            API.deleteLobby(this.props.lobbyData.lobbyId);
+
+        } else {
+            this.removeLobbyUsers();
+            socket.leaveLobby(this.props.lobbyData.lobbyName, this.props.userData)
+        }
         //host calls DELETE for lobby
         //user updates active users and emits
 
+    }
+    removeLobbyUsers = () => {
+        let users = this.props.lobbyData.activeUsers;
+        let userId = this.props.userData.userId;
+        let activeUsers = users.filter(user => {
+            if(user.userId !== userId){
+                return user;
+            }
+        });
+        this.props.lobbyUserJoin(activeUsers);
     }
     findLobbyUsers = (user) => {
         let activeUsers = this.props.lobbyData.activeUsers;
@@ -79,7 +99,6 @@ class Lobby extends Component {
         let messages = this.props.lobbyData.chat.messages;
         messages.push(msg);
         this.props.lobbyMessageAdd(messages);
-        //need to set newmessage to ""
     }
     messageListener = () => {
         socket.listenChat(re => {
@@ -101,7 +120,19 @@ class Lobby extends Component {
                 this.props.lobbyMessageAdd(messages);
             }
         })
-    } 
+    }
+    leaveListener = () => {
+        socket.listenLeave(re => {
+            let users = this.props.lobbyData.activeUsers;
+            let activeUsers = users.filter( user => {
+                if(user.userId !== re.userId) {
+                    return user;
+                }
+            });
+            this.props.lobbyUserJoin(activeUsers);
+
+        })
+    }
     processActiveUsers = (user) => {
         let activeUsers = this.props.lobbyData.activeUsers;
         let idArr = activeUsers.map(user => {

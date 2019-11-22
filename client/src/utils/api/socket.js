@@ -27,7 +27,21 @@ export default {
             userData
         }
         socket.emit('joinRoom', passing);
-        socket.emit("playerJoined", userData);
+        socket.emit("playerJoined", passing);
+    },
+    leaveLobby: (room, userData) => {
+        let passing = {
+            room,
+            userData
+        }
+        socket.emit('leaveRoom', passing)
+
+    },
+    listenLeave: (callback) => {
+        socket.on("playerLeft", data => {
+            callback(data);
+        })
+
     },
     listenJoin: (callback) => {
         socket.on("joined", (msg) => {

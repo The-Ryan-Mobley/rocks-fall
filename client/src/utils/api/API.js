@@ -24,6 +24,9 @@ export default {
     updateLobby: (lobbyId, userData) => {
         return axios.put("/api/lobby/push/"+lobbyId, userData);
     },
+    deleteLobby: (lobbyId) => {
+        return axios.delete("/api/lobby/delete/"+lobbyId);
+    },
     //character Routes
     //spell Routes
     spellsByClass: (playerClass)=>{

@@ -24,20 +24,6 @@ class JoinLobby extends Component {
 
     }
     componentDidUpdate = (prevProps) => {
-        // if(prevProps.lobbyData.hostId !== this.props.lobbyData.hostId) {
-        //     API.newLobby(this.props.lobbyData).then(result => {
-        //         if(result !== "404") {
-        //             API.hostLobby(this.props.lobbyData.hostId).then(re => {
-        //                 console.log(re);
-        //                 this.setState({
-        //                     sendLobby: true,
-        //                     lobbyId: re.data._id
-        //                 })
-        //             })
-        //         }
-
-        //     });
-        // }
 
 
     }
