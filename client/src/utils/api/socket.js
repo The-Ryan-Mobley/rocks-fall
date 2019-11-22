@@ -13,17 +13,12 @@ export default {
     
     },
     lobbyHost: (lobbyData, userData) => {
-        console.table(lobbyData);
         let room = lobbyData.lobbyName;
-        console.log("^^^^^^^^^^^^^^^^^^^^^"+room);
         let passing = {
             room,
             userData
         }
         socket.emit('joinRoom', passing);
-        
-        
-
     },
     joinLobby: (lobbyData, userData) => {
         let room = lobbyData.lobbyName;
@@ -33,14 +28,24 @@ export default {
         }
         socket.emit('joinRoom', passing);
         socket.emit("playerJoined", userData);
-        
-
     },
     listenJoin: (callback) => {
         socket.on("joined", (msg) => {
             callback(msg);
         });
-
+    },
+    postMessage: (room, message) => {
+        let passing = {
+            room,
+            message
+        }
+        socket.emit("message", passing);
+    },
+    listenChat: (callback) => {
+        socket.on("chat", msg => {
+            console.log("calling *********************************");
+            callback(msg);
+        })
     }
 
 }

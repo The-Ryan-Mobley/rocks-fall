@@ -45,8 +45,6 @@ module.exports = {
         }
     },
     updateActiveUsers: async ( req , res ) => {
-        console.log("AYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY LAMO")
-        console.table(req.body);
         let result = await db.Lobbies.updateOne(
             { _id: req.params.lobbyId}, 
             { $push : {
@@ -57,11 +55,9 @@ module.exports = {
             let newDock = await db.Lobbies.findOne({ _id: req.params.lobbyId});
             if(newDock) {
                 res.json(newDock.activeUsers);
-
             } else {
                 res.sendStatus("404");
             }
-
         }
         else {
             res.sendStatus("404");

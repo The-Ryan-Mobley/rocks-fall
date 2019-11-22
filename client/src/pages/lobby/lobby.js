@@ -14,7 +14,7 @@ import Grid from '@material-ui/core/Grid';
 
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import {lobbyInputChange, lobbyHostData, lobbyUserJoin, lobbyUserSet} from "../../redux/actions/actions";
+import {lobbyInputChange, lobbyHostData, lobbyUserJoin, lobbyUserSet, lobbyMessageReset, lobbyMessageAdd, lobbyMessageChange} from "../../redux/actions/actions";
 
 import API from "../../utils/api/API";
 import socket from "../../utils/api/socket";
@@ -23,10 +23,13 @@ class Lobby extends Component {
     constructor(){
         super();
     }
+    state = {
+        messageKey: 0
+    }
     componentDidMount = () => {
+        this.messageListener();
         API.findLobby(this.props.match.params.lobbyId).then(re => {
             if(this.props.userData.userId === re.data.hostId){
-                console.log(re.data);
                 socket.lobbyHost(re.data);
                 this.props.lobbyHostData(re.data);
                 this.props.lobbyUserSet(re.data);
@@ -45,8 +48,11 @@ class Lobby extends Component {
     }
     componentDidUpdate = () => {
         
+        
     }
     componentWillUnmount = () => {
+        //host calls DELETE for lobby
+        //user updates active users and emits
 
     }
     findLobbyUsers = (user) => {
@@ -63,6 +69,39 @@ class Lobby extends Component {
         }  
 
     }
+    postMessage = () => {
+        socket.postMessage(this.props.lobbyData.lobbyName, this.props.lobbyData.chat.newMessage);
+        let msg ={
+            key: Math.floor(Math.random() * 1000000),
+            body: this.props.lobbyData.chat.newMessage
+        }
+        this.props.lobbyMessageReset();
+        let messages = this.props.lobbyData.chat.messages;
+        messages.push(msg);
+        this.props.lobbyMessageAdd(messages);
+        //need to set newmessage to ""
+    }
+    messageListener = () => {
+        socket.listenChat(re => {
+            
+            let msg ={
+                key: Math.floor(Math.random() * 1000000),
+                body: re
+            }
+            console.log(msg);
+            let messages = this.props.lobbyData.chat.messages;
+            let keys = messages.map(message => {
+                return message.key;
+            });
+            
+            if((keys.indexOf(msg.key) === -1)) {
+                console.log("keys");
+                console.log(keys);
+                messages.push(msg);
+                this.props.lobbyMessageAdd(messages);
+            }
+        })
+    } 
     processActiveUsers = (user) => {
         let activeUsers = this.props.lobbyData.activeUsers;
         let idArr = activeUsers.map(user => {
@@ -83,15 +122,20 @@ class Lobby extends Component {
             }
             this.processActiveUsers(user);
         });
-            
+    }
+    onTextChange = (event) => {
+        this.props.lobbyMessageChange(event.target.name, event.target.value);
+
     }
 
     render(){
         this.joinListener();
+        
         return(
             <Wrapper>
                 <div className="lobbyRoom">
                     <Grid container spacing={1}>
+                    <h1>{this.props.lobbyData.lobbyName}</h1>
                         <Grid item xs={3}>
                             <div className="playerZone lobbybox">
                                 {this.props.lobbyData.activeUsers.map(user => (
@@ -104,22 +148,30 @@ class Lobby extends Component {
                             </div>
                         </Grid>
                         <Grid item xs={6}>
-                        <h1>{this.props.lobbyData.lobbyName}</h1>
-                            <TextField
-                                multiline={true}
-                                rows={10}
-                                fullWidth={true}
-                                name="meassages"
-                                value={this.props.lobbyData.chat.messages}
-                                id="lobbyPassword"
+                            <div className="chatBody">
+                                {this.props.lobbyData.chat.messages.map(msg => (
+                                    <p>{msg.body}</p>
+                                ))}
+
+                            </div>
+                        
+                            <Input
+                                name="newMessage"
+                                value={this.props.lobbyData.chat.newMessage}
+                                id="filled-required"
+                                fullWidth="true"
+                                placeholder="username*"
                                 variant="filled"
                                 color="secondary"
+                                className="chatBox" 
                                 onChange={this.onTextChange}
-                                className="chatBox"
-                                InputProps={{
-                                    readOnly: true,
-                                  }}
                             />
+                            <Button variant="contained" className="createButton" 
+                                onClick={this.postMessage} 
+                                disabled={!(this.props.lobbyData.chat.newMessage)}>
+                                    post
+                            </Button>
+                            
                        
                         </Grid>
                     </Grid>
@@ -141,7 +193,10 @@ const mapDispatchToProps = dispatch =>
       lobbyInputChange,
       lobbyHostData,
       lobbyUserJoin,
-      lobbyUserSet
+      lobbyUserSet,
+      lobbyMessageReset,
+      lobbyMessageAdd,
+      lobbyMessageChange
     },
     dispatch
   );

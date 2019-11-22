@@ -50,6 +50,13 @@ code {
 .chatZone{
   width: 100%;
 }
+.chatBody{
+  width: 100%;
+  height: 6rem;
+  overflow-y: scroll;
+  padding: 1%;
+  background-color: #ffffff;
+}
 .chatBox{
   margin-top: 5%;
   text-align: center;

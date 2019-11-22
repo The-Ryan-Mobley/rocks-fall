@@ -43,6 +43,12 @@ app.use(routes);
       socket.to(data.room).emit("joined", data);
 
     });
+    socket.on("message", data => {
+      console.log("*******************************");
+      console.table(data);
+      socket.to(data.room).emit("chat", data.message);
+
+    });
     socket.on("playerJoined", info => {
       console.log(info);
       socket.emit("newPlayer", info);

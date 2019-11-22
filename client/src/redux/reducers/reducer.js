@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import {USER_INPUT_CHANGE, USER_CREATE_ACCOUNT, USER_LOGIN, SAVE_SESSION_DATA} from "../actions/actions";
-import {LOBBY_INPUT_CHANGE, LOBBY_HOST_DATA, LOBBY_USER_JOIN, LOBBY_USER_SET} from "../actions/actions";
+import {LOBBY_INPUT_CHANGE, LOBBY_HOST_DATA, LOBBY_USER_JOIN, LOBBY_USER_SET, LOBBY_MESSAGE_RESET, LOBBY_MESSAGE_CHANGE, LOBBY_MESSAGE_ADD} from "../actions/actions";
 
 const initialState = {
     userData: {
@@ -84,6 +84,18 @@ const lobbyManipulation = (state = initialState, action) => {
                 }
             }
         }
+        case LOBBY_MESSAGE_CHANGE : {
+            return {
+                ...state,
+                lobbyData: {
+                    ...state.lobbyData,
+                    chat: {
+                        ...state.lobbyData.chat,
+                        [action.name]: action.value
+                    }
+                }
+            }
+        }
         case LOBBY_HOST_DATA : {
             return {
                 ...state,
@@ -112,6 +124,31 @@ const lobbyManipulation = (state = initialState, action) => {
                     lobbyName: action.foundLobby.lobbyName,
                     hostName: action.foundLobby.hostName,
                     hostId: action.foundLobby.hostId,
+                }
+            }
+        }
+        case LOBBY_MESSAGE_RESET : {
+            return {
+                ...state,
+                lobbyData: {
+                    ...state.lobbyData,
+                    chat: {
+                        ...state.lobbyData.chat,
+                        newMessage: ""
+                    }
+
+                }
+            }
+        }
+        case LOBBY_MESSAGE_ADD : {
+            return {
+                ...state,
+                lobbyData: {
+                    ...state.lobbyData,
+                    chat: {
+                        ...state.lobbyData.chat,
+                        messages: action.messageArr
+                    }
                 }
             }
         }
