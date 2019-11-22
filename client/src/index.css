@@ -32,6 +32,9 @@ code {
   max-width: 5rem;
   max-height: auto;
 }
+.lobbyRoom{
+  width: 100%;
+}
 .lobbybox{
   border-style: solid;
   border-width: 1%;
@@ -43,4 +46,11 @@ code {
   border-width: 1%;
   border-color: red;
 
+}
+.chatZone{
+  width: 100%;
+}
+.chatBox{
+  margin-top: 5%;
+  text-align: center;
 }

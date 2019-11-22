@@ -32,7 +32,7 @@ export default {
             userData
         }
         socket.emit('joinRoom', passing);
-        io.to(room).emit("playerJoined", userData);
+        socket.emit("playerJoined", userData);
         
 
     },

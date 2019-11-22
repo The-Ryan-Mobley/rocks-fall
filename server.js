@@ -26,6 +26,7 @@ app.use(routes);
   
   
   mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/rocksFall");
+  mongoose.set('useFindAndModify', false);
 
   //socket depends
   const server = require('http').Server(app);

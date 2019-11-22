@@ -22,8 +22,7 @@ export default {
         return axios.get("/api/lobby/join", {params: lobbyData});
     },
     updateLobby: (lobbyId, userData) => {
-        console.log(lobbyId);
-        return axios.post("/api/lobby/push/"+lobbyId, userData);
+        return axios.put("/api/lobby/push/"+lobbyId, userData);
     },
     //character Routes
     //spell Routes
