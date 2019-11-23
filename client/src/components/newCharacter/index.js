@@ -8,4 +8,5 @@ import "./style.css"
 
 class NewCharacter extends Component {
     
+
 }

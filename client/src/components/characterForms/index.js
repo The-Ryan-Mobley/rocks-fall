@@ -3,11 +3,13 @@ import Grid from '@material-ui/core/Grid';
 import Input from '@material-ui/core/Input';
 import ListItemText from '@material-ui/core/ListItemText';
 import "./style.css"
-class SheetHeader extends Component {
 
-}
 class StatBlock extends Component {
+    state = {
+        statNames = ["Strength", "Dexterity", "Constitution", "Wisdom","Intelligence","Charisma"]
+    }
     render(){
+
         return(
             <div className="statBlock box">
                 {this.props.stats.map(stat => (   

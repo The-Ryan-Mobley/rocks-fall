@@ -52,34 +52,39 @@ class MakeLobby extends Component{
     }
     render(){
         return(
-
-                <Grid container spacing={1}>
-                    {this.state.sendLobby ? (<Redirect to={"/lobby/"+this.state.lobbyId}/>) : (<h1>Create a Lobby</h1>)}
-
+            <div className="modalBody">
+                <Grid container spacing={1} direction="column" alignItems="center" justify="center">
+                <Grid item xs={12}>
+                    {this.state.sendLobby ? 
+                        (<Redirect to={"/lobby/"+this.state.lobbyId}/>) 
+                        : (<h1>Create a Lobby</h1>)}
+                </Grid>
                     
-                    <Grid item xs={6} direction="column" alignItems="center" justify="center">
+                <Grid container item xs={6} alignItems="center" justify="center">
                     <Input
                         name="lobbyName"
                         value={this.props.lobbyData.lobbyName}
-
+                        placeholder="Lobby Name"
                         id="lobbyName"
                         label="Lobby Name"
                         variant="filled"
                         color="secondary" 
                         onChange={this.onTextChange}
                     />
+                </Grid>
+                <Grid container item xs={6} alignItems="center" justify="center">
                     <Input
                         name="lobbyPassword"
                         value={this.props.lobbyData.lobbyPassword}
-
+                        placeholder="Lobby Password"
                         id="lobbyPassword"
                         label="Lobby Password"
                         variant="filled"
                         color="secondary"
                         onChange={this.onTextChange}
                     />
-                    </Grid>
-                    <Grid item xs={12}>
+                </Grid>
+                    <Grid container item xs={12} alignItems="center" justify="center">
                         <Button variant="contained" className="createButton" 
                             onClick={this.sendLobbyData} 
                             disabled={!(this.props.userData.userId)}>
@@ -87,7 +92,7 @@ class MakeLobby extends Component{
                         </Button>
                     </Grid>
                 </Grid>
-
+            </div>
         )
     }
 }

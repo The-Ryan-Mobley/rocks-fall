@@ -16,10 +16,6 @@ app.use(express.json());
 
 app.use(routes);
 
-// if (process.env.NODE_ENV === "production") {
-//     app.use(express.static("client/build"));
-//   }
-  //app.use(routes);
   app.get("*", function(req, res) {
     res.sendFile(path.join(__dirname, "./client/public/index.html"));
   });
@@ -59,14 +55,6 @@ app.use(routes);
 
     socket.on("disconnect", () => {
       console.log("Client disconnected");
-      const {user} = socket;
-      if(user){
-        socket.broadcast.emit("server_message", {
-          name: "server",
-          message: user.userName + " has left"
-        });
-      }
-  
     });
   });
 

@@ -53,6 +53,22 @@ const playerCharacterSchema = new Schema({
         trim: true,
         default: `none`
     },
+    personalityTraits: {
+        type: String,
+        default: ""
+    },
+    ideals: {
+        type: String,
+        default: ""
+    },
+    bonds: {
+        type: String,
+        default: ""
+    },
+    flaws: {
+        type: String,
+        default: ""
+    },
     bio: {
         type: String,
         trim: true,

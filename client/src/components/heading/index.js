@@ -4,6 +4,7 @@ import Box from '@material-ui/core/Box';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
+import { spacing } from '@material-ui/system';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import { bindActionCreators } from "redux";
@@ -65,30 +66,33 @@ class Heading extends Component {
     render() {
         return(
             <header>
-                <Grid item xs={8}>
+                <Grid container spacing={1}>
+                <Grid item xs={10}>
                 <div className="titleBlock">
                         <a onClick={this.buttonClick} name="sendHome" className="title">Rocks Fall </a>
                         <p>subheader text</p>
                     </div>
                 {this.state.sendHome ? (<Redirect to="/" />) : (<p></p>)}
                 </Grid>
-                <Grid item xs={4}>
+                <Grid item container xs={2} >
                     {this.props.userData.userId ? (
-                        <div className="loggedUser">
-                            <Grid item xs={1}>
-                                <img src={this.props.userData.userThumbnail} alt="profile" className="profileThumbnail"></img>
+                        <Grid item container xs={12} direction="row"spacing={0} justify="flex-end">
+                            <Grid item xs={4} mt={1}>
+                                <img src={this.props.userData.userThumbnail} alt="profile" className="profileThumbnail inHeader"></img>
                             </Grid>
-                            <Grid item xs={3}>
-                            <p>Logged in as: {this.props.userData.userName}</p>
-                            {this.state.logoutUser ? (<Redirect to="/"/>) : (
-                            <Button variant="contained" className="createButton" 
-                            onClick={this.logoutClick} 
-                                name="logoutUser" >
-                                Logout
-                            </Button>
-                            )}
+                            <Grid item xs={8}>
+                                <div className="loggedInDat">
+                                    <p>Logged in as: {this.props.userData.userName}</p>
+                                    {this.state.logoutUser ? (<Redirect to="/"/>) : (
+                                    <Button variant="contained" className="logOutButton" 
+                                        onClick={this.logoutClick} 
+                                        name="logoutUser" >
+                                        Logout
+                                    </Button>
+                                    )}
+                                </div>
                             </Grid>
-                        </div>
+                        </Grid>
                     ): (
                     <div className="noUser">
                         {this.state.createUser ? (<Redirect to="/createAccount"/>) : (
@@ -109,6 +113,7 @@ class Heading extends Component {
                     </div>
                     )}
                                 
+                </Grid>
                 </Grid>
             </header>
         )

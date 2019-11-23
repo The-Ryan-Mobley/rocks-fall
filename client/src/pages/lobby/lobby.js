@@ -166,7 +166,9 @@ class Lobby extends Component {
             <Wrapper>
                 <div className="lobbyRoom">
                     <Grid container spacing={1}>
-                    <h1>{this.props.lobbyData.lobbyName}</h1>
+                        <Grid xs={12} alignItems="center" justify="center" spacing={1}>
+                            <h1 className="centeredHeading">{this.props.lobbyData.lobbyName}</h1>
+                        </Grid>
                         <Grid item xs={3}>
                             <div className="playerZone lobbybox">
                                 {this.props.lobbyData.activeUsers.map(user => (

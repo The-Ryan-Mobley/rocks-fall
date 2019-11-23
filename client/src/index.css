@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #bea176;
+  background-color: #27492f;
 }
 
 code {
@@ -19,7 +19,7 @@ code {
   margin-top: 10%;
   padding: 1%;
   text-align: center;
-  background-color: #ebd5b3;
+  background-color: #A87D58;
 }
 .createInput{
   margin-top: 5%;
@@ -29,7 +29,7 @@ code {
   margin-bottom: 2%;
 }
 .profileThumbnail{
-  max-width: 5rem;
+  max-width: 4rem;
   max-height: auto;
 }
 .lobbyRoom{
@@ -41,10 +41,12 @@ code {
   border-color: red;
 }
 .homeBody{
+  margin-top: 5%;
+  padding: 5%;
+  padding-bottom: 30%;
   width: 100%;
-  border-style: solid;
-  border-width: 1%;
-  border-color: red;
+  background-color: #c99b74;
+  box-shadow: 17px 29px 51px -26px #000000bf;
 
 }
 .chatZone{
@@ -52,7 +54,7 @@ code {
 }
 .chatBody{
   width: 100%;
-  height: 6rem;
+  height: 10rem;
   overflow-y: scroll;
   padding: 1%;
   background-color: #ffffff;
@@ -60,4 +62,42 @@ code {
 .chatBox{
   margin-top: 5%;
   text-align: center;
+}
+.centeredHeading{
+  text-align: center;
+}
+.modalInput{
+  text-align: center;
+}
+.modal{
+  display: flex;
+  align-Items: center;
+  justify-Content: center;
+}
+.modalButton{
+  background-color: #55462f !important;
+  padding: 2% 10% !important;
+  margin: 3% !important;
+  white-space: nowrap !important;
+}
+.modalBody{
+  background-color: #ffffff;
+  padding: 1%;
+}
+.shaded{
+  -webkit-box-shadow: 17px 29px 51px -26px #000000bf !important;
+  box-shadow: 17px 29px 51px -26px #000000bf !important;
+}
+.loggedInDat{
+  font-size: 0.8rem;
+  margin-left: 12%;
+}
+.logOutButton{
+  margin-top: -20% !important;
+  padding: 2% !important;
+  background-color: #55462f !important;
+  color: #ffffff !important;
+}
+.profileInfo{
+  margin-top: 1% !important;
 }
