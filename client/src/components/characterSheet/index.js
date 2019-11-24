@@ -43,17 +43,16 @@ export default class CharacterSheet extends Component{
             if(stat === 10){
                 return 0;
             } else if(stat > 10) {
-                let modValue = Math.floor(stat / 4);
+                let modValue = "+"+Math.round(Math.floor((stat - 10)/2));
                 return modValue;
             } else if (stat < 10) {
-                let modValue = Math.floor((stat - 10)/2);
+                let modValue = Math.round(Math.floor((stat - 10)/2));
                 return modValue;
             }
         })
         this.setState({
             statMods: statMods
         });
-        //set playercharacter data
     }
     render(){
         return(
