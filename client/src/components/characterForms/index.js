@@ -44,7 +44,9 @@ class StatBlock extends Component {
         );
     }
 }
+
 class SavingProfs extends Component{
+
     render(){
         return(
             <div className="profs">
@@ -114,7 +116,8 @@ class GearBlock extends Component {
             <div className="gearBlock box">
                 <Grid container spacing={1} direction="row">
                             <Grid item xs={4}>
-                                <div className="AC">
+                                {this.props.armorClass ? (
+                                    <div className="AC">
                                     <p>AC:</p>
                                     <Input
                                         id="armor"
@@ -123,43 +126,93 @@ class GearBlock extends Component {
                                         color="secondary" 
                                     />
                                 </div>
-                            </Grid>
-                            <Grid item xs={4}>
-                                <div className="INIT">
-                                    <p>INIT:</p>
+                                ) : (
+                                    <div className="AC">
+                                    <p>AC:</p>
                                     <Input
                                         id="armor"
+                                        placeholder="AC"
+                                        variant="filled"
+                                        color="secondary" 
+                                    />
+                                </div>
+                                )}
+                            </Grid>
+                            <Grid item xs={4}>
+                                {this.props.initiative ? (
+                                    <div className="INIT">
+                                    <p>INIT:</p>
+                                    <Input
+                                        id="init"
                                         defaultValue={this.props.initiative}
                                         variant="filled"
                                         color="secondary" 
                                     />
-                                </div>
-                            </Grid>
-                            <Grid item xs={4}>
-                                <div className="SPEED">
-                                    <p>SPEED:</p>
+                                    </div>
+                                ) : (
+                                    <div className="INIT">
+                                    <p>INIT:</p>
                                     <Input
-                                        id="armor"
-                                        defaultValue={this.props.speed}
+                                        id="init"
+                                        placeholder="initiative"
                                         variant="filled"
                                         color="secondary" 
                                     />
                                 </div>
+                                )}
+                            </Grid>
+                            <Grid item xs={4}>
+                            <div className="SPEED">
+                                <p>SPEED:</p>
+                                {this.props.speed ? (    
+                                    <Input
+                                        id="speed"
+                                        defaultValue={this.props.speed}
+                                        variant="filled"
+                                        color="secondary" 
+                                    />
+                                ) : (
+                                    <Input
+                                        id="speed"
+                                        placeholder="speed"
+                                        variant="filled"
+                                        color="secondary" 
+                                    />
+                                )}
+                                </div>
                             </Grid>
                         </Grid>
                         <Grid spacing={1} item>
-                            <Input
+                            {this.props.health ? (
+                                <Input
                                 id="health"
                                 defaultValue={this.props.health}
                                 variant="filled"
                                 color="secondary" 
-                            />
-                            <Input
+                                />
+                            ) : (
+                                <Input
+                                id="health"
+                                placeholder="HP"
+                                variant="filled"
+                                color="secondary" 
+                                />
+                            )}
+                            {this.props.hitDie ? (
+                                <Input
                                 id="hit die"
                                 defaultValue={`${this.props.level} d${this.props.hitDie}`}
                                 variant="filled"
                                 color="secondary" 
-                            />
+                                />
+                            ) : (
+                                <Input
+                                id="hit die"
+                                placeholder="hit die"
+                                variant="filled"
+                                color="secondary" 
+                                />
+                            )}
                         </Grid>
                         <Grid spacing={1} item>
                             <p><strong>Inventory: </strong></p>
@@ -181,6 +234,7 @@ class GearBlock extends Component {
                                 variant="filled"
                                 color="secondary" 
                             />
+                            <Button>Add Item</Button>
                         </Grid>
 
             </div>
