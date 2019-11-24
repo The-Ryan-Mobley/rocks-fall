@@ -9,6 +9,9 @@ class StatBlock extends Component {
     state = {
         statNames: ["Strength", "Dexterity", "Constitution", "Wisdom","Intelligence","Charisma"]
     }
+    onTextChange = (event) => { 
+        this.props.onTextChange(event);
+    }
     render(){
 
         return(
@@ -21,7 +24,9 @@ class StatBlock extends Component {
                             id={this.props.stats.indexOf(stat)}
                             defaultValue={stat}
                             variant="filled"
-                            color="secondary" 
+                            color="secondary"
+                            name={`stats[${this.props.stats.indexOf(stat)}]`}
+                            onchange={this.onTextChange}
                         />
                         
                         <p>{this.props.statMods[this.props.stats.indexOf(stat)]}</p>

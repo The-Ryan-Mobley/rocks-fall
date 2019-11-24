@@ -4,15 +4,24 @@ import Input from '@material-ui/core/Input';
 import { sizing } from '@material-ui/system';
 import Box from '@material-ui/core/Box';
 import {StatBlock, SavingProfs, GearBlock, ItemElement, BioTraits, CharacterHeader} from "../characterForms";
+
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import {characterInputChange} from "../../redux/actions/actions";
+
 import "./style.css"
 
 class NewCharacter extends Component {
+    onTextChange = (event) => {
+        this.props.characterInputChange(event.target.name, event.target.value);
+    }
     render(){
         return (
             <div className="characterSheet">
                 <Grid container spacing={1}>
                     <Grid item xs={12}>
                         <CharacterHeader
+                            onTextChange = {this.onTextChange}
                             name= {this.state.playerCharacter.name}
                             level = {this.state.playerCharacter.level}
                             playerClass = {this.state.playerCharacter.playerClass}
@@ -60,3 +69,21 @@ class NewCharacter extends Component {
     }
 
 }
+const mapStateToProps = state => {
+    return { 
+        playerCharacter: state.characterReducer.playerCharacter
+     };
+  };
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      characterInputChange
+    },
+    dispatch
+  );
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(NewCharacter);

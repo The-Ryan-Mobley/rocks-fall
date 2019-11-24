@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 import {USER_INPUT_CHANGE, USER_CREATE_ACCOUNT, USER_LOGIN, SAVE_SESSION_DATA} from "../actions/actions";
 import {LOBBY_INPUT_CHANGE, LOBBY_HOST_DATA, LOBBY_USER_JOIN, LOBBY_USER_SET, LOBBY_MESSAGE_RESET, LOBBY_MESSAGE_CHANGE, LOBBY_MESSAGE_ADD} from "../actions/actions";
+import {CHARACTER_INPUT_CHANGE} from "../actions/actions";
 
 const initialState = {
     userData: {
@@ -22,6 +23,46 @@ const initialState = {
             messages: [],
             newMessage: ""
         }
+    },
+    playerCharacter: {
+        name: "",
+        level: null,
+        health: null,
+        hitDie: null,
+        experience: null,
+        strength: null,
+        dexterity: null,
+        constitution: null,
+        wisdom: null,
+        intelligence: null,
+        charisma: null,
+        primaryStats: [],
+        playerClass: "",
+        subClass: "",
+        playerRace: "",
+        background: "",
+        personalityTraits: "",
+        ideals: "",
+        bonds: "",
+        flaws: "",
+        bio: "",
+        alignment: "",
+        currency: [],
+        attunementSlots: [],
+        proficiencyBonus: 2,
+        skillProficiency: [],
+        toolProficiency: "",
+        laguages: [],
+        armorClass: null,
+        initiative: null,
+        speed: null,
+        spellCasting: false,
+        spellSlots: [],
+        spellCastingStat: [],
+        spellsKnown: {},
+        inventory: {},
+        featsAndTrais: {},
+        authorId: ""
     }
   };
 const formManipulation = (state = initialState, action) => {
@@ -158,11 +199,27 @@ const lobbyManipulation = (state = initialState, action) => {
     }
 
 }
+const characterReducer = (state = initialState, action) => {
+    switch(action.state){
+        case CHARACTER_INPUT_CHANGE : {
+            return {
+                ...state,
+                playerCharacter: {
+                    ...state.playerCharacter,
+                    [action.name]: action.value
+                }
+            }
+        }
+
+        default: return state;
+    }
+}
 //form reducer
 //lobby reducer
 const appFunctions = combineReducers({
     formManipulation,
-    lobbyManipulation
+    lobbyManipulation,
+    characterReducer
 
 });
 

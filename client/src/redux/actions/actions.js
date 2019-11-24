@@ -11,6 +11,8 @@ export const LOBBY_MESSAGE_RESET = "LOBBY_MESSAGE_RESET";
 export const LOBBY_MESSAGE_ADD = "LOBBY_MESSAGE_ADD";
 export const LOBBY_MESSAGE_CHANGE = "LOBBY_MESSAGE_CHANGE"
 
+export const CHARACTER_INPUT_CHANGE = "CHARACTER_INPUT_CHANGE"
+
 
 export const userInputChange = (name, value) =>{
     return { type: USER_INPUT_CHANGE, name, value, key: Date.now()};
@@ -45,4 +47,8 @@ export const lobbyMessageAdd = (messageArr) => {
 }
 export const lobbyMessageChange = (name , value) => {
     return {type: LOBBY_MESSAGE_CHANGE, name, value, key: Date.now()}
+}
+
+export const characterInputChange = (name, value) => {
+    return {type: CHARACTER_INPUT_CHANGE, name, value, key: Date.now()}
 }
