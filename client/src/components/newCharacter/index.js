@@ -7,61 +7,33 @@ import {StatBlock, SavingProfs, GearBlock, ItemElement, BioTraits, CharacterHead
 
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import {characterInputChange} from "../../redux/actions/actions";
+import {characterInputChange, setBlankCharacter} from "../../redux/actions/actions";
 
 import "./style.css"
 
 class NewCharacter extends Component {
-    onTextChange = (event) => {
-        this.props.characterInputChange(event.target.name, event.target.value);
+    componentDidMount = () => {
+        this.props.setBlankCharacter();
+
     }
     render(){
         return (
             <div className="characterSheet">
                 <Grid container spacing={1}>
                     <Grid item xs={12}>
-                        <CharacterHeader
-                            onTextChange = {this.onTextChange}
-                            name= {this.state.playerCharacter.name}
-                            level = {this.state.playerCharacter.level}
-                            playerClass = {this.state.playerCharacter.playerClass}
-                            background = {this.state.playerCharacter.background}
-                            race = {this.state.playerCharacter.playerRace}
-                            alignment = {this.state.playerCharacter.alignment}
-                            experience = {this.state.playerCharacter.experience}
-                        />
+                        <CharacterHeader/>
                     </Grid>
                     <Grid item xs={2}>
-                        <StatBlock
-                            stats = {this.state.playerCharacter.stats}
-                            statMods = {this.state.statMods}
-                        />
+                        <StatBlock/>
                     </Grid>
-                        <Grid xs={2} item>
-                            <SavingProfs
-                                proficiencyBonus={this.state.playerCharacter.proficiencyBonus} 
-                                primaryStats={this.state.playerCharacter.primaryStats}
-                                skillProficiency={this.state.playerCharacter.skillProficiency}
-                            />
-                            
-                        </Grid>
+                    <Grid xs={2} item>
+                        <SavingProfs/>
+                    </Grid>
                    <Grid item xs={4}>
-                        <GearBlock 
-                            armorClass ={this.state.playerCharacter.armorClass}
-                            initiative= {this.state.playerCharacter.initiative}
-                            speed = {this.state.playerCharacter.speed}
-                            health = {this.state.playerCharacter.health}
-                            hitDie= {this.state.playerCharacter.hitDie}
-                            level = {this.state.playerCharacter.level}
-                            inventory = {this.state.playerCharacter.inventory}
-                        />
-
+                        <GearBlock />
                     </Grid>
                     <Grid item xs={4} spacing={3}>
-                        <BioTraits 
-                            bio = {this.state.playerCharacter.bio}
-                            featsAndTraits = {this.state.playerCharacter.featsAndTraits}
-                        />
+                        <BioTraits />
                     </Grid>
             </Grid>
             </div>

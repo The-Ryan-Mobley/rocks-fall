@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import {USER_INPUT_CHANGE, USER_CREATE_ACCOUNT, USER_LOGIN, SAVE_SESSION_DATA} from "../actions/actions";
 import {LOBBY_INPUT_CHANGE, LOBBY_HOST_DATA, LOBBY_USER_JOIN, LOBBY_USER_SET, LOBBY_MESSAGE_RESET, LOBBY_MESSAGE_CHANGE, LOBBY_MESSAGE_ADD} from "../actions/actions";
-import {CHARACTER_INPUT_CHANGE, CHARACTER_STATS_CHANGE} from "../actions/actions";
+import {CHARACTER_INPUT_CHANGE, CHARACTER_STATS_CHANGE, SET_BLANK_CHARACTER} from "../actions/actions";
 
 const initialState = {
     userData: {
@@ -210,8 +210,15 @@ const characterReducer = (state = initialState, action) => {
                 ...state,
                 playerCharacter: {
                     ...state.playerCharacter,
-                    stats: action.statArr
+                    stats: action.statArray
+                    
                 }
+            }
+        }
+        case SET_BLANK_CHARACTER : {
+            return {
+                ...state,
+                playerCharacter: action.blankCharacter
             }
         }
 

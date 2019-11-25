@@ -13,6 +13,7 @@ export const LOBBY_MESSAGE_CHANGE = "LOBBY_MESSAGE_CHANGE";
 
 export const CHARACTER_INPUT_CHANGE = "CHARACTER_INPUT_CHANGE";
 export const CHARACTER_STATS_CHANGE = "CHARACTER_STATS_CHANGE";
+export const SET_BLANK_CHARACTER = "SET_BLANK_CHARACTER";
 
 
 export const userInputChange = (name, value) =>{
@@ -53,6 +54,44 @@ export const lobbyMessageChange = (name , value) => {
 export const characterInputChange = (name, value) => {
     return {type: CHARACTER_INPUT_CHANGE, name, value, key: Date.now()}
 }
-export const characterStatsChange = (statArr) => {
-    return {type: CHARACTER_STATS_CHANGE, statArr, key: Date.now()}
+export const characterStatsChange = (statArray) => {
+    return {type: CHARACTER_STATS_CHANGE, statArray, key: Date.now()}
+}
+export const setBlankCharacter = () => {
+    const blankCharacter = {
+        name: "",
+        level: null,
+        health: null,
+        hitDie: null,
+        experience: null,
+        stats: [8,8,8,8,8,8],
+        primaryStats: ["",""],
+        playerClass: "",
+        subClass: "",
+        playerRace: "",
+        background: "",
+        personalityTraits: "",
+        ideals: "",
+        bonds: "",
+        flaws: "",
+        bio: "",
+        alignment: "",
+        currency: [0,0,0,0,0],
+        attunementSlots: ["open","open","open"],
+        proficiencyBonus: 2,
+        skillProficiency: ["",""],
+        toolProficiency: "",
+        laguages: ["",""],
+        armorClass: null,
+        initiative: null,
+        speed: null,
+        spellCasting: false,
+        spellSlots: [0,0,0,0,0,0,0,0,0],
+        spellCastingStat: [""],
+        spellsKnown: {},
+        inventory: {},
+        featsAndTrais: {},
+        authorId: ""
+    }
+    return {type: SET_BLANK_CHARACTER, blankCharacter, key: Date.now()}
 }
