@@ -16,6 +16,7 @@ export const CHARACTER_STATS_CHANGE = "CHARACTER_STATS_CHANGE";
 export const SET_BLANK_CHARACTER = "SET_BLANK_CHARACTER";
 
 
+
 export const userInputChange = (name, value) =>{
     return { type: USER_INPUT_CHANGE, name, value, key: Date.now()};
 }

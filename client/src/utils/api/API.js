@@ -28,6 +28,9 @@ export default {
         return axios.delete("/api/lobby/delete/"+lobbyId);
     },
     //character Routes
+    createCharacter: (characterData) => {
+        return axios.post("api/game/createCharacter", characterData);
+    },
     //spell Routes
     spellsByClass: (playerClass)=>{
         return axios.get("/api/game/spells/"+playerClass);
