@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import {USER_INPUT_CHANGE, USER_CREATE_ACCOUNT, USER_LOGIN, SAVE_SESSION_DATA} from "../actions/actions";
 import {LOBBY_INPUT_CHANGE, LOBBY_HOST_DATA, LOBBY_USER_JOIN, LOBBY_USER_SET, LOBBY_MESSAGE_RESET, LOBBY_MESSAGE_CHANGE, LOBBY_MESSAGE_ADD} from "../actions/actions";
-import {CHARACTER_INPUT_CHANGE} from "../actions/actions";
+import {CHARACTER_INPUT_CHANGE, CHARACTER_STATS_CHANGE} from "../actions/actions";
 
 const initialState = {
     userData: {
@@ -30,13 +30,8 @@ const initialState = {
         health: null,
         hitDie: null,
         experience: null,
-        strength: null,
-        dexterity: null,
-        constitution: null,
-        wisdom: null,
-        intelligence: null,
-        charisma: null,
-        primaryStats: [],
+        stats: [8,8,8,8,8,8],
+        primaryStats: ["",""],
         playerClass: "",
         subClass: "",
         playerRace: "",
@@ -47,18 +42,18 @@ const initialState = {
         flaws: "",
         bio: "",
         alignment: "",
-        currency: [],
-        attunementSlots: [],
+        currency: [0,0,0,0,0],
+        attunementSlots: ["open","open","open"],
         proficiencyBonus: 2,
-        skillProficiency: [],
+        skillProficiency: ["",""],
         toolProficiency: "",
-        laguages: [],
+        laguages: ["",""],
         armorClass: null,
         initiative: null,
         speed: null,
         spellCasting: false,
-        spellSlots: [],
-        spellCastingStat: [],
+        spellSlots: [0,0,0,0,0,0,0,0,0],
+        spellCastingStat: [""],
         spellsKnown: {},
         inventory: {},
         featsAndTrais: {},
@@ -207,6 +202,15 @@ const characterReducer = (state = initialState, action) => {
                 playerCharacter: {
                     ...state.playerCharacter,
                     [action.name]: action.value
+                }
+            }
+        }
+        case CHARACTER_STATS_CHANGE : {
+            return {
+                ...state,
+                playerCharacter: {
+                    ...state.playerCharacter,
+                    stats: action.statArr
                 }
             }
         }

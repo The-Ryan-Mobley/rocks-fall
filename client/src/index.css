@@ -101,3 +101,11 @@ code {
 .profileInfo{
   margin-top: 1% !important;
 }
+.box{
+  margin: 1%;
+  background-color: #f8f0e49d;;
+  font-family: 'Eagle Lake', cursive;
+}
+.itemName{
+  text-align: center;
+}

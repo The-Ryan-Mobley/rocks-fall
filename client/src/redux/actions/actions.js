@@ -9,9 +9,10 @@ export const LOBBY_USER_JOIN = "LOBBY_USER_JOIN"; //when user joins push to lobb
 export const LOBBY_USER_SET = "LOBBY_USER_SET"; 
 export const LOBBY_MESSAGE_RESET = "LOBBY_MESSAGE_RESET";
 export const LOBBY_MESSAGE_ADD = "LOBBY_MESSAGE_ADD";
-export const LOBBY_MESSAGE_CHANGE = "LOBBY_MESSAGE_CHANGE"
+export const LOBBY_MESSAGE_CHANGE = "LOBBY_MESSAGE_CHANGE";
 
-export const CHARACTER_INPUT_CHANGE = "CHARACTER_INPUT_CHANGE"
+export const CHARACTER_INPUT_CHANGE = "CHARACTER_INPUT_CHANGE";
+export const CHARACTER_STATS_CHANGE = "CHARACTER_STATS_CHANGE";
 
 
 export const userInputChange = (name, value) =>{
@@ -51,4 +52,7 @@ export const lobbyMessageChange = (name , value) => {
 
 export const characterInputChange = (name, value) => {
     return {type: CHARACTER_INPUT_CHANGE, name, value, key: Date.now()}
+}
+export const characterStatsChange = (statArr) => {
+    return {type: CHARACTER_STATS_CHANGE, statArr, key: Date.now()}
 }
