@@ -118,7 +118,11 @@ const playerCharacterSchema = new Schema({
     },
     spellSaveDc: {
         type: Number,
-        default: 8
+        default: 10
+    },
+    spellAttackBonus: {
+        type: Number,
+        default: 0
     },
     spellSlots: {
         type: [Number],
@@ -129,8 +133,8 @@ const playerCharacterSchema = new Schema({
         default: []
     },
     spellCastingStat: {
-        type: [String],
-        default: [`none`]
+        type: String,
+        default: `none`
     },
     spellsKnown: {
         type: Object,

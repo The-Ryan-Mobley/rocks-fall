@@ -28,7 +28,10 @@ const mapDispatchToProps = dispatch =>
 class SpellHeader extends Component {
     state = {
         classDropdown: false,
-        spellCasters: ["Bard", "Cleric", "Druid","Paladin","Ranger","Sorcerer","Warlock","Wizard"]
+        spellCasters: ["Bard", "Cleric", "Druid","Paladin","Ranger","Sorcerer","Warlock","Wizard"],
+    }
+    componentWillMount = () => {
+
     }
     handleClick = () => {
         this.setState({classDropdown: true});
@@ -40,6 +43,9 @@ class SpellHeader extends Component {
     }
     optionValues = (event, selectedIndex) => {
         console.log(selectedIndex);
+    }
+    onTextChange = event => {
+        this.props.characterInputChange(event.target.name , event.target.value);
     }
     render(){
         return(
@@ -54,7 +60,7 @@ class SpellHeader extends Component {
                             id="simple-menu"
                             keepMounted 
                             open={this.state.classDropdown}
-                            name="spellCastingStat"
+                            name="spellCastingClass"
                             onChange={this.optionValues}
                         >
                             {this.state.spellCasters.map(caster => (
@@ -66,6 +72,50 @@ class SpellHeader extends Component {
                                 </MenuItem>
                             ))}
                         </Menu>
+                    </Grid>
+                    <Grid item xs={9} direction="row">
+                        <div className="headerInfoTop box">
+                            <Grid container item xs={12} direction="row" spacing={1}>
+                                <Grid item xs={4}>
+                                <Input 
+                                    id="playerClass"
+                                    label="Spell Stat"
+                                    defaultValue= {this.props.playerCharacter.spellCastingStat ? 
+                                        (this.props.playerCharacter.spellCastingStat) : ("stat")}
+                                    variant="filled"
+                                    color="secondary"
+                                    name="spellCastingStat"
+                                    onChange={this.onTextChange}
+                                />
+                                </Grid>
+                                <Grid item xs={4}>
+                                <Input 
+                                    id="playerClass"
+                                    label="Spell Atk Bonus"
+                                    defaultValue= {this.props.playerCharacter.spellAttackBonus ? 
+                                        (this.props.playerCharacter.spellAttackBonus) : ("0")}
+                                    variant="filled"
+                                    color="secondary"
+                                    name="spellAttackBonus"
+                                    onChange={this.onTextChange}
+                                />
+
+                                </Grid>
+                                <Grid item xs={4}>
+                                <Input 
+                                    id="playerClass"
+                                    label="Spell Save DC"
+                                    defaultValue= {this.props.playerCharacter.spellSaveDc ? 
+                                        (this.props.playerCharacter.SpellSaveDc) : ("8")}
+                                    variant="filled"
+                                    color="secondary"
+                                    name="spellSaveDc"
+                                    onChange={this.onTextChange}
+                                />
+
+                                </Grid>
+                            </Grid>
+                        </div>
                     </Grid>
                 </Grid>
             </div>
