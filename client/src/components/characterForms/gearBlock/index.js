@@ -28,108 +28,75 @@ const mapDispatchToProps = dispatch =>
 
 
   class GearBlock extends Component {
+    onTextChange = event => {
+        this.props.characterInputChange(event.target.name, event.target.value);  
+    }
     render(){
         return(
             <div className="gearBlock box">
                 <Grid container spacing={1} direction="row">
                             <Grid item xs={4}>
-                                {this.props.armorClass ? (
-                                    <div className="AC">
-                                    <p>AC:</p>
+                                <div className="AC">
                                     <Input
                                         id="armor"
-                                        defaultValue={this.props.armorClass}
+                                        label="AC"
+                                        defaultValue={this.props.playerCharacter.armorClass ? 
+                                            (this.props.playerCharacter.armorClass) : ("10")}
                                         variant="filled"
-                                        color="secondary" 
+                                        color="secondary"
+                                        name="armorClass" 
+                                        onChange={this.props.characterInputChange}
                                     />
                                 </div>
-                                ) : (
-                                    <div className="AC">
-                                    <p>AC:</p>
-                                    <Input
-                                        id="armor"
-                                        placeholder="AC"
-                                        variant="filled"
-                                        color="secondary" 
-                                    />
-                                </div>
-                                )}
                             </Grid>
                             <Grid item xs={4}>
-                                {this.props.initiative ? (
-                                    <div className="INIT">
-                                    <p>INIT:</p>
+                                <div className="INIT">
                                     <Input
                                         id="init"
-                                        defaultValue={this.props.initiative}
+                                        label="INIT"
+                                        defaultValue={this.props.playerCharacter.initiative ? 
+                                            (this.props.playerCharacter.initiative) : ("0")}
                                         variant="filled"
                                         color="secondary" 
+                                        name="initiative"
+                                        onChange={this.props.characterInputChange}
                                     />
                                     </div>
-                                ) : (
-                                    <div className="INIT">
-                                    <p>INIT:</p>
-                                    <Input
-                                        id="init"
-                                        placeholder="initiative"
-                                        variant="filled"
-                                        color="secondary" 
-                                    />
-                                </div>
-                                )}
                             </Grid>
                             <Grid item xs={4}>
-                            <div className="SPEED">
-                                <p>SPEED:</p>
-                                {this.props.speed ? (    
-                                    <Input
-                                        id="speed"
-                                        defaultValue={this.props.speed}
-                                        variant="filled"
-                                        color="secondary" 
-                                    />
-                                ) : (
-                                    <Input
-                                        id="speed"
-                                        placeholder="speed"
-                                        variant="filled"
-                                        color="secondary" 
-                                    />
-                                )}
-                                </div>
+                            <div className="SPEED">   
+                                <Input
+                                    id="speed"
+                                    defaultValue={this.props.playerCharacter.speed ? 
+                                        (this.props.playerCharacter.speed) : ("30")}
+                                    variant="filled"
+                                    color="secondary"
+                                    name="speed"
+                                    onChange={this.props.characterInputChange} 
+                                />
+                            </div>
                             </Grid>
                         </Grid>
                         <Grid spacing={1} item>
-                            {this.props.health ? (
                                 <Input
-                                id="health"
-                                defaultValue={this.props.health}
-                                variant="filled"
-                                color="secondary" 
+                                    id="health"
+                                    defaultValue={this.props.playerCharacter.health ? 
+                                        (this.props.playerCharacter.health) : ("0")}
+                                    variant="filled"
+                                    color="secondary"
+                                    name="health"
+                                    onChange={this.props.characterInputChange} 
                                 />
-                            ) : (
                                 <Input
-                                id="health"
-                                placeholder="HP"
-                                variant="filled"
-                                color="secondary" 
+                                    id="hit die"
+                                    defaultValue={this.props.playerCharacter.hitDie ? 
+                                        (`${this.props.playerCharacter.level} d${this.props.playerCharacter.hitDie}`) : 
+                                        ("1d8")}
+                                    variant="filled"
+                                    color="secondary"
+                                    name="hitDie"
+                                    onChange={this.props.characterInputChange} 
                                 />
-                            )}
-                            {this.props.hitDie ? (
-                                <Input
-                                id="hit die"
-                                defaultValue={`${this.props.level} d${this.props.hitDie}`}
-                                variant="filled"
-                                color="secondary" 
-                                />
-                            ) : (
-                                <Input
-                                id="hit die"
-                                placeholder="hit die"
-                                variant="filled"
-                                color="secondary" 
-                                />
-                            )}
                         </Grid>
                         <Grid spacing={1} item>
                             <p><strong>Inventory: </strong></p>

@@ -52,12 +52,11 @@ const mapDispatchToProps = dispatch =>
                             <Grid container item xs={12} direction="row" spacing={1}>
                                 <Input 
                                     id="playerClass"
-                                    defaultValue= {this.props.playerCharacter.playerClass.length ? 
+                                    defaultValue= {this.props.playerCharacter.playerClass ? 
                                         (this.props.playerCharacter.playerClass) : ("class")}
                                     variant="filled"
                                     color="secondary"
                                     name="playerClass"
-                                    value={this.props.playerCharacter.playerClass}
                                     onChange={this.onTextChange}
                                 />
                                 <p>level: </p>
@@ -68,7 +67,6 @@ const mapDispatchToProps = dispatch =>
                                     variant="filled"
                                     color="secondary"
                                     name="level"
-                                    value={this.props.playerCharacter.level}
                                     onChange={this.onTextChange}
 
                                 />
@@ -79,7 +77,6 @@ const mapDispatchToProps = dispatch =>
                                     variant="filled"
                                     color="secondary"
                                     name="background"
-                                    value={this.props.playerCharacter.background}
                                     onChange={this.onTextChange}
                                 />
                             </Grid>
@@ -93,7 +90,6 @@ const mapDispatchToProps = dispatch =>
                                     variant="filled"
                                     color="secondary"
                                     name="playerRace"
-                                    value={this.props.playerCharacter.playerRace}
                                     onChange={this.onTextChange}
                                 />
                                 <Input
@@ -103,7 +99,6 @@ const mapDispatchToProps = dispatch =>
                                     variant="filled"
                                     color="secondary"
                                     name="alignment"
-                                    value={this.props.playerCharacter.alignment}
                                     onChange={this.onTextChange}
                                 />                            
                                 <Input
@@ -112,7 +107,6 @@ const mapDispatchToProps = dispatch =>
                                     variant="filled"
                                     color="secondary"
                                     name="experience"
-                                    value={this.props.playerCharacter.experience}
                                     onChange={this.onTextChange}
                                 />
                             </Grid>
