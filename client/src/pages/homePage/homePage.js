@@ -16,6 +16,7 @@ import { withStyles } from '@material-ui/core/styles'
 import MakeLobby from "../../components/makeLobby";
 import JoinLobby from "../../components/joinLobby";
 import Charactersheet from "../../components/characterSheet";
+import SpellSheet from "../../components/spellSheet";
 
 
 export default class HomePage extends Component{
@@ -60,7 +61,7 @@ export default class HomePage extends Component{
                     </Grid>
                     <Grid item container xs={12} direction="row" alignItems="center" justify="center" spacing={5}>
                         <h1>Chat</h1>
-                        <Charactersheet/>
+                        <SpellSheet/>
                     </Grid>
                     
                     

@@ -116,13 +116,17 @@ const playerCharacterSchema = new Schema({
         type: Number,
         default: 30
     },
-    spellCasting: {
-        type: Boolean,
-        default: false
+    spellSaveDc: {
+        type: Number,
+        default: 8
     },
     spellSlots: {
         type: [Number],
         default: [0,0,0,0,0,0,0,0,0]
+    },
+    spellCastingClass: {
+        type: [String],
+        default: []
     },
     spellCastingStat: {
         type: [String],
