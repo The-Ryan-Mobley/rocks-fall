@@ -3,7 +3,18 @@ import Grid from '@material-ui/core/Grid';
 import Input from '@material-ui/core/Input';
 import { sizing } from '@material-ui/system';
 import Box from '@material-ui/core/Box';
-import {SpellHeader} from "../spellForms";
+import {SpellHeader, SpellBlock} from "../spellForms";
+
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import {characterInputChange} from "../../../redux/actions/actions";
+
+
+const mapStateToProps = state => {
+    return { 
+        playerCharacter: state.characterReducer.playerCharacter
+     };
+  };
 
 export default class CharacterSheet extends Component{
     componentDidMount(){
@@ -16,9 +27,24 @@ export default class CharacterSheet extends Component{
                         <SpellHeader
                         />
                     </Grid>
+                    <Grid item container direction="column" xs={12}>
+                        {this.props.playerCharacter.spellSlots.map(slot, index => {
+                            <Grid item container xs={4}>
+                                <SpellBlock 
+                                    spellSlots={this.props.playerCharacter.spellSlots[index]}
+                                    spellLevel={index}
+                                />
+                            </Grid>
+                        })}
+                        
+                    </Grid>
                     
             </Grid>
             </div>
         )
     }
 }
+
+export default connect(
+    mapStateToProps,
+  )(SpellSheet);

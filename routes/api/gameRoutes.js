@@ -9,6 +9,10 @@ router
 router
     .route("/spells/:level")
     .get(spellController.spellsByLevel);
+//"/api/game/spells/"+level+"&"+playerClass
+router
+    .route("/spells/:level&:playerClass")
+    .get(spellController.spellsByLevelAndClass)
 router
     .route("/createCharacter")
     .post(playerController.createCharacter);

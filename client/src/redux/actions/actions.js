@@ -14,6 +14,10 @@ export const LOBBY_MESSAGE_CHANGE = "LOBBY_MESSAGE_CHANGE";
 export const CHARACTER_INPUT_CHANGE = "CHARACTER_INPUT_CHANGE";
 export const CHARACTER_STATS_CHANGE = "CHARACTER_STATS_CHANGE";
 export const SET_BLANK_CHARACTER = "SET_BLANK_CHARACTER";
+export const UPDATE_SPELL_SLOTS= "UPDATE_SPELL_SLOTS";
+
+export const SET_SPELL_QUERY = "SET_SPELL_QUERY";
+
 
 
 
@@ -58,6 +62,9 @@ export const characterInputChange = (name, value) => {
 export const characterStatsChange = (statArray) => {
     return {type: CHARACTER_STATS_CHANGE, statArray, key: Date.now()}
 }
+export const updateSpellSlots = (slotArray) => {
+    return {type: UPDATE_SPELL_SLOTS, slotArray, key: Date.now()}
+}
 export const setBlankCharacter = () => {
     const blankCharacter = {
         name: "",
@@ -95,4 +102,8 @@ export const setBlankCharacter = () => {
         authorId: ""
     }
     return {type: SET_BLANK_CHARACTER, blankCharacter, key: Date.now()}
+}
+
+export const setSpellQuery = (spellArray) => {
+    return {type: SET_SPELL_QUERY, spellArray, key: Date.now()}
 }
