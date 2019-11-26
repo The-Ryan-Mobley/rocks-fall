@@ -25,7 +25,7 @@ const initialState = {
         }
     },
     playerCharacter: {
-        name: "",
+        characterName: "",
         level: null,
         health: null,
         hitDie: null,
@@ -195,8 +195,9 @@ const lobbyManipulation = (state = initialState, action) => {
 
 }
 const characterReducer = (state = initialState, action) => {
-    switch(action.state){
+    switch(action.type){
         case CHARACTER_INPUT_CHANGE : {
+            
             return {
                 ...state,
                 playerCharacter: {

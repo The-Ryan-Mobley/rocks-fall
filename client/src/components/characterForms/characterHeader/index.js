@@ -26,6 +26,10 @@ const mapDispatchToProps = dispatch =>
   );
 
   class CharacterHeader extends Component{
+    onTextChange = event => {
+        this.props.characterInputChange(event.target.name, event.target.value);
+        
+    }
     render(){
         return(
             <div className="characterHeader box">
@@ -34,9 +38,12 @@ const mapDispatchToProps = dispatch =>
                         <div classname="charName box">
                             <Input 
                                 id="nameInput"
-                                defaultValue={this.props.name ? (this.props.name) : ("Character Name")}
+                                defaultValue={this.props.playerCharacter.characterName.length ? 
+                                    (this.props.playerCharacter.characterName) : ("Character Name")}
                                 variant="filled"
-                                color="secondary" 
+                                color="secondary"
+                                name="characterName"
+                                onChange={this.onTextChange}
                             />
                         </div>
                     </Grid>
@@ -45,23 +52,35 @@ const mapDispatchToProps = dispatch =>
                             <Grid container item xs={12} direction="row" spacing={1}>
                                 <Input 
                                     id="playerClass"
-                                    defaultValue= {this.props.playerClass ? (this.props.playerClass) : ("class")}
+                                    defaultValue= {this.props.playerCharacter.playerClass.length ? 
+                                        (this.props.playerCharacter.playerClass) : ("class")}
                                     variant="filled"
                                     color="secondary"
+                                    name="playerClass"
+                                    value={this.props.playerCharacter.playerClass}
+                                    onChange={this.onTextChange}
                                 />
                                 <p>level: </p>
                                 <Input
                                     id="level"
-                                    defaultValue= {this.props.level ? (this.props.level) : ("?")}
+                                    defaultValue= {this.props.playerCharacter.level ? 
+                                        (this.props.playerCharacter.level) : ("?")}
                                     variant="filled"
                                     color="secondary"
+                                    name="level"
+                                    value={this.props.playerCharacter.level}
+                                    onChange={this.onTextChange}
 
                                 />
                                 <Input
                                     id="background"
-                                    defaultValue= {this.props.background ? (this.props.background) : ("background")}
+                                    defaultValue= {this.props.playerCharacter.background.length ? 
+                                        (this.props.playerCharacter.background) : ("background")}
                                     variant="filled"
                                     color="secondary"
+                                    name="background"
+                                    value={this.props.playerCharacter.background}
+                                    onChange={this.onTextChange}
                                 />
                             </Grid>
                         </div>
@@ -69,20 +88,32 @@ const mapDispatchToProps = dispatch =>
                             <Grid container item xs={12} direction="row" spacing={1}>
                                 <Input
                                     id="playerRace"
-                                    defaultValue= {this.props.race ? (this.props.race) : ("Player Race")}
+                                    defaultValue= {this.props.playerCharacter.playerRace.length ? 
+                                        (this.props.playerCharacter.playerRace) : ("Player Race")}
                                     variant="filled"
                                     color="secondary"
+                                    name="playerRace"
+                                    value={this.props.playerCharacter.playerRace}
+                                    onChange={this.onTextChange}
                                 />
                                 <Input
                                     id="alignment"
-                                    defaultValue= {this.props.alignment ? (this.props.alignment) : ("alignment")}
+                                    defaultValue= {this.props.playerCharacter.alignment.length ? 
+                                        (this.props.playerCharacter.alignment) : ("alignment")}
                                     variant="filled"
                                     color="secondary"
+                                    name="alignment"
+                                    value={this.props.playerCharacter.alignment}
+                                    onChange={this.onTextChange}
                                 />                            
                                 <Input
-                                    defaultValue= {this.props.experience ? (this.props.experience) : ("experience")}
+                                    defaultValue= {this.props.playerCharacter.experience ? 
+                                        (this.props.playerCharacter.experience) : ("experience")}
                                     variant="filled"
                                     color="secondary"
+                                    name="experience"
+                                    value={this.props.playerCharacter.experience}
+                                    onChange={this.onTextChange}
                                 />
                             </Grid>
                         </div>

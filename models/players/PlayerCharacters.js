@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const playerCharacterSchema = new Schema({
-    name: {
+    characterName: {
         type: String,
         trim: true,
         required: `charcters need a name`

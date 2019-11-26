@@ -40,7 +40,6 @@ const mapDispatchToProps = dispatch =>
         statArray.splice(index, 1, parseInt(event.target.value));
         this.props.characterStatsChange(statArray);
         this.calcStatModifiers();
-        console.log(this.props.playerCharacter.stats);
 
     }
     calcStatModifiers = () => {
