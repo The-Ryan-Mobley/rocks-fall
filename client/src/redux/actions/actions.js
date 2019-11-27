@@ -15,6 +15,7 @@ export const CHARACTER_INPUT_CHANGE = "CHARACTER_INPUT_CHANGE";
 export const CHARACTER_STATS_CHANGE = "CHARACTER_STATS_CHANGE";
 export const SET_BLANK_CHARACTER = "SET_BLANK_CHARACTER";
 export const UPDATE_SPELL_SLOTS= "UPDATE_SPELL_SLOTS";
+export const UPDATE_SPELLS_KNOWN = "UPDATE_SPELLS_KNOWN";
 
 export const SET_SPELL_QUERY = "SET_SPELL_QUERY";
 
@@ -64,6 +65,9 @@ export const characterStatsChange = (statArray) => {
 }
 export const updateSpellSlots = (slotArray) => {
     return {type: UPDATE_SPELL_SLOTS, slotArray, key: Date.now()}
+}
+export const updateSpellsKnown = (knownArray) => {
+    return {type: UPDATE_SPELLS_KNOWN, knownArray, key: Date.now()}
 }
 export const setBlankCharacter = () => {
     const blankCharacter = {

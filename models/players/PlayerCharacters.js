@@ -137,11 +137,10 @@ const playerCharacterSchema = new Schema({
         default: `none`
     },
     spellsKnown: {
-        type: Object,
-        default: {
-            level0: [`none`],
-            level1: [`none`]
-        }
+        type: [Object],
+        default: [
+            {}
+        ]
     },
     inventory: {
         type: [Object],

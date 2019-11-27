@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
+
 import Grid from '@material-ui/core/Grid';
 import Input from '@material-ui/core/Input';
 import { sizing } from '@material-ui/system';
 import Box from '@material-ui/core/Box';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+
 import {SpellHeader, SpellBlock} from "../spellForms";
 
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import {characterInputChange} from "../../../redux/actions/actions";
+import {characterInputChange} from "../../redux/actions/actions";
 
 
 const mapStateToProps = state => {
@@ -15,9 +19,17 @@ const mapStateToProps = state => {
         playerCharacter: state.characterReducer.playerCharacter
      };
   };
+  const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      characterInputChange
+    },
+    dispatch
+  );
 
-export default class CharacterSheet extends Component{
+class SpellSheet extends Component{
     componentDidMount(){
+        
     }
     render(){
         return(
@@ -28,14 +40,14 @@ export default class CharacterSheet extends Component{
                         />
                     </Grid>
                     <Grid item container direction="column" xs={12}>
-                        {this.props.playerCharacter.spellSlots.map(slot, index => {
+                        {this.props.playerCharacter.spellSlots.map( (slot, index) => (
                             <Grid item container xs={4}>
                                 <SpellBlock 
-                                    spellSlots={this.props.playerCharacter.spellSlots[index]}
+                                    spellSlots={slot}
                                     spellLevel={index}
                                 />
                             </Grid>
-                        })}
+                        ))}
                         
                     </Grid>
                     
@@ -47,4 +59,5 @@ export default class CharacterSheet extends Component{
 
 export default connect(
     mapStateToProps,
+    mapDispatchToProps
   )(SpellSheet);

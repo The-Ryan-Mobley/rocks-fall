@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import {USER_INPUT_CHANGE, USER_CREATE_ACCOUNT, USER_LOGIN, SAVE_SESSION_DATA} from "../actions/actions";
 import {LOBBY_INPUT_CHANGE, LOBBY_HOST_DATA, LOBBY_USER_JOIN, LOBBY_USER_SET, LOBBY_MESSAGE_RESET, LOBBY_MESSAGE_CHANGE, LOBBY_MESSAGE_ADD} from "../actions/actions";
-import {CHARACTER_INPUT_CHANGE, CHARACTER_STATS_CHANGE, SET_BLANK_CHARACTER, UPDATE_SPELL_SLOTS} from "../actions/actions";
+import {CHARACTER_INPUT_CHANGE, CHARACTER_STATS_CHANGE, SET_BLANK_CHARACTER, UPDATE_SPELL_SLOTS, UPDATE_SPELLS_KNOWN} from "../actions/actions";
 import {SET_SPELL_QUERY} from "../actions/actions";
 
 const initialState = {
@@ -54,10 +54,10 @@ const initialState = {
         speed: null,
         spellSaveDc: 8,
         spellAttackBonus: 0,
-        spellSlots: [0,0,0,0,0,0,0,0,0],
-        spellCastingClass: "",
-        spellCastingStat: "",
-        spellsKnown: {},
+        spellSlots: [10,4,6,0,0,0,0,0,0],
+        spellCastingClass: "Bard",
+        spellCastingStat: "Charisma",
+        spellsKnown: [],
         inventory: {},
         featsAndTrais: {},
         authorId: ""
@@ -229,6 +229,15 @@ const characterReducer = (state = initialState, action) => {
                 }
             }
         }
+        case UPDATE_SPELLS_KNOWN : {
+            return {
+                ...state,
+                playerCharacter: {
+                    ...state.playerCharacter,
+                    spellsKnown: action.knownArray
+                }
+            }
+        }
         case SET_BLANK_CHARACTER : {
             return {
                 ...state,
@@ -257,7 +266,8 @@ const spellReducer = (state = initialState, action) => {
 const appFunctions = combineReducers({
     formManipulation,
     lobbyManipulation,
-    characterReducer
+    characterReducer,
+    spellReducer
 
 });
 

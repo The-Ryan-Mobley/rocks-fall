@@ -4,14 +4,7 @@ const spellController = require(`../../controller/spellController`);
 const playerController = require("../../controller/playerController");
 
 router
-    .route("/spells/:class")
-    .get(spellController.spellsByClass);
-router
-    .route("/spells/:level")
-    .get(spellController.spellsByLevel);
-//"/api/game/spells/"+level+"&"+playerClass
-router
-    .route("/spells/:level&:playerClass")
+    .route("/spells/levelAndClass")
     .get(spellController.spellsByLevelAndClass)
 router
     .route("/createCharacter")

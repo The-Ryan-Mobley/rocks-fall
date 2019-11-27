@@ -39,6 +39,6 @@ export default {
         return axios.get("/api/game/spells/"+level);
     },
     spellsByLevelAndClass: (level, playerClass) => {
-        return axios.get("/api/game/spells/"+level+"&"+playerClass);
+        return axios.get("/api/game/spells/levelAndClass", {params: {level, playerClass}});
     }
 };
