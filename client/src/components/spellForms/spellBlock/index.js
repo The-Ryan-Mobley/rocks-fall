@@ -3,21 +3,30 @@ import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
-import ListItemText from '@material-ui/core/ListItemText';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import Tooltip from '@material-ui/core/Tooltip';
+//import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import {characterInputChange, setSpellQuery, updateSpellSlots, updateSpellsKnown} from "../../../redux/actions/actions";
+import {
+    characterInputChange, 
+    setSpellQuery, 
+    updateSpellSlots, 
+    updateSpellsKnown, 
+    setViewdSpell
+} from "../../../redux/actions/actions";
 
 import API from "../../../utils/api/API";
+
 
 
 const mapStateToProps = state => {
     return { 
         playerCharacter: state.characterReducer.playerCharacter,
-        spellQuery: state.spellReducer.spellQuery
+        spellData: state.spellReducer.spellData,
+
      };
   };
 
@@ -27,7 +36,9 @@ const mapDispatchToProps = dispatch =>
       characterInputChange,
       setSpellQuery,
       updateSpellSlots,
-      updateSpellsKnown
+      updateSpellsKnown,
+      setViewdSpell
+      
     },
     dispatch
   );
@@ -38,6 +49,7 @@ class SpellBlock extends Component {
         spellArray: [],
         selectedSpell: {},
         spellMenu: false,
+        spellModal: false
     }
     componentDidMount = () => {
         if(this.props.playerCharacter.spellCastingStat) {
@@ -62,19 +74,19 @@ class SpellBlock extends Component {
     }
     selectSpell = (value) => {
         let selectedSpell = this.state.selectedSpell;
-        selectedSpell = value
+        selectedSpell = value;
+
         this.setState({selectedSpell});
-        console.log(this.state.selectedSpell);
+        this.props.setViewdSpell(selectedSpell)
     }
     addOption = (value) => {
-        console.log(value);
+
         this.selectSpell(value);
-        
         this.setState({spellMenu: false});
         
     }
     pushToKnown = () => {
-        console.log(this.state.selectedSpell);
+
         const selectedSpell = this.state.selectedSpell;
         let spellArray = undefined; 
         if(this.state.spellArray) {
@@ -93,7 +105,24 @@ class SpellBlock extends Component {
         this.props.updateSpellsKnown(spellsKnown);
 
     }
+    removeFromKnown = spell => {
+        let spellArray = this.state.spellArray;
+        spellArray.splice(spellArray.indexOf(spell), 1);
+
+        let spellsKnown = this.props.playerCharacter.spellsKnown;
+        spellsKnown.splice(this.props.spellLevel, 1, spellArray);
+
+
+        this.setState({spellArray, selectedSpell: {}});
+        this.props.updateSpellsKnown(spellsKnown);
+
+    }
+    displaySpellInfo = () => {
+        this.props.setViewdSpell(this.state.selectedSpell);
+
+    }
     render(){
+        
         return(
             <Grid item container direction="column" spacing={1}>
                 {this.props.spellLevel === 0 ? (<p>Cantrips</p>) : 
@@ -113,7 +142,7 @@ class SpellBlock extends Component {
                 {this.state.spellArray ?  (this.state.spellArray.map(spell => (
                     <Grid item container direction="row">
                         <Button>{spell.name}</Button>
-                        <Button>X</Button>
+                        <Button onClick={this.removeFromKnown.bind(this, spell)}>X</Button>
                     </Grid>
                 ))) : (<p></p>)}
                     <Button aria-controls="simple-menu" aria-haspopup="true" onClick={this.dropDownOpen}>

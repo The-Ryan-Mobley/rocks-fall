@@ -109,3 +109,6 @@ code {
 .itemName{
   text-align: center;
 }
+.noWrap{
+  max-width: none !important;
+}

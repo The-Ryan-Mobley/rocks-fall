@@ -18,6 +18,7 @@ export const UPDATE_SPELL_SLOTS= "UPDATE_SPELL_SLOTS";
 export const UPDATE_SPELLS_KNOWN = "UPDATE_SPELLS_KNOWN";
 
 export const SET_SPELL_QUERY = "SET_SPELL_QUERY";
+export const SET_VIEWED_SPELL = "SET_VIEWED_SPELL"
 
 
 
@@ -110,4 +111,7 @@ export const setBlankCharacter = () => {
 
 export const setSpellQuery = (spellArray) => {
     return {type: SET_SPELL_QUERY, spellArray, key: Date.now()}
+}
+export const setViewdSpell = (spell) => {
+    return {type: SET_VIEWED_SPELL, spell, key: Date.now()}
 }

@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 import {USER_INPUT_CHANGE, USER_CREATE_ACCOUNT, USER_LOGIN, SAVE_SESSION_DATA} from "../actions/actions";
 import {LOBBY_INPUT_CHANGE, LOBBY_HOST_DATA, LOBBY_USER_JOIN, LOBBY_USER_SET, LOBBY_MESSAGE_RESET, LOBBY_MESSAGE_CHANGE, LOBBY_MESSAGE_ADD} from "../actions/actions";
 import {CHARACTER_INPUT_CHANGE, CHARACTER_STATS_CHANGE, SET_BLANK_CHARACTER, UPDATE_SPELL_SLOTS, UPDATE_SPELLS_KNOWN} from "../actions/actions";
-import {SET_SPELL_QUERY} from "../actions/actions";
+import {SET_SPELL_QUERY, SET_VIEWED_SPELL} from "../actions/actions";
 
 const initialState = {
     userData: {
@@ -62,7 +62,10 @@ const initialState = {
         featsAndTrais: {},
         authorId: ""
     },
-    spellQuery: []
+    spellData: {
+        spellQuery: [],
+        viewedSpell: {}
+    }
   };
 const formManipulation = (state = initialState, action) => {
     switch(action.type){
@@ -254,7 +257,21 @@ const spellReducer = (state = initialState, action) => {
         case SET_SPELL_QUERY : {
             return {
                 ...state,
-                spellQuery: action.spellArray
+                spellData: {
+                    ...state.spellData,
+                    spellQuery: action.spellArray
+                }
+            }
+        }
+        case SET_VIEWED_SPELL : {
+            return {
+                ...state,
+                spellData: {
+                    ...state.spellData,
+                    viewedSpell: action.spell
+
+                }
+                
             }
         }
 
