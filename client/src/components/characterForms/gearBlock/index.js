@@ -9,7 +9,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import {characterInputChange} from "../../../redux/actions/actions";
 
-import ItemElement from "../itemElement";
+import {ItemElement, InventoryList} from "../";
 import "./style.css"
 
 const mapStateToProps = state => {
@@ -100,25 +100,8 @@ const mapDispatchToProps = dispatch =>
                         </Grid>
                         <Grid spacing={1} item>
                             <p><strong>Inventory: </strong></p>
-                            {this.props.inventory ? (this.props.inventory.map(item => (
-                                <ItemElement 
-                                    name = {item.name}
-                                    description = {item.description}
-                                />
-                            ))) : (<p></p>)}
-                            <Input
-                                id="addItemName"
-                                placeholder="name"
-                                variant="filled"
-                                color="secondary" 
-                            />
-                            <Input
-                                id="addItemDesc"
-                                placeholder="description"
-                                variant="filled"
-                                color="secondary" 
-                            />
-                            <Button>Add Item</Button>
+                            <InventoryList/>
+                            <ItemElement/>
                         </Grid>
 
             </div>

@@ -4,6 +4,7 @@ import GearBlock from "./gearBlock";
 import ItemElement from "./itemElement";
 import SavingProfs from "./savingProfs";
 import StatBlock from "./statBlock";
+import InventoryList from "./inventoryList";
 
 export {
     BioTraits,
@@ -11,5 +12,6 @@ export {
     ItemElement,
     SavingProfs,
     GearBlock,
-    StatBlock
+    StatBlock,
+    InventoryList
 }

@@ -62,7 +62,6 @@ const initialState = {
         bio: "",
         alignment: "",
         currency: [0,0,0,0,0],
-        attunementSlots: ["open","open","open"],
         proficiencyBonus: 2,
         skillProficiency: [],
         toolProficiency: "",
@@ -76,7 +75,7 @@ const initialState = {
         spellCastingClass: "Bard",
         spellCastingStat: "Charisma",
         spellsKnown: [],
-        inventory: {},
+        inventory: [],
         featsAndTrais: {},
         authorId: ""
     },

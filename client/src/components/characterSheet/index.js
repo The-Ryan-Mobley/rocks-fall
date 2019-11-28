@@ -3,7 +3,13 @@ import Grid from '@material-ui/core/Grid';
 import Input from '@material-ui/core/Input';
 import { sizing } from '@material-ui/system';
 import Box from '@material-ui/core/Box';
-import {StatBlock, SavingProfs, GearBlock, ItemElement, CharacterHeader, BioTraits} from "../characterForms";
+import {
+    StatBlock, 
+    SavingProfs, 
+    GearBlock, 
+    CharacterHeader, 
+    BioTraits, 
+} from "../characterForms";
 import "./style.css"
 
 export default class CharacterSheet extends Component{
