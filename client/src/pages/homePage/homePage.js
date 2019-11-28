@@ -61,7 +61,7 @@ export default class HomePage extends Component{
                     </Grid>
                     <Grid item container xs={12} direction="row" alignItems="center" justify="center" spacing={5}>
                         <h1>Chat</h1>
-                        <SpellSheet/>
+                        <Charactersheet/>
                         
                     </Grid>
                     

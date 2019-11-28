@@ -1,7 +1,25 @@
 import { combineReducers } from "redux";
 import {USER_INPUT_CHANGE, USER_CREATE_ACCOUNT, USER_LOGIN, SAVE_SESSION_DATA} from "../actions/actions";
-import {LOBBY_INPUT_CHANGE, LOBBY_HOST_DATA, LOBBY_USER_JOIN, LOBBY_USER_SET, LOBBY_MESSAGE_RESET, LOBBY_MESSAGE_CHANGE, LOBBY_MESSAGE_ADD} from "../actions/actions";
-import {CHARACTER_INPUT_CHANGE, CHARACTER_STATS_CHANGE, SET_BLANK_CHARACTER, UPDATE_SPELL_SLOTS, UPDATE_SPELLS_KNOWN} from "../actions/actions";
+import {
+    LOBBY_INPUT_CHANGE, 
+    LOBBY_HOST_DATA, 
+    LOBBY_USER_JOIN, 
+    LOBBY_USER_SET, 
+    LOBBY_MESSAGE_RESET, 
+    LOBBY_MESSAGE_CHANGE, 
+    LOBBY_MESSAGE_ADD
+} from "../actions/actions";
+
+import {
+    CHARACTER_INPUT_CHANGE, 
+    CHARACTER_STATS_CHANGE, 
+    SET_BLANK_CHARACTER, 
+    UPDATE_SPELL_SLOTS, 
+    UPDATE_SPELLS_KNOWN,
+    SET_PRIMARY_STATS,
+    SET_STRING_ARRAY
+} from "../actions/actions";
+
 import {SET_SPELL_QUERY, SET_VIEWED_SPELL} from "../actions/actions";
 
 const initialState = {
@@ -32,7 +50,7 @@ const initialState = {
         hitDie: null,
         experience: null,
         stats: [8,8,8,8,8,8],
-        primaryStats: ["",""],
+        primaryStats: [],
         playerClass: "",
         subClass: "",
         playerRace: "",
@@ -46,7 +64,7 @@ const initialState = {
         currency: [0,0,0,0,0],
         attunementSlots: ["open","open","open"],
         proficiencyBonus: 2,
-        skillProficiency: ["",""],
+        skillProficiency: [],
         toolProficiency: "",
         laguages: ["",""],
         armorClass: null,
@@ -238,6 +256,24 @@ const characterReducer = (state = initialState, action) => {
                 playerCharacter: {
                     ...state.playerCharacter,
                     spellsKnown: action.knownArray
+                }
+            }
+        }
+        case SET_PRIMARY_STATS : {
+            return {
+                ...state,
+                playerCharacter: {
+                    ...state.playerCharacter,
+                    primaryStats: action.statArray
+                }
+            }
+        }
+        case SET_STRING_ARRAY : {
+            return {
+                ...state,
+                playerCharacter: {
+                    ...state.playerCharacter,
+                    [action.name] : action.stringArray
                 }
             }
         }

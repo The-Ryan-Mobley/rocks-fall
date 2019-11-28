@@ -14,6 +14,8 @@ export const LOBBY_MESSAGE_CHANGE = "LOBBY_MESSAGE_CHANGE";
 export const CHARACTER_INPUT_CHANGE = "CHARACTER_INPUT_CHANGE";
 export const CHARACTER_STATS_CHANGE = "CHARACTER_STATS_CHANGE";
 export const SET_BLANK_CHARACTER = "SET_BLANK_CHARACTER";
+export const SET_PRIMARY_STATS = "SET_PRIMARY_STATS";
+export const SET_STRING_ARRAY = "SET_STRING_ARRAY";
 export const UPDATE_SPELL_SLOTS= "UPDATE_SPELL_SLOTS";
 export const UPDATE_SPELLS_KNOWN = "UPDATE_SPELLS_KNOWN";
 
@@ -69,6 +71,12 @@ export const updateSpellSlots = (slotArray) => {
 }
 export const updateSpellsKnown = (knownArray) => {
     return {type: UPDATE_SPELLS_KNOWN, knownArray, key: Date.now()}
+}
+export const setPrimaryStats = (statArray) => {
+    return {type: SET_PRIMARY_STATS, statArray, key: Date.now()}
+}
+export const setStringArray = (name, stringArray) => {
+    return {type: SET_STRING_ARRAY, name, stringArray, key: Date.now()}
 }
 export const setBlankCharacter = () => {
     const blankCharacter = {
