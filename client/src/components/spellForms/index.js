@@ -1,7 +1,9 @@
 import SpellHeader from "./spellHeader";
-import SpellBlock from "./spellBlock"
+import SpellBlock from "./spellBlock";
+import DescriptionBody from "./descriptionBody";
 
 export {
     SpellHeader,
-    SpellBlock
+    SpellBlock,
+    DescriptionBody
 }

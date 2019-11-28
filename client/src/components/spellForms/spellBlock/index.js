@@ -53,13 +53,10 @@ class SpellBlock extends Component {
     }
     componentDidMount = () => {
         if(this.props.playerCharacter.spellCastingStat) {
-            if(this.props.spellSlots > 0) {
-                API.spellsByLevelAndClass(this.props.spellLevel , this.props.playerCharacter.spellCastingClass)
-                .then(result => {
-                    
-                    this.setState({spellQuery: result.data});
-                });
-            }
+            API.spellsByLevelAndClass(this.props.spellLevel , this.props.playerCharacter.spellCastingClass)
+            .then(result => {      
+                this.setState({spellQuery: result.data});
+            });
         }
         if(this.props.playerCharacter.spellsKnown[this.props.spellLevel] !== null) {
             this.setState({spellArray: this.props.playerCharacter[this.props.spellLevel]});

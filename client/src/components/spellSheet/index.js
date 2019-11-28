@@ -7,7 +7,7 @@ import Box from '@material-ui/core/Box';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
-import {SpellHeader, SpellBlock} from "../spellForms";
+import {SpellHeader, SpellBlock, DescriptionBody} from "../spellForms";
 
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
@@ -38,6 +38,9 @@ class SpellSheet extends Component{
                     <Grid item xs={12}>
                         <SpellHeader
                         />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <DescriptionBody/>
                     </Grid>
                     <Grid item container direction="column" xs={12}>
                         {this.props.playerCharacter.spellSlots.map( (slot, index) => (
