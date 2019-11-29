@@ -15,14 +15,16 @@ import { withStyles } from '@material-ui/core/styles'
 
 import MakeLobby from "../../components/makeLobby";
 import JoinLobby from "../../components/joinLobby";
-import Charactersheet from "../../components/characterSheet";
-import SpellSheet from "../../components/spellSheet";
+import SheetModal from "../../components/sheetModal";
+//import Charactersheet from "../../components/characterSheet";
+//import SpellSheet from "../../components/spellSheet";
 
 
 export default class HomePage extends Component{
     state = {
         createModal: false,
-        joinModal: false
+        joinModal: false,
+        sheetModal: false
     }
     
     handleOpenCreate = (event) => {
@@ -43,6 +45,15 @@ export default class HomePage extends Component{
         event.preventDefault();
         this.setState({joinModal: false});
     };
+
+    handleOpenSheet = (event) => {
+        event.preventDefault();
+        this.setState({sheetModal: true});
+    }
+    handleCloseSheet = (event) => {
+        event.preventDefault();
+        this.setState({sheetModal: false});
+    }
     render(){
         return(
             <Wrapper>
@@ -61,11 +72,30 @@ export default class HomePage extends Component{
                     </Grid>
                     <Grid item container xs={12} direction="row" alignItems="center" justify="center" spacing={5}>
                         <h1>Chat</h1>
-                        <Charactersheet/>
+                        <Button className="modalButton shaded" onClick={this.handleOpenSheet}>CreateCharacter</Button>
                         
                     </Grid>
                     
                     
+
+
+                    <Modal
+                        aria-labelledby="transition-modal-title"
+                        aria-describedby="transition-modal-description"
+                        className="sheetModal"
+                        name="sheetModal"
+                        open={this.state.sheetModal}
+                        onClose={this.handleCloseSheet}
+                        closeAfterTransition
+                        BackdropComponent={Backdrop}
+                        BackdropProps={{
+                          timeout: 500,
+                        }}
+                    >
+                        <Fade in={this.state.sheetModal}>
+                            <SheetModal />
+                        </Fade>
+                    </Modal>
                     <Modal
                         aria-labelledby="transition-modal-title"
                         aria-describedby="transition-modal-description"

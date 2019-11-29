@@ -6,6 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #27492f;
+  overflow-y: scroll;
 }
 
 code {
@@ -69,10 +70,16 @@ code {
 .modalInput{
   text-align: center;
 }
-.modal{
+.modal,.sheetmodal{
   display: flex;
   align-Items: center;
   justify-Content: center;
+}
+.sheetModal{
+  margin-left: 10%;
+  max-width: 80%;
+  overflow-y: scroll;
+
 }
 .modalButton{
   background-color: #55462f !important;
