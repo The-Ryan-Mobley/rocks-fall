@@ -44,6 +44,7 @@ const initialState = {
         }
     },
     playerCharacter: {
+        _id: "",
         characterName: "",
         level: null,
         health: null,

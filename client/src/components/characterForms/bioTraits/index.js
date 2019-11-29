@@ -42,7 +42,7 @@ class BioTraits extends Component {
                         margin="normal"
                         name="personalityTraits"
                         defaultValue={this.props.playerCharacter.personalityTraits.length ? 
-                            (this.props.playerCharacter.personalityTraits) : ("Enter personality traits here")}
+                            (this.props.playerCharacter.personalityTraits) : ("")}
                     />
                 </div>
                 <div className="ideals">
@@ -55,7 +55,7 @@ class BioTraits extends Component {
                         margin="normal"
                         name="ideals"
                         defaultValue={this.props.playerCharacter.ideals.length ? 
-                            (this.props.playerCharacter.ideals) : ("Enter personality traits here")}
+                            (this.props.playerCharacter.ideals) : ("")}
                     />
                 </div>
                 <div className="bonds">
@@ -68,7 +68,7 @@ class BioTraits extends Component {
                         margin="normal"
                         name="ideals"
                         defaultValue={this.props.playerCharacter.bonds.length ? 
-                            (this.props.playerCharacter.bonds) : ("Enter personal bonds here")}
+                            (this.props.playerCharacter.bonds) : ("")}
                     />     
                 </div>
                 <div className="flaws">
@@ -81,7 +81,7 @@ class BioTraits extends Component {
                         margin="normal"
                         name="flaws"
                         defaultValue={this.props.playerCharacter.flaws.length ? 
-                            (this.props.playerCharacter.flaws) : ("Enter personal flaws here")}
+                            (this.props.playerCharacter.flaws) : ("")}
                     />
                 </div>
                 <div className="bio">
@@ -94,7 +94,7 @@ class BioTraits extends Component {
                         margin="normal"
                         name="bio"
                         defaultValue={this.props.playerCharacter.bio.length ? 
-                            (this.props.playerCharacter.bio) : ("Enter a short character biography")}
+                            (this.props.playerCharacter.bio) : ("")}
                     />
                 </div>
                 <FeatsAndTraits/>

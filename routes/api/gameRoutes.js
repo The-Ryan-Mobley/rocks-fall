@@ -5,10 +5,16 @@ const playerController = require("../../controller/playerController");
 
 router
     .route("/spells/levelAndClass")
-    .get(spellController.spellsByLevelAndClass)
+    .get(spellController.spellsByLevelAndClass);
 router
     .route("/createCharacter")
     .post(playerController.createCharacter);
+router
+    .route("/updateCharacter")
+    .put(playerController.updateCharacter);
+router
+    .route("/deleteCharacter/:id")
+    .delete(playerController.deleteCharacter);
 
 module.exports = router;
     

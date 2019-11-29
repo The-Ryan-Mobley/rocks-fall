@@ -29,7 +29,17 @@ export default {
     },
     //character Routes
     createCharacter: (characterData) => {
-        return axios.post("api/game/createCharacter", characterData);
+        return axios.post("/api/game/createCharacter", characterData);
+    },
+    userCharacterList: userId => {
+        return axios.get("/api/game/characterList/"+userId)
+
+    },
+    updateCharacter: characterData => {
+        return axios.put("/api/game/updateCharacter", characterData);
+    },
+    deleteCharacter: id => {
+        return axios.delete("/api/game/deleteCharacter/"+id);
     },
     //spell Routes
     spellsByClass: (playerClass)=>{

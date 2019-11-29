@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 import Grid from '@material-ui/core/Grid';
 import Input from '@material-ui/core/Input';
-import Button from '@material-ui/core/Button';
-import ListItemText from '@material-ui/core/ListItemText';
+import TextField from '@material-ui/core/TextField'
+
 
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
@@ -36,10 +36,11 @@ const mapDispatchToProps = dispatch =>
                 <Grid container direction="row" spacing={2}>
                     <Grid item xs={3}>
                         <div classname="charName box">
-                            <Input 
+                            <TextField
                                 id="nameInput"
+                                label="Character Name"
                                 defaultValue={this.props.playerCharacter.characterName.length ? 
-                                    (this.props.playerCharacter.characterName) : ("Character Name")}
+                                    (this.props.playerCharacter.characterName) : ("")}
                                 variant="filled"
                                 color="secondary"
                                 name="characterName"
@@ -50,30 +51,33 @@ const mapDispatchToProps = dispatch =>
                     <Grid item xs={9} direction="row">
                         <div className="headerInfoTop box">
                             <Grid container item xs={12} direction="row" spacing={1}>
-                                <Input 
+                                <TextField
                                     id="playerClass"
+                                    label="Character Class"
                                     defaultValue= {this.props.playerCharacter.playerClass ? 
-                                        (this.props.playerCharacter.playerClass) : ("class")}
+                                        (this.props.playerCharacter.playerClass) : ("")}
                                     variant="filled"
                                     color="secondary"
                                     name="playerClass"
                                     onChange={this.onTextChange}
                                 />
                                 <p>level: </p>
-                                <Input
+                                <TextField
+                                    label="level"
                                     id="level"
                                     defaultValue= {this.props.playerCharacter.level ? 
-                                        (this.props.playerCharacter.level) : ("?")}
+                                        (this.props.playerCharacter.level) : ("")}
                                     variant="filled"
                                     color="secondary"
                                     name="level"
                                     onChange={this.onTextChange}
 
                                 />
-                                <Input
+                                <TextField
                                     id="background"
+                                    label="background"
                                     defaultValue= {this.props.playerCharacter.background.length ? 
-                                        (this.props.playerCharacter.background) : ("background")}
+                                        (this.props.playerCharacter.background) : ("")}
                                     variant="filled"
                                     color="secondary"
                                     name="background"
@@ -83,10 +87,11 @@ const mapDispatchToProps = dispatch =>
                         </div>
                         <div className="headerInfoBottom box">
                             <Grid container item xs={12} direction="row" spacing={1}>
-                                <Input
+                                <TextField
                                     id="playerRace"
+                                    label="race"
                                     defaultValue= {this.props.playerCharacter.playerRace.length ? 
-                                        (this.props.playerCharacter.playerRace) : ("Player Race")}
+                                        (this.props.playerCharacter.playerRace) : ("")}
                                     variant="filled"
                                     color="secondary"
                                     name="playerRace"
