@@ -68,8 +68,8 @@ class SavingProfs extends Component{
                 <p>{this.props.playerCharacter.proficiencyBonus}</p>
                 <p><strong>Saving Throws</strong></p>
                 <div className="savingThrows">
-                    {this.props.playerCharacter.primaryStats.map(stat => (
-                        <Grid item container direction="row" spacing={0}>
+                    {this.props.playerCharacter.primaryStats.map((stat, index) => (
+                        <Grid item container direction="row" spacing={0} key={index}>
                             <p>{stat}</p>
                             <Button>X</Button>
                         </Grid>

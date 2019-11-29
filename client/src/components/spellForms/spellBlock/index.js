@@ -136,8 +136,8 @@ class SpellBlock extends Component {
                         />
                 </Grid>
                 )}
-                {this.state.spellArray ?  (this.state.spellArray.map(spell => (
-                    <Grid item container direction="row">
+                {this.state.spellArray ?  (this.state.spellArray.map((spell, index) => (
+                    <Grid item container direction="row" key={index}>
                         <Button>{spell.name}</Button>
                         <Button onClick={this.removeFromKnown.bind(this, spell)}>X</Button>
                     </Grid>

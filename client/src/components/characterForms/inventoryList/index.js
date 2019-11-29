@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 
 import Grid from '@material-ui/core/Grid';
-import Input from '@material-ui/core/Input';
-import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button';
-import ListItemText from '@material-ui/core/ListItemText';
 
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
@@ -37,8 +34,8 @@ class InventoryList extends Component {
     render() {
         return(
             <Grid item container>
-                {this.props.playerCharacter.inventory.map(item => (
-                    <Grid item container xs={12}>
+                {this.props.playerCharacter.inventory.map((item, index) => (
+                    <Grid item container xs={12} key={index}>
                         <Grid item xs={10}>
                             <p><strong>{item.name}: </strong></p>
                             <p>{item.description}</p>

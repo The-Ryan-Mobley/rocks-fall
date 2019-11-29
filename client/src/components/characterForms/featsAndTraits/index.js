@@ -47,8 +47,8 @@ const mapDispatchToProps = dispatch =>
     render(){
         return(
             <Grid item container>
-                {this.props.playerCharacter.featsAndTraits.map(feat => (
-                    <Grid item container xs={12}>
+                {this.props.playerCharacter.featsAndTraits.map((feat, index) => (
+                    <Grid item container xs={12} key={index}>
                         <Grid item xs={10}>
                             <p><strong>{feat.name}: </strong></p>
                             <p>{feat.description}</p>

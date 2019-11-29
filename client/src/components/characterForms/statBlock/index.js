@@ -64,7 +64,6 @@ const mapDispatchToProps = dispatch =>
     componentDidUpdate = () => {
     }
     render(){
-        this.props.playerCharacter.stats.map(stat => console.log(stat));
         return(
             <div className="statBlock box">
                 {

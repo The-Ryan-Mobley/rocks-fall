@@ -42,8 +42,8 @@ const mapDispatchToProps = dispatch =>
         return(
             <Grid item container className="box">
                 <p><strong>Languages Known</strong></p>
-                {this.props.playerCharacter.languages.map(language => (
-                    <Grid item container>
+                {this.props.playerCharacter.languages.map((language, index) => (
+                    <Grid item container key={index}>
                         <p>{language}</p>
                     </Grid>   
                 ))}
