@@ -9,6 +9,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import {characterInputChange} from "../../../redux/actions/actions";
+import {FeatsAndTraits} from "../";
 
 import "./style.css"
 
@@ -99,35 +100,7 @@ class BioTraits extends Component {
                             (this.props.playerCharacter.bio) : ("Enter a short character biography")}
                     />
                 </div>
-                <div className="featsAndTraits box">
-                    {this.props.featsAndTrais ? (
-                        this.props.featsAndTraits.map(trait => (
-                            <div className="FT">
-                            <TextField 
-                                id="multiline-flexible"
-                                multiline={true}
-                                rows="8"
-                                onChange={this.onTextChange}
-                                margin="normal"
-                                name="name"
-                                defaultValue={this.props.playerCharacter.bio.length ? 
-                                (this.props.playerCharacter.bio) : ("Enter a short character biography")}
-                            />
-                            <TextField 
-                                id="multiline-flexible"
-                                multiline={true}
-                                rows="8"
-                                onChange={this.onTextChange}
-                                margin="normal"
-                                name="bio"
-                                defaultValue={this.props.playerCharacter.bio.length ? 
-                                (this.props.playerCharacter.bio) : ("Enter a short character biography")}
-                            />
-                            </div>
-                        ))) : (<p></p>)}
-
-
-                </div>
+                <FeatsAndTraits/>
             </div>
         );
     }

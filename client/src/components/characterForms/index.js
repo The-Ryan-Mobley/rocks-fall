@@ -5,6 +5,9 @@ import ItemElement from "./itemElement";
 import SavingProfs from "./savingProfs";
 import StatBlock from "./statBlock";
 import InventoryList from "./inventoryList";
+import CurrencyBlock from "./currencyBlock";
+import FeatsAndTraits from "./featsAndTraits";
+import Languages from "./languages"
 
 export {
     BioTraits,
@@ -13,5 +16,8 @@ export {
     SavingProfs,
     GearBlock,
     StatBlock,
-    InventoryList
+    InventoryList,
+    CurrencyBlock,
+    FeatsAndTraits,
+    Languages
 }

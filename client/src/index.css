@@ -112,3 +112,6 @@ code {
 .noWrap{
   max-width: none !important;
 }
+.smallInput {
+  max-width: 20% !important;
+}

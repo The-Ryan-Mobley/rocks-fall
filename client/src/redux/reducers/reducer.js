@@ -65,7 +65,7 @@ const initialState = {
         proficiencyBonus: 2,
         skillProficiency: [],
         toolProficiency: "",
-        laguages: ["",""],
+        languages: [],
         armorClass: null,
         initiative: null,
         speed: null,
@@ -76,7 +76,7 @@ const initialState = {
         spellCastingStat: "Charisma",
         spellsKnown: [],
         inventory: [],
-        featsAndTrais: {},
+        featsAndTraits: [],
         authorId: ""
     },
     spellData: {

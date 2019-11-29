@@ -59,11 +59,9 @@ const mapDispatchToProps = dispatch =>
         });
     }
     componentDidMount = () => {
-        console.log(this.props.playerCharacter.stats);
         this.calcStatModifiers();
     }
     componentDidUpdate = () => {
-        console.table(this.props.playerCharacter.stats);
     }
     render(){
         this.props.playerCharacter.stats.map(stat => console.log(stat));

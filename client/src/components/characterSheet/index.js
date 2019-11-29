@@ -9,6 +9,7 @@ import {
     GearBlock, 
     CharacterHeader, 
     BioTraits, 
+    Languages
 } from "../characterForms";
 import "./style.css"
 
@@ -28,9 +29,8 @@ export default class CharacterSheet extends Component{
                         />
                     </Grid>
                         <Grid xs={2} item>
-                            <SavingProfs
-                            />
-                            
+                            <SavingProfs/>
+                            <Languages/>
                         </Grid>
                    <Grid item xs={4}>
                         <GearBlock 

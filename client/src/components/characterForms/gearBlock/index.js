@@ -9,7 +9,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import {characterInputChange} from "../../../redux/actions/actions";
 
-import {ItemElement, InventoryList} from "../";
+import {ItemElement, InventoryList, CurrencyBlock} from "../";
 import "./style.css"
 
 const mapStateToProps = state => {
@@ -100,6 +100,7 @@ const mapDispatchToProps = dispatch =>
                         </Grid>
                         <Grid spacing={1} item>
                             <p><strong>Inventory: </strong></p>
+                            <CurrencyBlock/>
                             <InventoryList/>
                             <ItemElement/>
                         </Grid>
