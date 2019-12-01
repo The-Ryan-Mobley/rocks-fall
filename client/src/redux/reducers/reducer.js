@@ -14,6 +14,7 @@ import {
     CHARACTER_INPUT_CHANGE, 
     CHARACTER_STATS_CHANGE, 
     SET_BLANK_CHARACTER, 
+    SET_CHARACTER_DATA,
     UPDATE_SPELL_SLOTS, 
     UPDATE_SPELLS_KNOWN,
     SET_PRIMARY_STATS,
@@ -318,9 +319,16 @@ const characterReducer = (state = initialState, action) => {
                 }
             }
         }
+        case SET_CHARACTER_DATA : {
+            return {
+                ...state,
+                playerCharacter: action.objData
+            }
+        }
         case SET_BLANK_CHARACTER : {
             return {
                 ...state,
+                ...state.playerCharacter,
                 playerCharacter: action.blankCharacter
             }
         }

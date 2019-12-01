@@ -29,13 +29,15 @@ const playerCharacterSchema = new Schema({
         default: [8,8,8,8,8,8]
     },
     primaryStats: {
-        type: [String]
+        type: [String],
+        default: []
 
     },
     playerClass: {
         type: String,
         trim: true,
-        required: `need a player class`
+        required: `need a player class`,
+        default: ""
     },
     subClass: {
         type: String,
@@ -46,7 +48,8 @@ const playerCharacterSchema = new Schema({
     playerRace: {
         type: String,
         trim: true,
-        required: "need a player race"
+        required: "need a player race",
+        default: ""
     },
     background: {
         type: String,
@@ -87,18 +90,19 @@ const playerCharacterSchema = new Schema({
         type: Number,
         default: 2
     },
-    skillProficiencies: {
+    skillProficiency: {
         type: [String],
-        required: `skill profs not found`
+        required: `skill profs not found`,
+        default: []
     },
     toolProficiency: {
-        type: String,
+        type: [String],
         trim: true,
-        default: `none`
+        default: []
     },
     languages: {
         type: [String],
-        default: [`common`]
+        default: []
     },
     armorClass: {
         type: Number,
@@ -134,19 +138,15 @@ const playerCharacterSchema = new Schema({
     },
     spellsKnown: {
         type: [Object],
-        default: [
-            {}
-        ]
+        default: []
     },
     inventory: {
         type: [Object],
-        default: [{
-            name: 'none',
-            description: `none`,
-        }]
+        default: []
     },
     featsAndTraits: {
         type: [Object],
+        default: []
     },
     dateCreated: {
         type: Date,
@@ -154,7 +154,8 @@ const playerCharacterSchema = new Schema({
     },
     authorId: {
         type: String,
-        required: "need user id for reference"
+        required: "need user id for reference",
+        default: ""
     }
 
     

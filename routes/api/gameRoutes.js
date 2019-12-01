@@ -18,6 +18,9 @@ router
 router
     .route("/deleteCharacter/:id")
     .delete(playerController.deleteCharacter);
+router
+    .route("/findCharacter/:id")
+    .get(playerController.findCharacter);
 
 module.exports = router;
     

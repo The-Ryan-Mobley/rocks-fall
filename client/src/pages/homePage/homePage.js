@@ -33,6 +33,8 @@ export default class HomePage extends Component{
             case "createModal" : {
                 value = !this.props.modalData.createModal;
                 this.props.swapModalBool("createModal", value);
+                value = !this.props.modalData.newCharacter;
+                this.props.swapModalBool("newCharacter", value);
                 break;
             }
             case "joinModal" : {

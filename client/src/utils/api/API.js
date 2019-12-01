@@ -44,6 +44,9 @@ export default {
     deleteCharacter: id => {
         return axios.delete("/api/game/deleteCharacter/"+id);
     },
+    findCharacter: id => {
+        return axios.get("/api/game/findCharacter/"+id);
+    },
     //spell Routes
     spellsByClass: (playerClass)=>{
         return axios.get("/api/game/spells/"+playerClass);

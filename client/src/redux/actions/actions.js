@@ -15,6 +15,7 @@ export const LOBBY_MESSAGE_CHANGE = "LOBBY_MESSAGE_CHANGE";
 export const CHARACTER_INPUT_CHANGE = "CHARACTER_INPUT_CHANGE";
 export const CHARACTER_STATS_CHANGE = "CHARACTER_STATS_CHANGE";
 export const SET_BLANK_CHARACTER = "SET_BLANK_CHARACTER";
+export const SET_CHARACTER_DATA = "SET_CHARACTER_DATA";
 export const SET_PRIMARY_STATS = "SET_PRIMARY_STATS";
 export const SET_STRING_ARRAY = "SET_STRING_ARRAY";
 export const SET_OBJECT_ARRAY = "SET_OBJECT_ARRAY";
@@ -82,6 +83,9 @@ export const setPrimaryStats = (statArray) => {
 }
 export const setStringArray = (name, stringArray) => {
     return {type: SET_STRING_ARRAY, name, stringArray}
+}
+export const setCharacterData = (objData) => {
+    return {type: SET_CHARACTER_DATA, objData}
 }
 export const setBlankCharacter = () => {
     const blankCharacter = {

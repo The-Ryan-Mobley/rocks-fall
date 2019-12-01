@@ -62,7 +62,7 @@ function TabPanel(props) {
             <Tab label="Stats" {...a11yProps(0)} />
             <Tab label="Spells" {...a11yProps(1)} />
           </Tabs>
-          <SaveCharacterButton newCharacter={true}/>
+          <SaveCharacterButton/>
         </AppBar>
         <TabPanel value={value} index={0}>
           <CharacterSheet/>

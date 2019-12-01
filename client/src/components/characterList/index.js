@@ -4,14 +4,21 @@ import Grid from "@material-ui/core/Grid";
 import Button from '@material-ui/core/Button';
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import {userInputChange, characterInputChange} from "../../redux/actions/actions";
+import {
+    userInputChange, 
+    characterInputChange,
+    setCharacterData, 
+    swapModalBool, 
+    closeModals
+} from "../../redux/actions/actions";
 
 import API from "../../utils/api/API";
 
 const mapStateToProps = state => {
     return { 
         userData: state.formManipulation.userData,
-        playerCharacter: state.characterReducer.playerCharacter
+        playerCharacter: state.characterReducer.playerCharacter,
+        modalData: state.modalControls.modalData
      };
   };
 
@@ -19,7 +26,10 @@ const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       userInputChange,
-      characterInputChange
+      characterInputChange,
+      setCharacterData,
+      swapModalBool, 
+      closeModals
     },
     dispatch
   );
@@ -30,10 +40,8 @@ const mapDispatchToProps = dispatch =>
         
     }
     deleteCharacter = event => {
-        
+
         const { name, value } = event.currentTarget;
-        
-        //deleteCharacter(id)
         API.deleteCharacter(name).then(result => {
             if(result) {
                 let characterList = this.props.userData.characterList;
@@ -43,16 +51,37 @@ const mapDispatchToProps = dispatch =>
 
         });
 
-
-
     }
     setCurrentCharacter = event => {
         this.props.userInputChange("currentCharacter", event.currentTarget.name);
     }
+    handleModal = event => {
+        const { name, value } = event.currentTarget;
+        let modalFlag = undefined;
+
+        switch(name) {
+            case "sheetModal" : {
+                API.findCharacter(value).then( result => {
+                    modalFlag = !this.props.modalData.sheetModal;
+                    this.props.setCharacterData(result.data[0]);
+                    this.props.swapModalBool("sheetModal", modalFlag);
+                    
+                });
+                break;
+                
+            }
+            default: {
+                this.props.closeModals();
+                break;
+            }
+        }
+
+    }
+    setSheetData = id => {
+        API.findCharacter(id).then()
+    } 
     
     render() {
-        //need to query for characters and select current character
-        //current selection defaults to most recently created
         return(
             <Grid container spacing={1}>
                 {this.props.userData.characterList.map( (character , index) => (
@@ -67,7 +96,7 @@ const mapDispatchToProps = dispatch =>
                         </Grid>
                         <Grid item xs={3}>
                             <Button name={character._id} onClick={this.setCurrentCharacter}>Select</Button>
-                            <Button>View</Button>
+                            <Button name="sheetModal" value={character._id} onClick={this.handleModal.bind(this)}>View</Button>
                         </Grid>
                     </Grid>
                     </div>
