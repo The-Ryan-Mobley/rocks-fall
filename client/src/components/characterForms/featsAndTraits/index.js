@@ -42,6 +42,13 @@ const mapDispatchToProps = dispatch =>
       featsAndTraits.push(newItem);
       this.props.characterInputChange("featsAndTraits", featsAndTraits);
     }
+    removeFromRedux = index => {
+      let featsAndTraits = this.props.playerCharacter.featsAndTraits;
+      if( index !== -1) {
+        featsAndTraits.splice(index, 1);
+      }
+      this.characterInputChange("featsAndTraits", featsAndTraits);
+    }
     render(){
         return(
             <Grid item container>
@@ -52,7 +59,7 @@ const mapDispatchToProps = dispatch =>
                             <p>{feat.description}</p>
                         </Grid>
                         <Grid item xs={2}>
-                            <Button onClick={this.removeFromRedux.bind(this, feat)}>x</Button>
+                            <Button onClick={this.removeFromRedux.bind(this , index)}>x</Button>
                         </Grid>
 
                     </Grid>

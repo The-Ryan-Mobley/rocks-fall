@@ -29,9 +29,6 @@ class SpellHeader extends Component {
         classDropdown: false,
         spellCasters: ["Bard", "Cleric", "Druid","Paladin","Ranger","Sorcerer","Warlock","Wizard"],
     }
-    componentWillMount = () => {
-
-    }
     handleClick = () => {
         this.setState({classDropdown: true});
     }

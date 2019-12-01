@@ -14,6 +14,8 @@ import CreateAccount from './pages/createAccount/index';
 import HomePage from './pages/homePage/index';
 import Profile from "./pages/profile/index";
 import Lobby from "./pages/lobby/index";
+
+import API from "./utils/api/API";
 import './App.css';
 
 //const App = () => {
@@ -42,9 +44,30 @@ class App extends Component {
         if(sessionData) {
             let localData = JSON.parse(sessionData)
             this.props.saveSession(localData); 
+            this.findCharacterList(localData.userId);
         }
     socket.socketEmmissions();
 
+  }
+  findCharacterList = (userId) => {
+      API.userCharacterList(userId).then(result => {
+          let characterList = this.props.userData.characterList;
+          result.data.forEach(character => {
+              if(characterList.indexOf(character) === -1) {
+                  const {_id, characterName, level, playerClass} = character;
+                  const CharacterData = {
+                      _id,
+                      characterName,
+                      level,
+                      playerClass
+                  }
+                  console.table(CharacterData);
+                  characterList.push(CharacterData);
+              }
+              this.props.userInputChange( "characterList" , characterList );
+          })
+
+      });
   }
   
   render(){

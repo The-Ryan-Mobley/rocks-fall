@@ -22,14 +22,17 @@ const userSchema = new Schema({
         trim: true,
         default: "/profile-placeholder.png"
     },
-    characters: [{
-        type: Schema.Types.ObjectId,
-        ref: `playerCharacters`
-    }],
-    campaigns: [{
-        type: Schema.Types.ObjectId,
-        ref: `campaigns`
-    }],
+    characterList: {
+        type: [String],
+        trim: true,
+        default: []
+    },
+    currentCharacter: {
+        type: String,
+        trim: true,
+        default: ""
+
+    },
     dateCreated: {
         type: Date,
         default: Date.now()

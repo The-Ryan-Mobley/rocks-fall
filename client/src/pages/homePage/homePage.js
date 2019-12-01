@@ -16,6 +16,7 @@ import { withStyles } from '@material-ui/core/styles'
 import MakeLobby from "../../components/makeLobby";
 import JoinLobby from "../../components/joinLobby";
 import SheetModal from "../../components/sheetModal";
+import CharacterList from "../../components/characterList"
 //import Charactersheet from "../../components/characterSheet";
 //import SpellSheet from "../../components/spellSheet";
 
@@ -27,37 +28,38 @@ export default class HomePage extends Component{
         sheetModal: false
     }
     
-    handleOpenCreate = (event) => {
+    handleModal = (event) => {
         event.preventDefault();
-        this.setState({createModal: true});
+        let value = undefined;
+        switch(event.currentTarget.name) {
+            case "createModal" : {
+                value = !this.props.modalData.createModal;
+                this.props.swapModalBool("createModal", value);
+                break;
+            }
+            case "joinModal" : {
+                value = !this.props.modalData.joinModal;
+                this.props.swapModalBool("joinModal", value);
+                break;
+            }
+            case "sheetModal" : {
+                value = !this.props.modalData.sheetModal;
+                this.props.swapModalBool("sheetModal", value);
+                break;
+            }
+            default: {
+                this.props.closeModals();
+                break;
+            }
+        }
+        
+        
     };
     
-    handleCloseCreate = (event) => {
-        event.preventDefault();
-        this.setState({createModal: false});
-    };
-    handleOpenJoin = (event) => {
-        event.preventDefault();
-        this.setState({joinModal: true});
-    };
-    
-    handleCloseJoin = (event) => {
-        event.preventDefault();
-        this.setState({joinModal: false});
-    };
-
-    handleOpenSheet = (event) => {
-        event.preventDefault();
-        this.setState({sheetModal: true});
-    }
-    handleCloseSheet = (event) => {
-        event.preventDefault();
-        this.setState({sheetModal: false});
-    }
     render(){
         return(
             <Wrapper>
-                <Grid container xs={12} spacing={3}>
+                <Grid item container xs={12} spacing={3}>
                     <div className="homeBody">
                     <Grid item container xs={12} direction="row" alignItems="center" justify="center" spacing={5}>
                         <h1>Play!</h1>
@@ -65,15 +67,19 @@ export default class HomePage extends Component{
                     <Grid item container xs={12} direction="row" alignItems="center" justify="center" spacing={5}>
                         {this.props.userData.userId ? (
                             <Grid item container direction="row" alignItems="center" justify="center" spacing={5}>
-                                <Button className="modalButton shaded" onClick={this.handleOpenCreate}>Make Lobby</Button>
-                                <Button className="modalButton shaded" onClick={this.handleOpenJoin}>Join Lobby</Button>
+                                <Button name="createModal" className="modalButton shaded" onClick={this.handleModal.bind(this)}>Make Lobby</Button>
+                                <Button name="joinModal"className="modalButton shaded" onClick={this.handleModal.bind(this)}>Join Lobby</Button>
                             </Grid>
                         ) : (<p>Login to play</p>)}
                     </Grid>
+                    
                     <Grid item container xs={12} direction="row" alignItems="center" justify="center" spacing={5}>
                         <h1>Chat</h1>
-                        <Button className="modalButton shaded" onClick={this.handleOpenSheet}>CreateCharacter</Button>
+                        <Button name="sheetModal" className="modalButton shaded" onClick={this.handleModal.bind(this)}>CreateCharacter</Button>
                         
+                    </Grid>
+                    <Grid item xs={2}>
+                        <CharacterList/>
                     </Grid>
                     
                     
@@ -84,15 +90,15 @@ export default class HomePage extends Component{
                         aria-describedby="transition-modal-description"
                         className="sheetModal"
                         name="sheetModal"
-                        open={this.state.sheetModal}
-                        onClose={this.handleCloseSheet}
+                        open={this.props.modalData.sheetModal}
+                        onClose={this.handleModal}
                         closeAfterTransition
                         BackdropComponent={Backdrop}
                         BackdropProps={{
-                          timeout: 500,
+                          timeout: 100,
                         }}
                     >
-                        <Fade in={this.state.sheetModal}>
+                        <Fade in={this.props.modalData.sheetModal}>
                             <SheetModal />
                         </Fade>
                     </Modal>
@@ -101,15 +107,15 @@ export default class HomePage extends Component{
                         aria-describedby="transition-modal-description"
                         className="modal"
                         name="createModal"
-                        open={this.state.createModal}
-                        onClose={this.handleCloseCreate}
+                        open={this.props.modalData.createModal}
+                        onClose={this.handleModal}
                         closeAfterTransition
                         BackdropComponent={Backdrop}
                         BackdropProps={{
-                          timeout: 500,
+                          timeout: 100,
                         }}
                     >
-                        <Fade in={this.state.createModal}>
+                        <Fade in={this.props.modalData.createModal}>
                             <MakeLobby />
                         </Fade>
                     </Modal>
@@ -117,16 +123,16 @@ export default class HomePage extends Component{
                         aria-labelledby="transition-modal-title"
                         aria-describedby="transition-modal-description"
                         className="modal"
-                        name="createModal"
-                        open={this.state.joinModal}
-                        onClose={this.handleCloseJoin}
+                        name="joinModal"
+                        open={this.props.modalData.joinModal}
+                        onClose={this.handleModal}
                         closeAfterTransition
                         BackdropComponent={Backdrop}
                         BackdropProps={{
                           timeout: 500,
                         }}
                     >
-                        <Fade in={this.state.joinModal}>
+                        <Fade in={this.props.modalData.joinModal}>
                             <JoinLobby />
                         </Fade>
 

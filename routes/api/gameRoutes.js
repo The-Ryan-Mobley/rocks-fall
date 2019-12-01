@@ -7,6 +7,9 @@ router
     .route("/spells/levelAndClass")
     .get(spellController.spellsByLevelAndClass);
 router
+    .route("/characterList/:id")
+    .get(playerController.listCharacters);
+router
     .route("/createCharacter")
     .post(playerController.createCharacter);
 router

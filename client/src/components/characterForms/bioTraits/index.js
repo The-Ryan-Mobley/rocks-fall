@@ -38,7 +38,7 @@ class BioTraits extends Component {
                         label="Personality Traits"
                         multiline={true}
                         rows="3"
-                        onChange={this.onTextChange}
+                        onBlur={this.onTextChange}
                         margin="normal"
                         name="personalityTraits"
                         defaultValue={this.props.playerCharacter.personalityTraits.length ? 
@@ -51,7 +51,7 @@ class BioTraits extends Component {
                         label="Ideals"
                         multiline={true}
                         rows="3"
-                        onChange={this.onTextChange}
+                        onBlur={this.onTextChange}
                         margin="normal"
                         name="ideals"
                         defaultValue={this.props.playerCharacter.ideals.length ? 
@@ -64,7 +64,7 @@ class BioTraits extends Component {
                         label="Bonds"
                         multiline={true}
                         rows="3"
-                        onChange={this.onTextChange}
+                        onBlur={this.onTextChange}
                         margin="normal"
                         name="ideals"
                         defaultValue={this.props.playerCharacter.bonds.length ? 
@@ -77,7 +77,7 @@ class BioTraits extends Component {
                         label="Flaws"
                         multiline={true}
                         rows="3"
-                        onChange={this.onTextChange}
+                        onBlur={this.onTextChange}
                         margin="normal"
                         name="flaws"
                         defaultValue={this.props.playerCharacter.flaws.length ? 
@@ -90,7 +90,7 @@ class BioTraits extends Component {
                         label="Biography"
                         multiline={true}
                         rows="8"
-                        onChange={this.onTextChange}
+                        onBlur={this.onTextChange}
                         margin="normal"
                         name="bio"
                         defaultValue={this.props.playerCharacter.bio.length ? 

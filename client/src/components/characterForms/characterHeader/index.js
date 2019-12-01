@@ -44,7 +44,7 @@ const mapDispatchToProps = dispatch =>
                                 variant="filled"
                                 color="secondary"
                                 name="characterName"
-                                onChange={this.onTextChange}
+                                onBlur={this.onTextChange}
                             />
                         </div>
                     </Grid>
@@ -59,7 +59,7 @@ const mapDispatchToProps = dispatch =>
                                     variant="filled"
                                     color="secondary"
                                     name="playerClass"
-                                    onChange={this.onTextChange}
+                                    onBlur={this.onTextChange}
                                 />
                                 <p>level: </p>
                                 <TextField
@@ -70,7 +70,7 @@ const mapDispatchToProps = dispatch =>
                                     variant="filled"
                                     color="secondary"
                                     name="level"
-                                    onChange={this.onTextChange}
+                                    onBlur={this.onTextChange}
 
                                 />
                                 <TextField
@@ -81,7 +81,7 @@ const mapDispatchToProps = dispatch =>
                                     variant="filled"
                                     color="secondary"
                                     name="background"
-                                    onChange={this.onTextChange}
+                                    onBlur={this.onTextChange}
                                 />
                             </Grid>
                         </div>
@@ -95,7 +95,7 @@ const mapDispatchToProps = dispatch =>
                                     variant="filled"
                                     color="secondary"
                                     name="playerRace"
-                                    onChange={this.onTextChange}
+                                    onBlur={this.onTextChange}
                                 />
                                 <Input
                                     id="alignment"
@@ -104,7 +104,7 @@ const mapDispatchToProps = dispatch =>
                                     variant="filled"
                                     color="secondary"
                                     name="alignment"
-                                    onChange={this.onTextChange}
+                                    onBlur={this.onTextChange}
                                 />                            
                                 <Input
                                     defaultValue= {this.props.playerCharacter.experience ? 
@@ -112,7 +112,7 @@ const mapDispatchToProps = dispatch =>
                                     variant="filled"
                                     color="secondary"
                                     name="experience"
-                                    onChange={this.onTextChange}
+                                    onBlur={this.onTextChange}
                                 />
                             </Grid>
                         </div>

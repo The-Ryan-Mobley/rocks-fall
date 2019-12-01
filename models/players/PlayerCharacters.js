@@ -83,10 +83,6 @@ const playerCharacterSchema = new Schema({
         type: Array,
         default: [0,0,0,0,0]
     },
-    attunementSlots: {
-        type: String,
-        default: [`open`,`open`,`open`]
-    },
     proficiencyBonus: {
         type: Number,
         default: 2

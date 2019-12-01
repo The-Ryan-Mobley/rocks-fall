@@ -2,6 +2,7 @@ export const USER_INPUT_CHANGE = `USER_INPUT_CHANGE`;
 export const USER_CREATE_ACCOUNT = "USER_CREATE_ACCOUNT";
 export const USER_LOGIN = "USER_LOGIN";
 export const SAVE_SESSION_DATA = "SAVE_SESSION_DATA";
+export const SET_CURRENT_CHARACTER = "SET_CURRENT_CHARACTER";
 
 export const LOBBY_INPUT_CHANGE = "LOBBY_INPUT_CHANGE";
 export const LOBBY_HOST_DATA = "LOBBY_HOST_DATA";
@@ -21,63 +22,66 @@ export const UPDATE_SPELL_SLOTS= "UPDATE_SPELL_SLOTS";
 export const UPDATE_SPELLS_KNOWN = "UPDATE_SPELLS_KNOWN";
 
 export const SET_SPELL_QUERY = "SET_SPELL_QUERY";
-export const SET_VIEWED_SPELL = "SET_VIEWED_SPELL"
+export const SET_VIEWED_SPELL = "SET_VIEWED_SPELL";
+
+export const SWAP_MODAL_BOOL = "SWAP_MODAL_BOOL";
+export const CLOSE_MODAL = "CLOSE_MODAL";
 
 
 
 
 export const userInputChange = (name, value) =>{
-    return { type: USER_INPUT_CHANGE, name, value, key: Date.now()};
+    return { type: USER_INPUT_CHANGE, name, value};
 }
 export const userCreateAccount = () =>{
-    return {type: USER_CREATE_ACCOUNT, key: Date.now()};
+    return {type: USER_CREATE_ACCOUNT};
 }
 export const userLogin = (userName, userThumbnail, userId) =>{
-    return {type: USER_LOGIN, userName, userThumbnail, userId, key: Date.now()};
+    return {type: USER_LOGIN, userName, userThumbnail, userId};
 }
 export const saveSession = (localData) => {
-    return {type: SAVE_SESSION_DATA, localData, key: Date.now()};
+    return {type: SAVE_SESSION_DATA, localData};
 }
 
 export const lobbyInputChange = (name, value) => {
-    return {type: LOBBY_INPUT_CHANGE, name, value, key: Date.now()};
+    return {type: LOBBY_INPUT_CHANGE, name, value};
 }
 export const lobbyHostData = (name, id) => {
-    return {type: LOBBY_HOST_DATA, name, id, key: Date.now()};
+    return {type: LOBBY_HOST_DATA, name, id};
 }
 export const lobbyUserJoin = (userArray) => {
-    return {type: LOBBY_USER_JOIN, userArray, key: Date.now()};
+    return {type: LOBBY_USER_JOIN, userArray};
 }
 export const lobbyUserSet = (foundLobby) => {
-    return {type: LOBBY_USER_SET, foundLobby, key: Date.now()}
+    return {type: LOBBY_USER_SET, foundLobby}
 }
 export const lobbyMessageReset = () => {
-    return {type: LOBBY_MESSAGE_RESET, key: Date.now()}
+    return {type: LOBBY_MESSAGE_RESET}
 }
 export const lobbyMessageAdd = (messageArr) => {
-    return {type: LOBBY_MESSAGE_ADD, messageArr, key: Date.now()}
+    return {type: LOBBY_MESSAGE_ADD, messageArr}
 }
 export const lobbyMessageChange = (name , value) => {
-    return {type: LOBBY_MESSAGE_CHANGE, name, value, key: Date.now()}
+    return {type: LOBBY_MESSAGE_CHANGE, name, value}
 }
 
 export const characterInputChange = (name, value) => {
-    return {type: CHARACTER_INPUT_CHANGE, name, value, key: Date.now()}
+    return {type: CHARACTER_INPUT_CHANGE, name, value}
 }
 export const characterStatsChange = (statArray) => {
-    return {type: CHARACTER_STATS_CHANGE, statArray, key: Date.now()}
+    return {type: CHARACTER_STATS_CHANGE, statArray}
 }
 export const updateSpellSlots = (slotArray) => {
-    return {type: UPDATE_SPELL_SLOTS, slotArray, key: Date.now()}
+    return {type: UPDATE_SPELL_SLOTS, slotArray}
 }
 export const updateSpellsKnown = (knownArray) => {
-    return {type: UPDATE_SPELLS_KNOWN, knownArray, key: Date.now()}
+    return {type: UPDATE_SPELLS_KNOWN, knownArray}
 }
 export const setPrimaryStats = (statArray) => {
-    return {type: SET_PRIMARY_STATS, statArray, key: Date.now()}
+    return {type: SET_PRIMARY_STATS, statArray}
 }
 export const setStringArray = (name, stringArray) => {
-    return {type: SET_STRING_ARRAY, name, stringArray, key: Date.now()}
+    return {type: SET_STRING_ARRAY, name, stringArray}
 }
 export const setBlankCharacter = () => {
     const blankCharacter = {
@@ -115,12 +119,20 @@ export const setBlankCharacter = () => {
         featsAndTrais: {},
         authorId: ""
     }
-    return {type: SET_BLANK_CHARACTER, blankCharacter, key: Date.now()}
+    return {type: SET_BLANK_CHARACTER, blankCharacter}
 }
 
 export const setSpellQuery = (spellArray) => {
-    return {type: SET_SPELL_QUERY, spellArray, key: Date.now()}
+    return {type: SET_SPELL_QUERY, spellArray}
 }
 export const setViewdSpell = (spell) => {
-    return {type: SET_VIEWED_SPELL, spell, key: Date.now()}
+    return {type: SET_VIEWED_SPELL, spell}
+}
+
+export const swapModalBool = (bool, value) => {
+    return {type: SWAP_MODAL_BOOL, bool, value}
+}
+export const closeModals = () => {
+    return {type: CLOSE_MODAL}
+    
 }

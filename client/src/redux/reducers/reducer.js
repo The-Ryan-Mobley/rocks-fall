@@ -21,6 +21,7 @@ import {
 } from "../actions/actions";
 
 import {SET_SPELL_QUERY, SET_VIEWED_SPELL} from "../actions/actions";
+import {SWAP_MODAL_BOOL, CLOSE_MODAL} from "../actions/actions";
 
 const initialState = {
     userData: {
@@ -29,6 +30,8 @@ const initialState = {
         confirmPassword: "",
         userThumbnail: "",
         userId: "",
+        currentCharacterId: "",
+        characterList: []
     },
     ryanStuff: [],
     lobbyData: {
@@ -83,8 +86,43 @@ const initialState = {
     spellData: {
         spellQuery: [],
         viewedSpell: {}
+    },
+    modalData: {
+        sheetModal: false,
+        createModal: false,
+        newCharacter: false,
+        joinModal: false,
+        confirmModal: false,
+        confirmFlag: null
     }
   };
+const modalControls = (state = initialState, action) => {
+    switch(action.type) {
+        case (SWAP_MODAL_BOOL) : {
+            return {
+                ...state,
+                modalData: {
+                    ...state.modalData,
+                    [action.bool] : action.value
+                }
+            }
+        }
+        case (CLOSE_MODAL) : {
+            return {
+                ...state,
+                modalData: {
+                    ...state.modalData,
+                    sheetModal: false,
+                    createModal: false,
+                    newCharacter: false,
+                    joinModal: false,
+                    confirmModal: false,
+                }
+            }
+        }
+        default: return state;
+    }
+}
 const formManipulation = (state = initialState, action) => {
     switch(action.type){
         case USER_INPUT_CHANGE : {
@@ -117,7 +155,9 @@ const formManipulation = (state = initialState, action) => {
                     userName: action.userName,
                     password: "",
                     userThumbnail: action.userThumbnail,
-                    userId: action.userId
+                    userId: action.userId,
+                    currentCharacterId: "",
+                    characterList: []
                 }
             }
         }
@@ -320,7 +360,8 @@ const appFunctions = combineReducers({
     formManipulation,
     lobbyManipulation,
     characterReducer,
-    spellReducer
+    spellReducer,
+    modalControls
 
 });
 

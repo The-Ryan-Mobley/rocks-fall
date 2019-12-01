@@ -1,6 +1,6 @@
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import {userInputChange,  userLogin} from "../../redux/actions/actions";
+import {swapModalBool, closeModals} from "../../redux/actions/actions";
 
 //page
 import HomePage from "./homePage";
@@ -8,15 +8,15 @@ import HomePage from "./homePage";
 const mapStateToProps = state => {
     return { 
       userData: state.formManipulation.userData,
-      test: state.formManipulation.ryanStuff,
+      modalData: state.modalControls.modalData
      };
   };
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      userInputChange,
-      userLogin
+      swapModalBool,
+      closeModals
     },
     dispatch
   );
