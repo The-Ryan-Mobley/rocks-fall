@@ -1,10 +1,10 @@
-const axios = require("axios");
+
 const router = require("express").Router();
 const authController = require(`../../controller/authenticationController`);
 
 
 router
-    .connectroute("/new")
+    .route("/new")
     .post(authController.addUser);
 router
     .route("/login")

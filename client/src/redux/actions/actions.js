@@ -36,8 +36,8 @@ export const userInputChange = (name, value) =>{
 export const userCreateAccount = () =>{
     return {type: USER_CREATE_ACCOUNT};
 }
-export const userLogin = (userName, userThumbnail, userId) =>{
-    return {type: USER_LOGIN, userName, userThumbnail, userId};
+export const userLogin = (userName, userThumbnail, userId, currentCharacter) =>{
+    return {type: USER_LOGIN, userName, userThumbnail, currentCharacter, userId};
 }
 export const saveSession = (localData) => {
     return {type: SAVE_SESSION_DATA, localData};

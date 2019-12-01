@@ -6,7 +6,6 @@ module.exports = {
         db.PlayerCharacter.find({authorId: userId})
     },
     createCharacter: async ( req , res ) => {
-        console.log(req.body);
         delete req.body._id;
         let result = await db.PlayerCharacter.create(req.body);
         if(result) {
@@ -43,7 +42,6 @@ module.exports = {
     listCharacters: async ( req, res ) => {
         let result = await db.PlayerCharacter.find({authorId : req.params.id});
         if(result) {
-            console.log(result);
             res.json(result);
         } else {
             res.sendStatus("504");

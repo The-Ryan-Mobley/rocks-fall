@@ -27,7 +27,7 @@ export default class Login extends Component{
         event.preventDefault();
         API.queryUser(this.props.userData).then(result => {
             let authInfo = result.data.userData;
-            this.props.userLogin(authInfo.userName, authInfo.thumbnail, authInfo.id);
+            this.props.userLogin(authInfo.userName, authInfo.thumbnail, authInfo.id, authInfo.currentCharacter);
             localStorage.setItem( "userData", JSON.stringify(this.props.userData));
             this.setState({returnHome: true});
         });

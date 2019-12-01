@@ -53,7 +53,7 @@ class Heading extends Component {
     logoutClick = event => {
         const { name } = event.target;
         this.props.userCreateAccount();
-        localStorage.setItem( "userData", this.props.userData);
+        localStorage.removeItem("userData");
         this.setState({
             [name]: true
         });

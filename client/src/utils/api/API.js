@@ -9,7 +9,7 @@ export default {
         return axios.get("/api/auth/login", {params: userData});
     },
     userCurrentCharacter: (currentCharacter, userId) => {
-        return axios.put("api/auth/currentCharacter/"+userId, currentCharacter);
+        return axios.put("api/auth/currentCharacter/"+userId, {characterId: currentCharacter});
     },
     //lobbyRoutes
     newLobby: (lobbyData) =>{

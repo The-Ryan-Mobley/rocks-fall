@@ -26,34 +26,51 @@ const mapDispatchToProps = dispatch =>
 
 
  class CharacterList extends Component {
-    deleteCharacter = () => {
+    componentDidMount = () => {
+        
+    }
+    deleteCharacter = event => {
+        
+        const { name, value } = event.currentTarget;
+        
+        //deleteCharacter(id)
+        API.deleteCharacter(name).then(result => {
+            if(result) {
+                let characterList = this.props.userData.characterList;
+                characterList.splice(value, 1);
+                this.props.userInputChange("characterList", characterList);
+            }
+
+        });
+
+
 
     }
     setCurrentCharacter = event => {
         this.props.userInputChange("currentCharacter", event.currentTarget.name);
-        
-
     }
+    
     render() {
         //need to query for characters and select current character
         //current selection defaults to most recently created
         return(
             <Grid container spacing={1}>
                 {this.props.userData.characterList.map( (character , index) => (
-                    <Grid item container xs={12} key={index}>
+                    <div className={this.props.userData.currentCharacter === character._id ? ("box"): ("")}>
+                    <Grid item container xs={12} key={index} >
                         <Grid item xs={2}>
-                            <Button>X</Button>
+                            <Button name={character._id} onClick={this.deleteCharacter} value={index}>X</Button>
                         </Grid>
                         <Grid item xs={7}>
                             <p><strong>{character.characterName}</strong></p><br/>
                             <p>level : {character.level} {character.playerClass}</p>
                         </Grid>
                         <Grid item xs={3}>
-                            <Button name={character._id}>Select</Button>
+                            <Button name={character._id} onClick={this.setCurrentCharacter}>Select</Button>
                             <Button>View</Button>
                         </Grid>
-
                     </Grid>
+                    </div>
                 ))}
             </Grid>
         )

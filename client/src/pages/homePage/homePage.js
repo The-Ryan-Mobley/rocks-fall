@@ -1,11 +1,6 @@
 import React, { Component } from "react";
+
 import Wrapper from '../../components/wrapper';
-// import CharacterSheet from "../../components/characterSheet";
-// import ButtonBase from '@material-ui/core/ButtonBase';
-// import Box from '@material-ui/core/Box';
-// import CssBaseline from '@material-ui/core/CssBaseline';
-// import Typography from '@material-ui/core/Typography';
-// import Container from '@material-ui/core/Container';
 import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
@@ -16,10 +11,9 @@ import { withStyles } from '@material-ui/core/styles'
 import MakeLobby from "../../components/makeLobby";
 import JoinLobby from "../../components/joinLobby";
 import SheetModal from "../../components/sheetModal";
-import CharacterList from "../../components/characterList"
-//import Charactersheet from "../../components/characterSheet";
-//import SpellSheet from "../../components/spellSheet";
+import CharacterList from "../../components/characterList";
 
+import API from "../../utils/api/API";
 
 export default class HomePage extends Component{
     state = {
@@ -27,7 +21,11 @@ export default class HomePage extends Component{
         joinModal: false,
         sheetModal: false
     }
-    
+    componentDidMount = () => {
+        if(this.props.userData.userId) {
+            this.findCharacterList(this.props.userData.userId);
+        }
+    }
     handleModal = (event) => {
         event.preventDefault();
         let value = undefined;
@@ -55,6 +53,25 @@ export default class HomePage extends Component{
         
         
     };
+    findCharacterList = (userId) => {
+        API.userCharacterList(userId).then(result => {
+            let characterList = this.props.userData.characterList;
+            result.data.forEach(character => {
+                if(characterList.indexOf(character) === -1) {
+                    const {_id, characterName, level, playerClass} = character;
+                    const CharacterData = {
+                        _id,
+                        characterName,
+                        level,
+                        playerClass
+                    }
+                    characterList.push(CharacterData);
+                }
+                this.props.userInputChange( "characterList" , characterList );
+            })
+  
+        });
+    }
     
     render(){
         return(

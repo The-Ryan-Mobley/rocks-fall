@@ -36,7 +36,6 @@ module.exports = {
         result ? res.json(result) : res.sendStatus("404"); 
     },
     loginUser: (req,res) =>{
-        console.log("hit");
         try{
             console.table(req.query);
             db.Users.findOne({userName: req.query.userName}, (er, foundUser) => {
@@ -47,7 +46,8 @@ module.exports = {
                         let userData = {
                             userName: foundUser.userName,
                             thumbnail: foundUser.thumbnail,
-                            id: foundUser.id
+                            id: foundUser._id,
+                            currentCharacter: foundUser.currentCharacter
                         }
                         console.table(userData);
                         res.json({userData});
@@ -62,8 +62,25 @@ module.exports = {
             res.sendStatus("500");
         }
     },
-    updateCurrent: ( req, res ) => {
-        db.Users.
+    updateCurrent: async ( req, res ) => {
+        let result = await db.Users.updateOne({ _id: req.params.id}, {$set : {currentCharacter: req.body.characterId}});
+        if(result) {
+            let newUserData = await db.Users.findOne({_id : req.params.id});
+            if(newUserData) {
+                const {_id, userName, thumbnail, currentCharacter } = newUserData;
+                let sendUser = {
+                    id: _id,
+                    userName,
+                    thumbnail,
+                    currentCharacter
+                }
+                res.json(sendUser);
+            } else {
+                res.sendStatus("504");
+            }
+        } else {
+            res.sendStatus("504");
+        }
 
     }
 }

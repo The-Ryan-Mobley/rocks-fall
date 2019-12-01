@@ -44,7 +44,9 @@ class App extends Component {
         if(sessionData) {
             let localData = JSON.parse(sessionData)
             this.props.saveSession(localData); 
-            this.findCharacterList(localData.userId);
+            if(localData.userId.length) {
+              this.findCharacterList(localData.userId);
+            }
         }
     socket.socketEmmissions();
 
@@ -52,6 +54,7 @@ class App extends Component {
   findCharacterList = (userId) => {
       API.userCharacterList(userId).then(result => {
           let characterList = this.props.userData.characterList;
+          characterList=[];
           result.data.forEach(character => {
               if(characterList.indexOf(character) === -1) {
                   const {_id, characterName, level, playerClass} = character;

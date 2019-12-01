@@ -37,9 +37,9 @@ code {
   width: 100%;
 }
 .lobbybox{
-  border-style: solid;
-  border-width: 1%;
-  border-color: red;
+  border-style: solid !important;
+  border-width: 1% !important;
+  border-color: red !important;
 }
 .homeBody{
   margin-top: 5%;
