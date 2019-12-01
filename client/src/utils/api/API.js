@@ -8,6 +8,9 @@ export default {
     queryUser: (userData) =>{
         return axios.get("/api/auth/login", {params: userData});
     },
+    userCurrentCharacter: (currentCharacter, userId) => {
+        return axios.put("api/auth/currentCharacter/"+userId, currentCharacter);
+    },
     //lobbyRoutes
     newLobby: (lobbyData) =>{
         return axios.post("/api/lobby/new", lobbyData);

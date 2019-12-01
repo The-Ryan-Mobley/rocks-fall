@@ -19,10 +19,13 @@ export default class Profile extends Component {
     render(){
         return(
             <Wrapper>
-                <Grid container xs={12}>
-                    <div className="userProfile">
-
-                    </div>
+                <Grid container direction="column" direction="column" alignItems="center" justify="center">
+                    <Grid item>
+                        <img src={this.props.userData.userThumbnail} alt="profile"/>
+                    </Grid>
+                    <Grid item>
+                        
+                    </Grid>
                 </Grid>
             </Wrapper>
 

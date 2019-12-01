@@ -30,7 +30,7 @@ const initialState = {
         confirmPassword: "",
         userThumbnail: "",
         userId: "",
-        currentCharacterId: "",
+        currentCharacter: "",
         characterList: []
     },
     ryanStuff: [],

@@ -61,5 +61,9 @@ module.exports = {
         } catch {
             res.sendStatus("500");
         }
+    },
+    updateCurrent: ( req, res ) => {
+        db.Users.
+
     }
 }

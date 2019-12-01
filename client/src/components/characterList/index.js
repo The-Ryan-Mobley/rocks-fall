@@ -28,7 +28,12 @@ const mapDispatchToProps = dispatch =>
  class CharacterList extends Component {
     deleteCharacter = () => {
 
-    } 
+    }
+    setCurrentCharacter = event => {
+        this.props.userInputChange("currentCharacter", event.currentTarget.name);
+        
+
+    }
     render() {
         //need to query for characters and select current character
         //current selection defaults to most recently created
@@ -44,7 +49,7 @@ const mapDispatchToProps = dispatch =>
                             <p>level : {character.level} {character.playerClass}</p>
                         </Grid>
                         <Grid item xs={3}>
-                            <Button>Select</Button>
+                            <Button name={character._id}>Select</Button>
                             <Button>View</Button>
                         </Grid>
 
