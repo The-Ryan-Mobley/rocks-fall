@@ -36,13 +36,13 @@ class Lobby extends Component {
                 this.props.lobbyUserSet(re.data);
             }
             else {
-                console.table(this.props.userData);
                 socket.joinLobby(re.data, this.props.userData);
                 this.props.lobbyUserSet(re.data);
                 const user = {
                     userId : this.props.userData.userId,
                     userName: this.props.userData.userName,
-                    userThumbnail: this.props.userData.userThumbnail
+                    userThumbnail: this.props.userData.userThumbnail,
+                    currentCharacter: this.props.userData.currentCharacter
                 }
                 this.findLobbyUsers(user);                  
             }
@@ -149,8 +149,10 @@ class Lobby extends Component {
             const user = {
                 userId: callback.userData.userId,
                 userName: callback.userData.userName,
-                userThumbnail: callback.userData.userThumbnail
+                userThumbnail: callback.userData.userThumbnail,
+                currentCharacter: callback.userData.currentCharacter
             }
+            console.log(user)
             this.processActiveUsers(user);
         });
     }

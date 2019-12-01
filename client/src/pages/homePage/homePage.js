@@ -33,8 +33,6 @@ export default class HomePage extends Component{
             case "createModal" : {
                 value = !this.props.modalData.createModal;
                 this.props.swapModalBool("createModal", value);
-                value = !this.props.modalData.newCharacter;
-                this.props.swapModalBool("newCharacter", value);
                 break;
             }
             case "joinModal" : {
@@ -43,6 +41,10 @@ export default class HomePage extends Component{
                 break;
             }
             case "sheetModal" : {
+                if(event.currentTarget.value === "newCharacter") {
+                    value = !this.props.modalData.newCharacter;
+                    this.props.swapModalBool("newCharacter", value);
+                }
                 value = !this.props.modalData.sheetModal;
                 this.props.swapModalBool("sheetModal", value);
                 break;
@@ -58,6 +60,7 @@ export default class HomePage extends Component{
     findCharacterList = (userId) => {
         API.userCharacterList(userId).then(result => {
             let characterList = this.props.userData.characterList;
+            characterList=[];
             result.data.forEach(character => {
                 if(characterList.indexOf(character) === -1) {
                     const {_id, characterName, level, playerClass} = character;
@@ -69,8 +72,10 @@ export default class HomePage extends Component{
                     }
                     characterList.push(CharacterData);
                 }
-                this.props.userInputChange( "characterList" , characterList );
-            })
+                
+            });
+            this.props.userInputChange( "characterList" , characterList );
+            this.props.closeModals();
   
         });
     }
@@ -87,14 +92,21 @@ export default class HomePage extends Component{
                         {this.props.userData.userId ? (
                             <Grid item container direction="row" alignItems="center" justify="center" spacing={5}>
                                 <Button name="createModal" className="modalButton shaded" onClick={this.handleModal.bind(this)}>Make Lobby</Button>
-                                <Button name="joinModal"className="modalButton shaded" onClick={this.handleModal.bind(this)}>Join Lobby</Button>
+                                <Button 
+                                    name="joinModal"
+                                    className="modalButton shaded"
+                                    disabled={!this.props.userData.currentCharacter} 
+                                    onClick={this.handleModal.bind(this)}
+                                    >
+                                        Join Lobby
+                                    </Button>
                             </Grid>
                         ) : (<p>Login to play</p>)}
                     </Grid>
                     
                     <Grid item container xs={12} direction="row" alignItems="center" justify="center" spacing={5}>
                         <h1>Chat</h1>
-                        <Button name="sheetModal" className="modalButton shaded" onClick={this.handleModal.bind(this)}>CreateCharacter</Button>
+                        <Button name="sheetModal" value="newCharacter" className="modalButton shaded" onClick={this.handleModal.bind(this)}>CreateCharacter</Button>
                         
                     </Grid>
                     <Grid item xs={2}>

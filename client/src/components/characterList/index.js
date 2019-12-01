@@ -77,30 +77,33 @@ const mapDispatchToProps = dispatch =>
         }
 
     }
-    setSheetData = id => {
-        API.findCharacter(id).then()
-    } 
-    
     render() {
         return(
             <Grid container spacing={1}>
-                {this.props.userData.characterList.map( (character , index) => (
-                    <div className={this.props.userData.currentCharacter === character._id ? ("box"): ("")}>
-                    <Grid item container xs={12} key={index} >
-                        <Grid item xs={2}>
-                            <Button name={character._id} onClick={this.deleteCharacter} value={index}>X</Button>
+                {this.props.userData.userId ? (
+                    this.props.userData.characterList.map( (character , index) => (
+                        <div className={this.props.userData.currentCharacter === character._id ? ("box"): ("")}>
+                        <Grid item container xs={12} key={index} >
+                            <Grid item xs={2}>
+                                <Button name={character._id} onClick={this.deleteCharacter} value={index}>X</Button>
+                            </Grid>
+                            <Grid item xs={7}>
+                                <p><strong>{character.characterName}</strong></p><br/>
+                                <p>level : {character.level} {character.playerClass}</p>
+                            </Grid>
+                            <Grid item xs={3}>
+                                <Button name={character._id} onClick={this.setCurrentCharacter}>Select</Button>
+                                <Button name="sheetModal" value={character._id} onClick={this.handleModal.bind(this)}>View</Button>
+                            </Grid>
                         </Grid>
-                        <Grid item xs={7}>
-                            <p><strong>{character.characterName}</strong></p><br/>
-                            <p>level : {character.level} {character.playerClass}</p>
-                        </Grid>
-                        <Grid item xs={3}>
-                            <Button name={character._id} onClick={this.setCurrentCharacter}>Select</Button>
-                            <Button name="sheetModal" value={character._id} onClick={this.handleModal.bind(this)}>View</Button>
-                        </Grid>
-                    </Grid>
-                    </div>
-                ))}
+                        </div>
+                    ))) : 
+                    (
+                        <div className="noCharacters">
+                            <p>login to view characters</p>
+                        </div>
+
+                    )}
             </Grid>
         )
     }

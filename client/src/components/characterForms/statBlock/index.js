@@ -77,7 +77,7 @@ const mapDispatchToProps = dispatch =>
                             variant="filled"
                             color="secondary"
                             name={this.state.statNames.indexOf(stat)}
-                            onChange={this.onStatChange}
+                            onBlur={this.onStatChange}
                         />
                         
                         <p>{this.state.statMods[this.state.statNames.indexOf(stat)]}</p>

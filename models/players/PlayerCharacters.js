@@ -36,7 +36,6 @@ const playerCharacterSchema = new Schema({
     playerClass: {
         type: String,
         trim: true,
-        required: `need a player class`,
         default: ""
     },
     subClass: {
@@ -48,7 +47,6 @@ const playerCharacterSchema = new Schema({
     playerRace: {
         type: String,
         trim: true,
-        required: "need a player race",
         default: ""
     },
     background: {

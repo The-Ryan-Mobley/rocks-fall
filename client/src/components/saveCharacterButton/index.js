@@ -42,20 +42,40 @@ class SaveCharacterButton extends Component {
                 this.props.swapModalBool("newCharacter", value);
                 value =!this.props.modalData.sheetModal;
                 this.props.swapModalBool("sheetModal", value);
+                
             }
         })
 
     }
     putToDb = () => {
+        let value = undefined;
         API.updateCharacter(this.props.playerCharacter).then(result => {
             if(result) {
                 value =!this.props.modalData.sheetModal;
-                this.props.swapModalBool("sheetModal", value);
+                this.findCharacterList();
             }
 
         });
-
-
+    }
+    findCharacterList = () => {
+        API.userCharacterList(this.props.userData.userId).then(result => {
+            let characterList = this.props.userData.characterList;
+            characterList=[];
+            result.data.forEach(character => {
+                if(characterList.indexOf(character) === -1) {
+                    const {_id, characterName, level, playerClass} = character;
+                    const CharacterData = {
+                        _id,
+                        characterName,
+                        level,
+                        playerClass
+                    }
+                    characterList.push(CharacterData);
+                }
+                
+            });
+  
+        });
     }
     render() {
         return(
