@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Redirect } from 'react-router-dom';
 
 import Wrapper from '../../components/wrapper';
+import SheetModal from "../../components/sheetModal";
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
 import TextField from '@material-ui/core/TextField';
@@ -11,18 +12,14 @@ import TextField from '@material-ui/core/TextField';
 // import Typography from '@material-ui/core/Typography';
 // import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
-import {lobbyInputChange, lobbyHostData, lobbyUserJoin, lobbyUserSet, lobbyMessageReset, lobbyMessageAdd, lobbyMessageChange} from "../../redux/actions/actions";
+import Modal from '@material-ui/core/Modal';
+import Backdrop from '@material-ui/core/Backdrop';
+import Fade from '@material-ui/core/Fade';
 
 import API from "../../utils/api/API";
 import socket from "../../utils/api/socket";
 
-class Lobby extends Component {
-    constructor(){
-        super();
-    }
+export default class Lobby extends Component {
     state = {
         messageKey: 0
     }
@@ -160,6 +157,26 @@ class Lobby extends Component {
         this.props.lobbyMessageChange(event.target.name, event.target.value);
 
     }
+    handleModal = event => {
+        const { name, value } = event.currentTarget;
+        let modalFlag = undefined;
+
+        switch(name) {
+            case "sheetModal" : {
+                API.findCharacter(value).then( result => {
+                    modalFlag = !this.props.modalData.sheetModal;
+                    this.props.setCharacterData(result.data[0]);
+                    this.props.swapModalBool("sheetModal", modalFlag);   
+                });
+                break;  
+            }
+            default: {
+                this.props.closeModals();
+                break;
+            }
+        }
+    }
+    
 
     render(){
         this.joinListener();
@@ -177,6 +194,8 @@ class Lobby extends Component {
                                     <div className="player" key={user.userId}>
                                         <img src={user.userThumbnail} alt="profile" className="profileThumbnail"></img>
                                         <p><strong>{user.userName}</strong></p>
+                                        <p>{user.currentCharacter.characterName}</p>
+                                        <Button value={user.currentCharacter._id} name="sheetModal" onClick={this.handleModal}>View</Button>
                                     </div>
                                 ))}
                         
@@ -206,6 +225,24 @@ class Lobby extends Component {
                                 disabled={!(this.props.lobbyData.chat.newMessage)}>
                                     post
                             </Button>
+
+                            <Modal
+                                aria-labelledby="transition-modal-title"
+                                aria-describedby="transition-modal-description"
+                                className="sheetModal"
+                                name="sheetModal"
+                                open={this.props.modalData.sheetModal}
+                                onClose={this.handleModal}
+                                closeAfterTransition
+                                BackdropComponent={Backdrop}
+                                BackdropProps={{
+                                  timeout: 100,
+                                }}
+                            >
+                                <Fade in={this.props.modalData.sheetModal}>
+                                    <SheetModal />
+                                </Fade>
+                            </Modal>
                             
                        
                         </Grid>
@@ -215,28 +252,3 @@ class Lobby extends Component {
         )
     }
 }
-const mapStateToProps = state => {
-    return { 
-        lobbyData: state.lobbyManipulation.lobbyData,
-        userData: state.formManipulation.userData
-     };
-  };
-
-const mapDispatchToProps = dispatch =>
-  bindActionCreators(
-    {
-      lobbyInputChange,
-      lobbyHostData,
-      lobbyUserJoin,
-      lobbyUserSet,
-      lobbyMessageReset,
-      lobbyMessageAdd,
-      lobbyMessageChange
-    },
-    dispatch
-  );
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(Lobby);

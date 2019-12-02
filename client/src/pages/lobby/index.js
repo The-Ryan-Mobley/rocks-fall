@@ -1,6 +1,19 @@
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import {userInputChange,  userLogin} from "../../redux/actions/actions";
+import {
+  userInputChange,  
+  userLogin,
+  setCharacterData,
+  swapModalBool,
+  closeModals,
+  lobbyInputChange, 
+  lobbyHostData, 
+  lobbyUserJoin, 
+  lobbyUserSet, 
+  lobbyMessageReset, 
+  lobbyMessageAdd, 
+  lobbyMessageChange
+} from "../../redux/actions/actions";
 
 //page
 import Lobby from "./lobby";
@@ -8,7 +21,8 @@ import Lobby from "./lobby";
 const mapStateToProps = state => {
     return { 
       userData: state.formManipulation.userData,
-      test: state.formManipulation.ryanStuff,
+      lobbyData: state.lobbyManipulation.lobbyData,
+      modalData: state.modalControls.modalData
      };
   };
 
@@ -16,7 +30,17 @@ const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       userInputChange,
-      userLogin
+      userLogin,
+      setCharacterData,
+      swapModalBool,
+      closeModals,
+      lobbyInputChange,
+      lobbyHostData,
+      lobbyUserJoin,
+      lobbyUserSet,
+      lobbyMessageReset,
+      lobbyMessageAdd,
+      lobbyMessageChange
     },
     dispatch
   );

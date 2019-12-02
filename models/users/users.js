@@ -28,9 +28,9 @@ const userSchema = new Schema({
         default: []
     },
     currentCharacter: {
-        type: String,
+        type: Object,
         trim: true,
-        default: ""
+        default: {}
 
     },
     dateCreated: {

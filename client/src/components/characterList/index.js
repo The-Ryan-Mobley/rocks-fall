@@ -53,7 +53,7 @@ const mapDispatchToProps = dispatch =>
 
     }
     setCurrentCharacter = event => {
-        this.props.userInputChange("currentCharacter", event.currentTarget.name);
+        this.props.userInputChange("currentCharacter", JSON.parse(event.currentTarget.value));
     }
     handleModal = event => {
         const { name, value } = event.currentTarget;
@@ -82,7 +82,7 @@ const mapDispatchToProps = dispatch =>
             <Grid container spacing={1}>
                 {this.props.userData.userId ? (
                     this.props.userData.characterList.map( (character , index) => (
-                        <div className={this.props.userData.currentCharacter === character._id ? ("box"): ("")}>
+                        <div className={this.props.userData.currentCharacter._id === character._id ? ("box"): ("")}>
                         <Grid item container xs={12} key={index} >
                             <Grid item xs={2}>
                                 <Button name={character._id} onClick={this.deleteCharacter} value={index}>X</Button>
@@ -92,7 +92,7 @@ const mapDispatchToProps = dispatch =>
                                 <p>level : {character.level} {character.playerClass}</p>
                             </Grid>
                             <Grid item xs={3}>
-                                <Button name={character._id} onClick={this.setCurrentCharacter}>Select</Button>
+                                <Button name={character._id} value={JSON.stringify(character)} onClick={this.setCurrentCharacter}>Select</Button>
                                 <Button name="sheetModal" value={character._id} onClick={this.handleModal.bind(this)}>View</Button>
                             </Grid>
                         </Grid>

@@ -47,6 +47,9 @@ export default {
     findCharacter: id => {
         return axios.get("/api/game/findCharacter/"+id);
     },
+    findCharacterThumbData: id => {
+        return axios.get("/api/game/characterThumb/"+id);
+    },
     //spell Routes
     spellsByClass: (playerClass)=>{
         return axios.get("/api/game/spells/"+playerClass);

@@ -21,6 +21,9 @@ router
 router
     .route("/findCharacter/:id")
     .get(playerController.findCharacter);
+router
+    .route("/characterThumb/:id")
+    .get(playerController.characterThumb);
 
 module.exports = router;
     

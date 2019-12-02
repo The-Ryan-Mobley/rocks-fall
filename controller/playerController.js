@@ -55,5 +55,27 @@ module.exports = {
             res.sendStatus("503");
 
         }
+    },
+    characterThumb: async ( req , res ) => {
+        
+        try {
+            const result = await db.PlayerCharacter.find({_id : req.params.id});
+            if(result) {
+                const {_id, characterName, level, playerClass } = result[0];
+                const thumbData = {
+                    _id,
+                    characterName,
+                    level,
+                    playerClass
+                };
+                res.json(thumbData);
+            } else {
+                res.sendStatus("504");
+            }
+            
+
+        } catch {
+            res.sendStatus("503");
+        }
     }
 }
