@@ -20,6 +20,23 @@ export default {
         }
         socket.emit('joinRoom', passing);
     },
+    joinGlobal: (userData) => {
+        const room = "Global"
+        const passing = {
+            room,
+            userData
+        }
+        socket.emit('joinRoom', passing);
+
+    },
+    leaveGlobal: (userData) => {
+        const room = "Global";
+        let passing = {
+            room,
+            userData
+        }
+        socket.emit('leaveRoom', passing)
+    }
     joinLobby: (lobbyData, userData) => {
         let room = lobbyData.lobbyName;
         let passing = {

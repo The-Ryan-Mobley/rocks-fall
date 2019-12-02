@@ -90,6 +90,8 @@ const initialState = {
     },
     modalData: {
         diceArray: [0,0,0,0,0,0],
+        errorText: "",
+        newGlobalMessage: "",
         globalChat: [],
         sheetModal: false,
         createModal: false,

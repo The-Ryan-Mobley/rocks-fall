@@ -34,10 +34,9 @@ app.use(routes);
     socket.emit("welcome", "the socket works!!!");
 
     socket.on("joinRoom", data => {
+      console.log(data.room);
       socket.join(data.room);
       socket.to(data.room).emit("joined", data);
-      
-
     });
     socket.on("message", data => {
       socket.to(data.room).emit("chat", data.message);

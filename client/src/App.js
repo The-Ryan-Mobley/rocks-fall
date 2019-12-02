@@ -39,7 +39,7 @@ class App extends Component {
   constructor(){
     super();
   }
-  componentDidMount = () => { //sets session data from local storage
+  componentWillMount = () => { //sets session data from local storage
     const sessionData = localStorage.getItem( "userData" ) || false;
         if(sessionData) {
             let localData = JSON.parse(sessionData)

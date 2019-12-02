@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
+import Input from '@material-ui/core/Input';
 import { withStyles } from '@material-ui/core/styles'
 
 import MakeLobby from "../../components/makeLobby";
@@ -14,6 +15,7 @@ import SheetModal from "../../components/sheetModal";
 import CharacterList from "../../components/characterList";
 
 import API from "../../utils/api/API";
+import socket from "../../utils/api/socket";
 
 export default class HomePage extends Component{
     state = {
@@ -22,9 +24,17 @@ export default class HomePage extends Component{
         sheetModal: false
     }
     componentDidMount = () => {
+        console.table(this.props.userData);
         if(this.props.userData.userId) {
+            console.log("thiiiiiiis");
+            socket.joinGlobal(this.props.userData);
+            this.globalListener();
             this.findCharacterList(this.props.userData.userId);
         }
+    }
+    componentWillUnmount = () => {
+        socket.leaveLobby(this.props.userData);
+
     }
     handleModal = (event) => {
         event.preventDefault();
@@ -79,7 +89,43 @@ export default class HomePage extends Component{
   
         });
     }
-    
+    postMessage = () => {
+        const msg ={
+            key: Math.floor(Math.random() * 1000000),
+            body: `${this.props.userData.userName}: ${this.props.modalData.newGlobalMessage}`
+        }
+        socket.postMessage("Global", msg);
+        
+        this.props.swapModalBool("newGlobalMessage", "");
+        let globalChat = this.props.modalData.globalChat;
+        globalChat.push(msg);
+        this.props.swapModalBool(globalChat);
+    }
+    blurMessage = event => {
+        const {name, value} = event.target;
+        this.props.swapModalBool(name, value);
+    }
+    globalListener = () => {
+        socket.listenChat(re => {
+            const msg ={
+                key: Math.floor(Math.random() * 1000000),
+                body: re
+            }
+            console.log(msg);
+            let globalChat = this.props.modalData.globalChat;
+            let keys = globalChat.map(message => {
+                return message.key;
+            });
+            
+            if((keys.indexOf(msg.key) === -1)) {
+                console.log("keys");
+                console.log(keys);
+                globalChat.push(msg);
+                this.props.swapModalBool("glovalChat", globalChat);
+            }
+        })
+
+    }
     render(){
         return(
             <Wrapper>
@@ -95,7 +141,7 @@ export default class HomePage extends Component{
                                 <Button 
                                     name="joinModal"
                                     className="modalButton shaded"
-                                    disabled={!this.props.currentCharacter} 
+                                    disabled={!this.props.userData.currentCharacter._id} 
                                     onClick={this.handleModal.bind(this)}
                                     >
                                         Join Lobby
@@ -109,8 +155,32 @@ export default class HomePage extends Component{
                         <Button name="sheetModal" value="newCharacter" className="modalButton shaded" onClick={this.handleModal.bind(this)}>CreateCharacter</Button>
                         
                     </Grid>
-                    <Grid item xs={2}>
+                    <Grid item xs={4}>
                         <CharacterList/>
+                    </Grid>
+                    <Grid item xs={8}>
+                            <div className="chatBody">
+                                {this.props.modalData.globalChat.map(msg => (
+                                    <p>{msg.body.body}</p>
+                                ))}
+
+                            </div>
+                        <Input
+                            name="newGlobalMessage"
+                            value={this.props.modalData.newGlobalMessage}
+                            id="filled-required"
+                            fullWidth="true"
+                            placeholder="Type Message Here"
+                            variant="filled"
+                            color="secondary"
+                            className="chatBox" 
+                            onChange={this.blurMessage}
+                        />
+                        <Button variant="contained" className="createButton" 
+                            onClick={this.postMessage} 
+                            disabled={!(this.props.modalData.newGlobalMessage)}>
+                               post
+                        </Button>
                     </Grid>
                     
                     

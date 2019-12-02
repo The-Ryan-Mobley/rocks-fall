@@ -7,11 +7,7 @@ import DiceBlock from "../../components/diceBlock";
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
 import TextField from '@material-ui/core/TextField';
-// import ButtonBase from '@material-ui/core/ButtonBase';
-// import Box from '@material-ui/core/Box';
-// import CssBaseline from '@material-ui/core/CssBaseline';
-// import Typography from '@material-ui/core/Typography';
-// import Container from '@material-ui/core/Container';
+
 import Grid from '@material-ui/core/Grid';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -88,11 +84,12 @@ export default class Lobby extends Component {
 
     }
     postMessage = () => {
-        socket.postMessage(this.props.lobbyData.lobbyName, this.props.lobbyData.chat.newMessage);
         let msg ={
             key: Math.floor(Math.random() * 1000000),
-            body: this.props.lobbyData.chat.newMessage
+            body: `${this.props.userData.userName}: ${this.props.lobbyData.chat.newMessage}`
         }
+        socket.postMessage(this.props.lobbyData.lobbyName, msg);
+        
         this.props.lobbyMessageReset();
         let messages = this.props.lobbyData.chat.messages;
         messages.push(msg);
@@ -206,7 +203,7 @@ export default class Lobby extends Component {
                             <DiceBlock/>
                             <div className="chatBody">
                                 {this.props.lobbyData.chat.messages.map(msg => (
-                                    <p>{msg.body}</p>
+                                    <p>{msg.body.body ? (msg.body.body) : (msg.body)}</p>
                                 ))}
 
                             </div>
