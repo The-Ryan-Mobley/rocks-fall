@@ -10,6 +10,8 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import {characterInputChange} from "../../../redux/actions/actions";
 
+import API from "../../../utils/api/API";
+
 
 const mapStateToProps = state => {
     return { 

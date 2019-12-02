@@ -23,8 +23,10 @@ function seedSpellSlots() {
 }
 
 function querySpells(pageNumber, spellSeedApi) {
-
-    axios.get(`https://api.open5e.com/spells/?page=${pageNumber}`).then((result) => {
+    //spells/?classes=Wizard
+    let queryString = `https://api.open5e.com/spells/?page=${pageNumber.toString()}`
+    
+    axios.get(queryString).then((result) => {
         let reData = result.data.results;
         reData.forEach(i => {
             let spellObj = {
@@ -32,16 +34,16 @@ function querySpells(pageNumber, spellSeedApi) {
                 description: i.desc,
                 higherLevel: i.higher_level,
                 range: i.range,
-                components: i.components.split(`,`),
+                components: i.components.split(`, `),
                 ritual: i.ritual,
                 duration: i.duration,
                 concentration: i.concentration,
                 castingTime: i.casting_time,
                 spellLevel: i.level_int,
                 school: i.school,
-                playerClass: i.dnd_class.split(`,`),
-                subClass: i.archetype.split(`,`),
-                druidCirlce: i.circles.split(`,`)
+                playerClass: i.dnd_class.split(`, `),
+                subClass: i.archetype.split(`, `),
+                druidCirlce: i.circles.split(`, `)
             }
             spellSeedApi.push(spellObj);
         });
@@ -50,9 +52,7 @@ function querySpells(pageNumber, spellSeedApi) {
             pageNumber++;
             querySpells(pageNumber, spellSeedApi);
         } else {
-            db.Spells
-                .remove({})
-                .then(() => db.Spells.collection.insertMany(spellSeedApi))
+            db.Spells.collection.insertMany(spellSeedApi)
                 .then(data => {
                     console.log(data.result.n + " records inserted!");
                     seedSpellSlots();

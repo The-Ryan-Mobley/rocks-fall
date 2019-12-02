@@ -5,6 +5,7 @@ import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import Tooltip from '@material-ui/core/Tooltip';
 //import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
@@ -49,18 +50,26 @@ class SpellBlock extends Component {
         spellArray: [],
         selectedSpell: {},
         spellMenu: false,
-        spellModal: false
+        spellModal: false,
+        queryAgain: true,
     }
     componentDidMount = () => {
-        if(this.props.playerCharacter.spellCastingStat) {
+        if(this.props.playerCharacter.spellCastingClass) {
             API.spellsByLevelAndClass(this.props.spellLevel , this.props.playerCharacter.spellCastingClass)
             .then(result => {      
-                this.setState({spellQuery: result.data});
+                this.setState({
+                    spellQuery: result.data,
+                    queryAgain: false
+                });
+
             });
         }
         if(this.props.playerCharacter.spellsKnown[this.props.spellLevel] !== null) {
             this.setState({spellArray: this.props.playerCharacter[this.props.spellLevel]});
         }
+    }
+    handleClickAway = () => {
+        this.setState({ spellMenu: false});
     }
     spellSlotArrayChange = event => {
         let spellSlots = this.props.playerCharacter.spellSlots;
@@ -68,6 +77,8 @@ class SpellBlock extends Component {
     }
     dropDownOpen = () => {
         this.setState({ spellMenu: true});
+        this.queryAgain();
+        
     }
     selectSpell = (value) => {
         let selectedSpell = this.state.selectedSpell;
@@ -118,6 +129,24 @@ class SpellBlock extends Component {
         this.props.setViewdSpell(this.state.selectedSpell);
 
     }
+    queryAgain = () => {
+        if(this.state.queryAgain === true) {
+            if(this.props.playerCharacter.spellCastingStat) {
+                API.spellsByLevelAndClass(this.props.spellLevel , this.props.playerCharacter.spellCastingClass)
+                .then(result => {      
+                    this.setState({
+                        spellQuery: result.data,
+                        queryAgain: false
+                    });
+                });
+            }
+            if(this.props.playerCharacter.spellsKnown[this.props.spellLevel] !== null) {
+                this.setState({
+                    spellArray: this.props.playerCharacter[this.props.spellLevel], 
+                });
+            }
+        }
+    }
     render(){
         
         return(
@@ -142,10 +171,12 @@ class SpellBlock extends Component {
                         <Button onClick={this.removeFromKnown.bind(this, spell)}>X</Button>
                     </Grid>
                 ))) : (<p></p>)}
+                 
                     <Button aria-controls="simple-menu" aria-haspopup="true" onClick={this.dropDownOpen}>
                         {this.state.selectedSpell.name ? 
                         (this.state.selectedSpell.name) : ("Select")}
                     </Button>
+                <ClickAwayListener onClickAway={this.handleClickAway}>
                     <Menu
                         id="simple-menu"
                         keepMounted 
@@ -163,6 +194,7 @@ class SpellBlock extends Component {
                         </MenuItem>
                     ))}
                     </Menu>
+                </ClickAwayListener>
                     <Button onClick={this.pushToKnown} disabled={this.selectedSpell}>+</Button>
 
 
