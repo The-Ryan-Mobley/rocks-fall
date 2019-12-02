@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 
 import Wrapper from '../../components/wrapper';
 import SheetModal from "../../components/sheetModal";
+import DiceBlock from "../../components/diceBlock";
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
 import TextField from '@material-ui/core/TextField';
@@ -202,6 +203,7 @@ export default class Lobby extends Component {
                             </div>
                         </Grid>
                         <Grid item xs={6}>
+                            <DiceBlock/>
                             <div className="chatBody">
                                 {this.props.lobbyData.chat.messages.map(msg => (
                                     <p>{msg.body}</p>

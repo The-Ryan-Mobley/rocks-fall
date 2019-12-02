@@ -89,6 +89,7 @@ const initialState = {
         viewedSpell: {}
     },
     modalData: {
+        diceArray: [0,0,0,0,0,0],
         sheetModal: false,
         createModal: false,
         newCharacter: false,

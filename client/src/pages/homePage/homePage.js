@@ -95,7 +95,7 @@ export default class HomePage extends Component{
                                 <Button 
                                     name="joinModal"
                                     className="modalButton shaded"
-                                    disabled={!this.props.userData.currentCharacter} 
+                                    disabled={!this.props.currentCharacter} 
                                     onClick={this.handleModal.bind(this)}
                                     >
                                         Join Lobby

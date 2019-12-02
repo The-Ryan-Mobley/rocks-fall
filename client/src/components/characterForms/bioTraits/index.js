@@ -41,7 +41,7 @@ class BioTraits extends Component {
                         onBlur={this.onTextChange}
                         margin="normal"
                         name="personalityTraits"
-                        defaultValue={this.props.playerCharacter.personalityTraits.length ? 
+                        defaultValue={this.props.playerCharacter.personalityTraits ? 
                             (this.props.playerCharacter.personalityTraits) : ("")}
                     />
                 </div>
