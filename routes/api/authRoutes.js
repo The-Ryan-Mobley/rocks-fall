@@ -12,5 +12,8 @@ router
 router
     .route("/currentCharacter/:id")
     .put(authController.updateCurrent);
+router
+    .route("/newThumb/:id")
+    .put(authController.updateThumb);
 
 module.exports = router;

@@ -86,7 +86,7 @@ class DiceBlock extends Component {
                 {this.props.modalData.diceArray.map((dice, index) => (
                     <TextField
                         key={index}
-                        id="money"
+                        id="dice"
                         label={`d${this.state.diceLabel[index]}`}
                         defaultValue=""
                         variant="filled"

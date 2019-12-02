@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import CharacterSheet from "../characterSheet";
 import SpellSheet from "../spellSheet";
 import SaveCharacterButton from "../saveCharacterButton";
+
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
   

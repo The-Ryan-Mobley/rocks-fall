@@ -11,6 +11,9 @@ export default {
     userCurrentCharacter: (currentCharacter, userId) => {
         return axios.put("api/auth/currentCharacter/"+userId, {characterId: currentCharacter});
     },
+    updateCharacterThumbData: (id, newThumb) => {
+        return axios.put("/api/auth/newThumb/"+id, {thumbNail: newThumb});
+    },
     //lobbyRoutes
     newLobby: (lobbyData) =>{
         return axios.post("/api/lobby/new", lobbyData);
@@ -50,6 +53,7 @@ export default {
     findCharacterThumbData: id => {
         return axios.get("/api/game/characterThumb/"+id);
     },
+    
     //spell Routes
     spellsByClass: (playerClass)=>{
         return axios.get("/api/game/spells/"+playerClass);

@@ -42,6 +42,7 @@ const lobbySchema = new Schema({
     },
     createdOn: {
         type: Date,
+        expires: 86400,
         default: Date.now()
 
     }

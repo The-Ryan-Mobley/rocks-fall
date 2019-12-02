@@ -36,7 +36,7 @@ export default {
             userData
         }
         socket.emit('leaveRoom', passing)
-    }
+    },
     joinLobby: (lobbyData, userData) => {
         let room = lobbyData.lobbyName;
         let passing = {

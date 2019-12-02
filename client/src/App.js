@@ -12,8 +12,8 @@ import {userInputChange,  userLogin, saveSession} from "./redux/actions/actions"
 import Login from './pages/login/index';
 import CreateAccount from './pages/createAccount/index';
 import HomePage from './pages/homePage/index';
-import Profile from "./pages/profile/index";
 import Lobby from "./pages/lobby/index";
+import UserPage from "./pages/userPage/index";
 
 import API from "./utils/api/API";
 import './App.css';
@@ -80,7 +80,7 @@ class App extends Component {
           <Route exact path="/" component={HomePage}/>
           <Route exact path="/login" component={Login}/>
           <Route exact path="/createAccount" component={CreateAccount}/>
-          <Route exact path="/profile" component={Profile}/>
+          <Route exact path="/profile/:userName" component={UserPage}/>
           <Route exact path="/lobby/:lobbyId" component={Lobby} />
         </Switch>
       </Router>

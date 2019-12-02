@@ -1,22 +1,19 @@
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import {swapModalBool, closeModals, userInputChange} from "../../redux/actions/actions";
+import {userInputChange} from "../../redux/actions/actions";
 
-//page
+
 import UserPage from "./userPage";
 
 const mapStateToProps = state => {
     return { 
       userData: state.formManipulation.userData,
-      modalData: state.modalControls.modalData
      };
   };
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      swapModalBool,
-      closeModals,
       userInputChange
     },
     dispatch

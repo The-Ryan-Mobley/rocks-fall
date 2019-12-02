@@ -82,5 +82,17 @@ module.exports = {
             res.sendStatus("504");
         }
 
+    },
+    updateThumb: async ( req, res ) => {
+        try {
+            const result = await db.Users.updateOne({_id: req.params.id}, {$set : {thumbnail: req.body.newThumb}});
+            if(result) {
+                res.sendStatus("200");
+            } else {
+                res.sendStatus("404");
+            }
+        } catch {
+            res.sendStatus("503");
+        }
     }
 }

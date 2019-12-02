@@ -2,6 +2,8 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import {userInputChange,  userLogin} from "../../redux/actions/actions";
 
+import Wrapper from "../../"
+
 //page
 import Login from "./login";
 
