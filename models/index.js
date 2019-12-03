@@ -1,7 +1,7 @@
 module.exports = {
-    Spells: require("./rules/Spells"),
-    SpellProgression: require("./rules/SpellProgression"),
-    PlayerCharacter: require("./players/PlayerCharacters"),
-    Users: require("./users/Users"),
-    Lobbies: require("./players/Lobbies")
+    Spells: require("./Spells"),
+    SpellProgression: require("./SpellProgression"),
+    PlayerCharacter: require("./PlayerCharacters"),
+    Users: require("./Users"),
+    Lobbies: require("./Lobbies")
 }
