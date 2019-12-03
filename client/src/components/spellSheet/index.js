@@ -39,7 +39,7 @@ class SpellSheet extends Component{
                     </Grid>
                     <Grid item container direction="column" xs={12}>
                         {this.props.playerCharacter.spellSlots.map( (slot, index) => (
-                            <Grid item container xs={4}>
+                            <Grid item container xs={12} sm={4} key={index}>
                                 <SpellBlock 
                                     spellSlots={slot}
                                     spellLevel={index}

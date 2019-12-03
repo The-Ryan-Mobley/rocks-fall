@@ -8,7 +8,6 @@ import Profile from "./profile";
 const mapStateToProps = state => {
     return { 
       userData: state.formManipulation.userData,
-      test: state.formManipulation.ryanStuff,
      };
   };
 

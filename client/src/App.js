@@ -7,7 +7,12 @@ import socket from "./utils/api/socket";
 
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import {userInputChange,  userLogin, saveSession} from "./redux/actions/actions";
+import {
+  userInputChange,  
+  userLogin, 
+  saveSession,
+  swapModalBool
+} from "./redux/actions/actions";
 
 import Login from './pages/login/index';
 import CreateAccount from './pages/createAccount/index';
@@ -22,7 +27,7 @@ import './App.css';
   const mapStateToProps = state => {
     return { 
       userData: state.formManipulation.userData,
-      test: state.formManipulation.ryanStuff,
+      modalData: state.modalControls.modalData
      };
   };
 
@@ -31,7 +36,8 @@ const mapDispatchToProps = dispatch =>
     {
       saveSession,
       userInputChange,
-      userLogin
+      userLogin,
+      swapModalBool
     },
     dispatch
   );
@@ -45,34 +51,11 @@ class App extends Component {
             let localData = JSON.parse(sessionData)
             this.props.saveSession(localData); 
             if(localData.userId.length) {
-              this.findCharacterList(localData.userId);
             }
         }
     socket.socketEmmissions();
 
   }
-  findCharacterList = (userId) => {
-      API.userCharacterList(userId).then(result => {
-          let characterList = this.props.userData.characterList;
-          characterList=[];
-          result.data.forEach(character => {
-              if(characterList.indexOf(character) === -1) {
-                  const {_id, characterName, level, playerClass} = character;
-                  const CharacterData = {
-                      _id,
-                      characterName,
-                      level,
-                      playerClass
-                  }
-                  console.table(CharacterData);
-                  characterList.push(CharacterData);
-              }
-              this.props.userInputChange( "characterList" , characterList );
-          })
-
-      });
-  }
-  
   render(){
     return (
       <Router>

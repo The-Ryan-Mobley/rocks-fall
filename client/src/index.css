@@ -122,3 +122,22 @@ code {
 .smallInput {
   max-width: 20% !important;
 }
+.characterList{
+  overflow-y: scroll !important;
+  overflow-x: hidden !important;
+  height: 15rem !important;
+  background-color: #55462f !important;
+}
+.characterOption{
+  background-color: #b9a88d !important;
+  height: 20%;
+}
+.smallButtons{
+  font-size: 1% !important;
+}
+.loader{
+  font-weight: bold;
+  margin-top: 1% !important;
+  height: 5%;
+  margin-bottom: 0% !important;
+}

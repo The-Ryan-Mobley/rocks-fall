@@ -24,7 +24,7 @@ import {
 import {SET_SPELL_QUERY, SET_VIEWED_SPELL} from "../actions/actions";
 import {SWAP_MODAL_BOOL, CLOSE_MODAL} from "../actions/actions";
 
-const initialState = {
+const userState = {
     userData: {
         userName: "",
         password: "",
@@ -33,8 +33,9 @@ const initialState = {
         userId: "",
         currentCharacter: {},
         characterList: []
-    },
-    ryanStuff: [],
+    }
+}
+const lobbyState = {
     lobbyData: {
         lobbyId: "",
         lobbyName: "",
@@ -46,7 +47,9 @@ const initialState = {
             messages: [],
             newMessage: ""
         }
-    },
+    }
+}
+const playerState = {
     playerCharacter: {
         _id: "",
         characterName: "",
@@ -83,12 +86,17 @@ const initialState = {
         inventory: [],
         featsAndTraits: [],
         authorId: ""
-    },
+    }
+}
+const spellState = {
     spellData: {
         spellQuery: [],
         viewedSpell: {}
-    },
+    }
+}
+const modalState = {
     modalData: {
+        loadingList: true,
         diceArray: [0,0,0,0,0,0],
         errorText: "",
         newGlobalMessage: "",
@@ -100,8 +108,8 @@ const initialState = {
         confirmModal: false,
         confirmFlag: null
     }
-  };
-const modalControls = (state = initialState, action) => {
+}
+const modalControls = (state = modalState, action) => {
     switch(action.type) {
         case (SWAP_MODAL_BOOL) : {
             return {
@@ -128,7 +136,7 @@ const modalControls = (state = initialState, action) => {
         default: return state;
     }
 }
-const formManipulation = (state = initialState, action) => {
+const formManipulation = (state = userState, action) => {
     switch(action.type){
         case USER_INPUT_CHANGE : {
             return {
@@ -180,7 +188,7 @@ const formManipulation = (state = initialState, action) => {
     }
     return state;
 };
-const lobbyManipulation = (state = initialState, action) => {
+const lobbyManipulation = (state = lobbyState, action) => {
     switch(action.type){
         case LOBBY_INPUT_CHANGE : {
             return {
@@ -265,7 +273,7 @@ const lobbyManipulation = (state = initialState, action) => {
     }
 
 }
-const characterReducer = (state = initialState, action) => {
+const characterReducer = (state = playerState, action) => {
     switch(action.type){
         case CHARACTER_INPUT_CHANGE : {
             
@@ -341,7 +349,7 @@ const characterReducer = (state = initialState, action) => {
         default: return state;
     }
 }
-const spellReducer = (state = initialState, action) => {
+const spellReducer = (state = spellState, action) => {
     switch(action.type){
         case SET_SPELL_QUERY : {
             return {

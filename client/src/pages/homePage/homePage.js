@@ -69,6 +69,9 @@ export default class HomePage extends Component{
         
     };
     findCharacterList = (userId) => {
+        if(this.props.userData.characterList.length === 0) {
+            this.props.swapModalBool("loadingList", true);
+          }
         API.userCharacterList(userId).then(result => {
             let characterList = this.props.userData.characterList;
             characterList=[];
@@ -86,6 +89,7 @@ export default class HomePage extends Component{
                 
             });
             this.props.userInputChange( "characterList" , characterList );
+            this.props.swapModalBool("loadingList", false);
             this.props.closeModals();
   
         });
@@ -156,10 +160,11 @@ export default class HomePage extends Component{
                         <Button name="sheetModal" value="newCharacter" className="modalButton shaded" onClick={this.handleModal.bind(this)}>CreateCharacter</Button>
                         
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid container spacing={3}>
+                    <Grid item xs={3}>
                         <CharacterList/>
                     </Grid>
-                    <Grid item xs={8}>
+                    <Grid item xs={6}>
                             <div className="chatBody">
                                 {this.props.modalData.globalChat.map(msg => (
                                     <p>{msg.body.body}</p>
@@ -182,6 +187,7 @@ export default class HomePage extends Component{
                             disabled={!(this.props.modalData.newGlobalMessage)}>
                                post
                         </Button>
+                    </Grid>
                     </Grid>
                     
                     

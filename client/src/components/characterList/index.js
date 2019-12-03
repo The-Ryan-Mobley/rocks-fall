@@ -2,6 +2,7 @@ import React, {Component} from "react";
 
 import Grid from "@material-ui/core/Grid";
 import Button from '@material-ui/core/Button';
+import { styled } from '@material-ui/core/styles';
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import {
@@ -13,6 +14,20 @@ import {
 } from "../../redux/actions/actions";
 
 import API from "../../utils/api/API";
+
+const ListButton = styled(Button)({
+    fontSize: "0.6rem",
+    backgroundColor: "#6d6965",
+    padding: "1%"
+  });
+const ListGrid = styled(Grid)({
+    marginBottom: "-10%",
+    backgroundColor: "#b9a88d",
+    borderColor: "black",
+    borderStyle: "solid",
+    borderWidth: "1%"
+
+});
 
 const mapStateToProps = state => {
     return { 
@@ -36,9 +51,7 @@ const mapDispatchToProps = dispatch =>
 
 
  class CharacterList extends Component {
-    componentDidMount = () => {
-        
-    }
+
     deleteCharacter = event => {
 
         const { name, value } = event.currentTarget;
@@ -67,6 +80,7 @@ const mapDispatchToProps = dispatch =>
                     this.props.setCharacterData(result.data[0]);
                     this.props.swapModalBool("sheetModal", modalFlag);
                     
+                    
                 });
                 break;
                 
@@ -79,25 +93,30 @@ const mapDispatchToProps = dispatch =>
 
     }
     render() {
+        //<div className={this.props.userData.currentCharacter._id === character._id ? ("box"): ("characterOption")}>
         return(
-            <Grid container spacing={1}>
+            <Grid container className="characterList">
+                {this.props.modalData.loadingList ? 
+                    (<p className="loader">Loading...</p>) : 
+                    (<p className="loader">Characters</p>)}
+                
                 {this.props.userData.userId ? (
                     this.props.userData.characterList.map( (character , index) => (
-                        <div className={this.props.userData.currentCharacter._id === character._id ? ("box"): ("")}>
-                        <Grid item container xs={12} key={index} >
-                            <Grid item xs={2}>
+                        <ListGrid item container md={12} key={index} spacing={0}>
+                            <Grid item md={2}>
                                 <Button name={character._id} onClick={this.deleteCharacter} value={index}>X</Button>
                             </Grid>
-                            <Grid item xs={7}>
-                                <p><strong>{character.characterName}</strong></p><br/>
+                            <Grid item md={3}>
+                                <p><strong>{character.characterName}</strong></p>
+                            </Grid>
+                            <Grid item md={3}>
                                 <p>level : {character.level} {character.playerClass}</p>
                             </Grid>
-                            <Grid item xs={3}>
-                                <Button name={character._id} value={JSON.stringify(character)} onClick={this.setCurrentCharacter}>Select</Button>
-                                <Button name="sheetModal" value={character._id} onClick={this.handleModal.bind(this)}>View</Button>
+                            <Grid item md={3} >
+                                <ListButton name={character._id} value={JSON.stringify(character)} onClick={this.setCurrentCharacter}>Select</ListButton>
+                                <ListButton name="sheetModal" value={character._id} onClick={this.handleModal.bind(this)}>View</ListButton>
                             </Grid>
-                        </Grid>
-                        </div>
+                        </ListGrid>
                     ))) : 
                     (
                         <div className="noCharacters">
