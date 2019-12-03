@@ -125,12 +125,11 @@ code {
 .characterList{
   overflow-y: scroll !important;
   overflow-x: hidden !important;
-  height: 15rem !important;
+  height: 30rem !important;
   background-color: #55462f !important;
 }
 .characterOption{
   background-color: #b9a88d !important;
-  height: 20%;
 }
 .smallButtons{
   font-size: 1% !important;

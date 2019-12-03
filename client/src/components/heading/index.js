@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
 import { Redirect } from 'react-router-dom';
+
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
+import { styled } from '@material-ui/core/styles';
+
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import {userInputChange,  userLogin, userCreateAccount, saveSession} from "../../redux/actions/actions";
@@ -23,6 +26,13 @@ const mapDispatchToProps = dispatch =>
     },
     dispatch
   );
+
+  const AccountButton = styled(Button)({
+      marginTop: "1%",
+      padding: "2%",
+      backgroundColor: "#55462f",
+      color: "#ffffff"
+  });
 
 
 
@@ -82,13 +92,13 @@ class Heading extends Component {
                                     <p>Logged in as: {this.props.userData.userName}</p>
                                     {this.state.sendProfile ? 
                                         (<Redirect to={"/profile/"+this.props.userData.userName}/>) : 
-                                        (<Button className="logOutButton"  name="sendProfile" onClick={this.buttonClick}>Account</Button>)}
+                                        (<AccountButton name="sendProfile" onClick={this.buttonClick}>Account</AccountButton>)}
                                     {this.state.logoutUser ? (<Redirect to="/"/>) : (
-                                    <Button variant="contained" className="logOutButton" 
+                                    <AccountButton variant="contained"
                                         onClick={this.logoutClick} 
                                         name="logoutUser" >
                                         Logout
-                                    </Button>
+                                    </AccountButton>
                                     )}
                                 </div>
                             </Grid>

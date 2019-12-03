@@ -21,11 +21,14 @@ const ListButton = styled(Button)({
     padding: "1%"
   });
 const ListGrid = styled(Grid)({
-    marginBottom: "-10%",
+    marginTop: "-50%",
+    position: "relative",
+    marginBottom: "5%",
     backgroundColor: "#b9a88d",
     borderColor: "black",
     borderStyle: "solid",
-    borderWidth: "1%"
+    borderWidth: "1%",
+    height: "20%"
 
 });
 
@@ -79,8 +82,6 @@ const mapDispatchToProps = dispatch =>
                     modalFlag = !this.props.modalData.sheetModal;
                     this.props.setCharacterData(result.data[0]);
                     this.props.swapModalBool("sheetModal", modalFlag);
-                    
-                    
                 });
                 break;
                 
