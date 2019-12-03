@@ -25,7 +25,7 @@ app.use(routes);
   mongoose.set('useFindAndModify', false);
 
   //socket depends
-  const server = require('http').Server(app);
+  const server = require('https').Server(app);
   const io = require('socket.io')(server);
 
   io.on('connection', function(socket){
