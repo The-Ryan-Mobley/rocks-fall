@@ -16,9 +16,9 @@ app.use(express.json());
 
 app.use(routes);
 
-  // app.get("*", function(req, res) {
-  //   res.sendFile(path.join(__dirname, "./client/public/index.html"));
-  // });
+  app.get("*", function(req, res) {
+    res.sendFile(path.join(__dirname, "./client/public/index.html"));
+  });
   
   
   mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/rocksFall");
@@ -29,7 +29,6 @@ app.use(routes);
   const io = require('socket.io')(server);
 
   io.on('connection', function(socket){
-    let temp = socket;
     console.log("user logged");
     socket.emit("welcome", "the socket works!!!");
 
