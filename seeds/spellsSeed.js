@@ -3,8 +3,7 @@ const db = require("../models/");
 const axios = require(`axios`);
 const SpellSlots = require(`./casters`);
 mongoose.connect(
-    process.env.MONGODB_URI ||
-    "mongodb://localhost/rocksFall"
+    "mongodb://heroku_bc2hwp50:nk6p2b2ohmkqucoas7u7s0ks8h@ds251618.mlab.com:51618/heroku_bc2hwp50"
 );
 
 function seedSpellSlots() {

@@ -104,7 +104,7 @@ export default class HomePage extends Component{
         this.props.swapModalBool("newGlobalMessage", "");
         let globalChat = this.props.modalData.globalChat;
         globalChat.push(msg);
-        this.props.swapModalBool(globalChat);
+        this.props.swapModalBool("globalChat", globalChat);
     }
     blurMessage = event => {
         const {name, value} = event.target;
