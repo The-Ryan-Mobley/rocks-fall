@@ -34,6 +34,7 @@ class Heading extends Component {
             sendHome: false,
             loginUser: false,
             logoutUser: false,
+            sendProfile: false
 
         }
 
@@ -67,16 +68,21 @@ class Heading extends Component {
                         <p>subheader text</p>
                     </div>
                 {this.state.sendHome ? (<Redirect to="/" />) : (<p></p>)}
+                
                 </Grid>
                 <Grid item container xs={2} >
                     {this.props.userData.userId ? (
                         <Grid item container xs={12} direction="row"spacing={0} justify="flex-end">
+                            
                             <Grid item xs={4} mt={1}>
                                 <img src={this.props.userData.userThumbnail} alt="profile" className="profileThumbnail inHeader"></img>
                             </Grid>
                             <Grid item xs={8}>
                                 <div className="loggedInDat">
                                     <p>Logged in as: {this.props.userData.userName}</p>
+                                    {this.state.sendProfile ? 
+                                        (<Redirect to={"/profile/"+this.props.userData.userName}/>) : 
+                                        (<Button className="logOutButton"  name="sendProfile" onClick={this.buttonClick}>Account</Button>)}
                                     {this.state.logoutUser ? (<Redirect to="/"/>) : (
                                     <Button variant="contained" className="logOutButton" 
                                         onClick={this.logoutClick} 

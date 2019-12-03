@@ -2,6 +2,7 @@ import React, {Component} from "react";
 
 import Grid from '@material-ui/core/Grid';
 import Input from '@material-ui/core/Input';
+import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField'
 
 import Wrapper from '../../components/wrapper';
@@ -16,11 +17,17 @@ export default class UserPage extends Component {
         const {value} = event.target;
         this.setState({
             tempUrl: value
-        })
+        });
     }
     updateUserData = () => {
         API.updateCharacterThumbData(this.props.userData.userId, this.state.tempUrl).then(response => {
-            console.log(response.status);
+            if(response.status === 200) {
+                this.props.userInputChange("userThumbnail", this.state.tempUrl);
+                this.setState({tempUrl: ""});
+                let sessionData = JSON.parse(localStorage.getItem( "userData" ));
+                sessionData.userThumbnail = this.props.userData.userThumbnail;
+                localStorage.setItem( "userData", JSON.stringify(sessionData));
+            }
         })
     }
     render() {
@@ -36,12 +43,12 @@ export default class UserPage extends Component {
                         variant="filled"
                         color="secondary"
                         name="tempUrl"
-                        onBlur={this.updateDice}
+                        onBlur={this.urlChange}
                         className="smallInput"
                     >
                       
                     </TextField>
-                    <Button disabled={this.state.tempUrl} onClick={this.updateUserData}>Change</Button>
+                    <Button disabled={!this.state.tempUrl} onClick={this.updateUserData}>Change</Button>
 
                 </Grid>
             </Wrapper>

@@ -17,11 +17,14 @@ module.exports = {
 
     },
     spellsByLevelAndClass: async (req, res) => {
-        const level = req.query.level
+        console.log(req.query);
+        const level = parseInt(req.query.level);
         const playerClass = req.query.playerClass;
 
-        let result = await db.Spells.find({spellLevel : level, playerClass: {$in : [playerClass]}})
+        const result = await db.Spells.find({spellLevel : level, playerClass: playerClass})
         if(result) {
+            if(level === 0) {
+            }
             res.json(result);
         } else {
             res.sendStatus("404");

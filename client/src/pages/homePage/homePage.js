@@ -33,7 +33,7 @@ export default class HomePage extends Component{
         }
     }
     componentWillUnmount = () => {
-        socket.leaveLobby(this.props.userData);
+        socket.leaveGlobal(this.props.userData);
 
     }
     handleModal = (event) => {
@@ -42,6 +42,7 @@ export default class HomePage extends Component{
         switch(event.currentTarget.name) {
             case "createModal" : {
                 value = !this.props.modalData.createModal;
+                this.props.setBlankCharacter();
                 this.props.swapModalBool("createModal", value);
                 break;
             }

@@ -127,8 +127,8 @@ const playerCharacterSchema = new Schema({
         default: [0,0,0,0,0,0,0,0,0]
     },
     spellCastingClass: {
-        type: [String],
-        default: []
+        type: String,
+        default: ""
     },
     spellCastingStat: {
         type: String,

@@ -84,8 +84,9 @@ module.exports = {
 
     },
     updateThumb: async ( req, res ) => {
+        console.log(req.body);
         try {
-            const result = await db.Users.updateOne({_id: req.params.id}, {$set : {thumbnail: req.body.newThumb}});
+            const result = await db.Users.updateOne({_id: req.params.id}, {$set : {thumbnail: req.body.thumbNail}});
             if(result) {
                 res.sendStatus("200");
             } else {

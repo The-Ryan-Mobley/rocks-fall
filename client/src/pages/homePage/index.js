@@ -1,6 +1,6 @@
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import {swapModalBool, closeModals, userInputChange} from "../../redux/actions/actions";
+import {swapModalBool, closeModals, userInputChange, setBlankCharacter} from "../../redux/actions/actions";
 
 //page
 import HomePage from "./homePage";
@@ -17,7 +17,9 @@ const mapDispatchToProps = dispatch =>
     {
       swapModalBool,
       closeModals,
-      userInputChange
+      userInputChange,
+      setBlankCharacter
+    
     },
     dispatch
   );

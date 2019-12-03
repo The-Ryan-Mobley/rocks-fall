@@ -56,7 +56,9 @@ class SpellBlock extends Component {
     componentDidMount = () => {
         if(this.props.playerCharacter.spellCastingClass) {
             API.spellsByLevelAndClass(this.props.spellLevel , this.props.playerCharacter.spellCastingClass)
-            .then(result => {      
+            .then(result => {
+                console.log(this.props.spellLevel);
+                console.log(result);      
                 this.setState({
                     spellQuery: result.data,
                     queryAgain: false
@@ -77,7 +79,10 @@ class SpellBlock extends Component {
     }
     dropDownOpen = () => {
         this.setState({ spellMenu: true});
-        this.queryAgain();
+        console.log(this.state.spellQuery);
+        if(this.state.spellQuery.length === 0) {
+            this.queryAgain();
+        }
         
     }
     selectSpell = (value) => {
@@ -130,10 +135,13 @@ class SpellBlock extends Component {
 
     }
     queryAgain = () => {
-        if(this.state.queryAgain === true) {
-            if(this.props.playerCharacter.spellCastingStat) {
+        console.log("query again query again");
+        console.log(this.props.playerCharacter.spellCastingClass);
+        if(this.state.queryAgain) {
+            if(this.props.playerCharacter.spellCastingClass.length) {
                 API.spellsByLevelAndClass(this.props.spellLevel , this.props.playerCharacter.spellCastingClass)
-                .then(result => {      
+                .then(result => {  
+                    console.log(result);    
                     this.setState({
                         spellQuery: result.data,
                         queryAgain: false
@@ -156,10 +164,11 @@ class SpellBlock extends Component {
                     <p>{this.props.spellLevel}</p>
                     <Input 
                         id="slotsTotal"
-                        defaultValue= {this.props.spellSlots ? 
+                        placeholder= {this.props.spellSlots ? 
                         (this.props.spellSlots) : ("0")}
                             variant="filled"
                             color="secondary"
+                            label="spellSlots"
                             name={this.props.spellLevel}
                             onChange={this.spellSlotArrayChange}
                         />
@@ -171,30 +180,30 @@ class SpellBlock extends Component {
                         <Button onClick={this.removeFromKnown.bind(this, spell)}>X</Button>
                     </Grid>
                 ))) : (<p></p>)}
-                 
                     <Button aria-controls="simple-menu" aria-haspopup="true" onClick={this.dropDownOpen}>
                         {this.state.selectedSpell.name ? 
                         (this.state.selectedSpell.name) : ("Select")}
                     </Button>
-                <ClickAwayListener onClickAway={this.handleClickAway}>
+                
                     <Menu
                         id="simple-menu"
                         keepMounted 
                         open={this.state.spellMenu}
                         name="spellCastingClass"
                         onChange={this.dropDownOpen}
+                        onClose={this.handleClickAway}
                     >
                     {this.state.spellQuery.map((spell) => (
                         <MenuItem
                             key={spell.name}
                             value={spell.name}
                             onClick={this.addOption.bind(this, spell)}
+                            
                         >
                             {spell.name}
                         </MenuItem>
                     ))}
                     </Menu>
-                </ClickAwayListener>
                     <Button onClick={this.pushToKnown} disabled={this.selectedSpell}>+</Button>
 
 
