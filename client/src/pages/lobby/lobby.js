@@ -18,7 +18,8 @@ import socket from "../../utils/api/socket";
 
 export default class Lobby extends Component {
     state = {
-        messageKey: 0
+        messageKey: 0,
+        goHome: false
     }
     componentDidMount = () => {
         this.messageListener();
@@ -158,21 +159,30 @@ export default class Lobby extends Component {
     handleModal = event => {
         const { name, value } = event.currentTarget;
         let modalFlag = undefined;
+        let readOnly = undefined
 
         switch(name) {
             case "sheetModal" : {
                 API.findCharacter(value).then( result => {
                     modalFlag = !this.props.modalData.sheetModal;
+                    readOnly = !this.props.modalData.readOnly
                     this.props.setCharacterData(result.data[0]);
-                    this.props.swapModalBool("sheetModal", modalFlag);   
+                    this.props.swapModalBool("readOnly", readOnly);
+                    this.props.swapModalBool("sheetModal", modalFlag);
+
                 });
-                break;  
+                break; 
             }
             default: {
                 this.props.closeModals();
+                readOnly = !this.props.modalData.readOnly;
+                this.props.swapModalBool("readOnly", readOnly);
                 break;
             }
         }
+    }
+    redirectHome = () => {
+        this.setState({goHome: true});
     }
     
 
@@ -183,7 +193,12 @@ export default class Lobby extends Component {
             <Wrapper>
                 <div className="lobbyRoom">
                     <Grid container spacing={1}>
-                        <Grid xs={12} alignItems="center" justify="center" spacing={1}>
+                        <Grid container alignItems="flex-start" justify="flex-end" direction="row">
+                            {this.state.goHome ? 
+                            (<Redirect to="/"/>) : 
+                            (<Button onClick={this.redirectHome}>Leave</Button>)}
+                        </Grid>
+                        <Grid item container xs={12} alignItems="center" justify="center" spacing={1}>
                             <h1 className="centeredHeading">{this.props.lobbyData.lobbyName}</h1>
                         </Grid>
                         <Grid item xs={3}>
@@ -193,7 +208,11 @@ export default class Lobby extends Component {
                                         <img src={user.userThumbnail} alt="profile" className="profileThumbnail"></img>
                                         <p><strong>{user.userName}</strong></p>
                                         <p>{user.currentCharacter.characterName}</p>
-                                        <Button value={user.currentCharacter._id} name="sheetModal" onClick={this.handleModal}>View</Button>
+                                        <Button 
+                                            value={user.currentCharacter._id} 
+                                            name="sheetModal" onClick={this.handleModal}
+                                        >View
+                                        </Button>
                                     </div>
                                 ))}
                         

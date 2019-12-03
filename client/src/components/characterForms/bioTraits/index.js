@@ -12,7 +12,8 @@ import "./style.css"
 
 const mapStateToProps = state => {
     return { 
-        playerCharacter: state.characterReducer.playerCharacter
+        playerCharacter: state.characterReducer.playerCharacter,
+        modalData: state.modalControls.modalData
      };
   };
 
@@ -41,6 +42,9 @@ class BioTraits extends Component {
                         onBlur={this.onTextChange}
                         margin="normal"
                         name="personalityTraits"
+                        InputProps={{
+                            readOnly: this.props.modalData.readOnly
+                          }}
                         defaultValue={this.props.playerCharacter.personalityTraits ? 
                             (this.props.playerCharacter.personalityTraits) : ("")}
                     />
@@ -54,6 +58,9 @@ class BioTraits extends Component {
                         onBlur={this.onTextChange}
                         margin="normal"
                         name="ideals"
+                        InputProps={{
+                            readOnly: this.props.modalData.readOnly
+                          }}
                         defaultValue={this.props.playerCharacter.ideals.length ? 
                             (this.props.playerCharacter.ideals) : ("")}
                     />
@@ -67,6 +74,9 @@ class BioTraits extends Component {
                         onBlur={this.onTextChange}
                         margin="normal"
                         name="ideals"
+                        InputProps={{
+                            readOnly: this.props.modalData.readOnly
+                          }}
                         defaultValue={this.props.playerCharacter.bonds.length ? 
                             (this.props.playerCharacter.bonds) : ("")}
                     />     
@@ -80,6 +90,9 @@ class BioTraits extends Component {
                         onBlur={this.onTextChange}
                         margin="normal"
                         name="flaws"
+                        InputProps={{
+                            readOnly: this.props.modalData.readOnly
+                          }}
                         defaultValue={this.props.playerCharacter.flaws.length ? 
                             (this.props.playerCharacter.flaws) : ("")}
                     />
@@ -93,6 +106,9 @@ class BioTraits extends Component {
                         onBlur={this.onTextChange}
                         margin="normal"
                         name="bio"
+                        InputProps={{
+                            readOnly: this.props.modalData.readOnly
+                          }}
                         defaultValue={this.props.playerCharacter.bio.length ? 
                             (this.props.playerCharacter.bio) : ("")}
                     />

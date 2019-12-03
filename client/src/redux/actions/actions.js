@@ -87,6 +87,7 @@ export const setStringArray = (name, stringArray) => {
 export const setCharacterData = (objData) => {
     return {type: SET_CHARACTER_DATA, objData}
 }
+
 export const setBlankCharacter = () => {
     const blankCharacter = {
         _id: "",

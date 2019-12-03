@@ -13,7 +13,8 @@ import "./style.css"
 
 const mapStateToProps = state => {
     return { 
-        playerCharacter: state.characterReducer.playerCharacter
+        playerCharacter: state.characterReducer.playerCharacter,
+        modalData: state.modalControls.modalData
      };
   };
 
@@ -45,6 +46,9 @@ const mapDispatchToProps = dispatch =>
                                 color="secondary"
                                 name="characterName"
                                 onBlur={this.onTextChange}
+                                InputProps={{
+                                    readOnly: this.props.modalData.readOnly
+                                  }}
                             />
                         </div>
                     </Grid>
@@ -60,6 +64,9 @@ const mapDispatchToProps = dispatch =>
                                     color="secondary"
                                     name="playerClass"
                                     onBlur={this.onTextChange}
+                                    InputProps={{
+                                        readOnly: this.props.modalData.readOnly
+                                      }}
                                 />
                                 <p>level: </p>
                                 <TextField
@@ -71,6 +78,9 @@ const mapDispatchToProps = dispatch =>
                                     color="secondary"
                                     name="level"
                                     onBlur={this.onTextChange}
+                                    InputProps={{
+                                        readOnly: this.props.modalData.readOnly
+                                      }}
 
                                 />
                                 <TextField
@@ -82,6 +92,9 @@ const mapDispatchToProps = dispatch =>
                                     color="secondary"
                                     name="background"
                                     onBlur={this.onTextChange}
+                                    InputProps={{
+                                        readOnly: this.props.modalData.readOnly
+                                      }}
                                 />
                             </Grid>
                         </div>
@@ -96,6 +109,9 @@ const mapDispatchToProps = dispatch =>
                                     color="secondary"
                                     name="playerRace"
                                     onBlur={this.onTextChange}
+                                    InputProps={{
+                                        readOnly: this.props.modalData.readOnly
+                                      }}
                                 />
                                 <Input
                                     id="alignment"
@@ -105,6 +121,9 @@ const mapDispatchToProps = dispatch =>
                                     color="secondary"
                                     name="alignment"
                                     onBlur={this.onTextChange}
+                                    InputProps={{
+                                        readOnly: this.props.modalData.readOnly
+                                      }}
                                 />                            
                                 <Input
                                     defaultValue= {this.props.playerCharacter.experience ? 
@@ -113,6 +132,9 @@ const mapDispatchToProps = dispatch =>
                                     color="secondary"
                                     name="experience"
                                     onBlur={this.onTextChange}
+                                    InputProps={{
+                                        readOnly: this.props.modalData.readOnly
+                                      }}
                                 />
                             </Grid>
                         </div>

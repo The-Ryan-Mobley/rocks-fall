@@ -13,7 +13,8 @@ import {characterInputChange} from "../../../redux/actions/actions";
 
 const mapStateToProps = state => {
     return { 
-        playerCharacter: state.characterReducer.playerCharacter
+        playerCharacter: state.characterReducer.playerCharacter,
+        modalData: state.modalControls.modalData
      };
   };
 
@@ -50,6 +51,9 @@ class CurrencyBlock extends Component {
                         name={index}
                         onChange={this.updateCurrency}
                         className="smallInput"
+                        InputProps={{
+                            readOnly: this.props.modalData.readOnly
+                          }}
                     />
                 ))}
 

@@ -5,9 +5,6 @@ import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
-import Tooltip from '@material-ui/core/Tooltip';
-//import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
@@ -27,6 +24,7 @@ const mapStateToProps = state => {
     return { 
         playerCharacter: state.characterReducer.playerCharacter,
         spellData: state.spellReducer.spellData,
+        modalData: state.modalControls.modalData
 
      };
   };
@@ -95,7 +93,9 @@ class SpellBlock extends Component {
     addOption = (value) => {
 
         this.selectSpell(value);
-        this.setState({spellMenu: false});
+        if(this.state.spellMenu){
+            this.setState({spellMenu: false});
+        }
         
     }
     pushToKnown = () => {
@@ -176,8 +176,13 @@ class SpellBlock extends Component {
                 )}
                 {this.state.spellArray ?  (this.state.spellArray.map((spell, index) => (
                     <Grid item container direction="row" key={index}>
-                        <Button>{spell.name}</Button>
-                        <Button onClick={this.removeFromKnown.bind(this, spell)}>X</Button>
+                        <Button onClick={this.addOption.bind(this, spell)}>{spell.name}</Button>
+                        <Button 
+                            disabled={this.props.modalData.readOnly} 
+                            onClick={this.removeFromKnown.bind(this, spell)}
+                        >
+                            X
+                        </Button>
                     </Grid>
                 ))) : (<p></p>)}
                     <Button aria-controls="simple-menu" aria-haspopup="true" onClick={this.dropDownOpen}>
@@ -192,13 +197,14 @@ class SpellBlock extends Component {
                         name="spellCastingClass"
                         onChange={this.dropDownOpen}
                         onClose={this.handleClickAway}
+                        disabled={this.props.modalData.readOnly}
                     >
                     {this.state.spellQuery.map((spell) => (
                         <MenuItem
                             key={spell.name}
                             value={spell.name}
                             onClick={this.addOption.bind(this, spell)}
-                            
+                            disabled={this.props.modalData.readOnly}
                         >
                             {spell.name}
                         </MenuItem>

@@ -12,7 +12,8 @@ import {characterInputChange} from "../../../redux/actions/actions";
 
 const mapStateToProps = state => {
     return { 
-        playerCharacter: state.characterReducer.playerCharacter
+        playerCharacter: state.characterReducer.playerCharacter,
+        modalData: state.modalControls.modalData
      };
   };
 
@@ -54,7 +55,10 @@ const mapDispatchToProps = dispatch =>
                 variant="filled"
                 color="secondary"
                 name="name"
-                onChange={this.inputNewLangData}
+                onBlur={this.inputNewLangData}
+                InputProps={{
+                  readOnly: this.props.modalData.readOnly
+                }}
               />
               <Button onClick={this.pushItemToRedux}>+</Button>
             </Grid>

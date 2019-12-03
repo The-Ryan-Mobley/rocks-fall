@@ -14,7 +14,8 @@ import {characterInputChange, setPrimaryStats, setStringArray} from "../../../re
 
 const mapStateToProps = state => {
     return { 
-        playerCharacter: state.characterReducer.playerCharacter
+        playerCharacter: state.characterReducer.playerCharacter,
+        modalData: state.modalControls.modalData
      };
   };
 
@@ -63,7 +64,7 @@ class SkillProfs extends Component {
                         this.props.playerCharacter.skillProficiency.map(skill => (
                             <Grid item container direction="row">
                                 <p>{skill}</p>
-                                <Button>x</Button>
+                                <Button disabled={this.props.modalData.readOnly}>x</Button>
                             </Grid>
                         ))
 
@@ -79,6 +80,7 @@ class SkillProfs extends Component {
                             open={this.state.skillMenu}
                             name="Saving Throw Proficiencies"
                             onChange={this.dropDownOpen}
+                            disabled={this.props.modalData.readOnly}
                         >
                             {this.state.skillList.map((skill) => (
                                 <MenuItem

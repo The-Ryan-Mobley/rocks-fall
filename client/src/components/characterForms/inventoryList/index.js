@@ -10,7 +10,8 @@ import {characterInputChange, setStringArray} from "../../../redux/actions/actio
 
 const mapStateToProps = state => {
     return { 
-        playerCharacter: state.characterReducer.playerCharacter
+        playerCharacter: state.characterReducer.playerCharacter,
+        modalData: state.modalControls.modalData
      };
   };
 
@@ -41,7 +42,12 @@ class InventoryList extends Component {
                             <p>{item.description}</p>
                         </Grid>
                         <Grid item xs={2}>
-                            <Button onClick={this.removeFromRedux.bind(this, item)}>x</Button>
+                            <Button 
+                                disabled={this.props.modalData.readOnly} 
+                                onClick={this.removeFromRedux.bind(this, item)}
+                            >
+                                x
+                            </Button>
                         </Grid>
 
                     </Grid>

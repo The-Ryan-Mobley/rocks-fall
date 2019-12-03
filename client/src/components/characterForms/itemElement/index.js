@@ -14,7 +14,8 @@ import "./style.css"
 
 const mapStateToProps = state => {
     return { 
-        playerCharacter: state.characterReducer.playerCharacter
+        playerCharacter: state.characterReducer.playerCharacter,
+        modalData: state.modalControls.modalData
      };
   };
 
@@ -57,17 +58,23 @@ const mapDispatchToProps = dispatch =>
                 variant="filled"
                 color="secondary"
                 name="name"
-                onChange={this.inputNewItemData}
+                onBlur={this.inputNewItemData}
+                InputProps={{
+                  readOnly: this.props.modalData.readOnly
+                }}
               />
               <TextField 
                 id="itemDesc"
                 label="Item Description"
                 multiline={true}
                 rows="4"
-                onChange={this.inputNewItemData}
+                onBlur={this.inputNewItemData}
                 margin="normal"
                 name="description"
                 defaultValue=""
+                InputProps={{
+                  readOnly: this.props.modalData.readOnly
+                }}
               />
               <Button onClick={this.pushItemToRedux}>+</Button>
             </Grid>

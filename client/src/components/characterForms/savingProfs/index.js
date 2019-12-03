@@ -17,7 +17,8 @@ import "./style.css"
 
 const mapStateToProps = state => {
     return { 
-        playerCharacter: state.characterReducer.playerCharacter
+        playerCharacter: state.characterReducer.playerCharacter,
+        modalData: state.modalControls.modalData
      };
   };
 
@@ -90,6 +91,7 @@ class SavingProfs extends Component{
                                 key={stat}
                                 value={stat}
                                 onClick={this.addOption.bind(this, stat)}
+                                disabled={this.props.modalData.readOnly}
                             >
                                 {stat}
                             </MenuItem>

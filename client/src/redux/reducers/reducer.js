@@ -18,7 +18,8 @@ import {
     UPDATE_SPELL_SLOTS, 
     UPDATE_SPELLS_KNOWN,
     SET_PRIMARY_STATS,
-    SET_STRING_ARRAY
+    SET_STRING_ARRAY,
+    SET_READ_ONLY
 } from "../actions/actions";
 
 import {SET_SPELL_QUERY, SET_VIEWED_SPELL} from "../actions/actions";
@@ -96,6 +97,7 @@ const spellState = {
 }
 const modalState = {
     modalData: {
+        readOnly: false,
         loadingList: true,
         diceArray: [0,0,0,0,0,0],
         errorText: "",

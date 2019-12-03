@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Grid from '@material-ui/core/Grid';
-import Input from '@material-ui/core/Input';
+import TextField from '@material-ui/core/TextField'
 
 
 import { bindActionCreators } from "redux";
@@ -13,7 +13,8 @@ import "./style.css"
 
 const mapStateToProps = state => {
     return { 
-        playerCharacter: state.characterReducer.playerCharacter
+        playerCharacter: state.characterReducer.playerCharacter,
+        modalData: state.modalControls.modalData
      };
   };
 
@@ -36,7 +37,7 @@ const mapDispatchToProps = dispatch =>
                 <Grid container spacing={1} direction="row">
                             <Grid item xs={4}>
                                 <div className="AC">
-                                    <Input
+                                    <TextField
                                         id="armor"
                                         label="AC"
                                         defaultValue={this.props.playerCharacter.armorClass ? 
@@ -44,13 +45,16 @@ const mapDispatchToProps = dispatch =>
                                         variant="filled"
                                         color="secondary"
                                         name="armorClass" 
-                                        onChange={this.props.characterInputChange}
+                                        onBlur={this.props.characterInputChange}
+                                        InputProps={{
+                                            readOnly: this.props.modalData.readOnly
+                                          }}
                                     />
                                 </div>
                             </Grid>
                             <Grid item xs={4}>
                                 <div className="INIT">
-                                    <Input
+                                    <TextField
                                         id="init"
                                         label="INIT"
                                         defaultValue={this.props.playerCharacter.initiative ? 
@@ -58,35 +62,44 @@ const mapDispatchToProps = dispatch =>
                                         variant="filled"
                                         color="secondary" 
                                         name="initiative"
-                                        onChange={this.props.characterInputChange}
+                                        onBlur={this.props.characterInputChange}
+                                        InputProps={{
+                                            readOnly: this.props.modalData.readOnly
+                                          }}
                                     />
                                     </div>
                             </Grid>
                             <Grid item xs={4}>
                             <div className="SPEED">   
-                                <Input
+                                <TextField
                                     id="speed"
                                     defaultValue={this.props.playerCharacter.speed ? 
                                         (this.props.playerCharacter.speed) : ("30")}
                                     variant="filled"
                                     color="secondary"
                                     name="speed"
-                                    onChange={this.props.characterInputChange} 
+                                    onBlur={this.props.characterInputChange}
+                                    InputProps={{
+                                        readOnly: this.props.modalData.readOnly
+                                      }}
                                 />
                             </div>
                             </Grid>
                         </Grid>
                         <Grid spacing={1} item>
-                                <Input
+                                <TextField
                                     id="health"
                                     defaultValue={this.props.playerCharacter.health ? 
                                         (this.props.playerCharacter.health) : ("0")}
                                     variant="filled"
                                     color="secondary"
                                     name="health"
-                                    onChange={this.props.characterInputChange} 
+                                    onBlur={this.props.characterInputChange}
+                                    InputProps={{
+                                        readOnly: this.props.modalData.readOnly
+                                      }}
                                 />
-                                <Input
+                                <TextField
                                     id="hit die"
                                     defaultValue={this.props.playerCharacter.hitDie ? 
                                         (`${this.props.playerCharacter.level} d${this.props.playerCharacter.hitDie}`) : 
@@ -94,7 +107,10 @@ const mapDispatchToProps = dispatch =>
                                     variant="filled"
                                     color="secondary"
                                     name="hitDie"
-                                    onChange={this.props.characterInputChange} 
+                                    onBlur={this.props.characterInputChange} 
+                                    InputProps={{
+                                        readOnly: this.props.modalData.readOnly
+                                      }}
                                 />
                         </Grid>
                         <Grid spacing={1} item>

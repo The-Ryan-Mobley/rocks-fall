@@ -13,7 +13,8 @@ import "./style.css"
 
 const mapStateToProps = state => {
     return { 
-        playerCharacter: state.characterReducer.playerCharacter
+        playerCharacter: state.characterReducer.playerCharacter,
+        modalData: state.modalControls.modalData
      };
   };
 
@@ -78,6 +79,9 @@ const mapDispatchToProps = dispatch =>
                             color="secondary"
                             name={this.state.statNames.indexOf(stat)}
                             onBlur={this.onStatChange}
+                            InputProps={{
+                                readOnly: this.props.modalData.readOnly
+                              }}
                         />
                         
                         <p>{this.state.statMods[this.state.statNames.indexOf(stat)]}</p>

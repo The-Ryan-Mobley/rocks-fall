@@ -10,7 +10,8 @@ import {characterInputChange} from "../../../redux/actions/actions";
 
 const mapStateToProps = state => {
     return { 
-        playerCharacter: state.characterReducer.playerCharacter
+        playerCharacter: state.characterReducer.playerCharacter,
+        modalData: state.modalControls.modalData
      };
   };
 
@@ -59,7 +60,12 @@ const mapDispatchToProps = dispatch =>
                             <p>{feat.description}</p>
                         </Grid>
                         <Grid item xs={2}>
-                            <Button onClick={this.removeFromRedux.bind(this , index)}>x</Button>
+                            <Button 
+                              disabled={!this.props.modalData.readOnly} 
+                              onClick={this.removeFromRedux.bind(this , index)}
+                              >
+                                x
+                            </Button>
                         </Grid>
 
                     </Grid>
@@ -73,6 +79,9 @@ const mapDispatchToProps = dispatch =>
                 color="secondary"
                 name="name"
                 onChange={this.inputNewFeatData}
+                InputProps={{
+                  readOnly: this.props.modalData.readOnly
+                }}
               />
               <TextField 
                 id="featDesc"
@@ -83,8 +92,11 @@ const mapDispatchToProps = dispatch =>
                 margin="normal"
                 name="description"
                 defaultValue=""
+                InputProps={{
+                  readOnly: this.props.modalData.readOnly
+                }}
               />
-              <Button onClick={this.pushItemToRedux}>+</Button>
+              <Button disabled={this.state.name} onClick={this.pushItemToRedux}>+</Button>
             </Grid>
           
         );
