@@ -32,6 +32,7 @@ class InventoryList extends Component {
         this.props.setStringArray("inventory", inventory);
 
     }
+    
     render() {
         return(
             <Grid item container>

@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 
 import Grid from '@material-ui/core/Grid';
-import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import TextField from '@material-ui/core/TextField';
 
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import {characterInputChange} from "../../../redux/actions/actions";
 
-import API from "../../../utils/api/API";
 
 
 const mapStateToProps = state => {
@@ -29,14 +28,21 @@ const mapDispatchToProps = dispatch =>
 class SpellHeader extends Component {
     state = {
         classDropdown: false,
+        anchorEl: "",
         spellCasters: ["Bard", "Cleric", "Druid","Paladin","Ranger","Sorcerer","Warlock","Wizard"],
     }
-    handleClick = () => {
-        this.setState({classDropdown: true});
+    handleClick = event => {
+        this.setState({
+            anchorEl: event.target,
+            classDropdown: true
+        });
     }
     selectOption = (value) => {
         this.props.characterInputChange("spellCastingClass",value);
-        this.setState({classDropdown: false});
+        this.setState({
+            anchorEl: "",
+            classDropdown: false
+        });
 
     }
     optionValues = (event, selectedIndex) => {
@@ -44,6 +50,12 @@ class SpellHeader extends Component {
     }
     onTextChange = event => {
         this.props.characterInputChange(event.target.name , event.target.value);
+    }
+    handleClickAway = () => {
+        this.setState({
+            anchorEl: "",
+            classDropdown: false
+        });
     }
     render(){
         return(
@@ -59,7 +71,9 @@ class SpellHeader extends Component {
                             keepMounted 
                             open={this.state.classDropdown}
                             name="spellCastingClass"
+                            anchorEl={this.state.anchorEl}
                             onChange={this.optionValues}
+                            onClose={this.handleClickAway}
                         >
                             {this.state.spellCasters.map(caster => (
                                 <MenuItem
@@ -75,23 +89,22 @@ class SpellHeader extends Component {
                         <div className="headerInfoTop box">
                             <Grid container item xs={12} direction="row" spacing={1}>
                                 <Grid item xs={4}>
-                                <Input 
+                                <TextField
                                     id="playerClass"
-                                    label="Spell Stat"
+                                    label="Casting Stat"
                                     defaultValue= {this.props.playerCharacter.spellCastingStat ? 
                                         (this.props.playerCharacter.spellCastingStat) : ("stat")}
-                                    variant="filled"
                                     color="secondary"
                                     name="spellCastingStat"
                                     onChange={this.onTextChange}
                                 />
                                 </Grid>
                                 <Grid item xs={4}>
-                                <Input 
+                                <TextField
                                     id="playerClass"
                                     label="Spell Atk Bonus"
                                     defaultValue= {this.props.playerCharacter.spellAttackBonus ? 
-                                        (this.props.playerCharacter.spellAttackBonus) : ("0")}
+                                        (this.props.playerCharacter.spellAttackBonus) : ("")}
                                     variant="filled"
                                     color="secondary"
                                     name="spellAttackBonus"
@@ -100,9 +113,9 @@ class SpellHeader extends Component {
 
                                 </Grid>
                                 <Grid item xs={4}>
-                                <Input 
+                                <TextField
                                     id="playerClass"
-                                    label="Spell Save DC"
+                                    label="Save DC"
                                     defaultValue= {this.props.playerCharacter.spellSaveDc ? 
                                         (this.props.playerCharacter.SpellSaveDc) : ("8")}
                                     variant="filled"

@@ -41,6 +41,7 @@ const mapDispatchToProps = dispatch =>
     }
     render(){
         return(
+          <div className="languages">
             <Grid item container className="box">
                 <p><strong>Languages Known</strong></p>
                 {this.props.playerCharacter.languages.map((language, index) => (
@@ -62,6 +63,7 @@ const mapDispatchToProps = dispatch =>
               />
               <Button onClick={this.pushItemToRedux}>+</Button>
             </Grid>
+            </div>
           
         );
     }

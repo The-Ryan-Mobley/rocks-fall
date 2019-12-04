@@ -36,7 +36,8 @@ class SavingProfs extends Component{
     state = {
         selectedStat: "",
         statLists: ["Strength", "Dexterity", "Constitution", "Wisdom", "Intelligence", "Charisma"],
-        savingMenu: false
+        savingMenu: false,
+        anchorEl: ""
     }
     onTextChange = (event) => { 
         this.props.onTextChange(event);
@@ -53,8 +54,11 @@ class SavingProfs extends Component{
             }
         }
     }
-    dropDownOpen = () => {
-        this.setState({savingMenu: true});
+    dropDownOpen = event => {
+        this.setState({
+            anchorEl: event.target,
+            savingMenu: true
+        });
     }
 
     addOption = value => {
@@ -65,6 +69,14 @@ class SavingProfs extends Component{
         const { name, value } = event.target;
         this.props.characterInputChange(name, value);
 
+    }
+    handleClickAway = () => {
+        this.setState({savingMenu: false});
+    }
+    remove = stat => {
+        let primaryStats = this.props.playerCharacter.primaryStats;
+        primaryStats.splice(primaryStats.indexOf(stat), 1);
+        this.props.characterInputChange("primaryStats", primaryStats);
     }
 
     render(){
@@ -91,7 +103,12 @@ class SavingProfs extends Component{
                     {this.props.playerCharacter.primaryStats.map((stat, index) => (
                         <Grid item container direction="row" spacing={0} key={index}>
                             <p>{stat}</p>
-                            <Button>X</Button>
+                            <Button
+                                onClick={this.remove.bind(this, stat)}
+                                disabled={this.props.modalData.readOnly}
+                            >
+                                X
+                            </Button>
                         </Grid>
                     ))}
                     <Button aria-controls="simple-menu" aria-haspopup="true" onClick={this.dropDownOpen}>
@@ -103,7 +120,9 @@ class SavingProfs extends Component{
                         keepMounted 
                         open={this.state.savingMenu}
                         name="Saving Throw Proficiencies"
+                        anchorEl={this.state.anchorEl}
                         onChange={this.dropDownOpen}
+                        onClose={this.handleClickAway}
                     >
                         {this.state.statLists.map((stat) => (
                             <MenuItem

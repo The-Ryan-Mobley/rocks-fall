@@ -31,12 +31,12 @@ export default class CharacterSheet extends Component{
                             <SavingProfs/>
                             <Languages/>
                         </Grid>
-                   <Grid item xs={4}>
+                   <Grid item xs={5}>
                         <GearBlock 
                         />
 
                     </Grid>
-                    <Grid item xs={4} spacing={3}>
+                    <Grid item xs={3} spacing={3}>
                         <BioTraits 
                         />
                     </Grid>

@@ -31,6 +31,7 @@ class SkillProfs extends Component {
     state = {
         skillMenu: false,
         selectedSkill: "",
+        anchorEl: "",
         skillList: [
             "Acrobatics (Dex)", "Animal Handling (Wis)", "Arcana (Int)", 
             "Athletics (Str)", "Deception (Cha)", "History (Int)", 
@@ -40,11 +41,20 @@ class SkillProfs extends Component {
             "Sleight of Hand (Dex)", "Stealth (Dex)", "Survival (Wis)"
         ]
     }
-    dropDownOpen = () => {
-        this.setState({skillMenu: true});
+    dropDownOpen = event => {
+        console.log(event.target);
+        this.setState({
+            anchorEl: event.target,
+            skillMenu: true
+            
+        });
     }
     addOption = selectedSkill => {
-        this.setState({selectedSkill, skillMenu: false});
+        this.setState({
+            selectedSkill, 
+            skillMenu: false,
+            anchorEl: ""
+        });
     }
     pushToRedux = () => {
         const selectedSkill = this.state.selectedSkill;
@@ -55,19 +65,35 @@ class SkillProfs extends Component {
             this.setState({selectedSkill: ""})
         }
     }
+    remove = skill => {
+        let skillProficiency = this.props.playerCharacter.skillProficiency;
+        skillProficiency.splice(skillProficiency.indexOf(skill), 1);
+        this.props.characterInputChange("skillProficiency", skillProficiency);
+
+    }
+    handleClickAway = () => {
+        this.setState({skillMenu: false});
+    }
     render() {
         return(
+            <div className="skillProfs">
             <Grid item container xs={12} className="box">
                     {this.props.playerCharacter.skillProficiency.length ? (
-                        this.props.playerCharacter.skillProficiency.map(skill => (
-                            <Grid item container direction="row">
+                        this.props.playerCharacter.skillProficiency.map((skill, index) => (
+                            <Grid item container direction="row" key={index}>
                                 <p>{skill}</p>
-                                <Button disabled={this.props.modalData.readOnly}>x</Button>
+                                <Button 
+                                    disabled={this.props.modalData.readOnly}
+                                    onClick={this.remove.bind(this, skill)}
+                                >
+                                    x
+                                </Button>
                             </Grid>
                         ))
 
                     ) : (<p></p>)}
 
+                        <p><strong>Skill Proficiencies</strong></p>
                         <Button aria-controls="simple-menu" aria-haspopup="true" onClick={this.dropDownOpen}>
                             {this.state.selectedSkill.length ? 
                             (this.state.selectedSkill) : ("Select")}
@@ -77,7 +103,10 @@ class SkillProfs extends Component {
                             keepMounted 
                             open={this.state.skillMenu}
                             name="Saving Throw Proficiencies"
+                            keepMounted
+                            anchorEl={this.state.anchorEl}
                             onChange={this.dropDownOpen}
+                            onClose={this.handleClickAway}
                             disabled={this.props.modalData.readOnly}
                         >
                             {this.state.skillList.map((skill) => (
@@ -92,6 +121,7 @@ class SkillProfs extends Component {
                         </Menu>
                         <Button onClick={this.pushToRedux}>+</Button>
             </Grid>
+            </div>
         )
     }
 }

@@ -48,6 +48,7 @@ const mapDispatchToProps = dispatch =>
       inventory.push(newItem);
       this.props.setStringArray("inventory", inventory);
     }
+    
     render(){
         return(
             <Grid item container>

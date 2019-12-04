@@ -43,7 +43,6 @@ const mapDispatchToProps = dispatch =>
                                         defaultValue={this.props.playerCharacter.armorClass ? 
                                             (this.props.playerCharacter.armorClass) : ("10")}
                                         variant="filled"
-                                        color="secondary"
                                         name="armorClass" 
                                         onBlur={this.props.characterInputChange}
                                         InputProps={{
@@ -60,7 +59,6 @@ const mapDispatchToProps = dispatch =>
                                         defaultValue={this.props.playerCharacter.initiative ? 
                                             (this.props.playerCharacter.initiative) : ("0")}
                                         variant="filled"
-                                        color="secondary" 
                                         name="initiative"
                                         onBlur={this.props.characterInputChange}
                                         InputProps={{
@@ -75,7 +73,7 @@ const mapDispatchToProps = dispatch =>
                                     id="speed"
                                     defaultValue={this.props.playerCharacter.speed ? 
                                         (this.props.playerCharacter.speed) : ("30")}
-                                    variant="filled"
+                                    label="SPD"
                                     color="secondary"
                                     name="speed"
                                     onBlur={this.props.characterInputChange}

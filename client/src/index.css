@@ -170,6 +170,21 @@ code {
   overflow-y: scroll;
 
 }
+.skillProfs,.savingProfs{
+  height: 20rem;
+  font-size: 0.8rem;
+  overflow-y: scroll;
+}
+.languages{
+  height: 10rem;
+  font-size: 0.8rem;
+  overflow-y: scroll;
+
+}
+.skillProfs::-webkit-scrollbar ,.savingProfs::-webkit-scrollbar ,.languages::-webkit-scrollbar {
+  display: none;
+}
+
 
 @media(min-width: 320px) and (max-width: 549px){
   body{

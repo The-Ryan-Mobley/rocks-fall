@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 
 import Grid from '@material-ui/core/Grid';
-import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import TextField from '@material-ui/core/TextField'
+import TextField from '@material-ui/core/TextField';
 
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
@@ -51,6 +50,7 @@ class SpellBlock extends Component {
         spellMenu: false,
         spellModal: false,
         queryAgain: true,
+        anchorEl: ""
     }
     componentDidMount = () => {
         if(this.props.playerCharacter.spellCastingClass) {
@@ -68,14 +68,20 @@ class SpellBlock extends Component {
         }
     }
     handleClickAway = () => {
-        this.setState({ spellMenu: false});
+        this.setState({ 
+            anchorEl: "",
+            spellMenu: false
+        });
     }
     spellSlotArrayChange = event => {
         let spellSlots = this.props.playerCharacter.spellSlots;
         spellSlots[event.target.name] = event.target.value;
     }
-    dropDownOpen = () => {
-        this.setState({ spellMenu: true});
+    dropDownOpen = event => {
+        this.setState({
+            anchorEl: event.target,
+            spellMenu: true
+        });
         if(this.state.spellQuery.length === 0) {
             this.queryAgain();
         }
@@ -92,7 +98,10 @@ class SpellBlock extends Component {
 
         this.selectSpell(value);
         if(this.state.spellMenu){
-            this.setState({spellMenu: false});
+            this.setState({
+                anchorEl: "",
+                spellMenu: false
+            });
         }
         
     }
@@ -162,7 +171,6 @@ class SpellBlock extends Component {
                         id="slotsTotal"
                         placeholder= {this.props.spellSlots ? 
                         (this.props.spellSlots) : ("0")}
-                            variant="filled"
                             color="secondary"
                             label="spellSlots"
                             name={this.props.spellLevel}
@@ -194,6 +202,7 @@ class SpellBlock extends Component {
                         onChange={this.dropDownOpen}
                         onClose={this.handleClickAway}
                         disabled={this.props.modalData.readOnly}
+                        anchorEl={this.state.anchorEl}
                     >
                     {this.state.spellQuery.map((spell) => (
                         <MenuItem
