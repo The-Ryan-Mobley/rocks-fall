@@ -31,7 +31,7 @@ const mapDispatchToProps = dispatch =>
       marginTop: "1%",
       padding: "2%",
       backgroundColor: "#4A463B",
-      color: "#ffffff"
+      color: "#ffffff",
   });
 
 
@@ -72,7 +72,7 @@ class Heading extends Component {
         return(
             <header>
                 <Grid container spacing={1}>
-                <Grid item xs={10}>
+                <Grid item xs={8} md={10}>
                 <div className="titleBlock">
                         <a onClick={this.buttonClick} name="sendHome" className="title">Rocks Fall </a>
                         <p>subheader text</p>
@@ -80,7 +80,7 @@ class Heading extends Component {
                 {this.state.sendHome ? (<Redirect to="/" />) : (<p></p>)}
                 
                 </Grid>
-                <Grid item container xs={2} >
+                <Grid item container xs={4} md={2} >
                     {this.props.userData.userId ? (
                         <Grid item container xs={12} direction="row"spacing={0} justify="flex-end">
                             
@@ -89,12 +89,14 @@ class Heading extends Component {
                             </Grid>
                             <Grid item xs={8}>
                                 <div className="loggedInDat">
-                                    <p>Logged in as: {this.props.userData.userName}</p>
+                                    <p>{this.props.userData.userName}</p>
                                     {this.state.sendProfile ? 
                                         (<Redirect to={"/profile/"+this.props.userData.userName}/>) : 
-                                        (<AccountButton name="sendProfile" onClick={this.buttonClick}>Account</AccountButton>)}
+                                        (<AccountButton className="scaledButton" name="sendProfile" onClick={this.buttonClick}>Account</AccountButton>)}
                                     {this.state.logoutUser ? (<Redirect to="/"/>) : (
-                                    <AccountButton variant="contained"
+                                    <AccountButton
+                                        className="scaledButton"
+                                        variant="contained"
                                         onClick={this.logoutClick} 
                                         name="logoutUser" >
                                         Logout

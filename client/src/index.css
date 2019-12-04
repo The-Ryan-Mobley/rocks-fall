@@ -3,7 +3,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
-    font-family: 'Eagle Lake', cursive;
+    font-family: 'Eagle Lake', cursive !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #938A75;
@@ -82,6 +82,9 @@ code {
   overflow-y: scroll;
 
 }
+.sheetModal::-webkit-scrollbar {
+  display: none;
+}
 .modalButton{
   font-family: 'Eagle Lake', cursive !important;
   background-color: #4A463B !important;
@@ -113,7 +116,7 @@ code {
 }
 .box{
   margin: 1%;
-  background-color: #f8f0e49d;;
+  background-color: #8FA6AC;
   font-family: 'Eagle Lake', cursive;
 }
 .itemName{
@@ -150,4 +153,23 @@ code {
   width: 20rem;
   height:auto;
   margin-bottom: 5%;
+}
+.links{
+  text-align: center;
+  margin-right: 3%;
+}
+
+@media(min-width: 320px) and (max-width: 549px){
+  body{
+    overflow-x: hidden !important;
+
+  }
+  .characterList{
+    height: 10rem !important;
+  }
+  .characterBlock{
+    height: 4rem !important;
+    font-size: 0.8rem !important;
+    line-height: 0.8rem !important;
+  }
 }

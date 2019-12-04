@@ -7,10 +7,12 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
-
+import { styled } from '@material-ui/core/styles';
 import CharacterSheet from "../characterSheet";
 import SpellSheet from "../spellSheet";
 import SaveCharacterButton from "../saveCharacterButton";
+
+
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -48,6 +50,11 @@ function TabPanel(props) {
       backgroundColor: theme.palette.background.paper,
     },
   }));
+
+  const StyledAppBar = styled(AppBar)({
+    width:"100%",
+    backgroundColor: "#2D2C24"
+  });
   
   export default function SheetModal() {
     const [value, setValue] = React.useState(0);
@@ -57,21 +64,21 @@ function TabPanel(props) {
     };
   
     return (
-      <Grid containter xs={12}>
-        <AppBar position="static">
-          <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
+      <Grid container>
+        <StyledAppBar position="static">
+          <Tabs value={value} onChange={handleChange} aria-label="simple tabs example" className="noScroll">
             <Tab label="Stats" {...a11yProps(0)} />
             <Tab label="Spells" {...a11yProps(1)} />
           </Tabs>
           <SaveCharacterButton/>
-        </AppBar>
+        </StyledAppBar>
         <TabPanel value={value} index={0}>
           <CharacterSheet/>
         </TabPanel>
         <TabPanel value={value} index={1}>
           <SpellSheet/>
         </TabPanel>
+      </Grid>
 
-    </Grid>
     );
   }

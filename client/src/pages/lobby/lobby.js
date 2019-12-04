@@ -50,6 +50,7 @@ export default class Lobby extends Component {
     }
     componentWillUnmount = () => {
         if(this.props.userData.userId === this.props.lobbyData.hostId){
+            socket.leaveLobby(this.props.lobbyData.lobbyName, this.props.userData)
             API.deleteLobby(this.props.lobbyData.lobbyId);
 
         } else {
@@ -120,6 +121,9 @@ export default class Lobby extends Component {
     leaveListener = () => {
         socket.listenLeave(re => {
             let users = this.props.lobbyData.activeUsers;
+            if(re.userId === this.props.lobbyData.hostId){
+                this.redirectHome();
+            }
             let activeUsers = users.filter( user => {
                 if(user.userId !== re.userId) {
                     return user;
@@ -200,7 +204,7 @@ export default class Lobby extends Component {
         
         return(
             <Wrapper>
-                <div className="lobbyRoom">
+                <div className="homeBody">
                     <Grid container spacing={1}>
                         <Grid container alignItems="flex-start" justify="flex-end" direction="row">
                             {this.state.goHome ? 

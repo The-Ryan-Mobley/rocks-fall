@@ -6,3 +6,20 @@
     max-width: 5rem;
     max-height: auto;
 }
+
+@media(min-width: 320px) and (max-width: 549px){
+    .title{
+        font-size: 2rem;
+    }
+    .profileThumbnail {
+        margin-top: 40%;
+        max-width: 2.5rem;
+        max-height: auto;
+    }
+    .loggedInDat{
+        font-size: 0.8rem !important;
+    }
+    .sacledButton{
+        font-size: 0.5rem !important;
+    }
+}

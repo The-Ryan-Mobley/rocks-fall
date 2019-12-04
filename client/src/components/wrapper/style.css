@@ -1,5 +1,5 @@
 header, footer{
-    width: 100%;
+    width: 100% !important;
     padding: 1%;
     color: #8FA6AC;
 }
@@ -15,3 +15,20 @@ footer{
     margin-top: 25%;
 
 }
+.footerTitle{
+    font-size: 3rem;
+}
+@media(min-width: 320px) and (max-width: 549px){
+    
+    header,footer{
+        width: 110%;
+        padding-left: 5%;
+        padding-right: 10%;
+
+    }
+    .footerTitle{
+        font-size: 1rem;
+
+    }
+}
+
