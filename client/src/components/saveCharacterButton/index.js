@@ -38,6 +38,7 @@ class SaveCharacterButton extends Component {
 
         API.createCharacter(this.props.playerCharacter).then(result => {
             if(result) {
+                this.findCharacterList();
                 value = !this.props.modalData.newCharacter;
                 this.props.swapModalBool("newCharacter", value);
                 value =!this.props.modalData.sheetModal;
@@ -48,33 +49,31 @@ class SaveCharacterButton extends Component {
 
     }
     putToDb = () => {
-        let value = undefined;
         API.updateCharacter(this.props.playerCharacter).then(result => {
             if(result) {
-                value =!this.props.modalData.sheetModal;
-                this.findCharacterList();
+                let value = !this.props.modalData.sheetModal;
+                
             }
 
         });
     }
     findCharacterList = () => {
+        console.log("######################################");
         API.userCharacterList(this.props.userData.userId).then(result => {
             let characterList = this.props.userData.characterList;
             characterList=[];
             result.data.forEach(character => {
-                if(characterList.indexOf(character) === -1) {
-                    const {_id, characterName, level, playerClass} = character;
-                    const CharacterData = {
-                        _id,
-                        characterName,
-                        level,
-                        playerClass
-                    }
-                    characterList.push(CharacterData);
+                console.log(character);
+                const {_id, characterName, level, playerClass} = character;
+                const CharacterData = {
+                    _id,
+                    characterName,
+                    level,
+                    playerClass
                 }
-                
+                characterList.push(CharacterData);
             });
-  
+            this.props.userInputChange( "characterList" , characterList );
         });
     }
     render() {

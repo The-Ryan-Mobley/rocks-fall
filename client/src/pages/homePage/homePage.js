@@ -42,7 +42,6 @@ export default class HomePage extends Component{
         switch(event.currentTarget.name) {
             case "createModal" : {
                 value = !this.props.modalData.createModal;
-                this.props.setBlankCharacter();
                 this.props.swapModalBool("createModal", value);
                 break;
             }
@@ -53,6 +52,7 @@ export default class HomePage extends Component{
             }
             case "sheetModal" : {
                 if(event.currentTarget.value === "newCharacter") {
+                    this.props.setBlankCharacter();
                     value = !this.props.modalData.newCharacter;
                     this.props.swapModalBool("newCharacter", value);
                 }
@@ -61,7 +61,8 @@ export default class HomePage extends Component{
                 break;
             }
             default: {
-                this.props.closeModals();
+                this.findCharacterList();
+                this.closeModals();
                 break;
             }
         }
@@ -99,12 +100,14 @@ export default class HomePage extends Component{
             key: Math.floor(Math.random() * 1000000),
             body: `${this.props.userData.userName}: ${this.props.modalData.newGlobalMessage}`
         }
-        socket.postMessage("Global", msg);
+        
         
         this.props.swapModalBool("newGlobalMessage", "");
         let globalChat = this.props.modalData.globalChat;
         globalChat.push(msg);
         this.props.swapModalBool("globalChat", globalChat);
+        console.log(this.props.modalData.globalChat);
+        socket.postMessage("Global", msg);
     }
     blurMessage = event => {
         const {name, value} = event.target;
@@ -156,18 +159,19 @@ export default class HomePage extends Component{
                     </Grid>
                     
                     <Grid item container xs={12} direction="row" alignItems="center" justify="center" spacing={5}>
-                        <h1>Chat</h1>
-                        <Button name="sheetModal" value="newCharacter" className="modalButton shaded" onClick={this.handleModal.bind(this)}>CreateCharacter</Button>
+                        
                         
                     </Grid>
                     <Grid container spacing={3}>
                     <Grid item xs={3}>
+                    <Button name="sheetModal" value="newCharacter" className="modalButton shaded" onClick={this.handleModal.bind(this)}>CreateCharacter</Button>
                         <CharacterList/>
                     </Grid>
                     <Grid item xs={6}>
+                    <h1 className="centered">Chat</h1>
                             <div className="chatBody">
-                                {this.props.modalData.globalChat.map(msg => (
-                                    <p>{msg.body.body}</p>
+                                {this.props.modalData.globalChat.map((msg, index) => (
+                                    <p key={index}>{msg.body.body ? (msg.body.body) : (msg.body)}</p>
                                 ))}
 
                             </div>

@@ -21,7 +21,7 @@ const ListButton = styled(Button)({
     padding: "1%"
   });
 const ListGrid = styled(Grid)({
-    marginTop: "-50%",
+    marginTop: "",
     position: "relative",
     marginBottom: "5%",
     backgroundColor: "#b9a88d",
@@ -103,17 +103,16 @@ const mapDispatchToProps = dispatch =>
                 
                 {this.props.userData.userId ? (
                     this.props.userData.characterList.map( (character , index) => (
-                        <ListGrid item container md={12} key={index} spacing={0}>
-                            <Grid item md={2}>
+                        <ListGrid item container md={12} key={index} spacing={0} justify="flex-start" alignItems="baseline">
+                            <Grid item md={3}>
                                 <Button name={character._id} onClick={this.deleteCharacter} value={index}>X</Button>
                             </Grid>
-                            <Grid item md={3}>
+                            <Grid item md={5}>
                                 <p><strong>{character.characterName}</strong></p>
-                            </Grid>
-                            <Grid item md={3}>
                                 <p>level : {character.level} {character.playerClass}</p>
                             </Grid>
-                            <Grid item md={3} >
+                            
+                            <Grid item md={3}>
                                 <ListButton name={character._id} value={JSON.stringify(character)} onClick={this.setCurrentCharacter}>Select</ListButton>
                                 <ListButton name="sheetModal" value={character._id} onClick={this.handleModal.bind(this)}>View</ListButton>
                             </Grid>
