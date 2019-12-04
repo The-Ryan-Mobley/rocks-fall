@@ -48,7 +48,6 @@ export const lobbyInputChange = (name, value) => {
     return {type: LOBBY_INPUT_CHANGE, name, value};
 }
 export const lobbyHostData = (name, id, thumbnail) => {
-    console.log(thumbnail);
     return {type: LOBBY_HOST_DATA, name, id, thumbnail};
 }
 export const lobbyUserJoin = (userArray) => {
@@ -119,7 +118,7 @@ export const setBlankCharacter = () => {
         speed: null,
         spellSaveDc: 8,
         spellAttackBonus: 0,
-        spellSlots: [0,0,0,0,0,0,0,0,0],
+        spellSlots: [0,0,0,0,0,0,0,0,0,0],
         spellCastingClass: "",
         spellCastingStat: "",
         spellsKnown: [],

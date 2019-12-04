@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
 import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
+import { sizing } from '@material-ui/system';
 
 import {SpellHeader, SpellBlock, DescriptionBody} from "../spellForms";
 
@@ -37,9 +39,9 @@ class SpellSheet extends Component{
                     <Grid item xs={12}>
                         <DescriptionBody/>
                     </Grid>
-                    <Grid item container direction="column" xs={12}>
+                    <Grid item container xs={12}>
                         {this.props.playerCharacter.spellSlots.map( (slot, index) => (
-                            <Grid item container xs={12} sm={4} key={index}>
+                            <Grid item xs={6} sm={4}>
                                 <SpellBlock 
                                     spellSlots={slot}
                                     spellLevel={index}

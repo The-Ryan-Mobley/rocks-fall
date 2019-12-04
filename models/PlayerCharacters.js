@@ -124,7 +124,7 @@ const playerCharacterSchema = new Schema({
     },
     spellSlots: {
         type: [Number],
-        default: [0,0,0,0,0,0,0,0,0]
+        default: [0,0,0,0,0,0,0,0,0,0]
     },
     spellCastingClass: {
         type: String,

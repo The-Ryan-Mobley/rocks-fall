@@ -78,8 +78,6 @@ export default class Lobby extends Component {
         });
         if(idArr.indexOf(user.userId) === -1){
             API.updateLobby(this.props.match.params.lobbyId, user).then(putData => {
-                console.log("Here's what we got back");
-                console.log(putData);
                 this.props.lobbyUserJoin(putData.data);
             })
         }  
@@ -104,15 +102,12 @@ export default class Lobby extends Component {
                 key: Math.floor(Math.random() * 1000000),
                 body: re
             }
-            console.log(msg);
             let messages = this.props.lobbyData.chat.messages;
             let keys = messages.map(message => {
                 return message.key;
             });
             
             if((keys.indexOf(msg.key) === -1)) {
-                console.log("keys");
-                console.log(keys);
                 messages.push(msg);
                 this.props.lobbyMessageAdd(messages);
             }
@@ -129,11 +124,9 @@ export default class Lobby extends Component {
                     return user;
                 }
             });
-            
-            console.log('???????????????????????????');
+
             API.lobbyLeave(this.props.match.params.lobbyId, activeUsers).then(re => {
                 if(re) {
-                    console.log(re);
                     this.props.lobbyUserJoin(activeUsers);
                 }
             })

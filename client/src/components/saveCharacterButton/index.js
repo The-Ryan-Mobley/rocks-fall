@@ -51,7 +51,7 @@ class SaveCharacterButton extends Component {
     putToDb = () => {
         API.updateCharacter(this.props.playerCharacter).then(result => {
             if(result) {
-                let value = !this.props.modalData.sheetModal;
+                console.log(result);
                 
             }
 

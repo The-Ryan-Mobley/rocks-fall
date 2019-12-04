@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 
-//import Grid from '@material-ui/core/Grid';
-import Input from '@material-ui/core/Input';
-// import Button from '@material-ui/core/Button';
-// import ListItemText from '@material-ui/core/ListItemText';
+
+import TextField from '@material-ui/core/TextField'
+
 
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
@@ -72,7 +71,7 @@ const mapDispatchToProps = dispatch =>
                    
                     <div className="singleBlock" key={`${stat}Div`}>
                         <p>{stat}</p>
-                        <Input
+                        <TextField
                             id={stat}
                             defaultValue={this.props.playerCharacter.stats[this.state.statNames.indexOf(stat)]}
                             variant="filled"

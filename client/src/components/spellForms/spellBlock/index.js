@@ -5,6 +5,7 @@ import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import TextField from '@material-ui/core/TextField'
 
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
@@ -55,8 +56,6 @@ class SpellBlock extends Component {
         if(this.props.playerCharacter.spellCastingClass) {
             API.spellsByLevelAndClass(this.props.spellLevel , this.props.playerCharacter.spellCastingClass)
             .then(result => {
-                console.log(this.props.spellLevel);
-                console.log(result);      
                 this.setState({
                     spellQuery: result.data,
                     queryAgain: false
@@ -77,7 +76,6 @@ class SpellBlock extends Component {
     }
     dropDownOpen = () => {
         this.setState({ spellMenu: true});
-        console.log(this.state.spellQuery);
         if(this.state.spellQuery.length === 0) {
             this.queryAgain();
         }
@@ -135,13 +133,10 @@ class SpellBlock extends Component {
 
     }
     queryAgain = () => {
-        console.log("query again query again");
-        console.log(this.props.playerCharacter.spellCastingClass);
         if(this.state.queryAgain) {
             if(this.props.playerCharacter.spellCastingClass.length) {
                 API.spellsByLevelAndClass(this.props.spellLevel , this.props.playerCharacter.spellCastingClass)
-                .then(result => {  
-                    console.log(result);    
+                .then(result => {    
                     this.setState({
                         spellQuery: result.data,
                         queryAgain: false
@@ -158,11 +153,12 @@ class SpellBlock extends Component {
     render(){
         
         return(
-            <Grid item container direction="column" spacing={1}>
+            <div className="spellBlock">
+            <Grid container direction="column" spacing={1} m={0}>
                 {this.props.spellLevel === 0 ? (<p>Cantrips</p>) : 
                 (<Grid item container direction="row">
-                    <p>{this.props.spellLevel}</p>
-                    <Input 
+                    <p>spell Level: {this.props.spellLevel}</p>
+                    <TextField 
                         id="slotsTotal"
                         placeholder= {this.props.spellSlots ? 
                         (this.props.spellSlots) : ("0")}
@@ -214,6 +210,7 @@ class SpellBlock extends Component {
 
 
             </Grid>
+            </div>
         )
         
     }

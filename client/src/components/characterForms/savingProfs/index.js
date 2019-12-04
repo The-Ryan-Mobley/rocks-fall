@@ -4,6 +4,7 @@ import SkillProfs from "../skillProfs";
 
 import Grid from '@material-ui/core/Grid';
 import Input from '@material-ui/core/Input';
+import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button';
 import ListItemText from '@material-ui/core/ListItemText';
 import Menu from '@material-ui/core/Menu';
@@ -60,13 +61,31 @@ class SavingProfs extends Component{
         this.setState({selectedStat: value, savingMenu: false});
         
     }
+    bonusChange = (event) => {
+        const { name, value } = event.target;
+        this.props.characterInputChange(name, value);
+
+    }
 
     render(){
         return(
             <div className="profs">
             <div className="savingProfs box">
-                <p>Proficiency Bonus</p>
-                <p>{this.props.playerCharacter.proficiencyBonus}</p>
+                
+                <TextField 
+                        id="multiline-flexible"
+                        label="Proficiency Bonus"
+                        multiline={true}
+                        rows="3"
+                        onBlur={this.bonusChange}
+                        margin="normal"
+                        name="proficiencyBonus"
+                        InputProps={{
+                            readOnly: this.props.modalData.readOnly
+                          }}
+                        defaultValue={this.props.playerCharacter.proficiencyBonus ? 
+                            (this.props.playerCharacter.proficiencyBonus) : ("")}
+                    />
                 <p><strong>Saving Throws</strong></p>
                 <div className="savingThrows">
                     {this.props.playerCharacter.primaryStats.map((stat, index) => (

@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 
 import Grid from '@material-ui/core/Grid';
-import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
-import ListItemText from '@material-ui/core/ListItemText';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 

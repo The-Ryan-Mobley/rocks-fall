@@ -29,6 +29,7 @@ class DescriptionBody extends Component {
             viewedSpell = this.props.spellData.viewedSpell;
         }
         return(
+            <div className="descriptionBody">
             <Grid container item spacing={1}>
                 {this.props.spellData.viewedSpell._id ? 
                     (<Grid container item xs={12}>
@@ -54,6 +55,7 @@ class DescriptionBody extends Component {
                     (<p>Select a spell to see the description here</p>)}
 
             </Grid>
+            </div>
         )
     }
 

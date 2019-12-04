@@ -35,7 +35,7 @@ const mapDispatchToProps = dispatch =>
         return(
             <div className="characterHeader box">
                 <Grid container direction="row" spacing={2}>
-                    <Grid item xs={3}>
+                    <Grid item md={3}>
                         <div classname="charName box">
                             <TextField
                                 id="nameInput"
@@ -68,7 +68,6 @@ const mapDispatchToProps = dispatch =>
                                         readOnly: this.props.modalData.readOnly
                                       }}
                                 />
-                                <p>level: </p>
                                 <TextField
                                     label="level"
                                     id="level"
@@ -113,24 +112,26 @@ const mapDispatchToProps = dispatch =>
                                         readOnly: this.props.modalData.readOnly
                                       }}
                                 />
-                                <Input
+                                <TextField
                                     id="alignment"
                                     defaultValue= {this.props.playerCharacter.alignment.length ? 
-                                        (this.props.playerCharacter.alignment) : ("alignment")}
+                                        (this.props.playerCharacter.alignment) : ("")}
                                     variant="filled"
                                     color="secondary"
                                     name="alignment"
+                                    label="alignment"
                                     onBlur={this.onTextChange}
                                     InputProps={{
                                         readOnly: this.props.modalData.readOnly
                                       }}
                                 />                            
-                                <Input
+                                <TextField
                                     defaultValue= {this.props.playerCharacter.experience ? 
-                                        (this.props.playerCharacter.experience) : ("experience")}
+                                        (this.props.playerCharacter.experience) : ("")}
                                     variant="filled"
                                     color="secondary"
                                     name="experience"
+                                    label="experience"
                                     onBlur={this.onTextChange}
                                     InputProps={{
                                         readOnly: this.props.modalData.readOnly

@@ -158,6 +158,18 @@ code {
   text-align: center;
   margin-right: 3%;
 }
+.spellBlock {
+  border-color: #000000;
+  border-style: solid;
+  height: 30rem;
+  overflow-y: scroll;
+  width: 100%;
+}
+.descriptionBody{
+  height: 25rem;
+  overflow-y: scroll;
+
+}
 
 @media(min-width: 320px) and (max-width: 549px){
   body{
@@ -171,5 +183,12 @@ code {
     height: 4rem !important;
     font-size: 0.8rem !important;
     line-height: 0.8rem !important;
+  }
+  .spellBlock{
+    height: 15rem;
+  }
+  .descriptionBody{
+    height: 20rem;
+    font-size: 0.6rem;
   }
 }

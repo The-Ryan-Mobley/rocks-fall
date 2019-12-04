@@ -95,7 +95,7 @@ const mapDispatchToProps = dispatch =>
 
     }
     render() {
-        //<div className={this.props.userData.currentCharacter._id === character._id ? ("box"): ("characterOption")}>
+
         return(
             <Grid container className="characterList">
                 {this.props.modalData.loadingList ? 
