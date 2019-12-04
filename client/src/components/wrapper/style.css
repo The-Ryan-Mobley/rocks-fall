@@ -1,15 +1,16 @@
 header, footer{
     width: 100%;
     padding: 1%;
-    color: #248b4f;
+    color: #8FA6AC;
 }
 header{
     font-family: 'Eagle Lake', cursive;
-    background: #000000;
+    background: #2D2C24;
     box-shadow: 0 8px 45px -6px #000000bf;
 }
 footer{
-    background: #000000;
+    font-family: 'Eagle Lake', cursive;
+    background: #2D2C24;
     box-shadow: 0px -12px 51px 0px #000000bf;
     margin-top: 25%;
 

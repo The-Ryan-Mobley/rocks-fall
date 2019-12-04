@@ -43,6 +43,7 @@ const lobbyState = {
         lobbyPassword: "",
         hostId: "",
         hostName: "",
+        hostThumbnail: "",
         activeUsers: [],
         chat: {
             messages: [],
@@ -219,7 +220,8 @@ const lobbyManipulation = (state = lobbyState, action) => {
                 lobbyData: {
                     ...state.lobbyData,
                     hostId: action.id,
-                    hostName: action.name
+                    hostName: action.name,
+                    hostThumbnail: action.thumbnail
                 }
             }
         }
@@ -241,6 +243,7 @@ const lobbyManipulation = (state = lobbyState, action) => {
                     lobbyName: action.foundLobby.lobbyName,
                     hostName: action.foundLobby.hostName,
                     hostId: action.foundLobby.hostId,
+                    hostThumbnail: action.foundLobby.hostThumbnail
                 }
             }
         }

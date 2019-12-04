@@ -43,8 +43,7 @@ class MakeLobby extends Component{
     }
     sendLobbyData = event => {
         event.preventDefault();
-        //console.log(this.props);
-        this.props.lobbyHostData(this.props.userData.userName, this.props.userData.userId);
+        this.props.lobbyHostData(this.props.userData.userName, this.props.userData.userId, this.props.userData.userThumbnail);
 
     }
     render(){

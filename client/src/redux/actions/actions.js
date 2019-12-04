@@ -47,8 +47,9 @@ export const saveSession = (localData) => {
 export const lobbyInputChange = (name, value) => {
     return {type: LOBBY_INPUT_CHANGE, name, value};
 }
-export const lobbyHostData = (name, id) => {
-    return {type: LOBBY_HOST_DATA, name, id};
+export const lobbyHostData = (name, id, thumbnail) => {
+    console.log(thumbnail);
+    return {type: LOBBY_HOST_DATA, name, id, thumbnail};
 }
 export const lobbyUserJoin = (userArray) => {
     return {type: LOBBY_USER_JOIN, userArray};

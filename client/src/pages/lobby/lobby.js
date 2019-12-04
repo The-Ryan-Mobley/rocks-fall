@@ -6,7 +6,6 @@ import SheetModal from "../../components/sheetModal";
 import DiceBlock from "../../components/diceBlock";
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
-import TextField from '@material-ui/core/TextField';
 
 import Grid from '@material-ui/core/Grid';
 import Modal from '@material-ui/core/Modal';
@@ -24,10 +23,11 @@ export default class Lobby extends Component {
     componentDidMount = () => {
         this.messageListener();
         this.leaveListener();
+        this.joinListener();
         API.findLobby(this.props.match.params.lobbyId).then(re => {
             if(this.props.userData.userId === re.data.hostId){
+                console.log(re.data)
                 socket.lobbyHost(re.data);
-                this.props.lobbyHostData(re.data);
                 this.props.lobbyUserSet(re.data);
             }
             else {
@@ -125,7 +125,15 @@ export default class Lobby extends Component {
                     return user;
                 }
             });
-            this.props.lobbyUserJoin(activeUsers);
+            
+            console.log('???????????????????????????');
+            API.lobbyLeave(this.props.match.params.lobbyId, activeUsers).then(re => {
+                if(re) {
+                    console.log(re);
+                    this.props.lobbyUserJoin(activeUsers);
+                }
+            })
+
 
         })
     }
@@ -148,7 +156,6 @@ export default class Lobby extends Component {
                 userThumbnail: callback.userData.userThumbnail,
                 currentCharacter: callback.userData.currentCharacter
             }
-            console.log(user)
             this.processActiveUsers(user);
         });
     }
@@ -165,9 +172,11 @@ export default class Lobby extends Component {
             case "sheetModal" : {
                 API.findCharacter(value).then( result => {
                     modalFlag = !this.props.modalData.sheetModal;
-                    readOnly = !this.props.modalData.readOnly
+                    if(result.data[0].authorId !== this.props.userData.userId) {
+                        readOnly = !this.props.modalData.readOnly;
+                        this.props.swapModalBool("readOnly", readOnly);
+                    }
                     this.props.setCharacterData(result.data[0]);
-                    this.props.swapModalBool("readOnly", readOnly);
                     this.props.swapModalBool("sheetModal", modalFlag);
 
                 });
@@ -187,7 +196,7 @@ export default class Lobby extends Component {
     
 
     render(){
-        this.joinListener();
+        
         
         return(
             <Wrapper>
@@ -202,6 +211,12 @@ export default class Lobby extends Component {
                             <h1 className="centeredHeading">{this.props.lobbyData.lobbyName}</h1>
                         </Grid>
                         <Grid item xs={3}>
+                            <div className="hostZone">
+                                <h2>DM</h2>
+                                <img src={this.props.lobbyData.hostThumbnail} alt="profile" className="profileThumbnail"></img>
+                                <p><strong>{this.props.lobbyData.hostName}</strong></p>
+
+                            </div>
                             <div className="playerZone lobbybox">
                                 {this.props.lobbyData.activeUsers.map(user => (
                                     <div className="player" key={user.userId}>

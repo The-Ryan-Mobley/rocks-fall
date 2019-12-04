@@ -18,13 +18,14 @@ import API from "../../utils/api/API";
 const ListButton = styled(Button)({
     fontSize: "0.6rem",
     backgroundColor: "#6d6965",
+    color: "#ffffff",
     padding: "1%"
   });
 const ListGrid = styled(Grid)({
     marginTop: "",
     position: "relative",
     marginBottom: "5%",
-    backgroundColor: "#b9a88d",
+    backgroundColor: "#938A75",
     borderColor: "black",
     borderStyle: "solid",
     borderWidth: "1%",

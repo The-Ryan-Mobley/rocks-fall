@@ -30,7 +30,7 @@ const mapDispatchToProps = dispatch =>
   const AccountButton = styled(Button)({
       marginTop: "1%",
       padding: "2%",
-      backgroundColor: "#55462f",
+      backgroundColor: "#4A463B",
       color: "#ffffff"
   });
 

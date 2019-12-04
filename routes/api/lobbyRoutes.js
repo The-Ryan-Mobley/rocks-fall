@@ -8,6 +8,7 @@ router.route("/find/:lobbyId").get(lobbyController.findById);
 router.route("/join").get(lobbyController.joinLobby);
 router.route("/push/:lobbyId").put(lobbyController.updateActiveUsers);
 router.route("/delete/:lobbyId").delete(lobbyController.deleteLobby);
+router.route("/leave/:lobbyId").put(lobbyController.userLeft);
 
 
 module.exports = router;

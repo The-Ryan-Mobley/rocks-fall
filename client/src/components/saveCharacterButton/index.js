@@ -58,7 +58,6 @@ class SaveCharacterButton extends Component {
         });
     }
     findCharacterList = () => {
-        console.log("######################################");
         API.userCharacterList(this.props.userData.userId).then(result => {
             let characterList = this.props.userData.characterList;
             characterList=[];

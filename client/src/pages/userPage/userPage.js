@@ -1,13 +1,24 @@
 import React, {Component} from "react";
 
 import Grid from '@material-ui/core/Grid';
-import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField'
+import TextField from '@material-ui/core/TextField';
+import { styled } from '@material-ui/core/styles';
 
 import Wrapper from '../../components/wrapper';
 
 import API from "../../utils/api/API";
+
+const UrlTextField = styled(TextField)({
+    width: "100%",
+    marginBottom: "5%"
+});
+const ChangeButton = styled(Button)({
+    padding: "2%",
+    backgroundColor: "#4A463B",
+    color: "#ffffff"
+
+});
 
 export default class UserPage extends Component {
     state={
@@ -33,24 +44,32 @@ export default class UserPage extends Component {
     render() {
         return (
             <Wrapper>
-                <Grid item container xs={12} direction="column" alignItems="center" justify="center">
-                    <h1>{this.props.userData.userName}</h1>
-                    <img src={this.props.userData.userThumbnail}></img>
-                    <TextField
-                        id="thumbnailInput"
-                        label="Enter a Valid Image Url"
-                        defaultValue=""
-                        variant="filled"
-                        color="secondary"
-                        name="tempUrl"
-                        onBlur={this.urlChange}
-                        className="smallInput"
-                    >
+                <div className="homeBody">
+                    <Grid item container xs={12} direction="column" alignItems="center" justify="center">
+                        <h1>{this.props.userData.userName}</h1>
+                        <img className="bigProfile" src={this.props.userData.userThumbnail}></img>
+                        <UrlTextField
+                            id="thumbnailInput"
+                            label="Enter a Valid Image Url"
+                            defaultValue=""
+                            variant="filled"
+                            color="primary"
+                            name="tempUrl"
+                            onBlur={this.urlChange}
+                            className="smallInput"
+                            fullWidth
+                        >
                       
-                    </TextField>
-                    <Button disabled={!this.state.tempUrl} onClick={this.updateUserData}>Change</Button>
+                        </UrlTextField>
+                        <ChangeButton 
+                            disabled={!this.state.tempUrl} 
+                            onClick={this.updateUserData}
+                        >
+                            Change
+                        </ChangeButton>
 
-                </Grid>
+                    </Grid>
+                </div>
             </Wrapper>
         )
     }

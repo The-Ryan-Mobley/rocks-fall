@@ -26,6 +26,11 @@ const lobbySchema = new Schema({
         trim: true,
         required: "need hostName"
     },
+    hostThumbnail: {
+        type: String,
+        trim: true,
+        required: "need thumbnail"
+    },
     lobbyName: {
         type: String,
         trim: true,

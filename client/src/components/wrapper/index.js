@@ -56,7 +56,10 @@ class Wrapper extends Component {
                     <Grid container direction="row">
                         <footer>
                             <div className="header-footer bottom-content">
-                                <p className="title">bottomText</p>
+                                <p className="title">Created by Ryan Mobley</p>
+                                <br/><a href="https://github.com/The-Ryan-Mobley">Github</a>
+                                <br/><a href="https://www.linkedin.com/in/ryan-mobley-b843b5186/">LinkedIn</a>
+                                <br/><a href="http://www.myryanmobley.com/">Portfolio</a>
                             </div>
                         </footer>
                     </Grid>

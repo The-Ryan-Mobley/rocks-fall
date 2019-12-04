@@ -30,6 +30,9 @@ export default {
     updateLobby: (lobbyId, userData) => {
         return axios.put("/api/lobby/push/"+lobbyId, userData);
     },
+    lobbyLeave: (lobbyId, activeUsers) => {
+        return axios.put("/api/lobby/leave/"+lobbyId, activeUsers);
+    },
     deleteLobby: (lobbyId) => {
         return axios.delete("/api/lobby/delete/"+lobbyId);
     },

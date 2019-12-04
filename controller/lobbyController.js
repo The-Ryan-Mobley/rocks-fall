@@ -5,6 +5,7 @@ module.exports = {
         let lobbyObj = {
             hostId: req.body.hostId,
             hostName: req.body.hostName,
+            hostThumbnail: req.body.hostThumbnail,
             lobbyName: req.body.lobbyName,
             lobbyPassword: req.body.lobbyPassword
         }
@@ -61,6 +62,27 @@ module.exports = {
         }
         else {
             res.sendStatus("404");
+        }
+
+    },
+    userLeft: async (req, res) => {
+        console.log('GOGOGOGOGOGOGOGOGOGOGO');
+        console.log(req.body);
+        let result = await db.Lobbies.updateOne(
+            { _id: req.params.lobbyId}, 
+            { $set : {
+                activeUsers : req.body
+            }
+        });
+        if(result) {
+            let newDock = await db.Lobbies.findOne({ _id: req.params.lobbyId});
+            if(newDock) {
+                res.json(newDock.activeUsers);
+            } else {
+                res.sendStatus("504");
+            }
+        } else {
+            res.sendStatus("504");
         }
 
     },

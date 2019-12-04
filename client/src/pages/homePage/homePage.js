@@ -7,7 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import Input from '@material-ui/core/Input';
-import { withStyles } from '@material-ui/core/styles'
+import { styled } from '@material-ui/core/styles';
 
 import MakeLobby from "../../components/makeLobby";
 import JoinLobby from "../../components/joinLobby";
@@ -24,9 +24,7 @@ export default class HomePage extends Component{
         sheetModal: false
     }
     componentDidMount = () => {
-        console.table(this.props.userData);
         if(this.props.userData.userId) {
-            console.log("thiiiiiiis");
             socket.joinGlobal(this.props.userData);
             this.globalListener();
             this.findCharacterList(this.props.userData.userId);
@@ -61,8 +59,7 @@ export default class HomePage extends Component{
                 break;
             }
             default: {
-                this.findCharacterList();
-                this.closeModals();
+                this.props.closeModals();
                 break;
             }
         }
@@ -91,7 +88,6 @@ export default class HomePage extends Component{
             });
             this.props.userInputChange( "characterList" , characterList );
             this.props.swapModalBool("loadingList", false);
-            this.props.closeModals();
   
         });
     }
