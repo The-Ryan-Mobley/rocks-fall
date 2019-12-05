@@ -179,10 +179,25 @@ code {
   height: 10rem;
   font-size: 0.8rem;
   overflow-y: scroll;
-
 }
 .skillProfs::-webkit-scrollbar ,.savingProfs::-webkit-scrollbar ,.languages::-webkit-scrollbar {
   display: none;
+}
+.itemField{
+  width: 100% !important;
+}
+.inventoryList{
+  height: 25rem;
+  font-size: 0.8rem;
+  overflow-y: scroll;
+}
+.statBlock{
+  border-color: #000000;
+  border-style: solid;
+}
+.saveButton{
+  color: #ffffff !important;
+  background-color: #4A463B !important;
 }
 
 

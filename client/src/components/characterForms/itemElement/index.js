@@ -51,12 +51,12 @@ const mapDispatchToProps = dispatch =>
     
     render(){
         return(
-            <Grid item container>
+          <Grid item container>
               <TextField
+                className="itemField"
                 id="itemTitle"
                 label="Item name"
                 defaultValue=""
-                variant="filled"
                 color="secondary"
                 name="name"
                 onBlur={this.inputNewItemData}
@@ -65,6 +65,7 @@ const mapDispatchToProps = dispatch =>
                 }}
               />
               <TextField 
+                className="itemField"
                 id="itemDesc"
                 label="Item Description"
                 multiline={true}
@@ -78,7 +79,7 @@ const mapDispatchToProps = dispatch =>
                 }}
               />
               <Button onClick={this.pushItemToRedux}>+</Button>
-            </Grid>
+          </Grid>
           
         );
     }

@@ -79,11 +79,16 @@ class SaveCharacterButton extends Component {
         return(
             <Grid item>
                 {this.props.modalData.newCharacter ? (
-                    <Button onClick={this.postToDb}>Create</Button>
+                    <div className="saveButton">
+                        <Button onClick={this.postToDb}>Create</Button>
+                    </div>
                 ) : 
                 (
-                    <Button onClick={this.putToDb}>Save</Button>
+                    <div className="saveButton">
+                        <Button onClick={this.putToDb}>Save</Button>
+                    </div>
                 )}
+                
             </Grid>
         )
     }

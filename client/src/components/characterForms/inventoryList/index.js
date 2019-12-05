@@ -32,9 +32,10 @@ class InventoryList extends Component {
         this.props.setStringArray("inventory", inventory);
 
     }
-    
+
     render() {
         return(
+            <div className="inventoryList">
             <Grid item container>
                 {this.props.playerCharacter.inventory.map((item, index) => (
                     <Grid item container xs={12} key={index}>
@@ -56,6 +57,7 @@ class InventoryList extends Component {
                 ))}
 
             </Grid>
+            </div>
         )
 
     }
