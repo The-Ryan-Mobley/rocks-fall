@@ -185,14 +185,7 @@ code {
   font-size: 0.8rem;
   overflow-y: scroll;
 }
-.spellBlock::-webkit-scrollbar,
-.descriptionBody::-webkit-scrollbar,
-.inventoryList::-webkit-scrollbar, 
-.skillProfs::-webkit-scrollbar,
-.savingProfs::-webkit-scrollbar,
-.languages::-webkit-scrollbar {
-  display: none;
-}
+
 .itemField{
   width: 100% !important;
 }
@@ -220,6 +213,8 @@ code {
   margin: 1px;
 }
 .traits{
+  overflow-y: scroll;
+  overflow-x: hidden;
   height: 10rem;
   width: 100%;
 }
@@ -228,6 +223,15 @@ code {
 }
 .whiteText{
   color: #ffffff !important;
+}
+.traits::-webkit-scrollbar,
+.spellBlock::-webkit-scrollbar,
+.descriptionBody::-webkit-scrollbar,
+.inventoryList::-webkit-scrollbar, 
+.skillProfs::-webkit-scrollbar,
+.savingProfs::-webkit-scrollbar,
+.languages::-webkit-scrollbar {
+  display: none;
 }
 
 @media(min-width: 320px) and (max-width: 549px){
