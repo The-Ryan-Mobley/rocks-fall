@@ -8,7 +8,6 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import {characterInputChange, characterStatsChange} from "../../../redux/actions/actions";
 
-import "./style.css"
 
 const mapStateToProps = state => {
     return { 

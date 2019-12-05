@@ -9,7 +9,6 @@ import { connect } from "react-redux";
 import {characterInputChange} from "../../../redux/actions/actions";
 
 import {ItemElement, InventoryList, CurrencyBlock} from "../";
-import "./style.css"
 
 const mapStateToProps = state => {
     return { 
@@ -85,7 +84,7 @@ const mapDispatchToProps = dispatch =>
                             </div>
                             </Grid>
                         </Grid>
-                        <Grid spacing={1} item>
+                        <Grid item>
                             <div className="HEALTH sheetBox centered">
                             <Grid container>
                                 <Grid item xs={5}></Grid>
@@ -128,7 +127,7 @@ const mapDispatchToProps = dispatch =>
                             </Grid>
                             </div>
                         </Grid>
-                        <Grid spacing={1} item>
+                        <Grid item>
                             <p><strong>Inventory: </strong></p>
                             <div className="sheetBox">
                                 <CurrencyBlock/>

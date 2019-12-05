@@ -70,7 +70,6 @@ const mapDispatchToProps = dispatch =>
 
     }
     setCurrentCharacter = event => {
-        console.log(JSON.parse(event.currentTarget.value));
         this.props.userInputChange("currentCharacter", JSON.parse(event.currentTarget.value));
     }
     handleModal = event => {

@@ -5,7 +5,6 @@ const socket = io.connect();
 export default {
     socketEmmissions: () => {
         socket.on('welcome', function(soc){
-            console.log(soc);
           });
         socket.on("joined", (msg) => {
             
@@ -74,7 +73,6 @@ export default {
     },
     listenChat: (callback) => {
         socket.on("chat", msg => {
-            console.log("calling *********************************");
             callback(msg);
         })
     }

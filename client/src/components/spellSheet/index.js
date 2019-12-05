@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 
 import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-import { sizing } from '@material-ui/system';
 
 import {SpellHeader, SpellBlock, DescriptionBody} from "../spellForms";
 
@@ -25,9 +23,6 @@ const mapStateToProps = state => {
   );
 
 class SpellSheet extends Component{
-    componentDidMount(){
-        
-    }
     render(){
         return(
             <div className="characterSheet">

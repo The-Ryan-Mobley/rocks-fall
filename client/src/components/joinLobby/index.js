@@ -16,14 +16,7 @@ class JoinLobby extends Component {
         sendLobby: false,
         lobbyId: ""
     }
-    componentDidMount = () => {
-        //
 
-    }
-    componentDidUpdate = (prevProps) => {
-
-
-    }
     onTextChange = event =>{
         this.props.lobbyInputChange(event.target.name, event.target.value);
     }
@@ -38,8 +31,6 @@ class JoinLobby extends Component {
                 })
             }
         })
-        
-
     }
     render(){
         return(

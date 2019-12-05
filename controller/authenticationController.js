@@ -22,7 +22,6 @@ module.exports = {
         };
     },
     addUser: async(req,res) =>{
-        console.table(req.body);
         let Salt = module.exports.genRandomString(16); /** Gives us salt of length 16 */
         let hashCode = module.exports.sha512(req.body.password, Salt);
         let newUser = {
@@ -30,14 +29,12 @@ module.exports = {
             password: hashCode.passwordHash,
             salt: hashCode.salt
         };
-        console.table(newUser);
 
         let result = await db.Users.create(newUser);
         result ? res.json(result) : res.sendStatus("404"); 
     },
     loginUser: (req,res) =>{
         try{
-            console.table(req.query);
             db.Users.findOne({userName: req.query.userName}, (er, foundUser) => {
                 if(er){console.log(er)}
                 if(foundUser){
@@ -49,7 +46,6 @@ module.exports = {
                             id: foundUser._id,
                             currentCharacter: foundUser.currentCharacter
                         }
-                        console.table(userData);
                         res.json({userData});
                     }else {
                         res.sendStatus("401");
@@ -84,7 +80,6 @@ module.exports = {
 
     },
     updateThumb: async ( req, res ) => {
-        console.log(req.body);
         try {
             const result = await db.Users.updateOne({_id: req.params.id}, {$set : {thumbnail: req.body.thumbNail}});
             if(result) {

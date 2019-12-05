@@ -53,8 +53,6 @@ class DiceBlock extends Component {
         this.props.swapModalBool("diceArray", diceArray);
     }
     rollDice = () => {
-        console.log('click');
-        console.log(this.props.modalData.diceArray);
         let diceArray = this.props.modalData.diceArray;
         let diceTotal = 0;
         let diceString = ``

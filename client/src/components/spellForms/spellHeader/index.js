@@ -60,7 +60,7 @@ class SpellHeader extends Component {
     render(){
         return(
             <div className="characterHeader sheetBox">
-                <Grid container direction="row" spacing={2}>
+                <Grid container spacing={2}>
                     <Grid item xs={3}>
                         <Button aria-controls="simple-menu" aria-haspopup="true" onClick={this.handleClick}>
                             {this.props.playerCharacter.spellCastingClass ? 

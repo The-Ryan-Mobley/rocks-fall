@@ -1,11 +1,7 @@
 import React, {Component} from 'react';
-import { Redirect } from 'react-router-dom';
 import Box from '@material-ui/core/Box';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import {userInputChange,  userLogin, saveSession} from "../../redux/actions/actions";

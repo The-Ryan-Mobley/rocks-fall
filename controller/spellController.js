@@ -7,7 +7,6 @@ module.exports = {
         db.Spells.find({playerClasses: PCname}).then(result => {
 
         });
-
     },
     spellsByLevel: (req,res) =>{
         let spellLevel = req.params.level;
@@ -17,7 +16,6 @@ module.exports = {
 
     },
     spellsByLevelAndClass: async (req, res) => {
-        console.log(req.query);
         const level = parseInt(req.query.level);
         const playerClass = req.query.playerClass;
 

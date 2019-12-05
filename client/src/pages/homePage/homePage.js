@@ -7,7 +7,6 @@ import Grid from '@material-ui/core/Grid';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import Input from '@material-ui/core/Input';
-import { styled } from '@material-ui/core/styles';
 
 import MakeLobby from "../../components/makeLobby";
 import JoinLobby from "../../components/joinLobby";
@@ -102,7 +101,6 @@ export default class HomePage extends Component{
         let globalChat = this.props.modalData.globalChat;
         globalChat.push(msg);
         this.props.swapModalBool("globalChat", globalChat);
-        console.log(this.props.modalData.globalChat);
         socket.postMessage("Global", msg);
     }
     blurMessage = event => {
@@ -115,17 +113,14 @@ export default class HomePage extends Component{
                 key: Math.floor(Math.random() * 1000000),
                 body: re
             }
-            console.log(msg);
             let globalChat = this.props.modalData.globalChat;
             let keys = globalChat.map(message => {
                 return message.key;
             });
             
             if((keys.indexOf(msg.key) === -1)) {
-                console.log("keys");
-                console.log(keys);
                 globalChat.push(msg);
-                this.props.swapModalBool("glovalChat", globalChat);
+                this.props.swapModalBool("globalChat", globalChat);
             }
         })
 
@@ -175,7 +170,7 @@ export default class HomePage extends Component{
                             name="newGlobalMessage"
                             value={this.props.modalData.newGlobalMessage}
                             id="filled-required"
-                            fullWidth="true"
+                            fullWidth={true}
                             placeholder="Type Message Here"
                             variant="filled"
                             color="secondary"

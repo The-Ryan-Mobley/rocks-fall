@@ -11,10 +11,8 @@ module.exports = {
         }
     },
     updateCharacter: async (req, res) => {
-        console.log(req.body);
         const result = await db.PlayerCharacter.updateOne({_id: req.body._id},req.body,{upsert: true});
         if (result) {
-            console.log(result)
             const updatedDoc = await db.PlayerCharacter.findOne({_id : req.body._id});
             if(updatedDoc) {
                 res.json(updatedDoc);

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import Grid from '@material-ui/core/Grid';
-import Input from '@material-ui/core/Input';
 import TextField from '@material-ui/core/TextField'
 
 
@@ -51,7 +50,7 @@ const mapDispatchToProps = dispatch =>
                                   }}
                             />
                     </Grid>
-                    <Grid item xs={9} direction="row">
+                    <Grid item xs={9} >
                         <div className="headerInfoTop">
                             <Grid container item xs={12} direction="row" spacing={1}>
                             <div className="sheetBox">

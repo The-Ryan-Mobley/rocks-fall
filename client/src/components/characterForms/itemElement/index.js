@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 
 import Grid from '@material-ui/core/Grid';
-import Input from '@material-ui/core/Input';
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button';
-import ListItemText from '@material-ui/core/ListItemText';
 
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import {characterInputChange, setStringArray} from "../../../redux/actions/actions";
 
-import "./style.css"
 
 const mapStateToProps = state => {
     return { 

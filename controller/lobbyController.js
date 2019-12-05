@@ -66,8 +66,6 @@ module.exports = {
 
     },
     userLeft: async (req, res) => {
-        console.log('GOGOGOGOGOGOGOGOGOGOGO');
-        console.log(req.body);
         let result = await db.Lobbies.updateOne(
             { _id: req.params.lobbyId}, 
             { $set : {

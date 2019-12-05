@@ -8,8 +8,6 @@ import { connect } from "react-redux";
 import {characterInputChange} from "../../../redux/actions/actions";
 import {FeatsAndTraits} from "../";
 
-import "./style.css"
-
 const mapStateToProps = state => {
     return { 
         playerCharacter: state.characterReducer.playerCharacter,
