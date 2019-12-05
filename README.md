@@ -1,6 +1,5 @@
 # rocks-fall
-https://calm-garden-60661.herokuapp.com/ eventual url
-https://vast-citadel-52957.herokuapp.com/ new url
+https://vast-citadel-52957.herokuapp.com/ url
 ## Dev Summary
   Rocks fall is a page where users can create lobbies and make characters for D&D. The site will also double as a sort of wiki where users
 can search for individual rules information.
