@@ -69,8 +69,8 @@ const mapDispatchToProps = dispatch =>
                 {
                 this.state.statNames.map(stat => (
                    
-                    <div className="singleBlock" key={`${stat}Div`}>
-                        <p>{stat}</p>
+                    <div className="singleBlock sheetBox" key={`${stat}Div`}>
+                        <p><strong>{stat}</strong></p>
                         <TextField
                             id={stat}
                             defaultValue={this.props.playerCharacter.stats[this.state.statNames.indexOf(stat)]}

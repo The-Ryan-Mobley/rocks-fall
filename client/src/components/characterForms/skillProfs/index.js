@@ -76,7 +76,7 @@ class SkillProfs extends Component {
     }
     render() {
         return(
-            <div className="skillProfs">
+            <div className="skillProfs sheetBox">
             <Grid item container xs={12} className="box">
                     {this.props.playerCharacter.skillProficiency.length ? (
                         this.props.playerCharacter.skillProficiency.map((skill, index) => (

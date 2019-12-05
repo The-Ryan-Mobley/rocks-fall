@@ -82,7 +82,7 @@ class SavingProfs extends Component{
     render(){
         return(
             <div className="profs">
-            <div className="savingProfs box">
+            <div className="savingProfs sheetBox box">
                 
                 <TextField 
                         id="multiline-flexible"

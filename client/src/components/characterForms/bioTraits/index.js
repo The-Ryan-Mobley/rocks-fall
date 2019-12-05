@@ -32,8 +32,8 @@ class BioTraits extends Component {
     }
     render(){
         return(
-            <div className="bioTraits box">
-                <div className="personalityTraits">
+            <div className="bioTraits sheetBox box">
+                <div className="personalityTraits sheetBox">
                 <TextField 
                         id="multiline-flexible"
                         label="Personality Traits"
@@ -49,7 +49,7 @@ class BioTraits extends Component {
                             (this.props.playerCharacter.personalityTraits) : ("")}
                     />
                 </div>
-                <div className="ideals">
+                <div className="ideals sheetBox">
                 <TextField 
                         id="multiline-flexible"
                         label="Ideals"
@@ -65,7 +65,7 @@ class BioTraits extends Component {
                             (this.props.playerCharacter.ideals) : ("")}
                     />
                 </div>
-                <div className="bonds">
+                <div className="bonds sheetBox">
                     <TextField 
                         id="multiline-flexible"
                         label="Bonds"
@@ -81,7 +81,7 @@ class BioTraits extends Component {
                             (this.props.playerCharacter.bonds) : ("")}
                     />     
                 </div>
-                <div className="flaws">
+                <div className="flaws sheetBox">
                 <TextField 
                         id="multiline-flexible"
                         label="Flaws"
@@ -97,12 +97,12 @@ class BioTraits extends Component {
                             (this.props.playerCharacter.flaws) : ("")}
                     />
                 </div>
-                <div className="bio">
+                <div className="bio sheetBox">
                     <TextField 
                         id="multiline-flexible"
                         label="Biography"
                         multiline={true}
-                        rows="8"
+                        rows="4"
                         onBlur={this.onTextChange}
                         margin="normal"
                         name="bio"

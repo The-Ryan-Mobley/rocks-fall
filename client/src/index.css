@@ -187,17 +187,25 @@ code {
   width: 100% !important;
 }
 .inventoryList{
-  height: 25rem;
+  height: 20rem;
   font-size: 0.8rem;
   overflow-y: scroll;
 }
-.statBlock{
+.singleBlock{
   border-color: #000000;
   border-style: solid;
+  margin: 1px;
+  font-size: 0.6rem;
+
 }
 .saveButton{
   color: #ffffff !important;
   background-color: #4A463B !important;
+}
+.sheetBox{
+  border-color: #000000;
+  border-style: solid;
+  margin: 1px;
 }
 
 
@@ -221,4 +229,7 @@ code {
     height: 20rem;
     font-size: 0.6rem;
   }
+}
+@media(min-width: 600px) {
+  
 }

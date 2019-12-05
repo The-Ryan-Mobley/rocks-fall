@@ -161,11 +161,11 @@ export default class HomePage extends Component{
                     <Grid container spacing={3}>
                     <Grid item xs={12} md={3}>
                         <Button name="sheetModal" value="newCharacter" className="modalButton shaded" onClick={this.handleModal.bind(this)}>CreateCharacter</Button>
-                        <CharacterList/>
+                        <CharacterList className="shaded"/>
                     </Grid>
                     <Grid item xs={12} md={6}>
                     <h1 className="centered">Chat</h1>
-                            <div className="chatBody">
+                            <div className="chatBody shaded">
                                 {this.props.modalData.globalChat.map((msg, index) => (
                                     <p key={index}>{msg.body.body ? (msg.body.body) : (msg.body)}</p>
                                 ))}

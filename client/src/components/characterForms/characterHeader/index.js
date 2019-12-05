@@ -33,18 +33,18 @@ const mapDispatchToProps = dispatch =>
     }
     render(){
         return(
-            <div className="characterHeader box">
+            <div className="sheetBox">
                 <Grid container direction="row" spacing={2}>
                     <Grid item md={3}>
-                        <div classname="charName box">
+                        <div classname="sheetBox">
                             <TextField
                                 id="nameInput"
                                 label="Character Name"
                                 defaultValue={this.props.playerCharacter.characterName.length ? 
                                     (this.props.playerCharacter.characterName) : ("")}
-                                variant="filled"
                                 color="secondary"
                                 name="characterName"
+                                variant="filled"
                                 onBlur={this.onTextChange}
                                 InputProps={{
                                     readOnly: this.props.modalData.readOnly
@@ -55,12 +55,12 @@ const mapDispatchToProps = dispatch =>
                     <Grid item xs={9} direction="row">
                         <div className="headerInfoTop box">
                             <Grid container item xs={12} direction="row" spacing={1}>
+                            <div className="sheetBox">
                                 <TextField
                                     id="playerClass"
                                     label="Character Class"
                                     defaultValue= {this.props.playerCharacter.playerClass ? 
                                         (this.props.playerCharacter.playerClass) : ("")}
-                                    variant="filled"
                                     color="secondary"
                                     name="playerClass"
                                     onBlur={this.onTextChange}
@@ -68,12 +68,13 @@ const mapDispatchToProps = dispatch =>
                                         readOnly: this.props.modalData.readOnly
                                       }}
                                 />
+                            </div>
+                            <div className="sheetBox">
                                 <TextField
                                     label="level"
                                     id="level"
                                     defaultValue= {this.props.playerCharacter.level ? 
                                         (this.props.playerCharacter.level) : ("")}
-                                    variant="filled"
                                     color="secondary"
                                     name="level"
                                     onBlur={this.onTextChange}
@@ -82,12 +83,13 @@ const mapDispatchToProps = dispatch =>
                                       }}
 
                                 />
+                            </div>
+                            <div className="sheetBox">
                                 <TextField
                                     id="background"
                                     label="background"
                                     defaultValue= {this.props.playerCharacter.background.length ? 
                                         (this.props.playerCharacter.background) : ("")}
-                                    variant="filled"
                                     color="secondary"
                                     name="background"
                                     onBlur={this.onTextChange}
@@ -95,16 +97,17 @@ const mapDispatchToProps = dispatch =>
                                         readOnly: this.props.modalData.readOnly
                                       }}
                                 />
+                            </div>
                             </Grid>
                         </div>
                         <div className="headerInfoBottom box">
                             <Grid container item xs={12} direction="row" spacing={1}>
+                            <div className="sheetBox">
                                 <TextField
                                     id="playerRace"
                                     label="race"
                                     defaultValue= {this.props.playerCharacter.playerRace.length ? 
                                         (this.props.playerCharacter.playerRace) : ("")}
-                                    variant="filled"
                                     color="secondary"
                                     name="playerRace"
                                     onBlur={this.onTextChange}
@@ -112,11 +115,12 @@ const mapDispatchToProps = dispatch =>
                                         readOnly: this.props.modalData.readOnly
                                       }}
                                 />
+                            </div>
+                            <div className="sheetBox">
                                 <TextField
                                     id="alignment"
                                     defaultValue= {this.props.playerCharacter.alignment.length ? 
                                         (this.props.playerCharacter.alignment) : ("")}
-                                    variant="filled"
                                     color="secondary"
                                     name="alignment"
                                     label="alignment"
@@ -124,11 +128,12 @@ const mapDispatchToProps = dispatch =>
                                     InputProps={{
                                         readOnly: this.props.modalData.readOnly
                                       }}
-                                />                            
+                                /> 
+                            </div>
+                            <div className="sheetBox">                        
                                 <TextField
                                     defaultValue= {this.props.playerCharacter.experience ? 
                                         (this.props.playerCharacter.experience) : ("")}
-                                    variant="filled"
                                     color="secondary"
                                     name="experience"
                                     label="experience"
@@ -137,6 +142,7 @@ const mapDispatchToProps = dispatch =>
                                         readOnly: this.props.modalData.readOnly
                                       }}
                                 />
+                            </div>
                             </Grid>
                         </div>
                         

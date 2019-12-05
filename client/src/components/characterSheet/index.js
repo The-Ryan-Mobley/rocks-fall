@@ -23,11 +23,11 @@ export default class CharacterSheet extends Component{
                         <CharacterHeader
                         />
                     </Grid>
-                    <Grid item xs={2}>
+                    <Grid item xs={1}>
                         <StatBlock
                         />
                     </Grid>
-                        <Grid xs={2} item>
+                        <Grid xs={3} item>
                             <SavingProfs/>
                             <Languages/>
                         </Grid>
