@@ -116,7 +116,6 @@ class SpellBlock extends Component {
             spellArray=[];
         }
         spellArray.push(selectedSpell);
-        console.log(spellArray);
         let spellsKnown = this.props.playerCharacter.spellsKnown;
         if(spellsKnown[this.props.spellLevel] !== null) {
             spellsKnown.splice(this.props.spellLevel, 1, spellArray);
@@ -125,7 +124,6 @@ class SpellBlock extends Component {
         }
         this.setState({spellArray})
         this.props.updateSpellsKnown(spellsKnown);
-        console.log(this.props.playerCharacter.spellsKnown)
 
     }
     removeFromKnown = spell => {
@@ -171,10 +169,10 @@ class SpellBlock extends Component {
                 (<Grid item container direction="row">
                     <p>spell Level: {this.props.spellLevel}</p>
                     <TextField 
-                        id="slotsTotal"
-                        placeholder= {this.props.spellSlots ? 
-                        (this.props.spellSlots) : ("0")}
-                            color="secondary"
+                            id="slotsTotal"
+                            defaultValue= {this.props.spellSlots ? 
+                                (this.props.spellSlots) : ("0")}
+                            color="primary"
                             label="spellSlots"
                             name={this.props.spellLevel}
                             onChange={this.spellSlotArrayChange}
