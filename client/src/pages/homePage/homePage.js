@@ -143,7 +143,7 @@ export default class HomePage extends Component{
                                     disabled={!this.props.userData.currentCharacter._id} 
                                     onClick={this.handleModal.bind(this)}
                                     >
-                                        Join Lobby
+                                        {this.props.userData.currentCharacter._id ? ("Join Lobby") : ("No Character Selected")}
                                     </Button>
                             </Grid>
                         ) : (<p>Login to play</p>)}
