@@ -64,7 +64,7 @@ export default class Login extends Component{
                     <Button variant="contained" className="createButton" 
                         onClick={this.formSubmit} 
                         disabled={!(this.props.userData.userName && this.props.userData.password)}>
-                            Create
+                            Login
                     </Button>
                 )}
                 </Grid>
