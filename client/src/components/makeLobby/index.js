@@ -78,6 +78,7 @@ class MakeLobby extends Component{
                         variant="filled"
                         color="secondary"
                         onChange={this.onTextChange}
+                        type="password"
                     />
                 </Grid>
                     <Grid container item xs={12} alignItems="center" justify="center">

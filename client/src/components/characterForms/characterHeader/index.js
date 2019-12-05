@@ -33,10 +33,9 @@ const mapDispatchToProps = dispatch =>
     }
     render(){
         return(
-            <div className="sheetBox">
+            <div className="characterHeader">
                 <Grid container direction="row" spacing={2}>
-                    <Grid item md={3}>
-                        <div classname="sheetBox">
+                    <Grid item xs={12} md={3}>
                             <TextField
                                 id="nameInput"
                                 label="Character Name"
@@ -45,15 +44,15 @@ const mapDispatchToProps = dispatch =>
                                 color="secondary"
                                 name="characterName"
                                 variant="filled"
+                                fullWidth={true}
                                 onBlur={this.onTextChange}
                                 InputProps={{
                                     readOnly: this.props.modalData.readOnly
                                   }}
                             />
-                        </div>
                     </Grid>
                     <Grid item xs={9} direction="row">
-                        <div className="headerInfoTop box">
+                        <div className="headerInfoTop">
                             <Grid container item xs={12} direction="row" spacing={1}>
                             <div className="sheetBox">
                                 <TextField
@@ -100,7 +99,7 @@ const mapDispatchToProps = dispatch =>
                             </div>
                             </Grid>
                         </div>
-                        <div className="headerInfoBottom box">
+                        <div className="headerInfoBottom">
                             <Grid container item xs={12} direction="row" spacing={1}>
                             <div className="sheetBox">
                                 <TextField
@@ -149,7 +148,6 @@ const mapDispatchToProps = dispatch =>
                     </Grid>
 
                 </Grid>
-
             </div>
         )
     }

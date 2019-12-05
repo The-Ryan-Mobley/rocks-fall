@@ -48,11 +48,12 @@ const mapDispatchToProps = dispatch =>
       if( index !== -1) {
         featsAndTraits.splice(index, 1);
       }
-      this.characterInputChange("featsAndTraits", featsAndTraits);
+      this.props.characterInputChange("featsAndTraits", featsAndTraits);
     }
     render(){
         return(
             <Grid item container>
+              <div className="sheetBox traits">
                 {this.props.playerCharacter.featsAndTraits.map((feat, index) => (
                     <Grid item container xs={12} key={index}>
                         <Grid item xs={10}>
@@ -61,7 +62,7 @@ const mapDispatchToProps = dispatch =>
                         </Grid>
                         <Grid item xs={2}>
                             <Button 
-                              disabled={!this.props.modalData.readOnly} 
+                              disabled={this.props.modalData.readOnly} 
                               onClick={this.removeFromRedux.bind(this , index)}
                               >
                                 x
@@ -71,32 +72,45 @@ const mapDispatchToProps = dispatch =>
                     </Grid>
                     
                 ))}
-              <TextField
-                id="featTitle"
-                label="Feat name"
-                defaultValue=""
-                variant="filled"
-                color="secondary"
-                name="name"
-                onChange={this.inputNewFeatData}
-                InputProps={{
-                  readOnly: this.props.modalData.readOnly
-                }}
-              />
-              <TextField 
-                id="featDesc"
-                label="Feat Description"
-                multiline={true}
-                rows="4"
-                onChange={this.inputNewFeatData}
-                margin="normal"
-                name="description"
-                defaultValue=""
-                InputProps={{
-                  readOnly: this.props.modalData.readOnly
-                }}
-              />
-              <Button disabled={this.state.name} onClick={this.pushItemToRedux}>+</Button>
+              </div>
+              <div className="sheetBox">
+                <Grid container>
+                  <Grid item xs={12}>
+                    <TextField
+                      id="featTitle"
+                      label="Feat name"
+                      defaultValue=""
+                      variant="filled"
+                      color="secondary"
+                      name="name"
+                      fullWidth={true}
+                      onChange={this.inputNewFeatData}
+                      InputProps={{
+                      readOnly: this.props.modalData.readOnly
+                      }}
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField 
+                      id="featDesc"
+                      label="Feat Description"
+                      multiline={true}
+                      rows="4"
+                      onChange={this.inputNewFeatData}
+                      margin="normal"
+                      name="description"
+                      defaultValue=""
+                      fullWidth={true}
+                      InputProps={{
+                        readOnly: this.props.modalData.readOnly
+                      }}
+                    />
+                  </Grid>
+                  <Grid item xs={12} className="addButton">
+                    <Button disabled={this.props.modalData.readOnly} onClick={this.pushItemToRedux}>+</Button>
+                  </Grid>
+                </Grid>
+              </div>
             </Grid>
           
         );

@@ -82,36 +82,21 @@ class SavingProfs extends Component{
     render(){
         return(
             <div className="profs">
-            <div className="savingProfs sheetBox box">
-                
-                <TextField 
-                        id="multiline-flexible"
-                        label="Proficiency Bonus"
-                        multiline={true}
-                        rows="3"
-                        onBlur={this.bonusChange}
-                        margin="normal"
-                        name="proficiencyBonus"
-                        InputProps={{
-                            readOnly: this.props.modalData.readOnly
-                          }}
-                        defaultValue={this.props.playerCharacter.proficiencyBonus ? 
-                            (this.props.playerCharacter.proficiencyBonus) : ("")}
-                    />
+            <div className="savingProfs sheetBox centered">
                 <p><strong>Saving Throws</strong></p>
-                <div className="savingThrows">
+                <div className="savingThrows fullWidth">
                     {this.props.playerCharacter.primaryStats.map((stat, index) => (
                         <Grid item container direction="row" spacing={0} key={index}>
-                            <p>{stat}</p>
                             <Button
                                 onClick={this.remove.bind(this, stat)}
                                 disabled={this.props.modalData.readOnly}
+                                className="centered fullWidth"
                             >
-                                X
+                                {stat} X
                             </Button>
                         </Grid>
                     ))}
-                    <Button aria-controls="simple-menu" aria-haspopup="true" onClick={this.dropDownOpen}>
+                    <Button className="fullWidth" aria-controls="simple-menu" aria-haspopup="true" onClick={this.dropDownOpen}>
                         {this.state.selectedStat.length ? 
                         (this.state.selectedStat) : ("Select")}
                     </Button>

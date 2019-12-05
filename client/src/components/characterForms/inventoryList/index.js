@@ -35,7 +35,7 @@ class InventoryList extends Component {
 
     render() {
         return(
-            <div className="inventoryList">
+            <div className="inventoryList sheetBox">
             <Grid item container>
                 {this.props.playerCharacter.inventory.map((item, index) => (
                     <Grid item container xs={12} key={index}>

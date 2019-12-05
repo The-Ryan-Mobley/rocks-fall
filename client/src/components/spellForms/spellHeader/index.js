@@ -59,7 +59,7 @@ class SpellHeader extends Component {
     }
     render(){
         return(
-            <div className="characterHeader box">
+            <div className="characterHeader sheetBox">
                 <Grid container direction="row" spacing={2}>
                     <Grid item xs={3}>
                         <Button aria-controls="simple-menu" aria-haspopup="true" onClick={this.handleClick}>
@@ -86,44 +86,46 @@ class SpellHeader extends Component {
                         </Menu>
                     </Grid>
                     <Grid item xs={9} direction="row">
-                        <div className="headerInfoTop box">
+                        <div className="headerInfoTop">
                             <Grid container item xs={12} direction="row" spacing={1}>
                                 <Grid item xs={4}>
-                                <TextField
-                                    id="playerClass"
-                                    label="Casting Stat"
-                                    defaultValue= {this.props.playerCharacter.spellCastingStat ? 
-                                        (this.props.playerCharacter.spellCastingStat) : ("stat")}
-                                    color="secondary"
-                                    name="spellCastingStat"
-                                    onChange={this.onTextChange}
-                                />
+                                <div className="sheetBox">
+                                    <TextField
+                                        id="playerClass"
+                                        label="Casting Stat"
+                                        defaultValue= {this.props.playerCharacter.spellCastingStat ? 
+                                            (this.props.playerCharacter.spellCastingStat) : ("stat")}
+                                        color="primary"
+                                        name="spellCastingStat"
+                                        onChange={this.onTextChange}
+                                    />
+                                </div>
                                 </Grid>
                                 <Grid item xs={4}>
-                                <TextField
-                                    id="playerClass"
-                                    label="Spell Atk Bonus"
-                                    defaultValue= {this.props.playerCharacter.spellAttackBonus ? 
-                                        (this.props.playerCharacter.spellAttackBonus) : ("")}
-                                    variant="filled"
-                                    color="secondary"
-                                    name="spellAttackBonus"
-                                    onChange={this.onTextChange}
-                                />
-
+                                <div className="sheetBox">
+                                    <TextField
+                                        id="playerClass"
+                                        label="Spell Atk Bonus"
+                                        defaultValue= {this.props.playerCharacter.spellAttackBonus ? 
+                                            (this.props.playerCharacter.spellAttackBonus) : ("")}
+                                        color="primary"
+                                        name="spellAttackBonus"
+                                        onChange={this.onTextChange}
+                                    />
+                                </div>
                                 </Grid>
                                 <Grid item xs={4}>
-                                <TextField
-                                    id="playerClass"
-                                    label="Save DC"
-                                    defaultValue= {this.props.playerCharacter.spellSaveDc ? 
-                                        (this.props.playerCharacter.SpellSaveDc) : ("8")}
-                                    variant="filled"
-                                    color="secondary"
-                                    name="spellSaveDc"
-                                    onChange={this.onTextChange}
-                                />
-
+                                <div className="sheetBox">
+                                    <TextField
+                                        id="playerClass"
+                                        label="Save DC"
+                                        defaultValue= {this.props.playerCharacter.spellSaveDc ? 
+                                            (this.props.playerCharacter.SpellSaveDc) : ("8")}
+                                        color="primary"
+                                        name="spellSaveDc"
+                                        onChange={this.onTextChange}
+                                    />
+                                </div>
                                 </Grid>
                             </Grid>
                         </div>

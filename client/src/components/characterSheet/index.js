@@ -23,20 +23,20 @@ export default class CharacterSheet extends Component{
                         <CharacterHeader
                         />
                     </Grid>
-                    <Grid item xs={1}>
+                    <Grid item xs={12} md={1}>
                         <StatBlock
                         />
                     </Grid>
-                        <Grid xs={3} item>
+                        <Grid xs={12} md={3} item>
                             <SavingProfs/>
                             <Languages/>
                         </Grid>
-                   <Grid item xs={5}>
+                   <Grid item xs={12} md={4}>
                         <GearBlock 
                         />
 
                     </Grid>
-                    <Grid item xs={3} spacing={3}>
+                    <Grid item xs={12} md={4} spacing={3}>
                         <BioTraits 
                         />
                     </Grid>

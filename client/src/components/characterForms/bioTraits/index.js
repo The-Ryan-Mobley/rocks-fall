@@ -32,16 +32,17 @@ class BioTraits extends Component {
     }
     render(){
         return(
-            <div className="bioTraits sheetBox box">
+            <div className="bioTraits">
                 <div className="personalityTraits sheetBox">
                 <TextField 
                         id="multiline-flexible"
                         label="Personality Traits"
                         multiline={true}
-                        rows="3"
+                        rows="2"
                         onBlur={this.onTextChange}
                         margin="normal"
                         name="personalityTraits"
+                        fullWidth={true}
                         InputProps={{
                             readOnly: this.props.modalData.readOnly
                           }}
@@ -54,7 +55,7 @@ class BioTraits extends Component {
                         id="multiline-flexible"
                         label="Ideals"
                         multiline={true}
-                        rows="3"
+                        rows="2"
                         onBlur={this.onTextChange}
                         margin="normal"
                         name="ideals"
@@ -70,7 +71,7 @@ class BioTraits extends Component {
                         id="multiline-flexible"
                         label="Bonds"
                         multiline={true}
-                        rows="3"
+                        rows="2"
                         onBlur={this.onTextChange}
                         margin="normal"
                         name="ideals"
@@ -86,7 +87,7 @@ class BioTraits extends Component {
                         id="multiline-flexible"
                         label="Flaws"
                         multiline={true}
-                        rows="3"
+                        rows="2"
                         onBlur={this.onTextChange}
                         margin="normal"
                         name="flaws"
@@ -102,7 +103,7 @@ class BioTraits extends Component {
                         id="multiline-flexible"
                         label="Biography"
                         multiline={true}
-                        rows="4"
+                        rows="3"
                         onBlur={this.onTextChange}
                         margin="normal"
                         name="bio"

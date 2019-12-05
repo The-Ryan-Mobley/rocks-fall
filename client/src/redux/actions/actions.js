@@ -11,6 +11,7 @@ export const LOBBY_USER_SET = "LOBBY_USER_SET";
 export const LOBBY_MESSAGE_RESET = "LOBBY_MESSAGE_RESET";
 export const LOBBY_MESSAGE_ADD = "LOBBY_MESSAGE_ADD";
 export const LOBBY_MESSAGE_CHANGE = "LOBBY_MESSAGE_CHANGE";
+export const BLANK_LOBBY = "BLANK_LOBBY";
 
 export const CHARACTER_INPUT_CHANGE = "CHARACTER_INPUT_CHANGE";
 export const CHARACTER_STATS_CHANGE = "CHARACTER_STATS_CHANGE";
@@ -64,6 +65,22 @@ export const lobbyMessageAdd = (messageArr) => {
 }
 export const lobbyMessageChange = (name , value) => {
     return {type: LOBBY_MESSAGE_CHANGE, name, value}
+}
+export const blankLobby = () => {
+    const blank = {
+        lobbyId: "",
+        lobbyName: "",
+        lobbyPassword: "",
+        hostId: "",
+        hostName: "",
+        hostThumbnail: "",
+        activeUsers: [],
+        chat: {
+            messages: [],
+            newMessage: ""
+        }
+    }
+    return {type: BLANK_LOBBY, blank}
 }
 
 export const characterInputChange = (name, value) => {

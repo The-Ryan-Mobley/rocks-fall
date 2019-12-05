@@ -99,8 +99,8 @@ const mapDispatchToProps = dispatch =>
         return(
             <Grid container className="characterList">
                 {this.props.modalData.loadingList ? 
-                    (<p className="loader">Loading...</p>) : 
-                    (<p className="loader">Characters</p>)}
+                    (<p className="loader whiteText">Loading...</p>) : 
+                    (<p className="loader whiteText">Characters</p>)}
                 
                 {this.props.userData.userId ? (
                     this.props.userData.characterList.map( (character , index) => (

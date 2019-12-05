@@ -7,7 +7,8 @@ import {
     LOBBY_USER_SET, 
     LOBBY_MESSAGE_RESET, 
     LOBBY_MESSAGE_CHANGE, 
-    LOBBY_MESSAGE_ADD
+    LOBBY_MESSAGE_ADD,
+    BLANK_LOBBY
 } from "../actions/actions";
 
 import {
@@ -270,6 +271,12 @@ const lobbyManipulation = (state = lobbyState, action) => {
                         messages: action.messageArr
                     }
                 }
+            }
+        }
+        case BLANK_LOBBY : {
+            return {
+                ...state,
+                lobbyData: action.blank
             }
         }
 

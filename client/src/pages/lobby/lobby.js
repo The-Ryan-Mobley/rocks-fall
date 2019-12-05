@@ -189,6 +189,7 @@ export default class Lobby extends Component {
     }
     redirectHome = () => {
         this.setState({goHome: true});
+        this.props.blankLobby();
     }
     
 
@@ -207,17 +208,19 @@ export default class Lobby extends Component {
                         <Grid item container xs={12} alignItems="center" justify="center" spacing={1}>
                             <h1 className="centeredHeading">{this.props.lobbyData.lobbyName}</h1>
                         </Grid>
-                        <Grid item xs={3}>
+                        <Grid item xs={12} sm={3}>
+                            <Grid item xs={12}>
                             <div className="hostZone">
-                                <h2>DM</h2>
-                                <img src={this.props.lobbyData.hostThumbnail} alt="profile" className="profileThumbnail"></img>
+                                <p><strong>DM</strong></p>
+                                <img src={this.props.lobbyData.hostThumbnail} alt="profile" className="lobbyThumbnail"></img>
                                 <p><strong>{this.props.lobbyData.hostName}</strong></p>
-
                             </div>
+                            </Grid>
+                            <Grid item xs={12}>
                             <div className="playerZone lobbybox">
                                 {this.props.lobbyData.activeUsers.map(user => (
                                     <div className="player" key={user.userId}>
-                                        <img src={user.userThumbnail} alt="profile" className="profileThumbnail"></img>
+                                        <img src={user.userThumbnail} alt="profile" className="lobbyThumbnail"></img>
                                         <p><strong>{user.userName}</strong></p>
                                         <p>{user.currentCharacter.characterName}</p>
                                         <Button 
@@ -229,10 +232,11 @@ export default class Lobby extends Component {
                                 ))}
                         
                             </div>
+                            </Grid>
                         </Grid>
-                        <Grid item xs={6}>
+                        <Grid item  xs={12} sm={6}>
                             <DiceBlock/>
-                            <div className="chatBody">
+                            <div className="chatBody shaded">
                                 {this.props.lobbyData.chat.messages.map(msg => (
                                     <p>{msg.body.body ? (msg.body.body) : (msg.body)}</p>
                                 ))}

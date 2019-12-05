@@ -76,6 +76,7 @@ class JoinLobby extends Component {
                             color="secondary"
                             onChange={this.onTextChange}
                             className="modalInput"
+                            type="password"
                         />
                     </Grid>
                     <Grid container item xs={12} alignItems="center" justify="center">

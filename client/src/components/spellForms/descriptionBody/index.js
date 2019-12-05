@@ -29,7 +29,7 @@ class DescriptionBody extends Component {
             viewedSpell = this.props.spellData.viewedSpell;
         }
         return(
-            <div className="descriptionBody">
+            <div className="descriptionBody sheetBox">
             <Grid container item spacing={1}>
                 {this.props.spellData.viewedSpell._id ? 
                     (<Grid container item xs={12}>

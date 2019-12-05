@@ -82,7 +82,7 @@ class DiceBlock extends Component {
     }
     render() {
         return (
-            <Grid container direction="row">
+            <Grid container direction="row fullWidth">
                 {this.props.modalData.diceArray.map((dice, index) => (
                     <TextField
                         key={index}
@@ -90,13 +90,13 @@ class DiceBlock extends Component {
                         label={`d${this.state.diceLabel[index]}`}
                         defaultValue=""
                         variant="filled"
-                        color="secondary"
+                        color="primary"
                         name={index}
                         onBlur={this.updateDice}
                         className="smallInput"
                     />
                 ))}
-                <Button onClick={this.rollDice}>Roll</Button>
+                <Button onClick={this.rollDice} className="saveButton">Roll</Button>
             </Grid>
         )
     }

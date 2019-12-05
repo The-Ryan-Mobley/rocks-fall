@@ -42,7 +42,6 @@ class SkillProfs extends Component {
         ]
     }
     dropDownOpen = event => {
-        console.log(event.target);
         this.setState({
             anchorEl: event.target,
             skillMenu: true
@@ -76,25 +75,30 @@ class SkillProfs extends Component {
     }
     render() {
         return(
-            <div className="skillProfs sheetBox">
-            <Grid item container xs={12} className="box">
+            <div className="skillProfs sheetBox"> 
+            <Grid item container xs={12}>
+                <p className="centered fullWidth"><strong>Skill Proficiencies</strong></p>
                     {this.props.playerCharacter.skillProficiency.length ? (
                         this.props.playerCharacter.skillProficiency.map((skill, index) => (
                             <Grid item container direction="row" key={index}>
-                                <p>{skill}</p>
                                 <Button 
                                     disabled={this.props.modalData.readOnly}
                                     onClick={this.remove.bind(this, skill)}
+                                    className="centered fullWidth"
                                 >
-                                    x
+                                   {skill} X
                                 </Button>
                             </Grid>
                         ))
 
                     ) : (<p></p>)}
 
-                        <p><strong>Skill Proficiencies</strong></p>
-                        <Button aria-controls="simple-menu" aria-haspopup="true" onClick={this.dropDownOpen}>
+                        
+                        <Button 
+                            aria-controls="simple-menu" 
+                            aria-haspopup="true" 
+                            className="centered fullWidth"
+                            onClick={this.dropDownOpen}>
                             {this.state.selectedSkill.length ? 
                             (this.state.selectedSkill) : ("Select")}
                         </Button>
@@ -119,7 +123,7 @@ class SkillProfs extends Component {
                                 </MenuItem>
                             ))}
                         </Menu>
-                        <Button onClick={this.pushToRedux}>+</Button>
+                        <Button onClick={this.pushToRedux} className="centered fullWidth">+</Button>
             </Grid>
             </div>
         )

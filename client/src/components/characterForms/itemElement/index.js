@@ -52,6 +52,7 @@ const mapDispatchToProps = dispatch =>
     render(){
         return(
           <Grid item container>
+            <div className="sheetBox">
               <TextField
                 className="itemField"
                 id="itemTitle"
@@ -78,7 +79,8 @@ const mapDispatchToProps = dispatch =>
                   readOnly: this.props.modalData.readOnly
                 }}
               />
-              <Button onClick={this.pushItemToRedux}>+</Button>
+              <Button onClick={this.pushItemToRedux} className="centered fullWidth">+</Button>
+              </div>
           </Grid>
           
         );

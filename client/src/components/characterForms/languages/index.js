@@ -39,29 +39,40 @@ const mapDispatchToProps = dispatch =>
       languages.push(name);
       this.props.characterInputChange("languages", languages);
     }
+    remove = language => {
+      let languages = this.props.playerCharacter.languages;
+      languages.splice(languages.indexOf(language), 1);
+      this.props.characterInputChange("languages", languages);
+    }
     render(){
         return(
           <div className="languages sheetBox">
-            <Grid item container className="box">
+            <Grid item container>
                 <p><strong>Languages Known</strong></p>
                 {this.props.playerCharacter.languages.map((language, index) => (
                     <Grid item container key={index}>
-                        <p>{language}</p>
+                        <Button
+                                onClick={this.remove.bind(this, language)}
+                                disabled={this.props.modalData.readOnly}
+                                className="centered fullWidth"
+                            >
+                                {language} X
+                            </Button>
                     </Grid>   
                 ))}
               <TextField
                 id="language"
                 label="language"
                 defaultValue=""
-                variant="filled"
-                color="secondary"
+                color="primary"
                 name="name"
+                fullWidth={true}
                 onBlur={this.inputNewLangData}
                 InputProps={{
                   readOnly: this.props.modalData.readOnly
                 }}
               />
-              <Button onClick={this.pushItemToRedux}>+</Button>
+              <Button onClick={this.pushItemToRedux}className="centered fullWidth">+</Button>
             </Grid>
             </div>
           

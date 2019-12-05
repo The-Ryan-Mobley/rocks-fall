@@ -12,7 +12,8 @@ import {
   lobbyUserSet, 
   lobbyMessageReset, 
   lobbyMessageAdd, 
-  lobbyMessageChange
+  lobbyMessageChange,
+  blankLobby
 } from "../../redux/actions/actions";
 
 //page
@@ -40,7 +41,8 @@ const mapDispatchToProps = dispatch =>
       lobbyUserSet,
       lobbyMessageReset,
       lobbyMessageAdd,
-      lobbyMessageChange
+      lobbyMessageChange,
+      blankLobby
     },
     dispatch
   );

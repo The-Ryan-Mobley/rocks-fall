@@ -84,10 +84,10 @@ class Heading extends Component {
                     {this.props.userData.userId ? (
                         <Grid item container xs={12} direction="row"spacing={0} justify="flex-end">
                             
-                            <Grid item xs={4} mt={1}>
+                            <Grid item xs={5} md={1}>
                                 <img src={this.props.userData.userThumbnail} alt="profile" className="profileThumbnail inHeader"></img>
                             </Grid>
-                            <Grid item xs={8}>
+                            <Grid item xs={7}>
                                 <div className="loggedInDat">
                                     <p>{this.props.userData.userName}</p>
                                     {this.state.sendProfile ? 

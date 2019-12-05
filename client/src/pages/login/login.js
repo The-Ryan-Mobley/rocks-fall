@@ -62,6 +62,7 @@ export default class Login extends Component{
                     color="secondary"
                     className="createInput" 
                     onChange={this.onTextChange}
+                    type="password"
                 />
                 {this.state.returnHome ? (<Redirect to="/"/>) : 
                 (

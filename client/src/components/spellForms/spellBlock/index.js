@@ -162,7 +162,7 @@ class SpellBlock extends Component {
     render(){
         
         return(
-            <div className="spellBlock">
+            <div className="spellBlock sheetBox">
             <Grid container direction="column" spacing={1} m={0}>
                 {this.props.spellLevel === 0 ? (<p>Cantrips</p>) : 
                 (<Grid item container direction="row">

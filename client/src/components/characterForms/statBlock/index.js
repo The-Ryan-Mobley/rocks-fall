@@ -65,7 +65,24 @@ const mapDispatchToProps = dispatch =>
     }
     render(){
         return(
-            <div className="statBlock box">
+            <div className="statBlock">
+                <div className="singleBlock sheetBox">
+                <p><strong>Proficiency Bonus</strong></p>
+                    <TextField 
+                        id="multiline-flexible"
+                        multiline={true}
+                        onBlur={this.bonusChange}
+                        margin="normal"
+                        variant="filled"
+                        color="primary"
+                        className="centered"
+                        InputProps={{
+                            readOnly: this.props.modalData.readOnly
+                          }}
+                        defaultValue={this.props.playerCharacter.proficiencyBonus ? 
+                            (this.props.playerCharacter.proficiencyBonus) : ("")}
+                    />
+                </div>
                 {
                 this.state.statNames.map(stat => (
                    
@@ -75,9 +92,10 @@ const mapDispatchToProps = dispatch =>
                             id={stat}
                             defaultValue={this.props.playerCharacter.stats[this.state.statNames.indexOf(stat)]}
                             variant="filled"
-                            color="secondary"
+                            color="primary"
                             name={this.state.statNames.indexOf(stat)}
                             onBlur={this.onStatChange}
+                            className="centered"
                             InputProps={{
                                 readOnly: this.props.modalData.readOnly
                               }}

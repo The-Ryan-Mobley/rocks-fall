@@ -33,18 +33,18 @@ const mapDispatchToProps = dispatch =>
     }
     render(){
         return(
-            <div className="gearBlock box">
+            <div className="gearBlock">
                 <Grid container spacing={1} direction="row">
                             <Grid item xs={4}>
-                                <div className="AC">
+                                <div className="AC sheetBox centered">
                                     <TextField
                                         id="armor"
                                         label="AC"
                                         defaultValue={this.props.playerCharacter.armorClass ? 
                                             (this.props.playerCharacter.armorClass) : ("10")}
-                                        variant="filled"
                                         name="armorClass" 
                                         onBlur={this.props.characterInputChange}
+                                        fullWidth={true}
                                         InputProps={{
                                             readOnly: this.props.modalData.readOnly
                                           }}
@@ -52,15 +52,15 @@ const mapDispatchToProps = dispatch =>
                                 </div>
                             </Grid>
                             <Grid item xs={4}>
-                                <div className="INIT">
+                                <div className="INIT sheetBox centered">
                                     <TextField
                                         id="init"
                                         label="INIT"
                                         defaultValue={this.props.playerCharacter.initiative ? 
                                             (this.props.playerCharacter.initiative) : ("0")}
-                                        variant="filled"
                                         name="initiative"
                                         onBlur={this.props.characterInputChange}
+                                        fullWidth={true}
                                         InputProps={{
                                             readOnly: this.props.modalData.readOnly
                                           }}
@@ -68,15 +68,16 @@ const mapDispatchToProps = dispatch =>
                                     </div>
                             </Grid>
                             <Grid item xs={4}>
-                            <div className="SPEED">   
+                            <div className="SPEED sheetBox centered">  
                                 <TextField
                                     id="speed"
                                     defaultValue={this.props.playerCharacter.speed ? 
                                         (this.props.playerCharacter.speed) : ("30")}
                                     label="SPD"
-                                    color="secondary"
                                     name="speed"
+                                    className="centered"
                                     onBlur={this.props.characterInputChange}
+                                    fullWidth={true}
                                     InputProps={{
                                         readOnly: this.props.modalData.readOnly
                                       }}
@@ -85,35 +86,53 @@ const mapDispatchToProps = dispatch =>
                             </Grid>
                         </Grid>
                         <Grid spacing={1} item>
-                                <TextField
-                                    id="health"
-                                    defaultValue={this.props.playerCharacter.health ? 
-                                        (this.props.playerCharacter.health) : ("0")}
-                                    variant="filled"
-                                    color="secondary"
-                                    name="health"
-                                    onBlur={this.props.characterInputChange}
-                                    InputProps={{
-                                        readOnly: this.props.modalData.readOnly
-                                      }}
-                                />
-                                <TextField
-                                    id="hit die"
-                                    defaultValue={this.props.playerCharacter.hitDie ? 
-                                        (`${this.props.playerCharacter.level} d${this.props.playerCharacter.hitDie}`) : 
-                                        ("1d8")}
-                                    variant="filled"
-                                    color="secondary"
-                                    name="hitDie"
-                                    onBlur={this.props.characterInputChange} 
-                                    InputProps={{
-                                        readOnly: this.props.modalData.readOnly
-                                      }}
-                                />
+                            <div className="HEALTH sheetBox centered">
+                            <Grid container>
+                                <Grid item xs={5}></Grid>
+                                <Grid item xs={2}>
+                                    <TextField
+                                        id="health"
+                                        defaultValue={this.props.playerCharacter.health ? 
+                                            (this.props.playerCharacter.health) : ("0")}
+                                        name="health"
+                                        label="health"
+                                        onBlur={this.props.characterInputChange}
+                                        fullWidth={true}
+                                        InputProps={{
+                                            readOnly: this.props.modalData.readOnly
+                                          }}
+                                    />
+                                </Grid>
+                                <Grid item xs={5}></Grid>
+                            </Grid>
+                            </div>
+                            <div className="HITDIE sheetBox centered">
+                            <Grid container>
+                                <Grid item xs={5}></Grid>
+                                <Grid item xs={2}>
+                                    <TextField
+                                        id="hit die"
+                                        defaultValue={this.props.playerCharacter.hitDie ? 
+                                            (`${this.props.playerCharacter.level} d${this.props.playerCharacter.hitDie}`) : 
+                                            ("1d8")}
+                                        name="hitDie"
+                                        label="hit Die"
+                                        onBlur={this.props.characterInputChange} 
+                                        fullWidth={true}
+                                        InputProps={{
+                                            readOnly: this.props.modalData.readOnly
+                                        }}
+                                    />
+                                </Grid>
+                                <Grid item xs={5}></Grid>
+                            </Grid>
+                            </div>
                         </Grid>
                         <Grid spacing={1} item>
                             <p><strong>Inventory: </strong></p>
-                            <CurrencyBlock/>
+                            <div className="sheetBox">
+                                <CurrencyBlock/>
+                            </div>
                             <InventoryList/>
                             <ItemElement/>
                         </Grid>

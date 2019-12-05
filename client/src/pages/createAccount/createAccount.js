@@ -58,6 +58,7 @@ import API from "../../utils/api/API"
                             color="secondary" 
                             className="createInput"
                             onChange={this.onTextChange}
+                            type="password"
                         />
                         <Input
                             name="confirmPassword"
@@ -70,6 +71,7 @@ import API from "../../utils/api/API"
                             color="secondary" 
                             className="createInput lastInput"
                             onChange={this.onTextChange}
+                            type="password"
                         />
                         {this.state.returnHome ? (<Redirect to="/"/>) : (
                             <Button variant="contained" className="createButton" 

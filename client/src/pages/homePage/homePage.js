@@ -159,8 +159,8 @@ export default class HomePage extends Component{
                         
                     </Grid>
                     <Grid container spacing={3}>
-                    <Grid item xs={12} md={3}>
-                        <Button name="sheetModal" value="newCharacter" className="modalButton shaded" onClick={this.handleModal.bind(this)}>CreateCharacter</Button>
+                    <Grid item xs={12} md={3} className="characters">
+                        <Button name="sheetModal" value="newCharacter" className="newButton modalButton shaded" onClick={this.handleModal.bind(this)}>CreateCharacter</Button>
                         <CharacterList className="shaded"/>
                     </Grid>
                     <Grid item xs={12} md={6}>
