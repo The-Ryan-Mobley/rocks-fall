@@ -58,7 +58,7 @@ const mapDispatchToProps = dispatch =>
                 className="itemField"
                 id="itemTitle"
                 label="Item name"
-                defaultValue=""
+                value={this.state.name}
                 color="secondary"
                 name="name"
                 onBlur={this.inputNewItemData}
@@ -75,7 +75,7 @@ const mapDispatchToProps = dispatch =>
                 onBlur={this.inputNewItemData}
                 margin="normal"
                 name="description"
-                defaultValue=""
+                value={this.state.description}
                 InputProps={{
                   readOnly: this.props.modalData.readOnly
                 }}
