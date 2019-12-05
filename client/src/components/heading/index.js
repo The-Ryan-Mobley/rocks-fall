@@ -108,18 +108,18 @@ class Heading extends Component {
                     ): (
                     <div className="noUser">
                         {this.state.createUser ? (<Redirect to="/createAccount"/>) : (
-                            <Button variant="contained" className="createButton" 
+                            <AccountButton variant="contained" className="createButton" 
                             onClick={this.buttonClick} 
                                 name="createUser" >
                                 Create
-                            </Button>
+                            </AccountButton>
                         )}
                         {this.state.loginUser ? (<Redirect to="/login"/>) : (
-                            <Button variant="contained" className="createButton" 
+                            <AccountButton variant="contained" className="createButton" 
                             onClick={this.buttonClick} 
                             name="loginUser" >
                                 Login
-                            </Button>
+                            </AccountButton>
                         )}
 
                     </div>
