@@ -45,7 +45,9 @@ app.use(routes);
     socket.on("leaveRoom", data => {
       socket.to(data.room).emit("playerLeft", data.userData);
       socket.leave(data.room);
-      socket.to(data.room).emit("chat", data.userData.userName+" has left the game");
+      if(data.room !== "Global"){
+        socket.to(data.room).emit("chat", data.userData.userName+" has left the game");
+      }
     });
 
     socket.on("disconnect", () => {

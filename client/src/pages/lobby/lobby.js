@@ -218,6 +218,7 @@ export default class Lobby extends Component {
                             </Grid>
                             <Grid item xs={12}>
                             <div className="playerZone lobbybox">
+                                <p><strong>Players</strong></p>
                                 {this.props.lobbyData.activeUsers.map(user => (
                                     <div className="player" key={user.userId}>
                                         <img src={user.userThumbnail} alt="profile" className="lobbyThumbnail"></img>
