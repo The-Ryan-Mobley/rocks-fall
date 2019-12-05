@@ -49,7 +49,7 @@ class MakeLobby extends Component{
                 <Grid item xs={12}>
                     {this.state.sendLobby ? 
                         (<Redirect to={"/lobby/"+this.state.lobbyId}/>) 
-                        : (<h1>Create a Lobby</h1>)}
+                        : (<h1 className="centeredHeading">Create a Lobby</h1>)}
                 </Grid>
                     
                 <Grid container item xs={6} alignItems="center" justify="center">

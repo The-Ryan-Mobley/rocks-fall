@@ -103,7 +103,8 @@ const mapDispatchToProps = dispatch =>
                 
                 {this.props.userData.userId ? (
                     this.props.userData.characterList.map( (character , index) => (
-                        <ListGrid item container xs={12} md={12} key={index} spacing={0} justify="flex-start" alignItems="baseline" className="characterBlock">
+                        <ListGrid item container xs={12} md={12} key={index} spacing={0} justify="flex-start" alignItems="baseline" 
+                        className={this.props.userData.currentCharacter === character ? ("characterBlock") : ("characterBlock selected")}>
                             <Grid item xs={2} md={3}>
                                 <Button name={character._id} onClick={this.deleteCharacter} value={index}>X</Button>
                             </Grid>
