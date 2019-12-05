@@ -115,8 +115,8 @@ const playerCharacterSchema = new Schema({
         default: 30
     },
     spellSaveDc: {
-        type: Number,
-        default: 10
+        type: String,
+        default: ""
     },
     spellAttackBonus: {
         type: Number,

@@ -49,6 +49,8 @@ class SpellHeader extends Component {
         console.log(selectedIndex);
     }
     onTextChange = event => {
+        console.log(event.target.name);
+        console.log(event.target.value);
         this.props.characterInputChange(event.target.name , event.target.value);
     }
     handleClickAway = () => {
@@ -120,7 +122,7 @@ class SpellHeader extends Component {
                                         id="playerClass"
                                         label="Save DC"
                                         defaultValue= {this.props.playerCharacter.spellSaveDc ? 
-                                            (this.props.playerCharacter.SpellSaveDc) : ("8")}
+                                            (this.props.playerCharacter.spellSaveDc) : ("")}
                                         color="primary"
                                         name="spellSaveDc"
                                         onChange={this.onTextChange}

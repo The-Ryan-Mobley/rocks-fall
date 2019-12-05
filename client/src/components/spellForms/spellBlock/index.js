@@ -115,6 +115,7 @@ class SpellBlock extends Component {
             spellArray=[];
         }
         spellArray.push(selectedSpell);
+        console.log(spellArray);
         let spellsKnown = this.props.playerCharacter.spellsKnown;
         if(spellsKnown[this.props.spellLevel] !== null) {
             spellsKnown.splice(this.props.spellLevel, 1, spellArray);
@@ -123,6 +124,7 @@ class SpellBlock extends Component {
         }
         this.setState({spellArray})
         this.props.updateSpellsKnown(spellsKnown);
+        console.log(this.props.playerCharacter.spellsKnown)
 
     }
     removeFromKnown = spell => {
@@ -178,7 +180,7 @@ class SpellBlock extends Component {
                         />
                 </Grid>
                 )}
-                {this.state.spellArray ?  (this.state.spellArray.map((spell, index) => (
+                {this.props.playerCharacter.spellsKnown[this.props.spellLevel] ?  (this.props.playerCharacter.spellsKnown[this.props.spellLevel].map((spell, index) => (
                     <Grid item container direction="row" key={index}>
                         <Button onClick={this.addOption.bind(this, spell)}>{spell.name}</Button>
                         <Button 

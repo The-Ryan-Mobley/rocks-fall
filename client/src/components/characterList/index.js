@@ -79,6 +79,7 @@ const mapDispatchToProps = dispatch =>
         switch(name) {
             case "sheetModal" : {
                 API.findCharacter(value).then( result => {
+                    console.log(result.data[0]);
                     modalFlag = !this.props.modalData.sheetModal;
                     this.props.setCharacterData(result.data[0]);
                     this.props.swapModalBool("sheetModal", modalFlag);

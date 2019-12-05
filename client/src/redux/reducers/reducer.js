@@ -80,7 +80,7 @@ const playerState = {
         armorClass: 0,
         initiative: 0,
         speed: 0,
-        spellSaveDc: 8,
+        spellSaveDc: "",
         spellAttackBonus: 0,
         spellSlots: [0,0,0,0,0,0,0,0,0,0],
         spellCastingClass: "",
