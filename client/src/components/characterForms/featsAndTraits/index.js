@@ -30,6 +30,7 @@ const mapDispatchToProps = dispatch =>
 
     }
     inputNewFeatData = (event) => {
+      event.preventDefault();
       const {name, value} = event.target;
       this.setState({ [name] : value});
     }
@@ -83,7 +84,7 @@ const mapDispatchToProps = dispatch =>
                     <TextField
                       id="featTitle"
                       label="Feat name"
-                      defaultValue=""
+                      value={this.state.name}
                       variant="filled"
                       color="secondary"
                       name="name"
@@ -103,7 +104,7 @@ const mapDispatchToProps = dispatch =>
                       onChange={this.inputNewFeatData}
                       margin="normal"
                       name="description"
-                      defaultValue=""
+                      value={this.state.description}
                       fullWidth={true}
                       InputProps={{
                         readOnly: this.props.modalData.readOnly

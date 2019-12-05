@@ -36,7 +36,7 @@ class CurrencyBlock extends Component {
     }
     render() {
         return (
-            <Grid item container xs={12} direction="row">
+            <Grid item container xs={12} direction="row" justify="space-evently">
                 {this.props.playerCharacter.currency.map((currency, index) => (
                     <TextField
                         key={index}
