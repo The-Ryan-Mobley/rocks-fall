@@ -84,7 +84,7 @@ class Heading extends Component {
                     {this.props.userData.userId ? (
                         <Grid item container xs={12} direction="row"spacing={0} justify="flex-end">
                             
-                            <Grid item xs={5} md={1}>
+                            <Grid item xs={5} md={3}>
                                 <img src={this.props.userData.userThumbnail} alt="profile" className="profileThumbnail inHeader"></img>
                             </Grid>
                             <Grid item xs={7}>
