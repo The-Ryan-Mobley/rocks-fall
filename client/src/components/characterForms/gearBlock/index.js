@@ -28,6 +28,8 @@ const mapDispatchToProps = dispatch =>
 
   class GearBlock extends Component {
     onTextChange = event => {
+        console.log(event.target.name);
+        console.log(event.target.value);
         this.props.characterInputChange(event.target.name, event.target.value);  
     }
     render(){
