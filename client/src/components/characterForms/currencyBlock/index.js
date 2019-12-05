@@ -41,7 +41,7 @@ class CurrencyBlock extends Component {
                     <TextField
                         key={index}
                         id="money"
-                        label={this.state.names[index]}
+                        label={` ${this.state.names[index]}`}
                         defaultValue={currency}
                         variant="filled"
                         color="secondary"

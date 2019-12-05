@@ -68,7 +68,7 @@ class BioTraits extends Component {
                 <div className="bonds sheetBox">
                     <TextField 
                         id="multiline-flexible"
-                        label="Bonds"
+                        label=" Bonds"
                         multiline={true}
                         rows="2"
                         onBlur={this.onTextChange}
@@ -85,7 +85,7 @@ class BioTraits extends Component {
                 <div className="flaws sheetBox">
                 <TextField 
                         id="multiline-flexible"
-                        label="Flaws"
+                        label=" Flaws"
                         multiline={true}
                         rows="2"
                         onBlur={this.onTextChange}
@@ -102,7 +102,7 @@ class BioTraits extends Component {
                 <div className="bio sheetBox">
                     <TextField 
                         id="multiline-flexible"
-                        label="Biography"
+                        label=" Biography"
                         multiline={true}
                         rows="3"
                         onBlur={this.onTextChange}

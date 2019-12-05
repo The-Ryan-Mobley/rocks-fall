@@ -37,7 +37,7 @@ const mapDispatchToProps = dispatch =>
                     <Grid item xs={12} md={3}>
                             <TextField
                                 id="nameInput"
-                                label="Character Name"
+                                label=" Character Name"
                                 defaultValue={this.props.playerCharacter.characterName.length ? 
                                     (this.props.playerCharacter.characterName) : ("")}
                                 color="secondary"
@@ -56,7 +56,7 @@ const mapDispatchToProps = dispatch =>
                             <div className="sheetBox">
                                 <TextField
                                     id="playerClass"
-                                    label="Character Class"
+                                    label=" Character Class"
                                     defaultValue= {this.props.playerCharacter.playerClass ? 
                                         (this.props.playerCharacter.playerClass) : ("")}
                                     color="secondary"
@@ -69,7 +69,7 @@ const mapDispatchToProps = dispatch =>
                             </div>
                             <div className="sheetBox">
                                 <TextField
-                                    label="level"
+                                    label=" level"
                                     id="level"
                                     defaultValue= {this.props.playerCharacter.level ? 
                                         (this.props.playerCharacter.level) : ("")}
@@ -85,7 +85,7 @@ const mapDispatchToProps = dispatch =>
                             <div className="sheetBox">
                                 <TextField
                                     id="background"
-                                    label="background"
+                                    label=" background"
                                     defaultValue= {this.props.playerCharacter.background.length ? 
                                         (this.props.playerCharacter.background) : ("")}
                                     color="secondary"
@@ -103,7 +103,7 @@ const mapDispatchToProps = dispatch =>
                             <div className="sheetBox">
                                 <TextField
                                     id="playerRace"
-                                    label="race"
+                                    label=" race"
                                     defaultValue= {this.props.playerCharacter.playerRace.length ? 
                                         (this.props.playerCharacter.playerRace) : ("")}
                                     color="secondary"
@@ -121,7 +121,7 @@ const mapDispatchToProps = dispatch =>
                                         (this.props.playerCharacter.alignment) : ("")}
                                     color="secondary"
                                     name="alignment"
-                                    label="alignment"
+                                    label=" alignment"
                                     onBlur={this.onTextChange}
                                     InputProps={{
                                         readOnly: this.props.modalData.readOnly
@@ -134,7 +134,7 @@ const mapDispatchToProps = dispatch =>
                                         (this.props.playerCharacter.experience) : ("")}
                                     color="secondary"
                                     name="experience"
-                                    label="experience"
+                                    label=" experience"
                                     onBlur={this.onTextChange}
                                     InputProps={{
                                         readOnly: this.props.modalData.readOnly

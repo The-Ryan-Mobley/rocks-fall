@@ -83,7 +83,7 @@ const mapDispatchToProps = dispatch =>
                   <Grid item xs={12}>
                     <TextField
                       id="featTitle"
-                      label="Feat name"
+                      label=" Feat name"
                       value={this.state.name}
                       variant="filled"
                       color="secondary"
@@ -98,7 +98,7 @@ const mapDispatchToProps = dispatch =>
                   <Grid item xs={12}>
                     <TextField 
                       id="featDesc"
-                      label="Feat Description"
+                      label=" Feat Description"
                       multiline={true}
                       rows="4"
                       onChange={this.inputNewFeatData}

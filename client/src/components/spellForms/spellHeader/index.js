@@ -94,7 +94,7 @@ class SpellHeader extends Component {
                                 <div className="sheetBox">
                                     <TextField
                                         id="playerClass"
-                                        label="Casting Stat"
+                                        label=" Casting Stat"
                                         defaultValue= {this.props.playerCharacter.spellCastingStat ? 
                                             (this.props.playerCharacter.spellCastingStat) : ("stat")}
                                         color="primary"
@@ -107,7 +107,7 @@ class SpellHeader extends Component {
                                 <div className="sheetBox">
                                     <TextField
                                         id="playerClass"
-                                        label="Spell Atk Bonus"
+                                        label=" Spell Atk Bonus"
                                         defaultValue= {this.props.playerCharacter.spellAttackBonus ? 
                                             (this.props.playerCharacter.spellAttackBonus) : ("")}
                                         color="primary"
@@ -120,7 +120,7 @@ class SpellHeader extends Component {
                                 <div className="sheetBox">
                                     <TextField
                                         id="playerClass"
-                                        label="Save DC"
+                                        label=" Save DC"
                                         defaultValue= {this.props.playerCharacter.spellSaveDc ? 
                                             (this.props.playerCharacter.spellSaveDc) : ("")}
                                         color="primary"

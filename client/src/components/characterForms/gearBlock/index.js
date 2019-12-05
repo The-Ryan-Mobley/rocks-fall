@@ -40,7 +40,7 @@ const mapDispatchToProps = dispatch =>
                                 <div className="AC sheetBox centered">
                                     <TextField
                                         id="armor"
-                                        label="AC"
+                                        label=" AC"
                                         defaultValue={this.props.playerCharacter.armorClass ? 
                                             (this.props.playerCharacter.armorClass) : ("")}
                                         name="armorClass" 
@@ -56,7 +56,7 @@ const mapDispatchToProps = dispatch =>
                                 <div className="INIT sheetBox centered">
                                     <TextField
                                         id="init"
-                                        label="INIT"
+                                        label=" INIT"
                                         defaultValue={this.props.playerCharacter.initiative ? 
                                             (this.props.playerCharacter.initiative) : ("")}
                                         name="initiative"
@@ -74,7 +74,7 @@ const mapDispatchToProps = dispatch =>
                                     id="speed"
                                     defaultValue={this.props.playerCharacter.speed ? 
                                         (this.props.playerCharacter.speed) : ("30")}
-                                    label="SPD"
+                                    label=" SPD"
                                     name="speed"
                                     className="centered"
                                     onChange={this.onTextChange}
@@ -96,7 +96,7 @@ const mapDispatchToProps = dispatch =>
                                         defaultValue={this.props.playerCharacter.health ? 
                                             (this.props.playerCharacter.health) : ("0")}
                                         name="health"
-                                        label="health"
+                                        label=" health"
                                         onChange={this.onTextChange}
                                         fullWidth={true}
                                         InputProps={{
@@ -117,7 +117,7 @@ const mapDispatchToProps = dispatch =>
                                             (this.props.playerCharacter.hitDie) : 
                                             ("")}
                                         name="hitDie"
-                                        label="hit Die"
+                                        label=" hit Die"
                                         onChange={this.onTextChange} 
                                         fullWidth={true}
                                         InputProps={{

@@ -173,7 +173,7 @@ class SpellBlock extends Component {
                             defaultValue= {this.props.spellSlots ? 
                                 (this.props.spellSlots) : ("0")}
                             color="primary"
-                            label="spellSlots"
+                            label=" spellSlots"
                             name={this.props.spellLevel}
                             onChange={this.spellSlotArrayChange}
                         />

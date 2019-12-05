@@ -33,7 +33,7 @@ export default class Login extends Component{
                 <Grid container xs={12} className="spacer"></Grid>
                 <Grid container xs={3}></Grid>
                 <Grid container  xs={6} spacing={1} direction="column" alignItems="center" justify="center"
-                    className ="createBody">
+                    className ="createBody homeBody">
                 <Input
                     name="userName"
                     value={this.props.userData.userName}
