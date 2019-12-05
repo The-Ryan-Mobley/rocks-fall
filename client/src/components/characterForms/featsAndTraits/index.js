@@ -42,6 +42,10 @@ const mapDispatchToProps = dispatch =>
       let featsAndTraits = this.props.playerCharacter.featsAndTraits;
       featsAndTraits.push(newItem);
       this.props.characterInputChange("featsAndTraits", featsAndTraits);
+      this.setState({
+        name: "",
+        description: ""
+      });
     }
     removeFromRedux = index => {
       let featsAndTraits = this.props.playerCharacter.featsAndTraits;

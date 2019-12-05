@@ -44,6 +44,10 @@ const mapDispatchToProps = dispatch =>
       let inventory = this.props.playerCharacter.inventory;
       inventory.push(newItem);
       this.props.setStringArray("inventory", inventory);
+      this.setState({
+        name: "",
+        description: ""
+      });
     }
     
     render(){
