@@ -32,6 +32,7 @@ const mapDispatchToProps = dispatch =>
 
     }
     inputNewItemData = (event) => {
+      event.preventDefault();
       const {name, value} = event.target;
       this.setState({ [name] : value});
     }
@@ -61,7 +62,7 @@ const mapDispatchToProps = dispatch =>
                 value={this.state.name}
                 color="secondary"
                 name="name"
-                onBlur={this.inputNewItemData}
+                onChange={this.inputNewItemData}
                 InputProps={{
                   readOnly: this.props.modalData.readOnly
                 }}
@@ -72,7 +73,7 @@ const mapDispatchToProps = dispatch =>
                 label="Item Description"
                 multiline={true}
                 rows="4"
-                onBlur={this.inputNewItemData}
+                onChange={this.inputNewItemData}
                 margin="normal"
                 name="description"
                 value={this.state.description}
