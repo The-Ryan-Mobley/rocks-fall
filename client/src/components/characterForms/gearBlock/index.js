@@ -42,7 +42,7 @@ const mapDispatchToProps = dispatch =>
                                         defaultValue={this.props.playerCharacter.armorClass ? 
                                             (this.props.playerCharacter.armorClass) : ("10")}
                                         name="armorClass" 
-                                        onBlur={this.props.characterInputChange}
+                                        onChange={this.props.characterInputChange}
                                         fullWidth={true}
                                         InputProps={{
                                             readOnly: this.props.modalData.readOnly
@@ -58,7 +58,7 @@ const mapDispatchToProps = dispatch =>
                                         defaultValue={this.props.playerCharacter.initiative ? 
                                             (this.props.playerCharacter.initiative) : ("0")}
                                         name="initiative"
-                                        onBlur={this.props.characterInputChange}
+                                        onChange={this.props.characterInputChange}
                                         fullWidth={true}
                                         InputProps={{
                                             readOnly: this.props.modalData.readOnly
@@ -75,7 +75,7 @@ const mapDispatchToProps = dispatch =>
                                     label="SPD"
                                     name="speed"
                                     className="centered"
-                                    onBlur={this.props.characterInputChange}
+                                    onChange={this.props.characterInputChange}
                                     fullWidth={true}
                                     InputProps={{
                                         readOnly: this.props.modalData.readOnly
@@ -95,7 +95,7 @@ const mapDispatchToProps = dispatch =>
                                             (this.props.playerCharacter.health) : ("0")}
                                         name="health"
                                         label="health"
-                                        onBlur={this.props.characterInputChange}
+                                        onChange={this.props.characterInputChange}
                                         fullWidth={true}
                                         InputProps={{
                                             readOnly: this.props.modalData.readOnly
@@ -116,7 +116,7 @@ const mapDispatchToProps = dispatch =>
                                             ("1d8")}
                                         name="hitDie"
                                         label="hit Die"
-                                        onBlur={this.props.characterInputChange} 
+                                        onChange={this.props.characterInputChange} 
                                         fullWidth={true}
                                         InputProps={{
                                             readOnly: this.props.modalData.readOnly

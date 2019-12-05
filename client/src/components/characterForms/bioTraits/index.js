@@ -73,7 +73,7 @@ class BioTraits extends Component {
                         rows="2"
                         onBlur={this.onTextChange}
                         margin="normal"
-                        name="ideals"
+                        name="bonds"
                         fullWidth={true}
                         InputProps={{
                             readOnly: this.props.modalData.readOnly
@@ -91,6 +91,7 @@ class BioTraits extends Component {
                         onBlur={this.onTextChange}
                         margin="normal"
                         name="flaws"
+                        fullWidth={true}
                         InputProps={{
                             readOnly: this.props.modalData.readOnly
                           }}
@@ -107,6 +108,7 @@ class BioTraits extends Component {
                         onBlur={this.onTextChange}
                         margin="normal"
                         name="bio"
+                        fullWidth={true}
                         InputProps={{
                             readOnly: this.props.modalData.readOnly
                           }}
