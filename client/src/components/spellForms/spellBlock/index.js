@@ -76,6 +76,7 @@ class SpellBlock extends Component {
     spellSlotArrayChange = event => {
         let spellSlots = this.props.playerCharacter.spellSlots;
         spellSlots[event.target.name] = event.target.value;
+        this.props.characterInputChange("spellSlots", spellSlots);
     }
     dropDownOpen = event => {
         this.setState({
