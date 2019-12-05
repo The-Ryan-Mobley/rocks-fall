@@ -42,9 +42,9 @@ const mapDispatchToProps = dispatch =>
                                         id="armor"
                                         label="AC"
                                         defaultValue={this.props.playerCharacter.armorClass ? 
-                                            (this.props.playerCharacter.armorClass) : ("10")}
+                                            (this.props.playerCharacter.armorClass) : ("")}
                                         name="armorClass" 
-                                        onChange={this.props.characterInputChange}
+                                        onChange={this.onTextChange}
                                         fullWidth={true}
                                         InputProps={{
                                             readOnly: this.props.modalData.readOnly
@@ -58,9 +58,9 @@ const mapDispatchToProps = dispatch =>
                                         id="init"
                                         label="INIT"
                                         defaultValue={this.props.playerCharacter.initiative ? 
-                                            (this.props.playerCharacter.initiative) : ("0")}
+                                            (this.props.playerCharacter.initiative) : ("")}
                                         name="initiative"
-                                        onChange={this.props.characterInputChange}
+                                        onChange={this.onTextChange}
                                         fullWidth={true}
                                         InputProps={{
                                             readOnly: this.props.modalData.readOnly
@@ -77,7 +77,7 @@ const mapDispatchToProps = dispatch =>
                                     label="SPD"
                                     name="speed"
                                     className="centered"
-                                    onChange={this.props.characterInputChange}
+                                    onChange={this.onTextChange}
                                     fullWidth={true}
                                     InputProps={{
                                         readOnly: this.props.modalData.readOnly
@@ -97,7 +97,7 @@ const mapDispatchToProps = dispatch =>
                                             (this.props.playerCharacter.health) : ("0")}
                                         name="health"
                                         label="health"
-                                        onChange={this.props.characterInputChange}
+                                        onChange={this.onTextChange}
                                         fullWidth={true}
                                         InputProps={{
                                             readOnly: this.props.modalData.readOnly
@@ -114,11 +114,11 @@ const mapDispatchToProps = dispatch =>
                                     <TextField
                                         id="hit die"
                                         defaultValue={this.props.playerCharacter.hitDie ? 
-                                            (`${this.props.playerCharacter.level} d${this.props.playerCharacter.hitDie}`) : 
-                                            ("1d8")}
+                                            (this.props.playerCharacter.hitDie) : 
+                                            ("")}
                                         name="hitDie"
                                         label="hit Die"
-                                        onChange={this.props.characterInputChange} 
+                                        onChange={this.onTextChange} 
                                         fullWidth={true}
                                         InputProps={{
                                             readOnly: this.props.modalData.readOnly

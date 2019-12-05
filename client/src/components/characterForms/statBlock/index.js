@@ -69,7 +69,6 @@ const mapDispatchToProps = dispatch =>
                 <p><strong>Proficiency Bonus</strong></p>
                     <TextField 
                         id="multiline-flexible"
-                        multiline={true}
                         onBlur={this.bonusChange}
                         margin="normal"
                         variant="filled"
