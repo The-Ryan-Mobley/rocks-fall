@@ -17,8 +17,8 @@ const playerCharacterSchema = new Schema({
         default: 0
     },
     hitDie: {
-        type: Number,
-        default: 8
+        type: String,
+        default: ""
     },
     experience: {
         type: Number,
