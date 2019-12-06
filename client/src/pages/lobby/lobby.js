@@ -52,10 +52,12 @@ export default class Lobby extends Component {
         if(this.props.userData.userId === this.props.lobbyData.hostId){
             socket.leaveLobby(this.props.lobbyData.lobbyName, this.props.userData)
             API.deleteLobby(this.props.lobbyData.lobbyId);
+            this.props.blankLobby();
 
         } else {
             this.removeLobbyUsers();
-            socket.leaveLobby(this.props.lobbyData.lobbyName, this.props.userData)
+            socket.leaveLobby(this.props.lobbyData.lobbyName, this.props.userData);
+            this.props.blankLobby();
         }
         //host calls DELETE for lobby
         //user updates active users and emits
@@ -194,7 +196,7 @@ export default class Lobby extends Component {
     }
     redirectHome = () => {
         this.setState({goHome: true});
-        this.props.blankLobby();
+        
     }
     
 

@@ -9,7 +9,7 @@ const app = express();
 
 
 
-app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static(path.join(__dirname, 'client/public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -47,6 +47,7 @@ app.use(routes);
       socket.to(data.room).emit("playerLeft", data.userData);
       socket.leave(data.room);
       if(data.room !== "Global"){
+        console.log(data);
         console.log(data.userData.userName+" has left the game"+data.room)
         socket.to(data.room).emit("chat", data.userData.userName+" has left the game");
       } else {
