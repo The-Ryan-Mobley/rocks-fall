@@ -51,8 +51,9 @@ export default {
             room,
             userData
         }
-        socket.emit('leaveRoom', passing);
         socket.leave(room);
+        socket.emit('leaveRoom', passing);
+        
 
     },
     listenLeave: (callback) => {
