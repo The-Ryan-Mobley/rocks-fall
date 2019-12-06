@@ -2,8 +2,9 @@
 https://vast-citadel-52957.herokuapp.com/ url
 ## Table of Contents
 ## Summary
-  https://dnd.wizards.com/ Official Dungeons and dragons site for information on how to play and what the heck I just spent a month
-  of my life working on.
+  https://dnd.wizards.com/ Official Dungeons and dragons site for information on how to play.
+  
+  
   Dungeons and Dragons is a game that requires players to keep track of a lot of information. Rocks fall seeks to alleviate this by letting users keep track of their character sheets digitally. Users can also chat and create lobbies to play games where they can vuew other people's character sheets. Users can create an account by selecting the create account button in the top right corner
 
 ## Homepage
