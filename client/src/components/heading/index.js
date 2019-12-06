@@ -75,7 +75,6 @@ class Heading extends Component {
                 <Grid item xs={8} md={10}>
                 <div className="titleBlock">
                         <a onClick={this.buttonClick} name="sendHome" className="title">Rocks Fall </a>
-                        <p>subheader text</p>
                     </div>
                 {this.state.sendHome ? (<Redirect to="/" />) : (<p></p>)}
                 

@@ -170,18 +170,21 @@ export default class Lobby extends Component {
                 API.findCharacter(value).then( result => {
                     modalFlag = !this.props.modalData.sheetModal;
                     if(result.data[0].authorId !== this.props.userData.userId) {
-                        readOnly = !this.props.modalData.readOnly;
+                        readOnly = true;
                         this.props.swapModalBool("readOnly", readOnly);
+                        this.props.setCharacterData(result.data[0]);
+                        this.props.swapModalBool("sheetModal", modalFlag);
+                    } else {
+                        this.props.setCharacterData(result.data[0]);
+                        this.props.swapModalBool("sheetModal", modalFlag);
                     }
-                    this.props.setCharacterData(result.data[0]);
-                    this.props.swapModalBool("sheetModal", modalFlag);
 
                 });
                 break; 
             }
             default: {
                 this.props.closeModals();
-                readOnly = !this.props.modalData.readOnly;
+                readOnly = false;
                 this.props.swapModalBool("readOnly", readOnly);
                 break;
             }
