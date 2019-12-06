@@ -22,8 +22,8 @@ export default class Lobby extends Component {
     }
     componentDidMount = () => {
         this.messageListener();
-        this.leaveListener();
-        this.joinListener();
+        //this.leaveListener();
+        //this.joinListener();
         API.findLobby(this.props.match.params.lobbyId).then(re => {
             if(this.props.userData.userId === re.data.hostId){
                 console.log(re.data)
@@ -118,18 +118,20 @@ export default class Lobby extends Component {
             let users = this.props.lobbyData.activeUsers;
             if(re.userId === this.props.lobbyData.hostId){
                 this.redirectHome();
-            }
-            let activeUsers = users.filter( user => {
-                if(user.userId !== re.userId) {
-                    return user;
-                }
-            });
-
-            API.lobbyLeave(this.props.match.params.lobbyId, activeUsers).then(re => {
+            } else {
+                let activeUsers = users.filter( user => {
+                    if(user.userId !== re.userId) {
+                        return user;
+                    }
+               });
+               API.lobbyLeave(this.props.match.params.lobbyId, activeUsers).then(re => {
                 if(re) {
                     this.props.lobbyUserJoin(activeUsers);
                 }
             })
+            }
+
+           
 
 
         })

@@ -39,6 +39,7 @@ app.use(routes);
 
     });
     socket.on("playerJoined", data => {
+      console.log(data.userData.userName+" has joined the game")
       socket.to(data.room).emit("chat", data.userData.userName+" has joined the game");
       socket.emit("newPlayer", data);
     })

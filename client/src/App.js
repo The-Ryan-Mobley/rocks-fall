@@ -2,7 +2,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import socket from "./utils/api/socket";
 
 
 import { bindActionCreators } from "redux";
@@ -53,7 +52,6 @@ class App extends Component {
             if(localData.userId.length) {
             }
         }
-    socket.socketEmmissions();
 
   }
   render(){
