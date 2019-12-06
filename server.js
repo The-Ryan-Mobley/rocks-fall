@@ -49,6 +49,9 @@ app.use(routes);
       if(data.room !== "Global"){
         console.log(data.userData.userName+" has left the game"+data.room)
         socket.to(data.room).emit("chat", data.userData.userName+" has left the game");
+      } else {
+        console.log(data.userData.userName+" has left the game"+data.room)
+
       }
     });
 
