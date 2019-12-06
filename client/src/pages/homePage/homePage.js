@@ -31,6 +31,7 @@ export default class HomePage extends Component{
     }
     componentWillUnmount = () => {
         socket.leaveGlobal(this.props.userData);
+        socket.dismountChat();
 
     }
     handleModal = (event) => {

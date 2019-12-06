@@ -27,7 +27,6 @@ app.use(routes);
   const io = require('socket.io')(server);
 
   io.on('connection', function(socket){
-    console.log("user logged");
     socket.emit("welcome", "the socket works!!!");
 
     socket.on("joinRoom", data => {
@@ -39,7 +38,6 @@ app.use(routes);
 
     });
     socket.on("playerJoined", data => {
-      console.log(data.userData.userName+" has joined the game"+data.room)
       socket.to(data.room).emit("chat", data.userData.userName+" has joined the game");
       socket.emit("newPlayer", data);
     })
@@ -47,12 +45,7 @@ app.use(routes);
       socket.to(data.room).emit("playerLeft", data.userData);
       socket.leave(data.room);
       if(data.room !== "Global"){
-        console.log(data);
-        console.log(data.userData.userName+" has left the game"+data.room)
         socket.to(data.room).emit("chat", data.userData.userName+" has left the game");
-      } else {
-        console.log(data.userData.userName+" has left the game"+data.room)
-
       }
     });
 

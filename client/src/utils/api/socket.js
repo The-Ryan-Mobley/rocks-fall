@@ -78,6 +78,9 @@ export default {
         socket.on("chat", msg => {
             callback(msg);
         })
+    },
+    dismountChat : () => {
+        socket.removeAllListeners("chat");
     }
 
 }
