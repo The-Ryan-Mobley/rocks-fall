@@ -1,6 +1,10 @@
 # rocks-fall
 https://vast-citadel-52957.herokuapp.com/ url
 ## Table of Contents
+  1. [intro](https://github.com/The-Ryan-Mobley/bamazon/blob/master/README.md#intro)
+  2. [bamazon customer](https://github.com/The-Ryan-Mobley/bamazon#bamazon-customer)
+  3. [bamazon manager](https://github.com/The-Ryan-Mobley/bamazon#bamazon-manager)
+  4. [bamazon Supervisor](https://github.com/The-Ryan-Mobley/bamazon#bamazon-supervisor)
 ## Summary
   https://dnd.wizards.com/ Official Dungeons and dragons site for information on how to play.
   
