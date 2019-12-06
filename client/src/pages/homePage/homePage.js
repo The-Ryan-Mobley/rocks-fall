@@ -146,7 +146,7 @@ export default class HomePage extends Component{
                                         {this.props.userData.currentCharacter._id ? ("Join Lobby") : ("No Character Selected")}
                                     </Button>
                             </Grid>
-                        ) : (<p>Login to play</p>)}
+                        ) : (<p className="notLogged">Login to play</p>)}
                     </Grid>
                     
                     <Grid item container xs={12} direction="row" alignItems="center" justify="center" spacing={5}>

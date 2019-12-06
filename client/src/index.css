@@ -224,6 +224,10 @@ code {
 .whiteText{
   color: #ffffff !important;
 }
+.notLogged{
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
 .traits::-webkit-scrollbar,
 .spellBlock::-webkit-scrollbar,
 .descriptionBody::-webkit-scrollbar,
