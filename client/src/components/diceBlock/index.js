@@ -58,7 +58,7 @@ class DiceBlock extends Component {
         let diceString = ``
         diceArray.forEach((dice, index) => {
             for(let i = 0; i < dice; i++){
-                let roll = (Math.floor(Math.random() * this.state.diceArray[index]) + 1) * dice;
+                let roll = (Math.floor(Math.random() * this.state.diceLabel[index]) + 1) * dice;
                 diceString += (` + ${roll}`);
                 diceTotal += roll;
             }
