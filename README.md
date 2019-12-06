@@ -16,25 +16,25 @@ https://vast-citadel-52957.herokuapp.com/ url
 
 ## Homepage
   ![Home](https://drive.google.com/uc?export=view&id=1yHxsqTAOe-R6CYoiEsrCyltWzyC31vWx)
-  ###### Accounts
+  ### Accounts
    To create an account users can click the CREATE button in the top right of the header. Since this is a small project it only requires a username, password, and a confirm for your password. Passwords are stored into the database using a sha512 hashing algorithm for security. Once users have an account they can login by clicking the LOGIN button where they can enter their credentials. Once logged in users have access to the site's features. The site keeps track of sessions by saving the user's public account information such as their username into local storage, so it can be read and stored by redux on page load.
-  ###### Chat
+  ### Chat
    There is a chat option accessible by anyone currently logged in. Users can type in the text field below the chat box; then press the post button to send a message viewable to everyone currently on the homePage. The messages are stored by listening for a socket emission which is then stored into an array in the redux state.
   
-  ###### Character Creation
+  ### Character Creation
   This is the main purpose of the app. User's can create a D&D character by clicking the create character button. Once users have atleast one character saved they will start to appear to the right side of the screen in desktop view and above the chat on mobile view. Characters will be listed with their name, level, and player class next to a view button to view and edit their information, and a select button to choose what character the user wants to play as.
   
-  ###### Hosting and Joining Lobbies
+  ### Hosting and Joining Lobbies
    Once users have a character they can select them by clicking the select button down in the character list. When the user has a character selected they can join a lobby where they will be prompted to type in the lobby name and password. If users wish to host a game they can click the create lobby button where they will be prompted to choose a lobby name and password. 
   
 ## CharacterSheet
   ![CharacterSheet](https://drive.google.com/uc?export=view&id=1D0e0HKorGEX0QcFqxAVchModjwq_HLoK)
-  ###### stats
+  ### stats
   This is where the real meat of the app resides. Here are several text fields where user's can enter a characters stats, biography, inventory, and player class abilities There are too many to mention in this document, but needless to say these are al ltext fields that store their information in the redux state. Once the user either clicks the create, or save buttons depending on if its a new character, or a current one the new information will be stored into the database
   ![spells](https://drive.google.com/uc?export=view&id=1Pnor8KcNLJQvuHxoRI_TkLRX7lwdYAF5)
   
   ![spellBlocks](https://drive.google.com/uc?export=view&id=1PU6fLAJGQ2RvYZv1iCOeePA9jHT-hj3D)
-  ###### spells
+  ### spells
    One of the more fun aspects of D&D is the wide range of spells available to players. The core rule book alone has over 300 spells players can choose from, and one of the biggest appeals of a D&D app is that it makes keeping track of all these as easy as clicking a button! Users need to select a spell casting class in the top right corner. Once users have designated what class they want to select spells from they can select them based on the spell level in the spell blocks in the body of the spell sheet. Each block has a drop down with every spell available to that class at that level. Once users select a spell, its information will appear in the box at the top of the document. When users click the + button it will add that spell to the characters spell list. Users can delete spells in the spell list by clicking the X button next to the spell name.
 
 ## GameLobby
