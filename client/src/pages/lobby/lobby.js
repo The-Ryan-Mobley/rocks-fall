@@ -21,7 +21,7 @@ export default class Lobby extends Component {
         goHome: false
     }
     componentDidMount = () => {
-        //this.messageListener();
+        this.messageListener();
         this.leaveListener();
         this.joinListener();
         API.findLobby(this.props.match.params.lobbyId).then(re => {

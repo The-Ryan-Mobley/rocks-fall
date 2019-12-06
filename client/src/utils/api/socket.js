@@ -34,6 +34,7 @@ export default {
             room,
             userData
         }
+        socket.leave(room);
         socket.emit('leaveRoom', passing)
     },
     joinLobby: (lobbyData, userData) => {
@@ -50,7 +51,8 @@ export default {
             room,
             userData
         }
-        socket.emit('leaveRoom', passing)
+        socket.emit('leaveRoom', passing);
+        socket.leave(room);
 
     },
     listenLeave: (callback) => {

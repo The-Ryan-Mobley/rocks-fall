@@ -39,7 +39,7 @@ app.use(routes);
 
     });
     socket.on("playerJoined", data => {
-      console.log(data.userData.userName+" has joined the game")
+      console.log(data.userData.userName+" has joined the game"+data.room)
       socket.to(data.room).emit("chat", data.userData.userName+" has joined the game");
       socket.emit("newPlayer", data);
     })
@@ -47,6 +47,7 @@ app.use(routes);
       socket.to(data.room).emit("playerLeft", data.userData);
       socket.leave(data.room);
       if(data.room !== "Global"){
+        console.log(data.userData.userName+" has left the game"+data.room)
         socket.to(data.room).emit("chat", data.userData.userName+" has left the game");
       }
     });
