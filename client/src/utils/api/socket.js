@@ -34,8 +34,11 @@ export default {
             room,
             userData
         }
-        socket.leave(room);
-        socket.emit('leaveRoom', passing)
+        socket.leave(room, (er) => {
+            socket.emit('leaveRoom', passing);
+
+        });
+        
     },
     joinLobby: (lobbyData, userData) => {
         let room = lobbyData.lobbyName;
@@ -51,8 +54,10 @@ export default {
             room,
             userData
         }
-        socket.leave(room);
-        socket.emit('leaveRoom', passing);
+        socket.leave(room, (er) => {
+            socket.emit('leaveRoom', passing);
+        });
+        
         
 
     },
