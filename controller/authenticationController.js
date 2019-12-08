@@ -40,7 +40,7 @@ module.exports = {
                 if(foundUser){
                 let passwordConfirm = module.exports.sha512(req.query.password, foundUser.salt);
                     if(passwordConfirm.passwordHash === foundUser.password){
-                        let userData = {
+                        const userData = {
                             userName: foundUser.userName,
                             thumbnail: foundUser.thumbnail,
                             id: foundUser._id,
@@ -59,29 +59,50 @@ module.exports = {
         }
     },
     updateCurrent: async ( req, res ) => {
-        let result = await db.Users.updateOne({ _id: req.params.id}, {$set : {currentCharacter: req.body.characterId}});
-        if(result) {
-            let newUserData = await db.Users.findOne({_id : req.params.id});
-            if(newUserData) {
-                const {_id, userName, thumbnail, currentCharacter } = newUserData;
-                let sendUser = {
-                    id: _id,
-                    userName,
-                    thumbnail,
-                    currentCharacter
+        try{
+            const result = await db.Users.updateOne(
+                {
+                    _id: req.params.id
+                }, 
+                {
+                    $set : {
+                        currentCharacter: req.body.characterId
+                    }
                 }
-                res.json(sendUser);
+            );
+            if(result) {
+                const newUserData = await db.Users.findOne({_id : req.params.id});
+                if(newUserData) {
+                    const {_id, userName, thumbnail, currentCharacter } = newUserData;
+                    const sendUser = {
+                        id: _id,
+                        userName,
+                        thumbnail,
+                        currentCharacter
+                    }
+                    res.json(sendUser);
+                } else {
+                    res.sendStatus("504");
+                }
             } else {
                 res.sendStatus("504");
             }
-        } else {
-            res.sendStatus("504");
+        } catch {
+            res.sendStatus("503");
         }
-
     },
     updateThumb: async ( req, res ) => {
         try {
-            const result = await db.Users.updateOne({_id: req.params.id}, {$set : {thumbnail: req.body.thumbNail}});
+            const result = await db.Users.updateOne(
+                {
+                    _id: req.params.id
+                }, 
+                {
+                    $set : {
+                        thumbnail: req.body.thumbNail
+                    }
+                }
+            );
             if(result) {
                 res.sendStatus("200");
             } else {

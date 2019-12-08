@@ -6,7 +6,9 @@ body {
     font-family: 'Eagle Lake', cursive !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #938A75;
+  /* background-color: #938A75; */
+  background-image: url("/526772.jpg");
+  background-repeat:no-repeat;
   overflow-y: scroll;
 }
 
@@ -37,6 +39,9 @@ code {
 .profileThumbnail{
   max-width: 4rem;
   max-height: auto;
+  border-color: #000000;
+  border-style:solid;
+  border-radius: 25px;
 }
 .lobbyThumbnail {
   max-width: 4rem;
@@ -52,7 +57,7 @@ code {
   padding: 5%;
   padding-bottom: 30%;
   width: 100%;
-  background-color: #8FA6AC;
+  background-color: rgba(143, 166, 172, 0.514);
   box-shadow: 17px 29px 51px -26px #000000bf;
 
 }
@@ -64,7 +69,7 @@ code {
   height: 20rem;
   overflow-y: scroll;
   padding: 1%;
-  background-color: #ffffff;
+  background-color: #d9f0f7;
 }
 .chatBox{
   margin-top: 5%;
@@ -92,11 +97,15 @@ code {
 }
 .modalButton{
   font-family: 'Eagle Lake', cursive !important;
-  background-color: #4A463B !important;
+  background-color: #181713b9 !important;
   color: #ffffff !important;
   padding: 2% 10% !important;
   margin: 3% !important;
   white-space: nowrap !important;
+  border-radius: 5px !important;
+  border-style: solid !important;
+  border-color: #96acf5 !important;
+  border-width: 5% important;
 }
 .modalBody{
   background-color: #ffffff;
@@ -113,7 +122,7 @@ code {
 .logOutButton{
   margin-top: -20% !important;
   padding: 2% !important;
-  background-color: #4A463B !important;
+  background-color: #3e68f1 !important;
   color: #ffffff !important;
 }
 .profileInfo{
@@ -137,7 +146,7 @@ code {
   overflow-y: scroll !important;
   overflow-x: hidden !important;
   height: 30rem !important;
-  background-color: #4A463B !important;
+  background-color: #3e68f1!important;
 }
 .characterOption{
   background-color: #85865F !important;

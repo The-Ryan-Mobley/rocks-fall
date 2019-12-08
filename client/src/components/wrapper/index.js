@@ -45,9 +45,7 @@ class Wrapper extends Component {
                         <Heading/>
                     </Grid>
                         <Container>
-                            <Grid container spacing={1}>
-                                {this.props.children}
-                            </Grid>
+                            {this.props.children}
                         </Container>
                     <Grid container direction="row">
                         <footer>
