@@ -28,9 +28,10 @@ const mapDispatchToProps = dispatch =>
   );
 
   const AccountButton = styled(Button)({
+      width: "25%",
       marginTop: "1%",
       padding: "2%",
-      backgroundColor: "#4A463B",
+      backgroundColor: "#181713b9",
       color: "#ffffff",
   });
 
@@ -91,7 +92,7 @@ class Heading extends Component {
                                     <p>{this.props.userData.userName}</p>
                                     {this.state.sendProfile ? 
                                         (<Redirect to={"/profile/"+this.props.userData.userName}/>) : 
-                                        (<AccountButton className="scaledButton" name="sendProfile" onClick={this.buttonClick}>Account</AccountButton>)}
+                                        (<AccountButton className="scaledButton" name="sendProfile" onClick={this.buttonClick}>Profile</AccountButton>)}
                                     {this.state.logoutUser ? (<Redirect to="/"/>) : (
                                     <AccountButton
                                         className="scaledButton"

@@ -58,7 +58,7 @@ code {
   padding: 5%;
   padding-bottom: 30%;
   width: 100%;
-  background-color: rgba(143, 166, 172, 0.514);
+  background-color: #8fa6ac83;
   box-shadow: 17px 29px 51px -26px #000000bf;
 
 }
@@ -147,7 +147,7 @@ code {
   background-color: #181713b9 !important;
 }
 .characterOption{
-  background-color: #85865F !important;
+  background-color: #c9ddfc !important;
 }
 .smallButtons{
   font-size: 1% !important;
@@ -211,7 +211,7 @@ code {
 }
 .saveButton{
   color: #ffffff !important;
-  background-color: #4A463B !important;
+  background-color: #181713b9 !important;
 }
 .sheetBox{
   border-color: #000000;
