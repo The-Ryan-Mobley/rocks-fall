@@ -31,9 +31,11 @@ export default class Login extends Component{
         return(
             <Wrapper>
                 <Grid container xs={12} className="spacer"></Grid>
-                <Grid container xs={3}></Grid>
-                <Grid container  xs={6} spacing={1} direction="column" alignItems="center" justify="center"
+                <Grid container  xs={12} spacing={1} direction="column" alignItems="center" justify="center"
                     className ="createBody homeBody">
+                <Grid item xs={3}></Grid>
+                <Grid item xs={6}>
+                    <h1>Login</h1>
                 <Input
                     name="userName"
                     value={this.props.userData.userName}
@@ -52,13 +54,14 @@ export default class Login extends Component{
 
                     id="filled-required"
                     fullWidth="true"
-                    placeholder="username*"
+                    placeholder="password*"
                     variant="filled"
                     color="secondary"
                     className="createInput" 
                     onChange={this.onTextChange}
                     type="password"
                 />
+                </Grid>
                 {this.state.returnHome ? (<Redirect to="/"/>) : 
                 (
                     <Button variant="contained" className="createButton" 

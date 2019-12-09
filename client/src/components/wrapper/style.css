@@ -12,13 +12,16 @@ footer{
     font-family: 'Eagle Lake', cursive;
     background: #181713b9;
     box-shadow: 0px -12px 51px 0px #000000bf;
-    margin-top: 25%;
+    margin-top: 15%;
 
 }
 .footerTitle{
     font-size: 3rem;
 }
 @media(min-width: 320px) and (max-width: 549px){
+    header{
+        margin-bottom: 5%;
+    }
     
     header,footer{
         width: 110%;

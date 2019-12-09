@@ -25,7 +25,7 @@ const ListGrid = styled(Grid)({
     marginTop: "",
     position: "relative",
     marginBottom: "1%",
-    backgroundColor: "#c9ddfc",
+    backgroundColor: "#ffffff",
     borderColor: "black",
     borderStyle: "solid",
     borderWidth: "1%",
@@ -104,9 +104,17 @@ const mapDispatchToProps = dispatch =>
                 
                 {this.props.userData.userId ? (
                     this.props.userData.characterList.map( (character , index) => (
-                        <ListGrid item container xs={12} md={12} key={index} spacing={0} justify="flex-start" alignItems="baseline" className="characterBlock">
+                        <ListGrid item container xs={12} md={12} key={index} spacing={0} 
+                            justify="flex-start" alignItems="baseline" className="characterBlock">
                             <Grid item xs={2} md={3}>
-                                <Button name={character._id} onClick={this.deleteCharacter} value={index}>X</Button>
+                                <Button 
+                                    name={character._id} 
+                                    onClick={this.deleteCharacter} 
+                                    value={index}
+                                    className="deleteButton"
+                                >
+                                    X
+                                </Button>
                             </Grid>
                             <Grid item xs={5} md={5}>
                                 <p><strong>{character.characterName}</strong></p>
@@ -121,7 +129,7 @@ const mapDispatchToProps = dispatch =>
                     ))) : 
                     (
                         <div className="noCharacters">
-                            <p>login to view characters</p>
+                            <p className="whiteText">login to view characters</p>
                         </div>
 
                     )}

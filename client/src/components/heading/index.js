@@ -27,13 +27,7 @@ const mapDispatchToProps = dispatch =>
     dispatch
   );
 
-  const AccountButton = styled(Button)({
-      width: "25%",
-      marginTop: "1%",
-      padding: "2%",
-      backgroundColor: "#181713b9",
-      color: "#ffffff",
-  });
+
 
 
 
@@ -73,53 +67,69 @@ class Heading extends Component {
         return(
             <header>
                 <Grid container spacing={1}>
-                <Grid item xs={8} md={10}>
+                <Grid item xs={10} md={10}>
                 <div className="titleBlock">
                         <a onClick={this.buttonClick} name="sendHome" className="title">Rocks Fall </a>
                     </div>
                 {this.state.sendHome ? (<Redirect to="/" />) : (<p></p>)}
                 
                 </Grid>
-                <Grid item container xs={4} md={2} >
+                <Grid item container xs={2} md={2} >
                     {this.props.userData.userId ? (
+                        <div className="profileInfo">
                         <Grid item container xs={12} direction="row"spacing={0} justify="flex-end">
                             
-                            <Grid item xs={5} md={4}>
+                            <Grid item xs={12} sm={4} md={4} lg={3}>
+                                <p className="userName">{this.props.userData.userName}</p>
                                 <img src={this.props.userData.userThumbnail} alt="profile" className="profileThumbnail inHeader"></img>
                             </Grid>
-                            <Grid item xs={7}>
+                            <Grid item xs={12} md={8}>
                                 <div className="loggedInDat">
-                                    <p>{this.props.userData.userName}</p>
+                                    
                                     {this.state.sendProfile ? 
                                         (<Redirect to={"/profile/"+this.props.userData.userName}/>) : 
-                                        (<AccountButton className="scaledButton" name="sendProfile" onClick={this.buttonClick}>Profile</AccountButton>)}
-                                    {this.state.logoutUser ? (<Redirect to="/"/>) : (
-                                    <AccountButton
-                                        className="scaledButton"
-                                        variant="contained"
-                                        onClick={this.logoutClick} 
-                                        name="logoutUser" >
-                                        Logout
-                                    </AccountButton>
+                                        (
+                                            <Button 
+                                                className="scaledButton" 
+                                                name="sendProfile"
+                                                variant="contained" 
+                                                onClick={this.buttonClick}
+                                            >
+                                                Profile
+                                            </Button>
+                                        )}
+                                    {this.state.logoutUser ? 
+                                        (<Redirect to="/"/>) : 
+                                        (
+                                            <Button
+                                                className="scaledButton"
+                                                variant="contained"
+                                                onClick={this.logoutClick} 
+                                                name="logoutUser" 
+                                            >
+                                                Logout
+                                            </Button>
                                     )}
                                 </div>
                             </Grid>
+                            
                         </Grid>
+                        </div>
                     ): (
                     <div className="noUser">
                         {this.state.createUser ? (<Redirect to="/createAccount"/>) : (
-                            <AccountButton variant="contained" className="createButton" 
+                            <Button variant="contained" className="createButton" 
                             onClick={this.buttonClick} 
                                 name="createUser" >
                                 Create
-                            </AccountButton>
+                            </Button>
                         )}
                         {this.state.loginUser ? (<Redirect to="/login"/>) : (
-                            <AccountButton variant="contained" className="createButton" 
+                            <Button variant="contained" className="createButton" 
                             onClick={this.buttonClick} 
                             name="loginUser" >
                                 Login
-                            </AccountButton>
+                            </Button>
                         )}
 
                     </div>

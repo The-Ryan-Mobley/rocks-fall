@@ -50,7 +50,7 @@ const mapDispatchToProps = dispatch =>
                                   }}
                             />
                     </Grid>
-                    <Grid item xs={9} >
+                    <Grid item xs={12} md={9} >
                         <div className="headerInfoTop">
                             <Grid container item xs={12} direction="row" spacing={1}>
                             <div className="sheetBox">

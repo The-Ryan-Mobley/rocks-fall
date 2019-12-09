@@ -1,25 +1,49 @@
 .title{
     font-size: 3rem;
 }
-.profileThumbnail {
-    margin-top: 20%;
-    max-width: 5rem;
-    max-height: auto;
+.userName{
+    margin:0;
 }
+.loggedInDat{
+    margin-top: 15% !important;
+}
+
+.profileThumbnail{
+    max-width: 4rem;
+    max-height: auto;
+    border-color: #000000;
+    border-style:solid;
+    border-radius: 15px;
+}
+.scaledButton{
+    width: 25%;
+    margin-top: 1% !important;
+    padding: 2% !important;
+    background-color: #ffffff !important;
+    color: #000000;
+}
+
 
 @media(min-width: 320px) and (max-width: 549px){
     .title{
-        font-size: 2rem;
+        font-size: 1.7rem;
+    }
+    .userName{
+        font-size: 0.6rem;
+        margin:0;
     }
     .profileThumbnail {
-        margin-top: 40%;
+        border-radius: 5px;
         max-width: 2.5rem;
         max-height: auto;
+        margin-right: 5% !important;
     }
     .loggedInDat{
+        
         font-size: 0.8rem !important;
     }
-    .sacledButton{
+    .scaledButton{
+        max-width: 1rem !important;
         font-size: 0.5rem !important;
     }
 }
