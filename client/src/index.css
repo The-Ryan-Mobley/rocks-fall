@@ -240,6 +240,12 @@ code {
 .deleteButton{
   color: #e62200 !important;
 }
+.characterName{
+  margin-bottom: 0%;
+}
+.selectionButtons{
+
+}
 .traits::-webkit-scrollbar,
 .spellBlock::-webkit-scrollbar,
 .descriptionBody::-webkit-scrollbar,
@@ -263,7 +269,7 @@ code {
   }
   .characterBlock{
     margin-top: 5% !important;
-    height: 4rem !important;
+    height: 5rem !important;
     font-size: 0.7rem !important;
     line-height: 0.8rem !important;
   }
@@ -306,6 +312,9 @@ code {
   .newButton{
     margin-left: 32% !important;
     padding: 1% !important;
+  }
+  .characterBlock{
+    height: 7rem !important;
   }
   
 }

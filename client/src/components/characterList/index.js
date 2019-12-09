@@ -106,7 +106,7 @@ const mapDispatchToProps = dispatch =>
                     this.props.userData.characterList.map( (character , index) => (
                         <ListGrid item container xs={12} md={12} key={index} spacing={0} 
                             justify="flex-start" alignItems="baseline" className="characterBlock">
-                            <Grid item xs={2} md={3}>
+                            <Grid item xs={4} sm={2} md={3}>
                                 <Button 
                                     name={character._id} 
                                     onClick={this.deleteCharacter} 
@@ -116,12 +116,12 @@ const mapDispatchToProps = dispatch =>
                                     X
                                 </Button>
                             </Grid>
-                            <Grid item xs={5} md={5}>
-                                <p><strong>{character.characterName}</strong></p>
+                            <Grid item xs={8} sm={4} md={9}>
+                                <p className="characterName"><strong>{character.characterName}</strong></p>
                                 <p>level : {character.level} {character.playerClass}</p>
                             </Grid>
                             
-                            <Grid item xs={3} md={3}>
+                            <Grid item container xs={12} sm={4} md={12} justify="center" alignItems="center" spacing={1}>
                                 <ListButton name={character._id} value={JSON.stringify(character)} onClick={this.setCurrentCharacter}>Select</ListButton>
                                 <ListButton name="sheetModal" value={character._id} onClick={this.handleModal.bind(this)}>View</ListButton>
                             </Grid>
