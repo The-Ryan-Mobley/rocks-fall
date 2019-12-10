@@ -41,6 +41,9 @@ code {
 .lobbyThumbnail {
   max-width: 4rem;
   max-height: auto;
+  border-color: #000000;
+  border-style: solid;
+  border-radius: 10px;
   
 }
 .lobbyRoom{
@@ -255,7 +258,6 @@ code {
 .languages::-webkit-scrollbar {
   display: none;
 }
-
 @media(min-width: 320px) and (max-width: 549px){
   body{
     overflow-x: hidden !important;
