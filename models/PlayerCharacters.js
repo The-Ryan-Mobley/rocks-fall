@@ -136,7 +136,7 @@ const playerCharacterSchema = new Schema({
     },
     spellsKnown: {
         type: [Object],
-        default: []
+        default: [[],[],[],[],[],[],[],[],[],[]]
     },
     inventory: {
         type: [Object],

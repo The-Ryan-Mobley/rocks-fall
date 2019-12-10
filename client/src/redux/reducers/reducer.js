@@ -85,7 +85,7 @@ const playerState = {
         spellSlots: [0,0,0,0,0,0,0,0,0,0],
         spellCastingClass: "",
         spellCastingStat: "",
-        spellsKnown: [],
+        spellsKnown: [[],[],[],[],[],[],[],[],[],[]],
         inventory: [],
         featsAndTraits: [],
         authorId: ""

@@ -32,89 +32,104 @@ class BioTraits extends Component {
         return(
             <div className="bioTraits">
                 <div className="personalityTraits sheetBox">
-                <TextField 
-                        id="multiline-flexible"
-                        label="Personality Traits"
-                        multiline={true}
-                        rows="2"
-                        onBlur={this.onTextChange}
-                        margin="normal"
-                        name="personalityTraits"
-                        fullWidth={true}
-                        InputProps={{
-                            readOnly: this.props.modalData.readOnly
-                          }}
-                        defaultValue={this.props.playerCharacter.personalityTraits ? 
-                            (this.props.playerCharacter.personalityTraits) : ("")}
-                    />
+                  <TextField 
+                    id="multiline-flexible"
+                    label="Personality Traits"
+                    multiline={true}
+                    rows="2"
+                    onBlur={this.onTextChange}
+                    margin="normal"
+                    name="personalityTraits"
+                    fullWidth={true}
+                    InputProps={{
+                      readOnly: this.props.modalData.readOnly
+                    }}
+                    defaultValue={
+                      this.props.playerCharacter.personalityTraits ? 
+                      (this.props.playerCharacter.personalityTraits) : 
+                      ("")
+                    }
+                  />
                 </div>
                 <div className="ideals sheetBox">
-                <TextField 
-                        id="multiline-flexible"
-                        label="Ideals"
-                        multiline={true}
-                        rows="2"
-                        onBlur={this.onTextChange}
-                        margin="normal"
-                        name="ideals"
-                        fullWidth={true}
-                        InputProps={{
-                            readOnly: this.props.modalData.readOnly
-                          }}
-                        defaultValue={this.props.playerCharacter.ideals.length ? 
-                            (this.props.playerCharacter.ideals) : ("")}
+                  <TextField 
+                    id="multiline-flexible"
+                    label="Ideals"
+                    multiline={true}
+                    rows="2"
+                    onBlur={this.onTextChange}
+                    margin="normal"
+                    name="ideals"
+                    fullWidth={true}
+                    InputProps={{
+                      readOnly: this.props.modalData.readOnly
+                    }}
+                    defaultValue={
+                      this.props.playerCharacter.ideals.length ? 
+                        (this.props.playerCharacter.ideals) : 
+                        ("")
+                      }
                     />
                 </div>
                 <div className="bonds sheetBox">
-                    <TextField 
-                        id="multiline-flexible"
-                        label=" Bonds"
-                        multiline={true}
-                        rows="2"
-                        onBlur={this.onTextChange}
-                        margin="normal"
-                        name="bonds"
-                        fullWidth={true}
-                        InputProps={{
-                            readOnly: this.props.modalData.readOnly
-                          }}
-                        defaultValue={this.props.playerCharacter.bonds.length ? 
-                            (this.props.playerCharacter.bonds) : ("")}
+                  <TextField 
+                    id="multiline-flexible"
+                    label=" Bonds"
+                    multiline={true}
+                    rows="2"
+                    onBlur={this.onTextChange}
+                    margin="normal"
+                    name="bonds"
+                    fullWidth={true}
+                    InputProps={{
+                      readOnly: this.props.modalData.readOnly
+                    }}
+                    defaultValue={
+                      this.props.playerCharacter.bonds.length ? 
+                      (this.props.playerCharacter.bonds) : 
+                      ("")
+                    }
                     />     
                 </div>
                 <div className="flaws sheetBox">
-                <TextField 
-                        id="multiline-flexible"
-                        label=" Flaws"
-                        multiline={true}
-                        rows="2"
-                        onBlur={this.onTextChange}
-                        margin="normal"
-                        name="flaws"
-                        fullWidth={true}
-                        InputProps={{
-                            readOnly: this.props.modalData.readOnly
-                          }}
-                        defaultValue={this.props.playerCharacter.flaws.length ? 
-                            (this.props.playerCharacter.flaws) : ("")}
-                    />
+                  <TextField 
+                    id="multiline-flexible"
+                    label=" Flaws"
+                    multiline={true}
+                    rows="2"
+                    onBlur={this.onTextChange}
+                    margin="normal"
+                    name="flaws"
+                    fullWidth={true}
+                    InputProps={{
+                      readOnly: this.props.modalData.readOnly
+                    }}
+                    defaultValue={
+                      this.props.playerCharacter.flaws.length ? 
+                        (this.props.playerCharacter.flaws) : 
+                        ("")
+                    }
+                  />
                 </div>
                 <div className="bio sheetBox">
-                    <TextField 
-                        id="multiline-flexible"
-                        label=" Biography"
-                        multiline={true}
-                        rows="3"
-                        onBlur={this.onTextChange}
-                        margin="normal"
-                        name="bio"
-                        fullWidth={true}
-                        InputProps={{
-                            readOnly: this.props.modalData.readOnly
-                          }}
-                        defaultValue={this.props.playerCharacter.bio.length ? 
-                            (this.props.playerCharacter.bio) : ("")}
-                    />
+                  <TextField 
+                    id="multiline-flexible"
+                    label=" Biography"
+                    multiline={true}
+                    rows="3"
+                    onBlur={this.onTextChange}
+                    margin="normal"
+                    name="bio"
+                    fullWidth={true}
+                    InputProps={{
+                      readOnly: this.props.modalData.readOnly
+                    }}
+                    defaultValue={
+                      this.props.playerCharacter.bio.length ? 
+                        (this.props.playerCharacter.bio) : 
+                        ("")
+                      }
+                  />
                 </div>
                 <FeatsAndTraits/>
             </div>

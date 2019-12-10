@@ -109,6 +109,7 @@ class SpellBlock extends Component {
     pushToKnown = () => {
 
         const selectedSpell = this.state.selectedSpell;
+        console.log(selectedSpell)
         let spellArray = undefined; 
         if(this.state.spellArray) {
             spellArray = this.state.spellArray

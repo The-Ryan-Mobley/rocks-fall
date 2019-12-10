@@ -56,6 +56,7 @@ const mapDispatchToProps = dispatch =>
 
  class CharacterList extends Component {
 
+
     deleteCharacter = event => {
 
         const { name, value } = event.currentTarget;
@@ -97,10 +98,11 @@ const mapDispatchToProps = dispatch =>
     render() {
 
         return(
-            <Grid container className="characterList">
+            <Grid container alignItems="flex-start" justify="flex-start" className="characterList">
                 {this.props.modalData.loadingList ? 
                     (<p className="loader whiteText">Loading...</p>) : 
-                    (<p className="loader whiteText">Characters</p>)}
+                    (<p className="loader whiteText">Characters</p>)
+                }
                 
                 {this.props.userData.userId ? (
                     this.props.userData.characterList.map( (character , index) => (
@@ -122,8 +124,20 @@ const mapDispatchToProps = dispatch =>
                             </Grid>
                             
                             <Grid item container xs={12} sm={4} md={12} justify="center" alignItems="center" spacing={1}>
-                                <ListButton name={character._id} value={JSON.stringify(character)} onClick={this.setCurrentCharacter}>Select</ListButton>
-                                <ListButton name="sheetModal" value={character._id} onClick={this.handleModal.bind(this)}>View</ListButton>
+                                <ListButton 
+                                    name={character._id} 
+                                    value={JSON.stringify(character)} 
+                                    onClick={this.setCurrentCharacter}
+                                >
+                                    Select
+                                </ListButton>
+                                <ListButton 
+                                    name="sheetModal" 
+                                    value={character._id} 
+                                    onClick={this.handleModal.bind(this)}
+                                >
+                                    View
+                                </ListButton>
                             </Grid>
                         </ListGrid>
                     ))) : 
