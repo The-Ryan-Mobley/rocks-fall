@@ -12,7 +12,7 @@ https://vast-citadel-52957.herokuapp.com/ url
   
   https://dnd.wizards.com/ 
   
-  Dungeons and Dragons is a game that requires players to keep track of a lot of information. Rocks fall seeks to alleviate this by letting users keep track of their character sheets digitally. Users can also chat and create lobbies to play games where they can vuew other people's character sheets. Users can create an account by selecting the create account button in the top right corner. All this is made possible thanks to a combination of Redux and Socket.Io built on a MERN (MngoDb, Express, React, Nodejs) Stack. 
+  Dungeons and Dragons is a game that requires players to keep track of a lot of information. Rocks fall seeks to alleviate this by letting users keep track of their character sheets digitally. Users can also chat and create lobbies to play games where they can view other people's character sheets. Users can create an account by selecting the create account button in the top right corner. All this is made possible thanks to a combination of Redux and Socket.Io built on a MERN (MongoDb, Express, React, Nodejs) Stack. 
 
 ## Homepage
   ![Home](https://drive.google.com/uc?export=view&id=1yHxsqTAOe-R6CYoiEsrCyltWzyC31vWx)
