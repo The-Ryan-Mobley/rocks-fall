@@ -28,9 +28,8 @@ import API from "../../utils/api/API"
         return(
             <Wrapper>
                 <Grid container xs={12} className="spacer"></Grid>
-                <Grid container xs={3}></Grid>
-                <Grid container  xs={6} spacing={1} direction="column" alignItems="center" justify="center"
-                    className ="createBody">
+                <Grid container  xs={12} spacing={1} direction="column" alignItems="center" justify="center"
+                    className ="homeBody">
                         <Input
                             name="userName"
                             value={this.props.userData.userName}
@@ -78,7 +77,6 @@ import API from "../../utils/api/API"
                         )}
                         
                 </Grid>
-                <Grid container xs={3}></Grid>
             </Wrapper>
         );
     }
