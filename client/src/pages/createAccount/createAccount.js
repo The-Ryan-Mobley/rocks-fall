@@ -30,52 +30,55 @@ import API from "../../utils/api/API"
                 <Grid container xs={12} className="spacer"></Grid>
                 <Grid container  xs={12} spacing={1} direction="column" alignItems="center" justify="center"
                     className ="homeBody">
-                        <Input
-                            name="userName"
-                            value={this.props.userData.userName}
+                        <Grid item xs={3}></Grid>
+                        <Grid item xs={6}>
+                            <Input
+                                name="userName"
+                                value={this.props.userData.userName}
 
-                            id="filled-required"
-                            fullWidth="true"
-                            placeholder="username*"
-                            variant="filled"
-                            color="secondary"
-                            className="createInput" 
-                            onChange={this.onTextChange}
-                        />
-                        <Input
-                            name="password"
-                            value={this.props.userData.password}
+                                id="filled-required"
+                                fullWidth="true"
+                                placeholder="username*"
+                                variant="filled"
+                                color="secondary"
+                                className="createInput" 
+                                onChange={this.onTextChange}
+                            />
+                            <Input
+                                name="password"
+                                value={this.props.userData.password}
 
-                            id="filled-required"
-                            fullWidth="true"
-                            placeholder="password*"
-                            variant="filled"
-                            color="secondary" 
-                            className="createInput"
-                            onChange={this.onTextChange}
-                            type="password"
-                        />
-                        <Input
-                            name="confirmPassword"
-                            value={this.props.userData.confirmPassword}
+                                id="filled-required"
+                                fullWidth="true"
+                                placeholder="password*"
+                                variant="filled"
+                                color="secondary" 
+                                className="createInput"
+                                onChange={this.onTextChange}
+                                type="password"
+                            />
+                            <Input
+                                name="confirmPassword"
+                                value={this.props.userData.confirmPassword}
 
-                            id="filled-required"
-                            fullWidth="true"
-                            placeholder="password*"
-                            variant="filled"
-                            color="secondary" 
-                            className="createInput lastInput"
-                            onChange={this.onTextChange}
-                            type="password"
-                        />
-                        {this.state.returnHome ? (<Redirect to="/"/>) : (
-                            <Button variant="contained" className="createButton" 
-                                onClick={this.formSubmit} 
-                                disabled={!(this.props.userData.userName && this.props.userData.password)}>
-                                Create
-                            </Button>
-                        )}
-                        
+                                id="filled-required"
+                                fullWidth="true"
+                                placeholder="password*"
+                                variant="filled"
+                                color="secondary" 
+                                className="createInput lastInput"
+                                onChange={this.onTextChange}
+                                type="password"
+                            />
+                            {this.state.returnHome ? (<Redirect to="/"/>) : (
+                                <Button variant="contained" className="createButton" 
+                                    onClick={this.formSubmit} 
+                                    disabled={!(this.props.userData.userName && this.props.userData.password)}>
+                                    Create
+                                </Button>
+                            )}
+                        </Grid>
+                        <Grid item xs={3}></Grid>
                 </Grid>
             </Wrapper>
         );
