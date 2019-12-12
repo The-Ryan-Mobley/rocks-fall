@@ -57,6 +57,7 @@ class SpellBlock extends Component {
             API.spellsByLevelAndClass(this.props.spellLevel , this.props.playerCharacter.spellCastingClass)
             .then(result => {
                 this.setState({
+                    spellArray: this.props.playerCharacter.spellsKnown[this.props.spellLevel],
                     spellQuery: result.data,
                     queryAgain: false
                 });
