@@ -55,10 +55,10 @@ class DiceBlock extends Component {
     rollDice = () => {
         let diceArray = this.props.modalData.diceArray;
         let diceTotal = 0;
-        let diceString = ``
+        let diceString = ``;
         diceArray.forEach((dice, index) => {
             for(let i = 0; i < dice; i++){
-                let roll = (Math.floor(Math.random() * this.state.diceLabel[index]) + 1) * dice;
+                let roll = (Math.floor(Math.random() * this.state.diceLabel[index]) + 1);
                 diceString += (` + ${roll}`);
                 diceTotal += roll;
             }

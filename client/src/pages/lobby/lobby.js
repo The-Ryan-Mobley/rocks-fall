@@ -26,7 +26,6 @@ export default class Lobby extends Component {
         this.joinListener();
         API.findLobby(this.props.match.params.lobbyId).then(re => {
             if(this.props.userData.userId === re.data.hostId){
-                console.log(re.data)
                 socket.lobbyHost(re.data);
                 this.props.lobbyUserSet(re.data);
             }
